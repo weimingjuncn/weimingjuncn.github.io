@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>在Win 10中使用命令行界面编译、运行一个cpp文件 | MJ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="源文件准备新建一个文件取名hello.cpp，代码如下： 123int main()&amp;#123;	return 0;&amp;#125;  编译器准备Visual C++组件包含一个C++命令编译器，这个编译器还可用于创建基本的控制台程序、通用Windows平台程序、桌面程序、设备驱动和.NET组建。 从微软的Visaul Studio官网下载Visual Studio Community 2017。 安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Win 10中使用命令行界面编译、运行一个cpp文件">
+<meta property="og:url" content="http://weimingjuncn.github.io/2019/07/05/%E5%9C%A8Win%2010%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2%E7%BC%96%E8%AF%91%E3%80%81%E8%BF%90%E8%A1%8C%E4%B8%80%E4%B8%AAcpp%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:site_name" content="MJ">
+<meta property="og:description" content="源文件准备新建一个文件取名hello.cpp，代码如下： 123int main()&amp;#123;	return 0;&amp;#125;  编译器准备Visual C++组件包含一个C++命令编译器，这个编译器还可用于创建基本的控制台程序、通用Windows平台程序、桌面程序、设备驱动和.NET组建。 从微软的Visaul Studio官网下载Visual Studio Community 2017。 安">
+<meta property="article:published_time" content="2019-07-05T12:38:44.000Z">
+<meta property="article:modified_time" content="2019-07-05T12:42:53.575Z">
+<meta property="article:author" content="Wei Mingjun">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="MJ" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">MJ</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Never say never. </a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://weimingjuncn.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-在Win 10中使用命令行界面编译、运行一个cpp文件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/05/%E5%9C%A8Win%2010%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2%E7%BC%96%E8%AF%91%E3%80%81%E8%BF%90%E8%A1%8C%E4%B8%80%E4%B8%AAcpp%E6%96%87%E4%BB%B6/" class="article-date">
+  <time datetime="2019-07-05T12:38:44.000Z" itemprop="datePublished">2019-07-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在Win 10中使用命令行界面编译、运行一个cpp文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="源文件准备"><a href="#源文件准备" class="headerlink" title="源文件准备"></a>源文件准备</h2><p>新建一个文件取名hello.cpp，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="编译器准备"><a href="#编译器准备" class="headerlink" title="编译器准备"></a>编译器准备</h2><p>Visual C++组件包含一个C++命令编译器，这个编译器还可用于创建基本的控制台程序、通用Windows平台程序、桌面程序、设备驱动和.NET组建。</p>
+<p>从微软的Visaul Studio官网下载Visual Studio Community 2017。</p>
+<p>安装过程中注意勾选“Desktop development with C++”</p>
+<h2 id="打开开发者命令提示符"><a href="#打开开发者命令提示符" class="headerlink" title="打开开发者命令提示符"></a>打开开发者命令提示符</h2><p>点击“开始”菜单，在程序列表找到并点击Visual Studio 2017文件夹下的“VS 2017的开发人员命令提示符”</p>
+<p>输入如下命令以验证VC++的开发者命令提示符已设置妥当：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cl</span><br></pre></td></tr></table></figure>
+<p>窗口会反馈如下：</p>
+<blockquote>
+<p>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community&gt;cl<br>Microsoft (R) C/C++ Optimizing Compiler Version 19.15.26732.1 for x86<br>Copyright (C) Microsoft Corporation.  All rights reserved.</p>
+<p>usage: cl [ option… ] filename… [ /link linkoption… ]</p>
+</blockquote>
+<h2 id="编译cpp源文件"><a href="#编译cpp源文件" class="headerlink" title="编译cpp源文件"></a>编译cpp源文件</h2><p>安装完编译所需的工具后，在开发者命令提示符界面中输入命令，将当前目录切换到源代码文件所在的目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d:</span><br><span class="line">cd d:\ProgrammingLearning\cpp</span><br></pre></td></tr></table></figure>
+
+<p>输入以下代码编译源文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cl &#x2F;EHsc hello.cpp</span><br></pre></td></tr></table></figure>
+
+<p>窗口反馈如下，则表示编译成功：</p>
+<blockquote>
+<p>Microsoft (R) C/C++ Optimizing Compiler Version 19.15.26732.1 for x86<br>Copyright (C) Microsoft Corporation.  All rights reserved.</p>
+<p>hello.cpp<br>Microsoft (R) Incremental Linker Version 14.15.26732.1<br>Copyright (C) Microsoft Corporation.  All rights reserved.</p>
+<p>/out:hello.exe<br>hello-world.obj</p>
+</blockquote>
+<h2 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h2><p>成功编译后在命令行界面执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello</span><br></pre></td></tr></table></figure>
+
+<p>程序顺利执行，通过echo命令获取main函数的返回值(0)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo %ERRORLEVEL%</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://weimingjuncn.github.io/2019/07/05/%E5%9C%A8Win%2010%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2%E7%BC%96%E8%AF%91%E3%80%81%E8%BF%90%E8%A1%8C%E4%B8%80%E4%B8%AAcpp%E6%96%87%E4%BB%B6/" data-id="ck53vc1tk001b0wv764i100ad" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/30/CodeBlocks%E7%9A%84%E5%85%A5%E9%97%A8%E6%93%8D%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CodeBlocks的入门操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/20/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E8%AE%B0%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hexo搭建个人博客注意事项记录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%8B%E4%B8%9A%E8%A7%84%E5%88%92/">事业规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">搭建博客</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CodeBlocks/" rel="tag">CodeBlocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCharm/" rel="tag">PyCharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%A4%E5%85%B8/" rel="tag">古典</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A6%E5%BF%97%E7%BA%A2/" rel="tag">武志红</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/CodeBlocks/" style="font-size: 10px;">CodeBlocks</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/PyCharm/" style="font-size: 10px;">PyCharm</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/%E5%8F%A4%E5%85%B8/" style="font-size: 10px;">古典</a> <a href="/tags/%E6%AD%A6%E5%BF%97%E7%BA%A2/" style="font-size: 16.67px;">武志红</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/23/%E5%88%B7%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E3%80%8B%E5%B0%8F%E7%BB%93%E4%B9%A0%E9%A2%98%EF%BC%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%B8%B8%E7%8A%AF%E7%9A%84%E9%94%99%E8%AF%AF/">刷《算法笔记》小结习题，写代码常犯的错误</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/30/CodeBlocks%E7%9A%84%E5%85%A5%E9%97%A8%E6%93%8D%E4%BD%9C/">CodeBlocks的入门操作</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/05/%E5%9C%A8Win%2010%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2%E7%BC%96%E8%AF%91%E3%80%81%E8%BF%90%E8%A1%8C%E4%B8%80%E4%B8%AAcpp%E6%96%87%E4%BB%B6/">在Win 10中使用命令行界面编译、运行一个cpp文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/20/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E8%AE%B0%E5%BD%95/">Hexo搭建个人博客注意事项记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Wei Mingjun<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
