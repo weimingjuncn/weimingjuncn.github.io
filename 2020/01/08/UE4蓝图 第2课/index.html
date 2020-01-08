@@ -12,12 +12,12 @@
 
 
 
-  <meta name="description" content="配置Git的SSH Key"/>
+  <meta name="description" content="UE4蓝图 第2课"/>
 
 
 
 
-  <meta name="keywords" content="Hexo,git," />
+  <meta name="keywords" content="UE4," />
 
 
 
@@ -32,22 +32,27 @@
 
 
 
-<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/08/配置Git的SSH Key/"/>
+<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/08/UE4蓝图 第2课/"/>
 
 
-<meta name="description" content="生成SSH并添加到GitHub回到你的git bash中，  git config –global user.name “yourname”git config –global user.email “youremail”  这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。 可以用以下两条，检查一下是否输对">
+<meta name="description" content="主讲人：神经刀游戏工作室https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av33992806 接上一堂课 接下来给角色赋予其他行动功能  进入【项目设置】的【引擎】【输入】，在Axis Mappings下自定义添加一个“MoveRight”  添加按键【键盘A】,Scale设置为-1.0 添加按键【键盘D】,Scale设置为1.0   在Axis Mappings下自定义添加一个“T">
 <meta property="og:type" content="article">
-<meta property="og:title" content="配置Git的SSH Key">
-<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/08/%E9%85%8D%E7%BD%AEGit%E7%9A%84SSH%20Key/index.html">
+<meta property="og:title" content="UE4蓝图 第2课">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/index.html">
 <meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="生成SSH并添加到GitHub回到你的git bash中，  git config –global user.name “yourname”git config –global user.email “youremail”  这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。 可以用以下两条，检查一下是否输对">
+<meta property="og:description" content="主讲人：神经刀游戏工作室https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av33992806 接上一堂课 接下来给角色赋予其他行动功能  进入【项目设置】的【引擎】【输入】，在Axis Mappings下自定义添加一个“MoveRight”  添加按键【键盘A】,Scale设置为-1.0 添加按键【键盘D】,Scale设置为1.0   在Axis Mappings下自定义添加一个“T">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-07T16:28:11.000Z">
-<meta property="article:modified_time" content="2020-01-07T16:33:50.381Z">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/APlayerControllerBP.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/LocateMeshButton.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/LocatedMesh.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/photo_1.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/photo_2.png">
+<meta property="article:published_time" content="2020-01-08T02:27:44.000Z">
+<meta property="article:modified_time" content="2020-01-08T02:57:53.081Z">
 <meta property="article:author" content="MJ">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="git">
+<meta property="article:tag" content="UE4">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/APlayerControllerBP.png">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1"/>
@@ -82,7 +87,7 @@
 
 
 
-    <title> 配置Git的SSH Key - MJ's Blog </title>
+    <title> UE4蓝图 第2课 - MJ's Blog </title>
   <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body>
@@ -134,7 +139,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          配置Git的SSH Key
+          UE4蓝图 第2课
         
       </h1>
 
@@ -147,23 +152,78 @@
 
     
             <div class="post-content">
-            <h1 id="生成SSH并添加到GitHub"><a href="#生成SSH并添加到GitHub" class="headerlink" title="生成SSH并添加到GitHub"></a>生成SSH并添加到GitHub</h1><p>回到你的git bash中，</p>
-<blockquote>
-<p>git config –global user.name “yourname”<br>git config –global user.email “youremail”</p>
-</blockquote>
-<p>这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。</p>
-<p>可以用以下两条，检查一下是否输对</p>
-<blockquote>
-<p>git config user.name<br>git config user.email</p>
-</blockquote>
-<p>然后创建SSH,一路回车</p>
-<blockquote>
-<p>ssh-keygen -t rsa -C “youremail”</p>
-</blockquote>
-<p>这个时候它会告诉你已经生成了.ssh的文件夹。在你的电脑中找到这个文件夹。</p>
-<p>ssh，简单来讲，就是一个秘钥，其中，id_rsa是你这台电脑的私人秘钥，不能给别人看的，id_rsa.pub是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</p>
-<p>而后在GitHub的setting中，找到SSH keys的设置选项，点击New SSH key<br>把你的id_rsa.pub里面的信息复制进去</p>
-<p>作者：程序员黄小斜<br>链接：<a href="https://www.jianshu.com/p/5efd8c6eb3e9" target="_blank" rel="noopener">https://www.jianshu.com/p/5efd8c6eb3e9</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+            <p>主讲人：神经刀游戏工作室<br><a href="https://www.bilibili.com/video/av33992806" target="_blank" rel="noopener">https://www.bilibili.com/video/av33992806</a></p>
+<p>接上一堂课</p>
+<p>接下来给角色赋予其他行动功能</p>
+<ol>
+<li><p>进入【项目设置】的【引擎】【输入】，在Axis Mappings下自定义添加一个“MoveRight”</p>
+<ul>
+<li>添加按键【键盘A】,Scale设置为-1.0</li>
+<li>添加按键【键盘D】,Scale设置为1.0</li>
+</ul>
+</li>
+<li><p>在Axis Mappings下自定义添加一个“Turn”</p>
+<ul>
+<li>添加【鼠标X】,Scale设置为1.0</li>
+</ul>
+</li>
+<li><p>在Axis Mappings下自定义添加一个“LookUp”</p>
+<ul>
+<li>添加【鼠标Y】,Scale设置为-1.0</li>
+</ul>
+</li>
+<li><p>进入“APlayerController”，在事件图表下，添加坐标轴事件“MoveRight”</p>
+</li>
+<li><p>复制粘贴一个“Add Movement Input“</p>
+</li>
+<li><p>添加一个Pawn操作“Get Control Rotation”、一个”Get Right Vectot”</p>
+</li>
+<li><p>添加坐标轴事件”Turn“和”LookUp“</p>
+</li>
+<li><p>添加”Add Yaw Input”、”Add Pitch Input”、”Add Roll Input”</p>
+<ul>
+<li>Pawn控制角色的行动，PlayerController控制控制器的旋转功能</li>
+</ul>
+</li>
+<li><p>连线如图<br> <img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/APlayerControllerBP.png" alt="APlayerControllerBP"></p>
+</li>
+<li><p>进入APlayer，选中【SwingArm】，在【细节】【Camera Settings】把【Use Pawn Control Rotation】打勾，编译，保存</p>
+</li>
+<li><p>此时点【播放】，角色可以左右平移，角色正面紧随摄像机视角改变朝向</p>
+</li>
+<li><p>进入APlayer，选中【组件】下的【CharacterMovement】,在【细节】【Character Movement(Rotation Settings)】</p>
+<ul>
+<li>【Rotation Rate】【Z】改成1000。(修改角色转身速率)</li>
+<li>【Orient Rotation to Movement】打勾</li>
+</ul>
+</li>
+<li><p>选中【组件】下的【APlayer(自身)】，在【细节】【Pawn】下把【Use Controller Rotation Yaw】取消打勾，编译，保存。</p>
+</li>
+<li><p>此时点【播放】，角色正面不紧随摄像机视角改变朝向，只有在行动时转身改变朝向</p>
+</li>
+<li><p>怎么给蓝图写注释？</p>
+<ul>
+<li>选中/框选要注释的操作，按【C】产生注释框，注释框可以嵌套</li>
+<li>选中注释框，在右边【细节】【Comment Color】改注释区域的颜色、透明度</li>
+</ul>
+</li>
+<li><p>在APlayer里选中【组件】【Mesh】，在【细节】【Mesh】里可以点击放大镜按钮，可以定位并选中当前使用的模型</p>
+</li>
+</ol>
+<p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/LocateMeshButton.png" alt="LocateMeshButton"></p>
+<p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/LocatedMesh.png" alt="LocatedMesh"></p>
+<ol start="17">
+<li><p>双击”SK_Mannequin“打开模型</p>
+</li>
+<li><p>模型五大部分：骨架、网格体、动画、蓝图、物理</p>
+<p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/photo_1.png" alt="photo_1"></p>
+</li>
+<li><p>骨架上填满了”肉“就成了网格体，骨骼是根本，一个骨骼对应多个网格体多个动画多个物理多个蓝图（动画蓝图），一个动画仅对应唯一一个骨骼，动画跟着骨骼走。</p>
+</li>
+<li><p>点击【浏览】按钮可以定位选中具体的文件</p>
+<p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/photo_2.png" alt="photo_2"></p>
+</li>
+</ol>
 
             </div>
           
@@ -172,9 +232,7 @@
       <footer class="post-footer">
         <div class="post-tags">
           
-            <a href="/tags/Hexo/">Hexo</a>
-          
-            <a href="/tags/git/">git</a>
+            <a href="/tags/UE4/">UE4</a>
           
         </div>
 
@@ -182,15 +240,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC1%E8%AF%BE/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">UE4蓝图 第1课</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2020/01/08/%E3%80%90GDC%E3%80%91Platinum%20Games%EF%BC%9AAction%20Without%20Borders/">
-        <span class="next-text nav-default">【GDC】Platinum Games：Action Without Borders</span>
+      <a class="next" href="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC1%E8%AF%BE/">
+        <span class="next-text nav-default">UE4蓝图 第1课</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
