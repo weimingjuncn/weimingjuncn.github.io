@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="【GDC】Level Design Workshop：Blockmesh and Lighting Tips"/>
+
+
+
+
+  <meta name="keywords" content="Game Design," />
+
+
+
+
+
+    <link rel="alternate" href="/default" title="MJ's Blog">
+
+
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=1.1"/>
+
+
+
+<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/08/【GDC】Level Design Workshop：Blockmesh and Lighting Tips/"/>
+
+
+<meta name="description" content="Invisible Intuition：Blockmesh and Lighting Tips to Guide Players and Set the MoodWhat is “Blockmesh” ? Blockmesh &#x3D; Greybox &#x3D; Whitebox, etc. Greybox and Whitebox implt a single color - not ideal! 灰盒和白盒">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【GDC】Level Design Workshop：Blockmesh and Lighting Tips">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/08/%E3%80%90GDC%E3%80%91Level%20Design%20Workshop%EF%BC%9ABlockmesh%20and%20Lighting%20Tips/index.html">
+<meta property="og:site_name" content="MJ&#39;s Blog">
+<meta property="og:description" content="Invisible Intuition：Blockmesh and Lighting Tips to Guide Players and Set the MoodWhat is “Blockmesh” ? Blockmesh &#x3D; Greybox &#x3D; Whitebox, etc. Greybox and Whitebox implt a single color - not ideal! 灰盒和白盒">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-08T06:58:13.000Z">
+<meta property="article:modified_time" content="2020-01-08T10:02:16.645Z">
+<meta property="article:author" content="MJ">
+<meta property="article:tag" content="Game Design">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1"/>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+
+    <link rel="stylesheet" type="text/css" href="/css/search.css?v=1.1"/>
+
+
+
+    <title> 【GDC】Level Design Workshop：Blockmesh and Lighting Tips - MJ's Blog </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">MJ's Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="mailto:mingjun4503@163.com">
+                            
+                            
+                                Email
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
+                            
+                            
+                                Github
+                            
+                        </a>
+                    </li>
+                
+                
+                    <li class="menu-item">
+                        <a id="search" href="">Search</a>
+                    </li>
+                
+            </ul>
+        
+    </nav>
+
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          【GDC】Level Design Workshop：Blockmesh and Lighting Tips
+        
+      </h1>
+
+      <time class="post-time">
+          1月 8 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="Invisible-Intuition：Blockmesh-and-Lighting-Tips-to-Guide-Players-and-Set-the-Mood"><a href="#Invisible-Intuition：Blockmesh-and-Lighting-Tips-to-Guide-Players-and-Set-the-Mood" class="headerlink" title="Invisible Intuition：Blockmesh and Lighting Tips to Guide Players and Set the Mood"></a>Invisible Intuition：Blockmesh and Lighting Tips to Guide Players and Set the Mood</h1><h2 id="What-is-“Blockmesh”"><a href="#What-is-“Blockmesh”" class="headerlink" title="What is “Blockmesh” ?"></a>What is “Blockmesh” ?</h2><ul>
+<li>Blockmesh = Greybox = Whitebox, etc.</li>
+<li>Greybox and Whitebox implt a single color - not ideal! 灰盒和白盒一般只有一种颜色，不够理想</li>
+</ul>
+<h2 id="Level-Design-Pipeline"><a href="#Level-Design-Pipeline" class="headerlink" title="Level Design Pipeline"></a>Level Design Pipeline</h2><pre class="mermaid">    graph LR
+    A(Level Requirements) --> B(Build Blockmesh Layout 搭建Blockmesh布局)
+    B --> C(Playtest Layout 测试布局)
+    C --> D(Process Feedback 处理反馈)
+    D --> B</pre>
+
+<ul>
+<li>Environment Type 环境需求</li>
+<li>Time of Day 当日时间</li>
+<li>Location in Story 故事地点</li>
+<li>Available Character Abilities 允许玩家使用的能力</li>
+<li>Enemy Type 敌人种类</li>
+<li>etc.</li>
+<li>Gameplay and Narrative Beats 游戏性以及叙事性的节拍</li>
+</ul>
+<h2 id="Affordance-可见性"><a href="#Affordance-可见性" class="headerlink" title="Affordance 可见性"></a>Affordance 可见性</h2><ul>
+<li>Form implies function 形式暗示着功能</li>
+</ul>
+<h3 id="Affordance-…-in-Games"><a href="#Affordance-…-in-Games" class="headerlink" title="Affordance … in Games"></a>Affordance … in Games</h3><ul>
+<li>A way to communicate to the player what to play with or where to go. 一种告诉玩家玩什么或到哪去的方法</li>
+<li>Players learn the affordance rules via consistent color and shape and a trust contract is formed. 玩家通过相同的颜色和形状来学习可见性规则，同时信任该规则</li>
+<li>Ensure affordances work consistently game-wide. 确保可见性规则在游戏内保持一致</li>
+<li>Add to your blockmesh for playtests! 在游戏测试中添加到你的blockmesh中</li>
+</ul>
+<h2 id="Denying-Affordance-拒绝式可见性"><a href="#Denying-Affordance-拒绝式可见性" class="headerlink" title="Denying Affordance 拒绝式可见性"></a>Denying Affordance 拒绝式可见性</h2><ul>
+<li>Communicates to the player where NOT to go. 告诉玩家不能去的地方</li>
+<li>“Uninvites” the player from going there. 不允许玩家去哪</li>
+<li>Contextualize why the player can’t use it/go there! 根据情境告诉玩家为什么不能使用某物或去某地</li>
+<li>Add to your blockmesh for playtests! 在游戏测试中添加到你的blockmesh中</li>
+</ul>
+<h2 id="Visual-Language-Shape"><a href="#Visual-Language-Shape" class="headerlink" title="Visual Language - Shape"></a>Visual Language - Shape</h2><ul>
+<li>绿色圆形代表安全</li>
+<li>黄色矩形代表稳定、实用</li>
+<li>红色三角形代表危险</li>
+</ul>
+<h2 id="Landmarks-aka-weenies-地标"><a href="#Landmarks-aka-weenies-地标" class="headerlink" title="Landmarks (aka weenies) 地标"></a>Landmarks (aka weenies) 地标</h2><ul>
+<li>Orients Players. 引导玩家</li>
+<li>Distant object seen from many vantage points in the level. 从关卡的许多视角都能看到</li>
+<li>A goal to work toward. 一个努力前往的目标</li>
+</ul>
+<h2 id="Openings-Attract-开放式吸引"><a href="#Openings-Attract-开放式吸引" class="headerlink" title="Openings Attract 开放式吸引"></a>Openings Attract 开放式吸引</h2><ul>
+<li>Caves, doors, archways拱门, etc.</li>
+<li>Often leads to a REFUGE SPACE, which psychologically feels safe. 通常导向一个心理上感到安全的避难所</li>
+<li>Mystery神秘感 - “What could be inside?!”</li>
+</ul>
+<h2 id="Gates-amp-Valves"><a href="#Gates-amp-Valves" class="headerlink" title="Gates &amp; Valves"></a>Gates &amp; Valves</h2><ul>
+<li>Gates stop progress until conditions are met. 在满足条件以前，门不会打开</li>
+<li>Valves prevent backtracking.</li>
+<li>Both reduce the possibility space and prevent aimless wandering瞎逛.</li>
+<li>Great for linear games, but can be sprinkled运用 into open worlds too!</li>
+</ul>
+<h2 id="Leading-Lines-引导线"><a href="#Leading-Lines-引导线" class="headerlink" title="Leading Lines 引导线"></a>Leading Lines 引导线</h2><ul>
+<li>Lines that draw your eye to the intended point of interest.</li>
+<li>Roads, pipes, cables, etc.</li>
+</ul>
+<h2 id="Pinching-挤压视线"><a href="#Pinching-挤压视线" class="headerlink" title="Pinching 挤压视线"></a>Pinching 挤压视线</h2><ul>
+<li>Angle shapes to funnel players to a specific spot.利用角度吸引玩家到特定地点</li>
+<li>Good for redirection. 适合重新引导</li>
+<li>Great for setting up a reveal. 非常适合设置展示</li>
+<li>Depends on your mobility mechanics! 根据你的移动机制</li>
+</ul>
+<h2 id="Framing-amp-Composition-框架以及构成"><a href="#Framing-amp-Composition-框架以及构成" class="headerlink" title="Framing &amp; Composition 框架以及构成"></a>Framing &amp; Composition 框架以及构成</h2><ul>
+<li>Draws attention to point of interest by blocking other parts of the image, making it stand out.</li>
+<li>Google photography composition techniques - lots of good websites!</li>
+<li>Great when combined with Pinching!</li>
+</ul>
+<h2 id="Breadcrumbs-面包屑"><a href="#Breadcrumbs-面包屑" class="headerlink" title="Breadcrumbs 面包屑"></a>Breadcrumbs 面包屑</h2><ul>
+<li>Attract/lead the player, a piece at a time, to a goal.一点点引导玩家到目的地，可以是任何能博眼球的东西</li>
+<li>Can be almost anything that draws the eye:<ul>
+<li>Stuff that breaks up the negative space of floor/walls. 打破地板的东西</li>
+<li>Pickups 可以捡起的东西</li>
+<li>Enemies 敌人</li>
+<li>Lit areas 明亮的区域</li>
+</ul>
+</li>
+<li>Usually better to add after early playtests of blockmesh to see if they are even needed. 最好在早期的游戏测试之后，根据需要添加</li>
+</ul>
+<h2 id="Textures-材质"><a href="#Textures-材质" class="headerlink" title="Textures 材质"></a>Textures 材质</h2><ul>
+<li>just point the way to go!</li>
+<li>Examples:<ul>
+<li>Arrows pointing the way.</li>
+<li>Scrapes on the ground/walls. 地上或墙上的抓痕</li>
+<li>Signs 标记</li>
+<li>etc.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Movement"><a href="#Movement" class="headerlink" title="Movement"></a>Movement</h2><ul>
+<li>Use movement to grab the eye.</li>
+<li>Examples:<ul>
+<li>Big scripted moments. 大型脚本</li>
+<li>Birds</li>
+<li>Spark FX 火花特效</li>
+<li>Enemies</li>
+<li>Something flapping in the breeze 微风中漂浮的东西</li>
+</ul>
+</li>
+<li>Directionality guides the eye to where you want players to go or what you want them to see.</li>
+</ul>
+<h2 id="Light-amp-God-Ray-光照以及光线"><a href="#Light-amp-God-Ray-光照以及光线" class="headerlink" title="Light &amp; God Ray 光照以及光线"></a>Light &amp; God Ray 光照以及光线</h2><ul>
+<li>Players are attracted to the light.</li>
+<li>God rays draw attention and a line to the goal.</li>
+<li>Important in blockmesh phase阶段!</li>
+</ul>
+<h2 id="Bonus-Tips！——The-Squint-Test-眯眼测试"><a href="#Bonus-Tips！——The-Squint-Test-眯眼测试" class="headerlink" title="Bonus Tips！——The Squint Test 眯眼测试"></a>Bonus Tips！——The Squint Test 眯眼测试</h2><ul>
+<li>Step 1: Squint眯 your eyes and look at the game.</li>
+<li>Step 2: Everything wil be blurry模糊, but what stands out?</li>
+<li>Step 3: Adjust your layout布局 and lighting光源 to highlight强调 what you want players to focus on.</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/Game-Design/">Game Design</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/01/08/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">如何用Markdown画流程图</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/">
+        <span class="next-text nav-default">UE4蓝图 第2课</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2012 -
+    
+    2020
+    <span class="footer-author">MJ.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/henryhuang/hexo-theme-polarbearsimple" target="_blank" rel="noopener">Polar Bear Simple</a>
+    </span>
+</span>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+    <div id="search-container" class="search-container">
+        <input type="hidden" id="algolia_index" value="dev_MJBlog"/>
+        <input type="hidden" id="algolia_app_id" value="NMFBRUTI0R"/>
+        <input type="hidden" id="algolia_token" value="13f09a08a580fef859595af7078db216"/>
+        <div class="section">
+            <div class="container">
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        Search
+                        <a id="close" href="" style="float: right; color: #363636;">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="panel-block">
+                        <div id="searchContainer" class="control has-icons-left">
+                            <input id="searchField" class="input" type="text" placeholder="Enter anything...">
+                            <span class="icon is-small is-left">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </span>
+                        </div>
+                    </div>
+                    <div id="result">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+    
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/javascript" src="/js/src/search.js"></script>
+
+
+  
+  <script type="application/ld+json">
+  {
+  "@context": "http://www.schema.org",
+  "@type": "Person",
+  "@id": "https://huangyijie.com/about/",
+  "name": "黄奕杰",
+  "alternateName": "Henry Huang",
+  "nationality": "中国",
+  "birthPlace" : {
+    "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+      "addressLocality": "汕头市",
+      "addressRegion": "广东省",
+          "addressCountry": "中国"
+    }
+  },
+  "gender": "Male",
+  "Description": "Software Engineer",
+  "disambiguatingDescription": "Full stack software engineer, focus on Java and JavaScript.",
+  "jobTitle": "Software Engineer",
+  "url": "https://huangyijie.com",
+  "image": "https://s.gravatar.com/avatar/4e0e61fdf1b2bcfb4ee31da27601fe6b?s=512&r=g",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "深圳市",
+    "addressRegion": "广东省",
+    "addressCountry": "中国"
+  },
+  "sameAs": [
+    "http://weibo.com/626242034",
+    "https://github.com/henryhuang",
+    "https://unsplash.com/@henryhh"
+    ]
+  }
+  </script>
+  </body>
+</html>
