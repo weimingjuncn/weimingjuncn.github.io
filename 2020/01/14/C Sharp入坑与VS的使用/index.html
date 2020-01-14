@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="C#入坑与VS的使用"/>
+
+
+
+
+  <meta name="keywords" content="C&#35;," />
+
+
+
+
+
+    <link rel="alternate" href="/default" title="MJ's Blog">
+
+
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=1.1"/>
+
+
+
+<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/14/C Sharp入坑与VS的使用/"/>
+
+
+<meta name="description" content="一、C#与.netC#: 一种编程语言，可以开发基于.net平台的应用 .net能干啥？  桌面应用程序：C&#x2F;S程序，比如QQ，办公软件等（Winform应用程序）  Internet应用程序：B&#x2F;S程序，即网站   二、入坑编程语言国际惯例——Hello World！开发IDE：Visual Studio 2019 创建项目步骤： 打开VS2019 &gt; 创建新项目 &gt;  平台选择Wi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#入坑与VS的使用">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/14/C%20Sharp%E5%85%A5%E5%9D%91%E4%B8%8EVS%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="MJ&#39;s Blog">
+<meta property="og:description" content="一、C#与.netC#: 一种编程语言，可以开发基于.net平台的应用 .net能干啥？  桌面应用程序：C&#x2F;S程序，比如QQ，办公软件等（Winform应用程序）  Internet应用程序：B&#x2F;S程序，即网站   二、入坑编程语言国际惯例——Hello World！开发IDE：Visual Studio 2019 创建项目步骤： 打开VS2019 &gt; 创建新项目 &gt;  平台选择Wi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/14/C%20Sharp%E5%85%A5%E5%9D%91%E4%B8%8EVS%E7%9A%84%E4%BD%BF%E7%94%A8/image_1.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/14/C%20Sharp%E5%85%A5%E5%9D%91%E4%B8%8EVS%E7%9A%84%E4%BD%BF%E7%94%A8/image_2.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/14/C%20Sharp%E5%85%A5%E5%9D%91%E4%B8%8EVS%E7%9A%84%E4%BD%BF%E7%94%A8/image_3.png">
+<meta property="article:published_time" content="2020-01-14T06:13:12.000Z">
+<meta property="article:modified_time" content="2020-01-14T08:15:27.949Z">
+<meta property="article:author" content="MJ">
+<meta property="article:tag" content="C&amp;#35;">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/01/14/C%20Sharp%E5%85%A5%E5%9D%91%E4%B8%8EVS%E7%9A%84%E4%BD%BF%E7%94%A8/image_1.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1"/>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+
+    <link rel="stylesheet" type="text/css" href="/css/search.css?v=1.1"/>
+
+
+
+    <title> C#入坑与VS的使用 - MJ's Blog </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">MJ's Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="mailto:mingjun4503@163.com">
+                            
+                            
+                                Email
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
+                            
+                            
+                                Github
+                            
+                        </a>
+                    </li>
+                
+                
+                    <li class="menu-item">
+                        <a id="search" href="">Search</a>
+                    </li>
+                
+            </ul>
+        
+    </nav>
+
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          C#入坑与VS的使用
+        
+      </h1>
+
+      <time class="post-time">
+          1月 14 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="一、C-与-net"><a href="#一、C-与-net" class="headerlink" title="一、C#与.net"></a>一、C#与.net</h1><p>C#: 一种编程语言，可以开发基于.net平台的应用</p>
+<p>.net能干啥？</p>
+<ol>
+<li><p>桌面应用程序：C/S程序，比如QQ，办公软件等（Winform应用程序）</p>
+</li>
+<li><p>Internet应用程序：B/S程序，即网站</p>
+</li>
+</ol>
+<h1 id="二、入坑编程语言国际惯例——Hello-World！"><a href="#二、入坑编程语言国际惯例——Hello-World！" class="headerlink" title="二、入坑编程语言国际惯例——Hello World！"></a>二、入坑编程语言国际惯例——Hello World！</h1><p>开发IDE：Visual Studio 2019</p>
+<p>创建项目步骤：</p>
+<p>打开VS2019 &gt; 创建新项目 &gt;  平台选择Windows &gt; 语言选择C# &gt; 项目类型选择控制台 &gt; 自定义项目名、路径，选.Net框架4.7.2 &gt; 完成</p>
+<p>此时模板生成：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">ConsoleApp1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>于是我在Main函数下添加了两句</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">"Long may the sun shine!"</span>);  <span class="comment">//控制台打印"Long may the sun shine!"</span></span><br><span class="line">Console.ReadKey();  <span class="comment">//等待任意键继续</span></span><br></pre></td></tr></table></figure>
+
+<p>Ctrl + S 保存，点击功能栏的【启动】，运行程序</p>
+<p><img src="/2020/01/14/C%20Sharp%E5%85%A5%E5%9D%91%E4%B8%8EVS%E7%9A%84%E4%BD%BF%E7%94%A8/image_1.png" alt="image_1"></p>
+<h1 id="三、VS中常用快捷键"><a href="#三、VS中常用快捷键" class="headerlink" title="三、VS中常用快捷键"></a>三、VS中常用快捷键</h1><ul>
+<li>Ctrl + K + C : 注释选中代码</li>
+<li>Ctrl + K + U : 取消对所选代码的注释</li>
+<li>折叠冗余代码：#region 和 #endregion</li>
+</ul>
+<h1 id="四、VS界面各部分讲解"><a href="#四、VS界面各部分讲解" class="headerlink" title="四、VS界面各部分讲解"></a>四、VS界面各部分讲解</h1><p><img src="/2020/01/14/C%20Sharp%E5%85%A5%E5%9D%91%E4%B8%8EVS%E7%9A%84%E4%BD%BF%E7%94%A8/image_2.png" alt="image_2"></p>
+<ul>
+<li><p>解决方案、项目、类之间的关系</p>
+<p>解决方案包含项目，一个解决方案可以有多个项目。</p>
+<p>项目包含类，一个项目可以包含多个类。</p>
+</li>
+<li><p>Properties: 属性</p>
+<p>App.config: 配置文件</p>
+<p>Program.cs: 类文件</p>
+</li>
+</ul>
+<p><img src="/2020/01/14/C%20Sharp%E5%85%A5%E5%9D%91%E4%B8%8EVS%E7%9A%84%E4%BD%BF%E7%94%A8/image_3.png" alt="image_3"></p>
+<ol>
+<li>引用命名空间（地址）</li>
+<li>namespace: 项目名称</li>
+<li>Class Program: Program类</li>
+<li>Main函数：程序主入口</li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/C-35/">C&#35;</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2020/01/08/%E3%80%90GDC%E3%80%91Designing%20Unforgettable%20Titanfall%20Single%20Player%20Levels%20with%20Action%20Blocks/">
+        <span class="next-text nav-default">【GDC】Designing Unforgettable Titanfall Single Player Levels with Action Blocks</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2012 -
+    
+    2020
+    <span class="footer-author">MJ.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/henryhuang/hexo-theme-polarbearsimple" target="_blank" rel="noopener">Polar Bear Simple</a>
+    </span>
+</span>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+    <div id="search-container" class="search-container">
+        <input type="hidden" id="algolia_index" value="dev_MJBlog"/>
+        <input type="hidden" id="algolia_app_id" value="NMFBRUTI0R"/>
+        <input type="hidden" id="algolia_token" value="13f09a08a580fef859595af7078db216"/>
+        <div class="section">
+            <div class="container">
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        Search
+                        <a id="close" href="" style="float: right; color: #363636;">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="panel-block">
+                        <div id="searchContainer" class="control has-icons-left">
+                            <input id="searchField" class="input" type="text" placeholder="Enter anything...">
+                            <span class="icon is-small is-left">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </span>
+                        </div>
+                    </div>
+                    <div id="result">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+    
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/javascript" src="/js/src/search.js"></script>
+
+
+  
+  <script type="application/ld+json">
+  {
+  "@context": "http://www.schema.org",
+  "@type": "Person",
+  "@id": "https://huangyijie.com/about/",
+  "name": "黄奕杰",
+  "alternateName": "Henry Huang",
+  "nationality": "中国",
+  "birthPlace" : {
+    "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+      "addressLocality": "汕头市",
+      "addressRegion": "广东省",
+          "addressCountry": "中国"
+    }
+  },
+  "gender": "Male",
+  "Description": "Software Engineer",
+  "disambiguatingDescription": "Full stack software engineer, focus on Java and JavaScript.",
+  "jobTitle": "Software Engineer",
+  "url": "https://huangyijie.com",
+  "image": "https://s.gravatar.com/avatar/4e0e61fdf1b2bcfb4ee31da27601fe6b?s=512&r=g",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "深圳市",
+    "addressRegion": "广东省",
+    "addressCountry": "中国"
+  },
+  "sameAs": [
+    "http://weibo.com/626242034",
+    "https://github.com/henryhuang",
+    "https://unsplash.com/@henryhh"
+    ]
+  }
+  </script>
+  </body>
+</html>
