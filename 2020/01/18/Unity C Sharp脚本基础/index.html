@@ -12,10 +12,12 @@
 
 
 
-  <meta name="description" content="This is a personal Blog."/>
+  <meta name="description" content="Unity C#脚本基础"/>
 
 
 
+
+  <meta name="keywords" content="Unity,C&#35;," />
 
 
 
@@ -30,17 +32,21 @@
 
 
 
-<link rel="canonical" href="https://weimingjuncn.github.io/tags/Unity/"/>
+<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/18/Unity C Sharp脚本基础/"/>
 
 
-<meta name="description" content="This is a personal Blog.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MJ&#39;s Blog">
-<meta property="og:url" content="https://weimingjuncn.github.io/tags/Unity/index.html">
+<meta name="description" content="一、在Unity中创建C#脚本 Project&gt;Assets下新建一个叫“Scripts”的文件夹用于存放脚本  在Scripts文件夹下右键&gt;Create&gt;C# Script，取名“ExampleScript”  双击ExampleScript将自动加载到Visual Studio，如果遇到”File Modification Detected“弹窗，选择“Reload All">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity C#脚本基础">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="This is a personal Blog.">
+<meta property="og:description" content="一、在Unity中创建C#脚本 Project&gt;Assets下新建一个叫“Scripts”的文件夹用于存放脚本  在Scripts文件夹下右键&gt;Create&gt;C# Script，取名“ExampleScript”  双击ExampleScript将自动加载到Visual Studio，如果遇到”File Modification Detected“弹窗，选择“Reload All">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-18T09:34:55.000Z">
+<meta property="article:modified_time" content="2020-01-19T15:01:49.752Z">
 <meta property="article:author" content="MJ">
+<meta property="article:tag" content="Unity">
+<meta property="article:tag" content="C&amp;#35;">
 <meta name="twitter:card" content="summary">
 
 
@@ -76,11 +82,7 @@
 
 
 
-    <title>
-  
-    Unity - MJ's Blog
-  
-</title>
+    <title> Unity C#脚本基础 - MJ's Blog </title>
   <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body>
@@ -135,58 +137,84 @@
       </header>
       <div id="content">
         
-  
-<div id="primary">
-  <section id="archive" class="archive">
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Unity C#脚本基础
+        
+      </h1>
+
+      <time class="post-time">
+          1月 18 2020
+      </time>
+    </header>
+
+
+
     
-      
-        <div class="archive-title tag">
-          <h2 class="archive-name">Unity</h2>
+            <div class="post-content">
+            <h1 id="一、在Unity中创建C-脚本"><a href="#一、在Unity中创建C-脚本" class="headerlink" title="一、在Unity中创建C#脚本"></a>一、在Unity中创建C#脚本</h1><ol>
+<li><p>Project&gt;Assets下新建一个叫“Scripts”的文件夹用于存放脚本</p>
+</li>
+<li><p>在Scripts文件夹下右键&gt;Create&gt;C# Script，取名“ExampleScript”</p>
+</li>
+<li><p>双击ExampleScript将自动加载到Visual Studio，如果遇到”File Modification Detected“弹窗，选择“Reload All”重新加载脚本。在Visual Studio将看到ExampleScript.cs的代码：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;<span class="comment">//命名空间</span></span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;<span class="comment">//命名空间只是引用类的名称的集合</span></span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NewBehaviourScript</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"><span class="comment">//需要将NewBehaviourScript改成ExampleScript,保证和脚本文件同名</span></span><br><span class="line"><span class="comment">//类只是变量和方法的容器，</span></span><br><span class="line">	<span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每一个新建的脚本都继承自MonoBehavior</p>
+<p>MonoBehavior允许你将脚本作为组件附加到游戏对象中</p>
+<p>两种方法给物体添加脚本：</p>
+<ol>
+<li>左键单击并将脚本从项目文件夹啊拖拽到物体上</li>
+<li>在物体的Inspector面板点击Add Component按钮，选择Scripts添加现有的脚本</li>
+<li>通过Add Component按钮，选择New Script添加新建脚本，但脚本是被添加到Assets文件夹，而非Scripts文件夹。</li>
+</ol>
+<p>删除物体的脚本：在物体的Inspector面板找到例如ExampleScript(Script)，点击小齿轮，选择Remove Component</p>
+<p>调试时打开和关闭脚本：勾选或取消勾选相应的脚本，如果脚本中可能有错误，如果禁用它，它可能仍会出现并在底部显示错误。因此需要使用代码注释来屏蔽代码块</p>
+<p>注意：项目面板的脚本删除后无法撤销删除。</p>
+</li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/Unity/">Unity</a>
+          
+            <a href="/tags/C-35/">C&#35;</a>
+          
         </div>
-      
-    
 
+        
+        
+  <nav class="post-nav">
     
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            2020-1-18
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/" class="archive-post-link">
-            Unity C#脚本基础
-          </a>
-        </span>
-      </div>
     
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            2020-1-16
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/01/16/Unity%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="archive-post-link">
-            Unity基本操作
-          </a>
-        </span>
-      </div>
-    
-  </section>
- </div>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2020/01/16/Unity%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+        <span class="next-text nav-default">Unity基本操作</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+        
+  <div class="comments" id="comments">
+    
+  </div>
 
+
+      </footer>
+    
+  </article>
+
+    </div>
 
       </div>
 
