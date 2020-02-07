@@ -35,16 +35,16 @@
 <link rel="canonical" href="https://weimingjuncn.github.io/2020/01/23/Lua入门/"/>
 
 
-<meta name="description" content="一、环境搭建Windows上安装IDE：SciTE 下载地址：https:&#x2F;&#x2F;github.com&#x2F;rjpcomputing&#x2F;luaforwindows&#x2F;releases 选好安装路径，一路Next，完成安装后即可在该环境下编写 Lua 程序并运行 在哪运行？ 二、基本语法 打印字符串  1print(&#39;hello world!&#39;)   注释  12345-- 单行注释--[[多行注释多行注释多行">
+<meta name="description" content="一、环境搭建Windows上安装IDE：SciTE 下载地址：https:&#x2F;&#x2F;github.com&#x2F;rjpcomputing&#x2F;luaforwindows&#x2F;releases 选好安装路径，一路Next，完成安装后即可在该环境下编写 Lua 程序并运行。 在哪运行？ 快捷键Ctrl+D，复制光标所在行并插入到光标的下一行。 二、交互式编程、脚本编程、注释写法 交互式编程方式 打开cmd控制命令窗口，使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lua入门">
 <meta property="og:url" content="https://weimingjuncn.github.io/2020/01/23/Lua%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="一、环境搭建Windows上安装IDE：SciTE 下载地址：https:&#x2F;&#x2F;github.com&#x2F;rjpcomputing&#x2F;luaforwindows&#x2F;releases 选好安装路径，一路Next，完成安装后即可在该环境下编写 Lua 程序并运行 在哪运行？ 二、基本语法 打印字符串  1print(&#39;hello world!&#39;)   注释  12345-- 单行注释--[[多行注释多行注释多行">
+<meta property="og:description" content="一、环境搭建Windows上安装IDE：SciTE 下载地址：https:&#x2F;&#x2F;github.com&#x2F;rjpcomputing&#x2F;luaforwindows&#x2F;releases 选好安装路径，一路Next，完成安装后即可在该环境下编写 Lua 程序并运行。 在哪运行？ 快捷键Ctrl+D，复制光标所在行并插入到光标的下一行。 二、交互式编程、脚本编程、注释写法 交互式编程方式 打开cmd控制命令窗口，使">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://weimingjuncn.github.io/2020/01/23/Lua%E5%85%A5%E9%97%A8/image-20200123115402942.png">
 <meta property="article:published_time" content="2020-01-23T03:41:20.000Z">
-<meta property="article:modified_time" content="2020-01-23T14:46:40.019Z">
+<meta property="article:modified_time" content="2020-01-25T13:26:43.383Z">
 <meta property="article:author" content="MJ">
 <meta property="article:tag" content="Lua">
 <meta name="twitter:card" content="summary">
@@ -159,122 +159,74 @@
             <div class="post-content">
             <h1 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h1><p>Windows上安装IDE：SciTE</p>
 <p>下载地址：<a href="https://github.com/rjpcomputing/luaforwindows/releases" target="_blank" rel="noopener">https://github.com/rjpcomputing/luaforwindows/releases</a></p>
-<p>选好安装路径，一路Next，完成安装后即可在该环境下编写 Lua 程序并运行</p>
+<p>选好安装路径，一路Next，完成安装后即可在该环境下编写 Lua 程序并运行。</p>
 <p>在哪运行？<br><img src="/2020/01/23/Lua%E5%85%A5%E9%97%A8/image-20200123115402942.png" alt="image-20200123115402942"></p>
-<h1 id="二、基本语法"><a href="#二、基本语法" class="headerlink" title="二、基本语法"></a>二、基本语法</h1><ol>
-<li>打印字符串</li>
-</ol>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">'hello world!'</span>)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>注释</li>
-</ol>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--[[多行注释</span></span><br><span class="line"><span class="comment">多行注释</span></span><br><span class="line"><span class="comment">多行注释]]</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>变量赋值、io输出</li>
-</ol>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"MJ"</span> <span class="comment">--赋初值</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"Hi,I am "</span>,name,<span class="string">"\n"</span>) <span class="comment">-- '\n'表示换行</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"Size of string "</span>,#name, <span class="string">"\n"</span>) <span class="comment">-- '#'取变量的长度</span></span><br><span class="line"><span class="comment">-- \b \t \\ \" \'</span></span><br><span class="line"></span><br><span class="line">name = <span class="number">8</span> <span class="comment">-- 程序执行到一半赋值</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"my name is "</span>, name,<span class="string">"\n"</span>) <span class="comment">-- 输出当前变量的值</span></span><br></pre></td></tr></table></figure>
-
+<p>快捷键Ctrl+D，复制光标所在行并插入到光标的下一行。</p>
+<h1 id="二、交互式编程、脚本编程、注释写法"><a href="#二、交互式编程、脚本编程、注释写法" class="headerlink" title="二、交互式编程、脚本编程、注释写法"></a>二、交互式编程、脚本编程、注释写法</h1><ol>
+<li><p>交互式编程方式</p>
+<p>打开cmd控制命令窗口，使用命令：</p>
 <blockquote>
-<p>Hi,I am MJ<br>Size of string 2<br>my name is 8</p>
+<p>Lua -i</p>
 </blockquote>
-<ol start="4">
-<li>浮点数精确度</li>
-</ol>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bigNum = <span class="number">9223372036854775807</span> + <span class="number">1</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"Big Number: "</span>, bigNum, <span class="string">"\n"</span>)</span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"Big Number: "</span>, <span class="built_in">type</span>(bigNum), <span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">floatPrecision = <span class="number">1.999999999999</span> + <span class="number">0.00000000000055</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(floatPrecision,<span class="string">"\n"</span>)</span><br><span class="line"><span class="comment">-- 丢失精度，数字精确到13位</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>脚本式编程方式</p>
+<p>将Lua代码保存成.lua文件然后运行。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/<span class="keyword">local</span>/bin/lua</span><br><span class="line">   </span><br><span class="line">   <span class="built_in">print</span>(<span class="string">"Hello world!"</span>);</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>Big Number: 9.2233720368548e+018<br>Big Number: number<br>1.9999999999995</p>
-</blockquote>
-<ol start="5">
-<li>字符串</li>
-</ol>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 多行字符串</span></span><br><span class="line">longString = <span class="string">[[</span></span><br><span class="line"><span class="string">I am a very very long</span></span><br><span class="line"><span class="string">string that goes on</span></span><br><span class="line"><span class="string">forever]]</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(longString, <span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">name = <span class="string">"mj"</span> <span class="comment">-- 定义一个字符串变量并赋初值</span></span><br><span class="line">longString = longString .. name <span class="comment">-- 字符串追加</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(longString, <span class="string">"\n"</span>)</span><br><span class="line">isAbleToDrive = <span class="literal">true</span> <span class="comment">-- 定义一个布尔变量并赋初值</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="built_in">type</span>(isAbleToDrive), <span class="string">"\n"</span>) <span class="comment">-- 打印变量类型</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="built_in">type</span>(madeUpVar), <span class="string">"\n"</span>) <span class="comment">-- 变量如果未定义，则值为nil</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>I am a very very long<br>string that goes on<br>forever<br>I am a very very long<br>string that goes on<br>forevermj<br>boolean<br>nil</p>
-</blockquote>
-<ol start="6">
-<li>数学函数</li>
-</ol>
-<p>快捷键：Ctrl+D，复制光标所在行插入到下一行</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"5 + 3 = "</span>, <span class="number">5</span>+<span class="number">3</span>, <span class="string">"\n"</span>)</span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"5 - 3 = "</span>, <span class="number">5</span><span class="number">-3</span>, <span class="string">"\n"</span>)</span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"5 * 3 = "</span>, <span class="number">5</span>*<span class="number">3</span>, <span class="string">"\n"</span>)</span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"5 / 3 = "</span>, <span class="number">5</span>/<span class="number">3</span>, <span class="string">"\n"</span>)</span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"5 % 3 = "</span>, <span class="number">5</span>%<span class="number">3</span>, <span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>5 + 3 = 8<br>5 - 3 = 2<br>5 * 3 = 15<br>5 / 3 = 1.6666666666667<br>5 % 3 = 2</p>
-</blockquote>
-<p>在Lua中，不能使用C语言中的自加自减操作符，例如num++，num–,num+=1<br>一定要写完整：num = num + 1<br>其他数学函数: floor, ceil, max, min, sin, cos, asin, acos, exp, log, log10, pow, sqrt, random, randomseed</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"floor(2.345) : "</span>,<span class="built_in">math</span>.<span class="built_in">floor</span>(<span class="number">2.345</span>),<span class="string">"\n"</span>) <span class="comment">-- 舍位取整</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"ceil(2.345) : "</span>,<span class="built_in">math</span>.<span class="built_in">ceil</span>(<span class="number">2.345</span>),<span class="string">"\n"</span>) <span class="comment">-- 进位取整</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"max(2,3) : "</span>,<span class="built_in">math</span>.<span class="built_in">max</span>(<span class="number">2</span>,<span class="number">3</span>),<span class="string">"\n"</span>) <span class="comment">-- 求最大值</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"min(2,3) : "</span>,<span class="built_in">math</span>.<span class="built_in">min</span>(<span class="number">2</span>,<span class="number">3</span>),<span class="string">"\n"</span>) <span class="comment">-- 求最小值</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"pow(8,2) : "</span>,<span class="built_in">math</span>.<span class="built_in">pow</span>(<span class="number">8</span>,<span class="number">2</span>),<span class="string">"\n"</span>) <span class="comment">-- 幂函数</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"sqrt(64) : "</span>,<span class="built_in">math</span>.<span class="built_in">sqrt</span>(<span class="number">64</span>),<span class="string">"\n"</span>) <span class="comment">-- 平方根</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>floor(2.345) : 2<br>ceil(2.345) : 3<br>max(2,3) : 3<br>min(2,3) : 2<br>pow(8,2) : 64<br>sqrt(64) : 8</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">io.write(&quot;math.random() : &quot;,math.random(),&quot;\n&quot;)</span><br><span class="line">io.write(&quot;math.random(10) : &quot;,math.random(10),&quot;\n&quot;)</span><br><span class="line">io.write(&quot;math.random(5,100) : &quot;,math.random(5,100),&quot;\n&quot;)</span><br><span class="line">math.randomseed(os.time())</span><br><span class="line">print(string.format(&quot;Pi &#x3D; %.10f&quot;,math.pi))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>math.random() : 0.0012512588885159<br>math.random(10) : 6<br>math.random(5,100) : 23<br>Pi = 3.1415926536</p>
-</blockquote>
-<ol start="7">
-<li>关系运算符、逻辑运算符</li>
-</ol>
-<p>Relational Operators：&gt;、&lt;、&gt;=、&lt;=、==、~=</p>
-<p>Logical Operators：and、or、not</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">13</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> age &lt; <span class="number">16</span> <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"You can go to school"</span>,<span class="string">"\n"</span>)</span><br><span class="line">	<span class="keyword">local</span> localVar = <span class="number">10</span> <span class="comment">-- 定义一个局部变量</span></span><br><span class="line"><span class="keyword">elseif</span> (age == <span class="number">16</span>) <span class="keyword">and</span> (age &lt; <span class="number">18</span>) <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"You can drive"</span>,<span class="string">"\n"</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"You can vote"</span>,<span class="string">"\n"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">print</span>(localVar) <span class="comment">-- 局部变量只在语句或函数内有效(if语句、for语句、函数)</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>You can go to school</p>
-<p>nil</p>
-</blockquote>
-<p>if语句一行写法：</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">13</span></span><br><span class="line"><span class="keyword">if</span> (age &lt; <span class="number">14</span>) <span class="keyword">or</span> (age &gt; <span class="number">67</span>) <span class="keyword">then</span> <span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"You shouldn't work"</span>,<span class="string">"\n"</span>) <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>You shouldn’t work</p>
-</blockquote>
-<ol start="8">
-<li>转换成字符串</li>
-</ol>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">format</span>(<span class="string">"not true = %s"</span>,<span class="built_in">tostring</span>(<span class="keyword">not</span> <span class="literal">true</span>)))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>not true = false</p>
-</blockquote>
-<ol start="9">
-<li>条件语句、三元运算符<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">13</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 不能这么写：canVote = age &gt; 18 ? true : false</span></span><br><span class="line"><span class="comment">-- 应该这么写：</span></span><br><span class="line">canVote = age &gt; <span class="number">18</span> <span class="keyword">and</span> <span class="literal">true</span> <span class="keyword">or</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"can i vote ?"</span>,<span class="string">"\n"</span>,<span class="built_in">tostring</span>(canVote),<span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
-
+<p>上边第一行表示指定解释器，解释器执行时会忽略井号开头的第一行。</p>
+</li>
+<li><p>注释格式</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--[[多行注释</span></span><br><span class="line"><span class="comment">多行注释</span></span><br><span class="line"><span class="comment">多行注释</span></span><br><span class="line"><span class="comment">--]]</span></span><br></pre></td></tr></table></figure>
+<h1 id="三、标识符、关键字"><a href="#三、标识符、关键字" class="headerlink" title="三、标识符、关键字"></a>三、标识符、关键字</h1></li>
+<li><p>标识符组成</p>
+<ul>
+<li><p>字母、数字、下划线；</p>
+</li>
+<li><p>必须以字母/下划线开头；</p>
+</li>
+<li><p>区分大小写；</p>
+</li>
+</ul>
+</li>
+<li><p>关键字</p>
+<ul>
+<li>保留关键字不能用作变量名或自定义标识符：<br>and, break, do, else, elseif, end, false, for, function, if, in , local, nil, not, or, repeat, return, then, true, until, while</li>
+<li>一般约定，用下划线开头连接一串大写字母的名字比如：_VERSION，被保留用于Lua内部全局变量。</li>
+</ul>
 </li>
 </ol>
-<blockquote>
-<p>can i vote ?<br>false</p>
-</blockquote>
-<ol start="10">
-<li>字符串</li>
-</ol>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">quote = <span class="string">"I changed my password to incorrect. So that when I forget it, it always reminds me. Your password is incorrect."</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"Quote Length : "</span>,#quote,<span class="string">"\n"</span>) <span class="comment">-- 求字符串长度</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"Replace 'I' with 'me' :\n"</span>,<span class="built_in">string</span>.<span class="built_in">gsub</span>(quote,<span class="string">"I"</span>,<span class="string">"me"</span>),<span class="string">"\n"</span>) <span class="comment">-- 字符替换</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"Index of 'password' : "</span>,<span class="built_in">string</span>.<span class="built_in">find</span>(quote,<span class="string">"password"</span>),<span class="string">"\n"</span>) <span class="comment">-- 求字符的第一个索引</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"Quote Upper :\n"</span>,<span class="built_in">string</span>.<span class="built_in">upper</span>(quote),<span class="string">"\n"</span>) <span class="comment">-- 使整个字符串大写</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"Quote Lower :\n"</span>,<span class="built_in">string</span>.<span class="built_in">lower</span>(quote),<span class="string">"\n"</span>) <span class="comment">-- 使整个字符串小写</span></span><br></pre></td></tr></table></figure>
+<h1 id="四、全局变量"><a href="#四、全局变量" class="headerlink" title="四、全局变量"></a>四、全局变量</h1><ul>
+<li><p>全局变量：</p>
+<ul>
+<li>默认情况下，变量总被认为是全局的，全局变量不需要声明，给一个变量赋值即可创建该全局变量。</li>
+<li>写在函数外部</li>
+<li>作用范围从定义的那一行开始到文件末尾</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">b = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">print</span>(b);</span><br><span class="line">b = <span class="literal">nil</span>; <span class="comment">-- 要删除一个变量，就给它赋值为nil</span></span><br><span class="line"><span class="built_in">print</span>(b); <span class="comment">-- 当且仅当一个变量的值不为nil时，这个变量即存在</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>Quote Length : 111<br>Replace ‘I’ with ‘me’ :<br>me changed my password to incorrect. So that when me forget it, it always reminds me. Your password is incorrect.<br>Index of ‘password’ : 14<br>Quote Upper :<br>I CHANGED MY PASSWORD TO INCORRECT. SO THAT WHEN I FORGET IT, IT ALWAYS REMINDS ME. YOUR PASSWORD IS INCORRECT.<br>Quote Lower :<br>i changed my password to incorrect. so that when i forget it, it always reminds me. your password is incorrect.</p>
+<p>10<br>nil</p>
 </blockquote>
-<ol start="11">
-<li>循环</li>
-</ol>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (i &lt;= <span class="number">10</span>) <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">io</span>.<span class="built_in">write</span>(i)</span><br><span class="line">	i = i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> i == <span class="number">8</span> <span class="keyword">then</span> <span class="keyword">break</span> <span class="keyword">end</span> <span class="comment">-- 跳出循环条件，用end结束条件声明</span></span><br><span class="line"><span class="keyword">end</span> <span class="comment">-- 用end结束循环</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"\n"</span>)</span><br><span class="line"><span class="comment">-- 没有continue语句</span></span><br></pre></td></tr></table></figure>
-
+</li>
+<li><p>局部变量：</p>
+<ul>
+<li>用关键字“local”定义</li>
+<li>写在函数内，if语句内</li>
+<li>作用范围从定义的那一行开始到函数结束或return</li>
+</ul>
+</li>
+</ul>
+<h1 id="五、数据类型"><a href="#五、数据类型" class="headerlink" title="五、数据类型"></a>五、数据类型</h1><p>Lua的8种数据类型：<br>      nil(无效值), boolean, number(双精度实浮点数), string, userdata(任意存储在变量中的C数据结构), function, thread(独立线程),  table(表，关联数组，通过构造表达式产生)</p>
+   <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(<span class="string">"Hello World!"</span>)); <span class="comment">-- 建议用双引号讲字符串括起来，用单引号括单个字符</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(<span class="number">10.4</span> * <span class="number">3</span>));</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(<span class="built_in">print</span>));</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(<span class="built_in">type</span>));</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(<span class="literal">true</span>));</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(<span class="literal">nil</span>));</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(<span class="built_in">type</span>(X))); <span class="comment">-- type()返回结果是字符串</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>1234567</p>
+<p>string<br>number<br>function<br>function<br>boolean<br>nil<br>string</p>
 </blockquote>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repeat</span></span><br><span class="line">	<span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"Enter a number : "</span>)</span><br><span class="line">	guess = <span class="built_in">io</span>.<span class="built_in">read</span>() <span class="comment">-- 读取输入，赋值到guess变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">until</span> <span class="built_in">tonumber</span>(guess) == <span class="number">15</span> <span class="comment">-- 直至guess等于15才跳出重复循环</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"end\n"</span>)</span><br></pre></td></tr></table></figure>
+   <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tab1 = &#123;key1 = <span class="string">"val1"</span>, key2 = <span class="string">"val2"</span>,<span class="string">"val3"</span>&#125;</span><br></pre></td></tr></table></figure>
 
+<p>for k,v in pairs(tab1) do<br>    print(k..” - “.. v) – “..”表示连接<br>end<br>print(“——“)<br>tab1.key1 = nil; – 可以用nil删除键值对<br>for k,v in pairs(tab1) do<br>    print(k.. “ - “.. v)<br>end<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   &gt;1 - val3</span><br><span class="line">   &gt; key1 - val1</span><br><span class="line">   &gt; key2 - val2</span><br><span class="line">   &gt; </span><br><span class="line">   &gt; 1 - val3</span><br><span class="line">   &gt; key2 - val2</span><br><span class="line"></span><br><span class="line">   &#96;&#96;&#96;lua</span><br><span class="line">print(type(X) &#x3D;&#x3D; nil);</span><br><span class="line">print(type(X) &#x3D;&#x3D; &quot;nil&quot;);</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>Enter a number : 10<br>Enter a number : 13<br>Enter a number : 15<br>end</p>
+<p>false<br>true</p>
 </blockquote>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">10</span>, <span class="number">1</span> <span class="keyword">do</span> <span class="comment">-- 从1到10枚举，间隔0</span></span><br><span class="line">	<span class="built_in">io</span>.<span class="built_in">write</span>(i,<span class="string">" "</span>) </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">io</span>.<span class="built_in">write</span>(<span class="string">"\n"</span>)</span><br><span class="line"><span class="comment">-- 创建一个表</span></span><br><span class="line">months = &#123;<span class="string">"January"</span>,<span class="string">"February"</span>,<span class="string">"March"</span>,<span class="string">"April"</span>,</span><br><span class="line">    <span class="string">"May"</span>,<span class="string">"June"</span>,<span class="string">"July"</span>,<span class="string">"August"</span>,</span><br><span class="line">    <span class="string">"September"</span>,<span class="string">"October"</span>,<span class="string">"November"</span>,<span class="string">"December"</span>&#125;</span><br><span class="line"><span class="keyword">for</span> key,value <span class="keyword">in</span> <span class="built_in">pairs</span>(months) <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">io</span>.<span class="built_in">write</span>(value,<span class="string">" "</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>1 2 3 4 5 6 7 8 9 10<br>January February March April May June July August September October November December</p>
-</blockquote>
-<ol start="12">
-<li>数据结构：表</li>
-</ol>
 
             </div>
           
@@ -290,6 +242,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2020/01/25/Lua%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Lua数据类型</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
     
       <a class="next" href="/2020/01/23/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEWin10%E5%8F%B3%E9%94%AE%E6%89%93%E5%BC%80CMD/">

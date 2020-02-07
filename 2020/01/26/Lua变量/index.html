@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Lua变量、赋值语句、索引、循环、流程控制"/>
+
+
+
+
+  <meta name="keywords" content="Lua," />
+
+
+
+
+
+    <link rel="alternate" href="/default" title="MJ's Blog">
+
+
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=1.1"/>
+
+
+
+<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/26/Lua变量/"/>
+
+
+<meta name="description" content="一、变量 全局变量 局部变量 表中的域  1234567891011121314151617181920a &#x3D; 5; -- 全局变量local b &#x3D; 5; -- 局部变量function joke()	c &#x3D; 5; -- 全局变量	local d &#x3D; 6; --局部变量endprint(&quot;a\t&quot;..&quot;b\t&quot;..&quot;c\t&quot;..&quot;d&quot;)print(a, b, c, d);joke();print">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua变量、赋值语句、索引、循环、流程控制">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/26/Lua%E5%8F%98%E9%87%8F/index.html">
+<meta property="og:site_name" content="MJ&#39;s Blog">
+<meta property="og:description" content="一、变量 全局变量 局部变量 表中的域  1234567891011121314151617181920a &#x3D; 5; -- 全局变量local b &#x3D; 5; -- 局部变量function joke()	c &#x3D; 5; -- 全局变量	local d &#x3D; 6; --局部变量endprint(&quot;a\t&quot;..&quot;b\t&quot;..&quot;c\t&quot;..&quot;d&quot;)print(a, b, c, d);joke();print">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-26T09:00:49.000Z">
+<meta property="article:modified_time" content="2020-01-26T10:04:07.278Z">
+<meta property="article:author" content="MJ">
+<meta property="article:tag" content="Lua">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1"/>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+
+    <link rel="stylesheet" type="text/css" href="/css/search.css?v=1.1"/>
+
+
+
+    <title> Lua变量、赋值语句、索引、循环、流程控制 - MJ's Blog </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">MJ's Blog</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="mailto:mingjun4503@163.com">
+                            
+                            
+                                Email
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
+                            
+                            
+                                Github
+                            
+                        </a>
+                    </li>
+                
+                
+                    <li class="menu-item">
+                        <a id="search" href="">Search</a>
+                    </li>
+                
+            </ul>
+        
+    </nav>
+
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Lua变量、赋值语句、索引、循环、流程控制
+        
+      </h1>
+
+      <time class="post-time">
+          1月 26 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="一、变量"><a href="#一、变量" class="headerlink" title="一、变量"></a>一、变量</h1><ul>
+<li>全局变量</li>
+<li>局部变量</li>
+<li>表中的域</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">5</span>; <span class="comment">-- 全局变量</span></span><br><span class="line"><span class="keyword">local</span> b = <span class="number">5</span>; <span class="comment">-- 局部变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">joke</span><span class="params">()</span></span></span><br><span class="line">	c = <span class="number">5</span>; <span class="comment">-- 全局变量</span></span><br><span class="line">	<span class="keyword">local</span> d = <span class="number">6</span>; <span class="comment">--局部变量</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"a\t"</span>..<span class="string">"b\t"</span>..<span class="string">"c\t"</span>..<span class="string">"d"</span>)</span><br><span class="line"><span class="built_in">print</span>(a, b, c, d);</span><br><span class="line"></span><br><span class="line">joke();</span><br><span class="line"><span class="built_in">print</span>(a, b, c, d);</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="keyword">local</span> a = <span class="number">6</span>; <span class="comment">-- 局部变量</span></span><br><span class="line">	b = <span class="number">6</span>; <span class="comment">-- 对局部变量重新赋值</span></span><br><span class="line">	<span class="built_in">print</span>(a, b);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a, b);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>a    b    c    d<br>5    5    nil    nil<br>5    5    5    nil<br>6    6<br>5    6</p>
+</blockquote>
+<h1 id="二、赋值语句"><a href="#二、赋值语句" class="headerlink" title="二、赋值语句"></a>二、赋值语句</h1><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a, b, c = <span class="number">0</span>, <span class="number">1</span>;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"a\t"</span>..<span class="string">"b\t"</span>..<span class="string">"c"</span>)</span><br><span class="line"><span class="built_in">print</span>(a, b, c);</span><br><span class="line"></span><br><span class="line">a, b = a+<span class="number">1</span>,b+<span class="number">1</span>,b+<span class="number">2</span>; <span class="comment">-- 没有被赋值的变量会被忽略</span></span><br><span class="line"><span class="built_in">print</span>(a, b, c);</span><br><span class="line"></span><br><span class="line">a, b, c = <span class="number">0</span>; <span class="comment">-- 同时为多个变量赋相同的值</span></span><br><span class="line"><span class="built_in">print</span>(a, b, c);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>a    b    c<br>0    1    nil<br>1    2    nil<br>0    nil    nil</p>
+</blockquote>
+<h1 id="三、索引"><a href="#三、索引" class="headerlink" title="三、索引"></a>三、索引</h1><p>t[i]或t.i，t.i是当索引为字符串类型时的一种简化写法。</p>
+<p>gettable_event(t, i)采用索引访问本质上时一个类似这样的函数调用。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">site = &#123;&#125;;</span><br><span class="line">site[<span class="string">"key"</span>] = <span class="string">"www.baidu.com"</span>;</span><br><span class="line"><span class="built_in">print</span>(site[<span class="string">"key"</span>]); <span class="comment">-- 建议写法</span></span><br><span class="line"><span class="built_in">print</span>(site.key); <span class="comment">-- 不建议写法</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a><br><a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
+</blockquote>
+<h1 id="四、循环"><a href="#四、循环" class="headerlink" title="四、循环"></a>四、循环</h1><p>循环体：while, for, repeat…until</p>
+<p>循环控制语句：break</p>
+<h1 id="五、流程控制"><a href="#五、流程控制" class="headerlink" title="五、流程控制"></a>五、流程控制</h1><p>if语句：if … then … else … end</p>
+<p>if嵌套</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/Lua/">Lua</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/01/26/Lua%E5%87%BD%E6%95%B0/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Lua函数</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/01/25/Lua%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+        <span class="next-text nav-default">Lua数据类型</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2012 -
+    
+    2020
+    <span class="footer-author">MJ.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/henryhuang/hexo-theme-polarbearsimple" target="_blank" rel="noopener">Polar Bear Simple</a>
+    </span>
+</span>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+    <div id="search-container" class="search-container">
+        <input type="hidden" id="algolia_index" value="dev_MJBlog"/>
+        <input type="hidden" id="algolia_app_id" value="NMFBRUTI0R"/>
+        <input type="hidden" id="algolia_token" value="13f09a08a580fef859595af7078db216"/>
+        <div class="section">
+            <div class="container">
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        Search
+                        <a id="close" href="" style="float: right; color: #363636;">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="panel-block">
+                        <div id="searchContainer" class="control has-icons-left">
+                            <input id="searchField" class="input" type="text" placeholder="Enter anything...">
+                            <span class="icon is-small is-left">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </span>
+                        </div>
+                    </div>
+                    <div id="result">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+    
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/javascript" src="/js/src/search.js"></script>
+
+
+  
+  <script type="application/ld+json">
+  {
+  "@context": "http://www.schema.org",
+  "@type": "Person",
+  "@id": "https://huangyijie.com/about/",
+  "name": "黄奕杰",
+  "alternateName": "Henry Huang",
+  "nationality": "中国",
+  "birthPlace" : {
+    "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+      "addressLocality": "汕头市",
+      "addressRegion": "广东省",
+          "addressCountry": "中国"
+    }
+  },
+  "gender": "Male",
+  "Description": "Software Engineer",
+  "disambiguatingDescription": "Full stack software engineer, focus on Java and JavaScript.",
+  "jobTitle": "Software Engineer",
+  "url": "https://huangyijie.com",
+  "image": "https://s.gravatar.com/avatar/4e0e61fdf1b2bcfb4ee31da27601fe6b?s=512&r=g",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "深圳市",
+    "addressRegion": "广东省",
+    "addressCountry": "中国"
+  },
+  "sameAs": [
+    "http://weibo.com/626242034",
+    "https://github.com/henryhuang",
+    "https://unsplash.com/@henryhh"
+    ]
+  }
+  </script>
+  </body>
+</html>

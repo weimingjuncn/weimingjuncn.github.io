@@ -12,10 +12,12 @@
 
 
 
-  <meta name="description" content="This is a personal Blog."/>
+  <meta name="description" content="Win32窗口"/>
 
 
 
+
+  <meta name="keywords" content="C++," />
 
 
 
@@ -30,17 +32,20 @@
 
 
 
-<link rel="canonical" href="https://weimingjuncn.github.io/tags/C/"/>
+<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/29/Win32窗口/"/>
 
 
-<meta name="description" content="This is a personal Blog.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MJ&#39;s Blog">
-<meta property="og:url" content="https://weimingjuncn.github.io/tags/C/index.html">
+<meta name="description" content="一、创建项目 开发软件：VS2017  新建项目 &gt; Visual C++ &gt; Windows桌面 &gt; Windows桌面向导，填好项目名，项目路径后，下一步，选择“桌面应用程序(.exe)”，勾选“空项目”，点击确定。 PS：在VS2013、2015中，窗口程序叫”Win32项目“，在VS2017、2019中叫做“桌面应用程序”。 二、在线搜索API网址：https:&#x2F;&#x2F;doc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Win32窗口">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/29/Win32%E7%AA%97%E5%8F%A3/index.html">
 <meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="This is a personal Blog.">
+<meta property="og:description" content="一、创建项目 开发软件：VS2017  新建项目 &gt; Visual C++ &gt; Windows桌面 &gt; Windows桌面向导，填好项目名，项目路径后，下一步，选择“桌面应用程序(.exe)”，勾选“空项目”，点击确定。 PS：在VS2013、2015中，窗口程序叫”Win32项目“，在VS2017、2019中叫做“桌面应用程序”。 二、在线搜索API网址：https:&#x2F;&#x2F;doc">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-29T04:15:19.000Z">
+<meta property="article:modified_time" content="2020-01-29T14:17:38.335Z">
 <meta property="article:author" content="MJ">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
 
 
@@ -76,11 +81,7 @@
 
 
 
-    <title>
-  
-    C++ - MJ's Blog
-  
-</title>
+    <title> Win32窗口 - MJ's Blog </title>
   <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body>
@@ -135,103 +136,112 @@
       </header>
       <div id="content">
         
-  
-<div id="primary">
-  <section id="archive" class="archive">
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Win32窗口
+        
+      </h1>
+
+      <time class="post-time">
+          1月 29 2020
+      </time>
+    </header>
+
+
+
     
-      
-        <div class="archive-title tag">
-          <h2 class="archive-name">C++</h2>
+            <div class="post-content">
+            <h1 id="一、创建项目"><a href="#一、创建项目" class="headerlink" title="一、创建项目"></a>一、创建项目</h1><ul>
+<li>开发软件：VS2017</li>
+</ul>
+<p>新建项目 &gt; Visual C++ &gt; Windows桌面 &gt; Windows桌面向导，填好项目名，项目路径后，下一步，选择“桌面应用程序(.exe)”，勾选“空项目”，点击确定。</p>
+<p>PS：在VS2013、2015中，窗口程序叫”Win32项目“，在VS2017、2019中叫做“桌面应用程序”。</p>
+<h1 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h1><p>在线搜索API网址：<a href="https://docs.microsoft.com/zh-cn/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/</a></p>
+<ol>
+<li><p>头文件：windows.h文件是win32 API的主要头文件，首字母大小写都行。</p>
+</li>
+<li><p>主函数WinMain：是main函数的一个自定义函数，在底层由main函数调用它。</p>
+<p>右键函数名，选择“转到定义”可以查看函数的具体定义。</p>
+<ol>
+<li><p>返回值为int类型。</p>
+</li>
+<li><p>调用约定</p>
+<ul>
+<li>WINAPI</li>
+<li>作用：决定函数名字编译方式、参数入栈顺序、函数逻辑调用时间</li>
+</ul>
+</li>
+<li><p>参数：由系统传递供我们使用</p>
+<ul>
+<li><p>HINSTANCE hInstance：实例句柄，当前软件运行时，系统分配给的唯一ID，int类型。</p>
+</li>
+<li><p>HINSTANCE hPreInstance：前一个实例句柄，即前一个打开的软件的句柄，值为NULL，功能名存实亡。</p>
+</li>
+<li><p>LPSTR lpCmdLine：命令行参数，main函数传递到WinMain函数的参数，类型为char*，</p>
+<p>PS：P或LP开头的转义变量类型均为指针类型</p>
+</li>
+<li><p>int nShowCmd：窗口显示方式，默认是窗口正常显示，值为1</p>
+</li>
+<li><p>SAL：微软源代码注释语言（8个）</p>
+<p>功能：提醒编译器帮我们检查函数参数可能存在的问题，避免这些问题在运行时爆发。</p>
+</li>
+</ul>
+</li>
+<li><p>SDL：安全开发生命周期</p>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h1><ol>
+<li>WNDCLASS：窗口类（类是结构体的拓展）</li>
+<li>WNDCLASSEX：拓展版本的窗口类</li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/C/">C++</a>
+          
         </div>
-      
-    
 
+        
+        
+  <nav class="post-nav">
     
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            2020-1-29
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/01/29/Win32%E7%AA%97%E5%8F%A3/" class="archive-post-link">
-            Win32窗口
-          </a>
-        </span>
-      </div>
+      <a class="prev" href="/2020/02/07/Unity2018%E5%9F%BA%E7%A1%80%EF%BC%9A%E9%BC%A0%E6%A0%87%E4%BA%A4%E4%BA%92/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Unity2018基础：鼠标交互</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            2020-1-27
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2020/01/27/2D%E5%9B%9E%E5%90%88%E5%88%B6%E6%B8%B8%E6%88%8FDemo%E5%AE%9E%E7%8E%B0/" class="archive-post-link">
-            2.5D回合制游戏Demo实现
-          </a>
-        </span>
-      </div>
     
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            2019-8-23
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/23/%E5%88%B7%E3%80%8A%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E3%80%8B%E5%B0%8F%E7%BB%93%E4%B9%A0%E9%A2%98%EF%BC%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%B8%B8%E7%8A%AF%E7%9A%84%E9%94%99%E8%AF%AF/" class="archive-post-link">
-            刷《算法笔记》小结习题，写代码常犯的错误
-          </a>
-        </span>
-      </div>
-    
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            2019-7-30
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/07/30/CodeBlocks%E7%9A%84%E5%85%A5%E9%97%A8%E6%93%8D%E4%BD%9C/" class="archive-post-link">
-            CodeBlocks的入门操作
-          </a>
-        </span>
-      </div>
-    
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            2019-7-5
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/07/05/%E5%9C%A8Win%2010%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2%E7%BC%96%E8%AF%91%E3%80%81%E8%BF%90%E8%A1%8C%E4%B8%80%E4%B8%AAcpp%E6%96%87%E4%BB%B6/" class="archive-post-link">
-            在Win 10中使用命令行界面编译、运行一个cpp文件
-          </a>
-        </span>
-      </div>
-    
-  </section>
- </div>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2020/01/27/2D%E5%9B%9E%E5%90%88%E5%88%B6%E6%B8%B8%E6%88%8FDemo%E5%AE%9E%E7%8E%B0/">
+        <span class="next-text nav-default">2.5D回合制游戏Demo实现</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+        
+  <div class="comments" id="comments">
+    
+  </div>
 
+
+      </footer>
+    
+  </article>
+
+    </div>
 
       </div>
 
