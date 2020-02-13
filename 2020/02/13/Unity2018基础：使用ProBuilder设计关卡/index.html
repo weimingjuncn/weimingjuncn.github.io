@@ -12,12 +12,10 @@
 
 
 
-  <meta name="description" content="Win32窗口"/>
+  <meta name="description" content="Unity2018基础：使用ProBuilder设计关卡"/>
 
 
 
-
-  <meta name="keywords" content="C++," />
 
 
 
@@ -32,20 +30,19 @@
 
 
 
-<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/29/Win32窗口/"/>
+<link rel="canonical" href="https://weimingjuncn.github.io/2020/02/13/Unity2018基础：使用ProBuilder设计关卡/"/>
 
 
-<meta name="description" content="一、创建项目 开发软件：VS2017  新建项目 &gt; Visual C++ &gt; Windows桌面 &gt; Windows桌面向导，填好项目名，项目路径后，下一步，选择“桌面应用程序(.exe)”，勾选“空项目”，点击确定。 PS：在VS2013、2015中，窗口程序叫”Win32项目“，在VS2017、2019中叫做“桌面应用程序”。 二、在线搜索API网址：https:&#x2F;&#x2F;doc">
+<meta name="description" content="This is a personal Blog.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Win32窗口">
-<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/29/Win32%E7%AA%97%E5%8F%A3/index.html">
+<meta property="og:title" content="Unity2018基础：使用ProBuilder设计关卡">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/02/13/Unity2018%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BD%BF%E7%94%A8ProBuilder%E8%AE%BE%E8%AE%A1%E5%85%B3%E5%8D%A1/index.html">
 <meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="一、创建项目 开发软件：VS2017  新建项目 &gt; Visual C++ &gt; Windows桌面 &gt; Windows桌面向导，填好项目名，项目路径后，下一步，选择“桌面应用程序(.exe)”，勾选“空项目”，点击确定。 PS：在VS2013、2015中，窗口程序叫”Win32项目“，在VS2017、2019中叫做“桌面应用程序”。 二、在线搜索API网址：https:&#x2F;&#x2F;doc">
+<meta property="og:description" content="This is a personal Blog.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-29T04:15:19.000Z">
-<meta property="article:modified_time" content="2020-01-29T14:17:38.335Z">
+<meta property="article:published_time" content="2020-02-13T07:35:25.000Z">
+<meta property="article:modified_time" content="2020-02-13T07:35:25.290Z">
 <meta property="article:author" content="MJ">
-<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
 
 
@@ -81,7 +78,7 @@
 
 
 
-    <title> Win32窗口 - MJ's Blog </title>
+    <title> Unity2018基础：使用ProBuilder设计关卡 - MJ's Blog </title>
   <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body>
@@ -142,12 +139,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Win32窗口
+          Unity2018基础：使用ProBuilder设计关卡
         
       </h1>
 
       <time class="post-time">
-          1月 29 2020
+          2月 13 2020
       </time>
     </header>
 
@@ -155,89 +152,10 @@
 
     
             <div class="post-content">
-            <h1 id="一、创建项目"><a href="#一、创建项目" class="headerlink" title="一、创建项目"></a>一、创建项目</h1><ul>
-<li>开发软件：VS2017</li>
-</ul>
-<p>新建项目 &gt; Visual C++ &gt; Windows桌面 &gt; Windows桌面向导，填好项目名，项目路径后，下一步，选择“桌面应用程序(.exe)”，勾选“空项目”，点击确定。</p>
-<p>PS：在VS2013、2015中，窗口程序叫”Win32项目“，在VS2017、2019中叫做“桌面应用程序”。</p>
-<h1 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h1><p>在线搜索API网址：<a href="https://docs.microsoft.com/zh-cn/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/</a></p>
-<ol>
-<li><p>头文件：windows.h文件是win32 API的主要头文件，首字母大小写都行。</p>
-</li>
-<li><p>主函数WinMain：是main函数的一个自定义函数，在底层由main函数调用它。</p>
-<p>右键函数名，选择“转到定义”可以查看函数的具体定义。</p>
-<ol>
-<li><p>返回值为int类型。</p>
-</li>
-<li><p>调用约定</p>
-<ul>
-<li>WINAPI</li>
-<li>作用：决定函数名字编译方式、参数入栈顺序、函数逻辑调用时间</li>
-</ul>
-</li>
-<li><p>参数：由系统传递供我们使用</p>
-<ul>
-<li><p>HINSTANCE hInstance：实例句柄，当前软件运行时，系统分配给的唯一ID，int类型。</p>
-</li>
-<li><p>HINSTANCE hPreInstance：前一个实例句柄，即前一个打开的软件的句柄，值为NULL，功能名存实亡。</p>
-</li>
-<li><p>LPSTR lpCmdLine：命令行参数，main函数传递到WinMain函数的参数，类型为char*，</p>
-<p>PS：P或LP开头的转义变量类型均为指针类型</p>
-</li>
-<li><p>int nShowCmd：窗口显示方式，默认是窗口正常显示，值为1</p>
-</li>
-<li><p>SAL：微软源代码注释语言（8个）</p>
-<p>功能：提醒编译器帮我们检查函数参数可能存在的问题，避免这些问题在运行时爆发。</p>
-</li>
-</ul>
-</li>
-<li><p>SDL：安全开发生命周期</p>
-</li>
-</ol>
-</li>
-</ol>
-<h1 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h1><ol>
-<li>WNDCLASS：窗口类（类是结构体的拓展）</li>
-<li>WNDCLASSEX：拓展版本的窗口类</li>
-</ol>
-
+            
             </div>
           
 
-    
-      <footer class="post-footer">
-        <div class="post-tags">
-          
-            <a href="/tags/C/">C++</a>
-          
-        </div>
-
-        
-        
-  <nav class="post-nav">
-    
-      <a class="prev" href="/2020/02/07/Unity2018%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Unity2018基础：原型开发</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    
-    
-      <a class="next" href="/2020/01/27/2D%E5%9B%9E%E5%90%88%E5%88%B6%E6%B8%B8%E6%88%8FDemo%E5%AE%9E%E7%8E%B0/">
-        <span class="next-text nav-default">2.5D回合制游戏Demo实现</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    
-  </nav>
-
-        
-  <div class="comments" id="comments">
-    
-  </div>
-
-
-      </footer>
     
   </article>
 
