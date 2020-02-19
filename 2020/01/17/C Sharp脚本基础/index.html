@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="C#脚本基础"/><meta name="keywords" content="C&#35;, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
+<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/17/C Sharp脚本基础/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>C#脚本基础 - MJ's Blog</title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">MJ's Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/tags">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">MJ's Blog</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">C#脚本基础
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-01-17
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、开发环境"><span class="toc-text">一、开发环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、脚本结构"><span class="toc-text">二、脚本结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、基本语法"><span class="toc-text">三、基本语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、数据类型"><span class="toc-text">四、数据类型</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h1 id="一、开发环境"><a href="#一、开发环境" class="headerlink" title="一、开发环境"></a>一、开发环境</h1><p>IDE：Visual Studio 2017</p>
+<p>新建项目途径：</p>
+<p>​    其他语言 &gt; Visual C# &gt; Windows桌面 &gt; 空项目(.NET Framework)或者控制台应用。</p>
+<p><img src="/2020/01/17/C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200219123758165.png" alt="image-20200219123758165"></p>
+<h1 id="二、脚本结构"><a href="#二、脚本结构" class="headerlink" title="二、脚本结构"></a>二、脚本结构</h1><p>一个C#脚本文件包含以下部分：</p>
+<ul>
+<li>命名空间声明（Namespace declaration）</li>
+<li>一个类（Class）</li>
+<li>类方法</li>
+<li>类属性</li>
+<li>一个Main方法</li>
+<li>语句（Statements）、表达式（Expressions）</li>
+<li>注释</li>
+</ul>
+<p>在解决方案资源管理器窗口中右键项目名称”CSProject1“，点击“添加“ &gt; ”新建项“，选择“类” &gt; 修改默认类名为”HelloWorld“，点击”添加“按钮。至此，我们创建了一个名叫”HelloWorld“的类，即HelloWorld.cs文件。</p>
+<p>在代码编辑器中编写代码如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CSProject1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">/*My first C Sharp Script.*/</span></span><br><span class="line">            Console.WriteLine(<span class="string">"Hello World !"</span>);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行后：</p>
+<blockquote>
+<p>Hello World !</p>
+</blockquote>
+<ul>
+<li><p><strong>using</strong> 关键字用于在程序中包含命名空间。 一个程序可以包含多个 <strong>using</strong> 语句。</p>
+</li>
+<li><p>下一行是 <strong>namespace</strong> 声明。</p>
+<p>一个 <strong>namespace</strong> 里包含了一系列的类。<em>CSProject1</em>命名空间包含了类 <em>HelloWorld</em>。</p>
+</li>
+<li><p>下一行是 <strong>class</strong> 声明。</p>
+<p>类 <em>HelloWorld</em> 包含程序使用的<strong>数据</strong>和<strong>方法声明</strong>。类一般包含多个方法。方法定义了类的行为。在这里，<em>HelloWorld</em> 类只有一个 <strong>Main</strong> 方法。</p>
+</li>
+<li><p>下一行定义了 <strong>Main</strong> 方法，是所有 C# 程序的 <strong>入口点</strong>。</p>
+<p><strong>Main</strong> 方法说明当执行时，类将做什么动作。</p>
+</li>
+<li><p>下一行 /*…*/ 将会被编译器忽略，且它会在程序中添加额外的<strong>注释</strong>。</p>
+</li>
+<li><p>Main 方法通过语句*<em>Console.WriteLine(“Hello World”); *</em>指定它的行为。</p>
+<p><em>WriteLine</em> 是一个定义在 <em>System</em> 命名空间中的 <em>Console</em> 类的一个方法。该语句将消息 “Hello, World!”显示在命令提示符窗口上。</p>
+</li>
+<li><p>最后一行 <strong>Console.ReadKey();</strong> 是针对 VS.NET 用户的。这使得程序会等待一个按键的动作，防止程序从 Visual Studio .NET 启动时屏幕会快速运行并关闭。</p>
+</li>
+</ul>
+<p>以下几点值得注意：</p>
+<ul>
+<li>C# 对英文字母大小写敏感。</li>
+<li>所有的语句和表达式必须以分号（;）结尾。</li>
+<li>程序的执行从 Main 方法开始。</li>
+<li>与 Java 不同的是，文件名可以不同于类的名称。</li>
+</ul>
+<p>另一种编译执行C#程序的方式：</p>
+<ul>
+<li>打开一个文本编辑器，添加上面提到的代码。</li>
+<li>保存文件为 <strong>helloworld.cs</strong>。</li>
+<li>打开命令提示符工具，定位到文件所保存的目录。</li>
+<li>键入 <strong>csc helloworld.cs</strong> 并按下 enter 键来编译代码。</li>
+<li>如果代码没有错误，命令提示符会进入下一行，并生成 <strong>helloworld.exe</strong> 可执行文件。</li>
+<li>接下来，键入 <strong>helloworld</strong> 来执行程序。</li>
+</ul>
+<p>若提示无法识别 <strong>csc</strong> 命令，需配置环境变量（Window10)</p>
+<p>找到桌面上的“此电脑”图标，右键单击，并在弹出的菜单中点击 “属性” –”高级系统设置”–”环境变量”–”系统变量”，找到变量 <strong>Path</strong>， 添加一个路径 <strong>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\</strong></p>
+<p>注意：多个路径使用分号(;)隔开，Windows其他版本追加在后面即可。</p>
+<h1 id="三、基本语法"><a href="#三、基本语法" class="headerlink" title="三、基本语法"></a>三、基本语法</h1><p>先上例子：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">RectangleApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Rectangle</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">double</span> length;<span class="comment">// 成员变量</span></span><br><span class="line">        <span class="keyword">double</span> width;<span class="comment">// 成员变量</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Acceptdetails</span>(<span class="params"></span>)<span class="comment">//成员函数</span></span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            length = <span class="number">4.5</span>;    </span><br><span class="line">            width = <span class="number">3.5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">GetArea</span>(<span class="params"></span>)<span class="comment">//成员函数</span></span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">return</span> length * width;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Display</span>(<span class="params"></span>)<span class="comment">//成员函数</span></span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"Length: &#123;0&#125;"</span>, length);</span><br><span class="line">            Console.WriteLine(<span class="string">"Width: &#123;0&#125;"</span>, width);</span><br><span class="line">            Console.WriteLine(<span class="string">"Area: &#123;0&#125;"</span>, GetArea());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">class</span> <span class="title">ExecuteRectangle</span><span class="comment">//实例化Retangle类的类，它包含Main方法</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            Rectangle r = <span class="keyword">new</span> Rectangle();</span><br><span class="line">            r.Acceptdetails();</span><br><span class="line">            r.Display();</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">     </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译并执行后，结果如下：</p>
+<blockquote>
+<p>Length: 4.5<br>Width: 3.5<br>Area: 15.75</p>
+</blockquote>
+<ol>
+<li><p>using关键字：用于在程序中包含命名空间，一个程序可以包含多个using语句。</p>
+<p>在任何C#程序中的第一条语句都是：<strong>using System;</strong></p>
+</li>
+<li><p>class关键字：用于声明一个类。</p>
+</li>
+<li><p>注释：用于解释代码，编译器会忽略被注释的条目。单行注释用 <strong>//</strong> ，多行注释用 <strong>/*</strong>开始，<strong>/*</strong>结束。</p>
+</li>
+<li><p>成员变量：变量的类的属性或数据成员，用于存储数据。</p>
+</li>
+<li><p>成员函数：在类内声明的函数。函数使一系列执行指定任务的语句。</p>
+</li>
+<li><p>实例化一个类：上边例子中的类ExecuteRectangle。</p>
+</li>
+<li><p>标识符：用于来识别类、变量、函数或任何其它用户定义的项目。</p>
+<p>在 C# 中，<strong>类的命名必须遵循如下基本规则：</strong></p>
+<ul>
+<li>标识符必须以<strong>字母</strong>、<strong>下划线</strong>或 <strong>@</strong> 开头，后面可以跟一系列的字母、数字、下划线、@。</li>
+<li>标识符中的第一个字符不能是数字。</li>
+<li>标识符必须不包含任何嵌入的空格或符号，比如 ? - +! # % ^ &amp; * ( ) [ ] { } . ; : “ ‘ / \。</li>
+<li>标识符不能是 C# 关键字。除非它们有一个 @ 前缀。 例如，@if 是有效的标识符，但 if 不是，因为 if 是关键字。</li>
+<li>标识符必须区分大小写。大写字母和小写字母被认为是不同的字母。</li>
+<li>不能与C#的类库名称相同。</li>
+</ul>
+</li>
+<li><p>C#关键字：C# 编译器预定义的保留字。</p>
+<p>这些关键字不能用作标识符，但是，如果您想使用这些关键字作为标识符，可以在关键字前面加上 @ 字符作为前缀。</p>
+<p>在 C# 中，有些关键字在代码的上下文中有特殊的意义，如 get 和 set，这些被称为上下文关键字（contextual keywords）。</p>
+<p>下表列出了 C# 中的保留关键字（Reserved Keywords）和上下文关键字（Contextual Keywords）：</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>保留关键字</strong></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abstract</td>
+<td>as</td>
+<td>base</td>
+<td>bool</td>
+<td>break</td>
+<td>byte</td>
+<td>case</td>
+</tr>
+<tr>
+<td>catch</td>
+<td>char</td>
+<td>checked</td>
+<td>class</td>
+<td>const</td>
+<td>continue</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>default</td>
+<td>delegate</td>
+<td>do</td>
+<td>double</td>
+<td>else</td>
+<td>enum</td>
+<td>event</td>
+</tr>
+<tr>
+<td>explicit</td>
+<td>extern</td>
+<td>false</td>
+<td>finally</td>
+<td>fixed</td>
+<td>float</td>
+<td>for</td>
+</tr>
+<tr>
+<td>foreach</td>
+<td>goto</td>
+<td>if</td>
+<td>implicit</td>
+<td>in</td>
+<td>in (generic modifier)</td>
+<td>int</td>
+</tr>
+<tr>
+<td>interface</td>
+<td>internal</td>
+<td>is</td>
+<td>lock</td>
+<td>long</td>
+<td>namespace</td>
+<td>new</td>
+</tr>
+<tr>
+<td>null</td>
+<td>object</td>
+<td>operator</td>
+<td>ou</td>
+<td>out (generic modifier)</td>
+<td>override</td>
+<td>params</td>
+</tr>
+<tr>
+<td>private</td>
+<td>protected</td>
+<td>public</td>
+<td>readonly</td>
+<td>ref</td>
+<td>return</td>
+<td>sbyte</td>
+</tr>
+<tr>
+<td>sealed</td>
+<td>short</td>
+<td>sizeof</td>
+<td>stackalloc</td>
+<td>static</td>
+<td>string</td>
+<td>struct</td>
+</tr>
+<tr>
+<td>switch</td>
+<td>this</td>
+<td>throw</td>
+<td>true</td>
+<td>try</td>
+<td>typeof</td>
+<td>uint</td>
+</tr>
+<tr>
+<td>ulong</td>
+<td>unchecked</td>
+<td>unsafe</td>
+<td>ushort</td>
+<td>using</td>
+<td>virtual</td>
+<td>void</td>
+</tr>
+<tr>
+<td>volatile</td>
+<td>while</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>上下文关键字</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>add</td>
+<td>alias</td>
+<td>ascending</td>
+<td>descending</td>
+<td>dynamic</td>
+<td>from</td>
+<td>get</td>
+</tr>
+<tr>
+<td>global</td>
+<td>group</td>
+<td>into</td>
+<td>join</td>
+<td>let</td>
+<td>orderby</td>
+<td>partial (type)</td>
+</tr>
+<tr>
+<td>partial (method)</td>
+<td>remove</td>
+<td>select</td>
+<td>set</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="四、数据类型"><a href="#四、数据类型" class="headerlink" title="四、数据类型"></a>四、数据类型</h1><p>在 C# 中，变量分为以下几种类型：</p>
+<ul>
+<li>值类型（Value types）</li>
+<li>引用类型（Reference types）</li>
+<li>指针类型（Pointer types）</li>
+</ul>
+<ol>
+<li><p>值类型</p>
+<p>值类型变量可以直接分配给一个值。它们是从类 <strong>System.ValueType</strong> 中派生的。</p>
+<p>值类型直接包含数据。比如 <strong>int、char、float</strong>。</p>
+<p>如需得到一个类型或一个变量在特定平台上的准确尺寸，可以使用 <strong>sizeof</strong> 方法。表达式 <em>sizeof(type)</em> 产生以字节为单位存储对象或类型的存储尺寸。</p>
+</li>
+<li><p>引用类型</p>
+<p>引用类型不包含存储在变量中的实际数据，但它们包含对变量的引用。</p>
+<p>换句话说，它们指的是一个内存位置。使用多个变量时，引用类型可以指向一个内存位置。如果内存位置的数据是由一个变量改变的，其他变量会自动反映这种值的变化。<strong>内置的</strong> 引用类型有：<strong>object</strong>、<strong>dynamic</strong> 和 <strong>string</strong>。</p>
+</li>
+<li><p>指针类型</p>
+</li>
+</ol>
+
+      </div>
+      
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/C-35/">C&#35;</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Unity C#脚本基础</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2020/01/16/Unity%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+        <span class="next-text nav-default">Unity基本操作</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mingjun4503@163.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">MJ</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
