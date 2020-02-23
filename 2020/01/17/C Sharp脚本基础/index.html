@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="C#脚本基础"/><meta name="keywords" content="C&#35;, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
+<meta name="description" content="C#脚本基础"/><meta name="keywords" content="C&#35, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
 <link rel="canonical" href="https://weimingjuncn.github.io/2020/01/17/C Sharp脚本基础/"/>
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
@@ -102,12 +102,12 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、开发环境"><span class="toc-text">一、开发环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、脚本结构"><span class="toc-text">二、脚本结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、基本语法"><span class="toc-text">三、基本语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、数据类型"><span class="toc-text">四、数据类型</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、开发环境"><span class="toc-text">一、开发环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、脚本结构"><span class="toc-text">二、脚本结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、基本语法"><span class="toc-text">三、基本语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、数据类型"><span class="toc-text">四、数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、C-类型转换"><span class="toc-text">五、C#类型转换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、C-基本变量类型"><span class="toc-text">六、C#基本变量类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#七、C-常量"><span class="toc-text">七、C#常量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#八、运算符"><span class="toc-text">八、运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#九、C-判断、循环"><span class="toc-text">九、C# 判断、循环</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#十、封装"><span class="toc-text">十、封装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#十一、C-方法"><span class="toc-text">十一、C#方法</span></a></li></ol>
     </div>
   </div><div class="post-content"><h1 id="一、开发环境"><a href="#一、开发环境" class="headerlink" title="一、开发环境"></a>一、开发环境</h1><p>IDE：Visual Studio 2017</p>
 <p>新建项目途径：</p>
 <p>​    其他语言 &gt; Visual C# &gt; Windows桌面 &gt; 空项目(.NET Framework)或者控制台应用。</p>
-<p><img src="/2020/01/17/C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200219123758165.png" alt="image-20200219123758165"></p>
+<p><img src="/2020/01/17/C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200219123758165.png" alt="image-20200219123758165"></p>
 <h1 id="二、脚本结构"><a href="#二、脚本结构" class="headerlink" title="二、脚本结构"></a>二、脚本结构</h1><p>一个C#脚本文件包含以下部分：</p>
 <ul>
 <li>命名空间声明（Namespace declaration）</li>
@@ -123,29 +123,16 @@
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CSProject1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">/*My first C Sharp Script.*/</span></span><br><span class="line">            Console.WriteLine(<span class="string">"Hello World !"</span>);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行后：</p>
-<blockquote>
 <p>Hello World !</p>
-</blockquote>
-<ul>
-<li><p><strong>using</strong> 关键字用于在程序中包含命名空间。 一个程序可以包含多个 <strong>using</strong> 语句。</p>
-</li>
-<li><p>下一行是 <strong>namespace</strong> 声明。</p>
-<p>一个 <strong>namespace</strong> 里包含了一系列的类。<em>CSProject1</em>命名空间包含了类 <em>HelloWorld</em>。</p>
-</li>
-<li><p>下一行是 <strong>class</strong> 声明。</p>
-<p>类 <em>HelloWorld</em> 包含程序使用的<strong>数据</strong>和<strong>方法声明</strong>。类一般包含多个方法。方法定义了类的行为。在这里，<em>HelloWorld</em> 类只有一个 <strong>Main</strong> 方法。</p>
-</li>
-<li><p>下一行定义了 <strong>Main</strong> 方法，是所有 C# 程序的 <strong>入口点</strong>。</p>
-<p><strong>Main</strong> 方法说明当执行时，类将做什么动作。</p>
-</li>
-<li><p>下一行 /*…*/ 将会被编译器忽略，且它会在程序中添加额外的<strong>注释</strong>。</p>
-</li>
-<li><p>Main 方法通过语句*<em>Console.WriteLine(“Hello World”); *</em>指定它的行为。</p>
+<p>解释：</p>
+<p><strong>using</strong> 关键字用于在程序中包含命名空间。 一个程序可以包含多个 <strong>using</strong> 语句。</p>
+<p>下一行是 <strong>namespace</strong> 声明。一个 <strong>namespace</strong> 里包含了一系列的类。<em>CSProject1</em>命名空间包含了类 <em>HelloWorld</em>。</p>
+<p>下一行是 <strong>class</strong> 声明。类 <em>HelloWorld</em> 包含程序使用的<strong>数据</strong>和<strong>方法声明</strong>。类一般包含多个方法。方法定义了类的行为。在这里，<em>HelloWorld</em> 类只有一个 <strong>Main</strong> 方法。</p>
+<p>下一行定义了 <strong>Main</strong> 方法，是所有 C# 程序的 <strong>入口点</strong>。<strong>Main</strong> 方法说明当执行时，类将做什么动作。</p>
+<p>下一行 /*…*/ 将会被编译器忽略，且它会在程序中添加额外的<strong>注释</strong>。</p>
+<p>Main 方法通过语句*<em>Console.WriteLine(“Hello World”); *</em>指定它的行为。</p>
 <p><em>WriteLine</em> 是一个定义在 <em>System</em> 命名空间中的 <em>Console</em> 类的一个方法。该语句将消息 “Hello, World!”显示在命令提示符窗口上。</p>
-</li>
-<li><p>最后一行 <strong>Console.ReadKey();</strong> 是针对 VS.NET 用户的。这使得程序会等待一个按键的动作，防止程序从 Visual Studio .NET 启动时屏幕会快速运行并关闭。</p>
-</li>
-</ul>
+<p>最后一行 <strong>Console.ReadKey();</strong> 是针对 VS.NET 用户的。这使得程序会等待一个按键的动作，防止程序从 Visual Studio .NET 启动时屏幕会快速运行并关闭。</p>
 <p>以下几点值得注意：</p>
 <ul>
 <li>C# 对英文字母大小写敏感。</li>
@@ -374,17 +361,448 @@
 </li>
 <li><p>引用类型</p>
 <p>引用类型不包含存储在变量中的实际数据，但它们包含对变量的引用。</p>
-<p>换句话说，它们指的是一个内存位置。使用多个变量时，引用类型可以指向一个内存位置。如果内存位置的数据是由一个变量改变的，其他变量会自动反映这种值的变化。<strong>内置的</strong> 引用类型有：<strong>object</strong>、<strong>dynamic</strong> 和 <strong>string</strong>。</p>
+<p>换句话说，它们指的是一个内存位置。使用多个变量时，引用类型可以指向一个内存位置。如果内存位置的数据是由一个变量改变的，其他变量会自动反映这种值的变化。<strong>内置的</strong>引用类型有：<strong>object</strong>、<strong>dynamic</strong> 和 <strong>string</strong>。</p>
+<p><strong>对象（Object）类型</strong> 是 C# 通用类型系统（Common Type System - CTS）中所有数据类型的终极基类。Object 是 System.Object 类的别名。所以对象（Object）类型可以被分配任何其他类型（值类型、引用类型、预定义类型或用户自定义类型）的值。但是，在分配值之前，需要先进行类型转换。</p>
+<p>当一个值类型转换为对象类型时，称为 <strong>装箱</strong>；当一个对象类型转换为值类型时，称为 <strong>拆箱</strong>。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num1 = <span class="number">2019</span>;</span><br><span class="line"><span class="keyword">object</span> obj = num1;<span class="comment">//整型数据转换为了对象类型（装箱）</span></span><br><span class="line"><span class="comment">//拆箱：之前由值类型转换而来的对象类型再转回值类型。</span></span><br><span class="line"><span class="keyword">int</span> num2 = <span class="number">2018</span>;</span><br><span class="line"><span class="keyword">object</span> obj = num2;<span class="comment">//先装箱,只有装过箱的数据才能拆箱</span></span><br><span class="line"><span class="keyword">int</span> num3 = （<span class="keyword">int</span>）obj;<span class="comment">//再拆箱</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>动态（Dynamic）类型</strong>变量可以存储任何类型的值。这些变量的类型检查是在运行时发生的。</p>
+<p>声明动态类型的语法：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dynamic</span> &lt;variable_name&gt; = <span class="keyword">value</span>;</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dynamic</span> d = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+
+<p>动态类型与对象类型相似，但是对象类型变量的类型检查是在编译时发生的，而动态类型变量的类型检查是在运行时发生的。</p>
+<p><strong>字符串（String）类型</strong> 允许您给变量分配任何字符串值。字符串类型是 System.String 类的别名。它是从对象（Object）类型派生的。字符串类型的值可以通过两种形式进行分配：引号和 @引号。</p>
+<p>例如：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"baidu.com"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>一个 @引号字符串：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">@"baidu.com"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>C# string 字符串的前面可以加 @（称作”逐字字符串”）将转义字符（\）当作普通字符对待，比如：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> str = <span class="string">@"C:\Windows"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>等价于：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> str = <span class="string">"C:\\Windows"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>@ 字符串中可以任意换行，换行符以及缩进空格都计算在字符串长度之内。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> str = <span class="string">@"&lt;script type=""text/javascript""&gt;</span></span><br><span class="line"><span class="string">    &lt;!--</span></span><br><span class="line"><span class="string">    --&gt;</span></span><br><span class="line"><span class="string">&lt;/script&gt;"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>用户自定义引用类型有：class、interface 或 delegate。</p>
 </li>
 <li><p>指针类型</p>
+<p>C# 中的指针与 C 或 C++ 中的指针有相同的功能。</p>
+<p>声明指针类型的语法例如：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>* cptr;</span><br><span class="line"><span class="keyword">int</span>* iptr;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
+<h1 id="五、C-类型转换"><a href="#五、C-类型转换" class="headerlink" title="五、C#类型转换"></a>五、C#类型转换</h1><p>显式类型转换：即强制类型转换，需要强制转换运算符，会导致数据丢失。</p>
+<p>隐式类型转换：C#默认的以安全的方式进行的转换，不会导致数据丢失。</p>
+<p>显示类型转换例子：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">TypeConversionApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">ExplicitConversion</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">double</span> d = <span class="number">2345.6789</span>;</span><br><span class="line">            <span class="keyword">int</span> i;</span><br><span class="line">            i = (<span class="keyword">int</span>)d;</span><br><span class="line">            Console.WriteLine(d);</span><br><span class="line">            Console.Readkey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>2345</p>
+</blockquote>
+<p>C# 提供的内置类型转换方法：</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="left">转换类型后的类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>ToBoolean</strong></td>
+<td align="left">布尔型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToByte</strong></td>
+<td align="left">字节类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToChar</strong></td>
+<td align="left">单个 Unicode 字符类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToDateTime</strong></td>
+<td align="left">把类型（整数或字符串类型）转换为 日期-时间 结构</td>
+</tr>
+<tr>
+<td align="center"><strong>ToDecimal</strong></td>
+<td align="left">把浮点型或整数类型转换为十进制类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToDouble</strong></td>
+<td align="left">双精度浮点型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToInt16</strong></td>
+<td align="left">16 位整数类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToInt32</strong></td>
+<td align="left">32 位整数类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToInt64</strong></td>
+<td align="left">64 位整数类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToSbyte</strong></td>
+<td align="left">有符号字节类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToSingle</strong></td>
+<td align="left">小浮点数类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToString</strong></td>
+<td align="left">字符串类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToType</strong></td>
+<td align="left">指定类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToUInt16</strong></td>
+<td align="left">16 位无符号整数类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToUInt32</strong></td>
+<td align="left">32 位无符号整数类型</td>
+</tr>
+<tr>
+<td align="center"><strong>ToUInt64</strong></td>
+<td align="left">64 位无符号整数类型</td>
+</tr>
+</tbody></table>
+<p>不同类型转换为字符串类型的例子：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">TypeConversionApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">StringConversion</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">75</span>;</span><br><span class="line">            <span class="keyword">float</span> f = <span class="number">53.005f</span>;</span><br><span class="line">            <span class="keyword">double</span> d = <span class="number">2345.6789</span>;</span><br><span class="line">            <span class="keyword">bool</span> b = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(i.ToString());</span><br><span class="line">            Console.WriteLine(f.ToString());</span><br><span class="line">            Console.WriteLine(d.ToString());</span><br><span class="line">            Console.WriteLine(b.ToString());</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="六、C-基本变量类型"><a href="#六、C-基本变量类型" class="headerlink" title="六、C#基本变量类型"></a>六、C#基本变量类型</h1><p>一个变量只不过是一个供程序操作的存储区的名字，变量类型决定了变量的内存大小和布局。</p>
+<p>C# 中提供的基本的值类型大致可以分为以下几类：</p>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">整数类型</td>
+<td align="left">sbyte、byte、short、ushort、int、uint、long、ulong 和 char</td>
+</tr>
+<tr>
+<td align="left">浮点型</td>
+<td align="left">float 和 double</td>
+</tr>
+<tr>
+<td align="left">十进制类型</td>
+<td align="left">decimal</td>
+</tr>
+<tr>
+<td align="left">布尔类型</td>
+<td align="left">true 或 false 值，指定的值</td>
+</tr>
+<tr>
+<td align="left">空类型</td>
+<td align="left">可为空值的数据类型</td>
+</tr>
+</tbody></table>
+<p>C# 允许定义其他值类型的变量，比如 <strong>enum</strong>，也允许定义引用类型变量，比如 <strong>class</strong>。</p>
+<p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 <strong>ReadLine()</strong>，用于接收来自用户的输入，并把它存储到一个变量中。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int num;</span><br><span class="line">num &#x3D; Convert.ToInt32(Console.ReadLine());</span><br></pre></td></tr></table></figure>
+
+<p>函数 <strong>Convert.ToInt32()</strong> 把用户输入的数据转换为 int 数据类型，因为 <strong>Console.ReadLine()</strong> 只接受字符串格式的数据。</p>
+<h1 id="七、C-常量"><a href="#七、C-常量" class="headerlink" title="七、C#常量"></a>七、C#常量</h1><p><strong>整数常量</strong>可以是十进制、八进制或十六进制的常量。前缀指定基数：0x 或 0X 表示十六进制，0 表示八进制，没有前缀则表示十进制。</p>
+<p>整数常量也可以有后缀，可以是 U 和 L 的组合，其中，U 和 L 分别表示 unsigned 和 long。后缀可以是大写或者小写，多个后缀以任意顺序进行组合。</p>
+<p>这里有一些整数常量的实例：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">212</span>         <span class="comment">/* 合法 */</span></span><br><span class="line"><span class="number">215u</span>        <span class="comment">/* 合法 */</span></span><br><span class="line"><span class="number">0xFee</span>L      <span class="comment">/* 合法 */</span></span><br><span class="line"><span class="number">078</span>         <span class="comment">/* 非法：8 不是一个八进制数字 */</span></span><br><span class="line"><span class="number">032U</span>U       <span class="comment">/* 非法：不能重复后缀 */</span></span><br></pre></td></tr></table></figure>
+
+<p>以下是各种类型的整数常量的实例：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">85</span>         <span class="comment">/* 十进制 */</span></span><br><span class="line"><span class="number">0213</span>       <span class="comment">/* 八进制 */</span></span><br><span class="line"><span class="number">0x4b</span>       <span class="comment">/* 十六进制 */</span></span><br><span class="line"><span class="number">30</span>         <span class="comment">/* int */</span></span><br><span class="line"><span class="number">30u</span>        <span class="comment">/* 无符号 int */</span></span><br><span class="line"><span class="number">30l</span>        <span class="comment">/* long */</span></span><br><span class="line"><span class="number">30u</span>l       <span class="comment">/* 无符号 long */</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>浮点常量</strong>是由整数部分、小数点、小数部分和指数部分组成。您可以使用小数形式或者指数形式来表示浮点常量。</p>
+<p>这里有一些浮点常量的实例：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.14159</span>       <span class="comment">/* 合法 */</span></span><br><span class="line"><span class="number">314159E-5</span>L    <span class="comment">/* 合法 */</span></span><br><span class="line"><span class="number">510</span>E          <span class="comment">/* 非法：不完全指数 */</span></span><br><span class="line"><span class="number">210f</span>          <span class="comment">/* 非法：没有小数或指数 */</span></span><br><span class="line">.e55          <span class="comment">/* 非法：缺少整数或小数 */</span></span><br></pre></td></tr></table></figure>
+
+<p>使用小数形式表示时，必须包含小数点、指数或同时包含两者。使用指数形式表示时，必须包含整数部分、小数部分或同时包含两者。有符号的指数是用 e 或 E 表示的。</p>
+<p><strong>字符串常量</strong>是括在双引号 <strong>“”</strong> 里，或者是括在 <strong>@””</strong> 里。字符串常量包含的字符与字符常量相似，可以是：普通字符、转义序列和通用字符</p>
+<p>使用字符串常量时，可以把一个很长的行拆成多个行，可以使用空格分隔各个部分。</p>
+<p>这里是一些字符串常量的实例。下面所列的各种形式表示相同的字符串。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> a = <span class="string">"hello, world"</span>;                  <span class="comment">// hello, world</span></span><br><span class="line"><span class="keyword">string</span> b = <span class="string">@"hello, world"</span>;               <span class="comment">// hello, world</span></span><br><span class="line"><span class="keyword">string</span> c = <span class="string">"hello \t world"</span>;               <span class="comment">// hello     world</span></span><br><span class="line"><span class="keyword">string</span> d = <span class="string">@"hello \t world"</span>;               <span class="comment">// hello \t world</span></span><br><span class="line"><span class="keyword">string</span> e = <span class="string">"Joe said \"Hello\" to me"</span>;      <span class="comment">// Joe said "Hello" to me</span></span><br><span class="line"><span class="keyword">string</span> f = <span class="string">@"Joe said ""Hello"" to me"</span>;   <span class="comment">// Joe said "Hello" to me</span></span><br><span class="line"><span class="keyword">string</span> g = <span class="string">"\\\\server\\share\\file.txt"</span>;   <span class="comment">// \\server\share\file.txt</span></span><br><span class="line"><span class="keyword">string</span> h = <span class="string">@"\\server\share\file.txt"</span>;      <span class="comment">// \\server\share\file.txt</span></span><br><span class="line"><span class="keyword">string</span> i = <span class="string">"one\r\ntwo\r\nthree"</span>;</span><br><span class="line"><span class="keyword">string</span> j = <span class="string">@"one</span></span><br><span class="line"><span class="string">two</span></span><br><span class="line"><span class="string">three"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>常量是使用 <strong>const</strong> 关键字来定义的 。定义一个常量的语法如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &lt;data_type&gt; &lt;constant_name&gt; = <span class="keyword">value</span>;</span><br></pre></td></tr></table></figure>
+
+<p>下面的代码演示了如何在程序中定义和使用常量：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ConstTest</span> &#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">SampleClass</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> x;<span class="comment">//属性变量</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> y;<span class="comment">//属性变量</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keyword">int</span> c1 = <span class="number">5</span>;<span class="comment">//属性常量</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keyword">int</span> c2 = c1 + <span class="number">5</span>;<span class="comment">//属性常量</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">SampleClass</span>(<span class="params"><span class="keyword">int</span> p1,<span class="keyword">int</span> p2</span>)<span class="comment">//构造方法</span></span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            x = p1;</span><br><span class="line">            y = p2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        SampleClass mC = <span class="keyword">new</span> SampleClass(<span class="number">11</span>, <span class="number">22</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">"x = &#123;0&#125;, y = &#123;1&#125;"</span>, mC.x, mC.y);</span><br><span class="line">        Console.WriteLine(<span class="string">"c1 = &#123;0&#125;, c2 = &#123;1&#125;"</span>, SampleClass.c1, SampleClass.c2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<blockquote>
+<p>x = 11, y = 22<br>c1 = 5, c2 = 10</p>
+</blockquote>
+<h1 id="八、运算符"><a href="#八、运算符" class="headerlink" title="八、运算符"></a>八、运算符</h1><ul>
+<li>算术运算符：+、-、*、/、%、++、–</li>
+<li>关系运算符：==、!=、&gt;、&lt;、&gt;=、&lt;=</li>
+<li>逻辑运算符：&amp;&amp;、||、!</li>
+<li>位运算符：&amp;、|、^(异或)、~(非)</li>
+<li>赋值运算符：=、+=、-=、*=、/=、%=、&lt;&lt;=(左移且赋值)、&gt;&gt;=、&amp;=、^=、|=</li>
+</ul>
+<p>其他一些重要的运算符。</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+<th align="left">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">sizeof()</td>
+<td align="left">返回数据类型的大小。</td>
+<td align="left">sizeof(int)，将返回 4.</td>
+</tr>
+<tr>
+<td align="left">typeof()</td>
+<td align="left">返回 class 的类型。</td>
+<td align="left">typeof(StreamReader);</td>
+</tr>
+<tr>
+<td align="left">&amp;</td>
+<td align="left">返回变量的地址。</td>
+<td align="left">&a; 将得到变量的实际地址。</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">变量的指针。</td>
+<td align="left">*a; 将指向一个变量。</td>
+</tr>
+<tr>
+<td align="left">? :</td>
+<td align="left">条件表达式</td>
+<td align="left">如果条件为真 ? 则为 X : 否则为 Y</td>
+</tr>
+<tr>
+<td align="left">is</td>
+<td align="left">判断对象是否为某一类型。</td>
+<td align="left">If( Ford is Car) // 检查 Ford 是否是 Car 类的一个对象。</td>
+</tr>
+<tr>
+<td align="left">as</td>
+<td align="left">强制转换，即使转换失败也不会抛出异常。</td>
+<td align="left">Object obj = new StringReader(“Hello”); StringReader r = obj as StringReader;</td>
+</tr>
+</tbody></table>
+<p>下表将按<strong>运算符优先级</strong>从高到低列出各个运算符，具有较高优先级的运算符出现在表格的上面，具有较低优先级的运算符出现在表格的下面。在表达式中，较高优先级的运算符会优先被计算。</p>
+<table>
+<thead>
+<tr>
+<th align="left">类别</th>
+<th align="left">运算符</th>
+<th align="left">结合性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">后缀</td>
+<td align="left">() [] -&gt; . ++ - -</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">一元</td>
+<td align="left">+ - ! ~ ++ - - (type)* &amp; sizeof</td>
+<td align="left">从右到左</td>
+</tr>
+<tr>
+<td align="left">乘除</td>
+<td align="left">* / %</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">加减</td>
+<td align="left">+ -</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">移位</td>
+<td align="left">&lt;&lt; &gt;&gt;</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">关系</td>
+<td align="left">&lt; &lt;= &gt; &gt;=</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">相等</td>
+<td align="left">== !=</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">位与 AND</td>
+<td align="left">&amp;</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">位异或 XOR</td>
+<td align="left">^</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">位或 OR</td>
+<td align="left">|</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">逻辑与 AND</td>
+<td align="left">&amp;&amp;</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">逻辑或 OR</td>
+<td align="left">||</td>
+<td align="left">从左到右</td>
+</tr>
+<tr>
+<td align="left">条件</td>
+<td align="left">?:</td>
+<td align="left">从右到左</td>
+</tr>
+<tr>
+<td align="left">赋值</td>
+<td align="left">= += -= *= /= %=&gt;&gt;= &lt;&lt;= &amp;= ^= |=</td>
+<td align="left">从右到左</td>
+</tr>
+<tr>
+<td align="left">逗号</td>
+<td align="left">,</td>
+<td align="left">从左到右</td>
+</tr>
+</tbody></table>
+<h1 id="九、C-判断、循环"><a href="#九、C-判断、循环" class="headerlink" title="九、C# 判断、循环"></a>九、C# 判断、循环</h1><p>判断语句</p>
+<table>
+<thead>
+<tr>
+<th align="left">语句</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">if 语句</td>
+<td align="left">一个 <strong>if 语句</strong> 由一个布尔表达式后跟一个或多个语句组成。</td>
+</tr>
+<tr>
+<td align="left">if…else 语句</td>
+<td align="left">一个 <strong>if 语句</strong> 后可跟一个可选的 <strong>else 语句</strong>，else 语句在布尔表达式为假时执行。</td>
+</tr>
+<tr>
+<td align="left">嵌套 if 语句</td>
+<td align="left">您可以在一个 <strong>if</strong> 或 <strong>else if</strong> 语句内使用另一个 <strong>if</strong> 或 <strong>else if</strong> 语句。</td>
+</tr>
+<tr>
+<td align="left">switch 语句</td>
+<td align="left">一个 <strong>switch</strong> 语句允许测试一个变量等于多个值时的情况。</td>
+</tr>
+<tr>
+<td align="left">嵌套 switch 语句</td>
+<td align="left">您可以在一个 <strong>switch</strong> 语句内使用另一个 <strong>switch</strong> 语句。</td>
+</tr>
+</tbody></table>
+<p> <strong>条件运算符 ? :</strong>，可以用来替代 <strong>if…else</strong> 语句。它的一般形式如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Exp1 ? Exp2 : Exp3;</span><br></pre></td></tr></table></figure>
+
+<p>其中，Exp1、Exp2 和 Exp3 是表达式。请注意，冒号的使用和位置。</p>
+<p>? 表达式的值是由 Exp1 决定的。如果 Exp1 为真，则计算 Exp2 的值，结果即为整个 ? 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，结果即为整个 ? 表达式的值。</p>
+<p><strong>循环类型</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">循环类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">while 循环</td>
+<td align="left">当给定条件为真时，重复语句或语句组。它会在执行循环主体之前测试条件。</td>
+</tr>
+<tr>
+<td align="left">for或foreach 循环</td>
+<td align="left">多次执行一个语句序列，简化管理循环变量的代码。</td>
+</tr>
+<tr>
+<td align="left">do…while 循环</td>
+<td align="left">除了它是在循环主体结尾测试条件外，其他与 while 语句类似。</td>
+</tr>
+<tr>
+<td align="left">嵌套循环</td>
+<td align="left">您可以在 while、for 或 do..while 循环内使用一个或多个循环。</td>
+</tr>
+</tbody></table>
+<p>foreach循环例子：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">ForeachTestApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ForeachTest</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params">String[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2080</span>, <span class="number">2070</span>, <span class="number">2060</span>, <span class="number">1660</span>, <span class="number">1650</span>&#125;;</span><br><span class="line">            <span class="keyword">foreach</span> ( <span class="keyword">int</span> element <span class="keyword">in</span> array)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(element);</span><br><span class="line">            &#125;</span><br><span class="line">            Console.WriteLine();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//原理类似foreach的for循环</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i &lt; array.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(array[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            Console.WriteLine();</span><br><span class="line">            <span class="comment">//加入计数器</span></span><br><span class="line">            <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="keyword">int</span> item <span class="keyword">in</span> array)</span><br><span class="line">            &#123;</span><br><span class="line">                count++;</span><br><span class="line">                Console.WriteLine(count+<span class="string">" : "</span>+item);</span><br><span class="line">            &#125;</span><br><span class="line">            Console.WriteLine(<span class="string">"The length of this array is "</span>+count);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>程序输出结果：</p>
+<p>2080<br>2070<br>2060<br>1660<br>1650</p>
+<p>2080<br>2070<br>2060<br>1660<br>1650</p>
+<p>1 : 2080<br>2 : 2070<br>3 : 2060<br>4 : 1660<br>5 : 1650<br>The length of this array is 5</p>
+<h1 id="十、封装"><a href="#十、封装" class="headerlink" title="十、封装"></a>十、封装</h1><p><strong>封装</strong> 被定义为”把一个或多个项目封闭在一个物理的或者逻辑的包中”。在面向对象程序设计方法论中，封装是为了防止对实现细节的访问。</p>
+<p>抽象和封装是面向对象程序设计的相关特性。抽象允许相关信息可视化，封装则使开发者<em>实现所需级别的抽象</em>。</p>
+<p>C# 封装根据具体的需要，设置使用者的访问权限，并通过 <strong>访问修饰符</strong> 来实现。</p>
+<p>一个 <strong>访问修饰符</strong> 定义了一个类成员的范围和可见性。C# 支持的访问修饰符如下所示：</p>
+<ul>
+<li>public：所有对象都可以访问；</li>
+<li>private：对象本身在对象内部可以访问；</li>
+<li>protected：只有该类对象及其子类对象可以访问</li>
+<li>internal：同一个程序集的对象可以访问；</li>
+<li>protected internal：访问限于当前程序集或派生自包含类的类型。</li>
+</ul>
+<h1 id="十一、C-方法"><a href="#十一、C-方法" class="headerlink" title="十一、C#方法"></a>十一、C#方法</h1><p>当定义一个方法时，从根本上说是在声明它的结构的元素。在 C# 中，定义方法的语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Access Specifier&gt; &lt;Return Type&gt; &lt;Method Name&gt;(Parameter List)</span><br><span class="line">&#123;</span><br><span class="line">   Method Body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是方法的各个元素：</p>
+<ul>
+<li><strong>Access Specifier</strong>：访问修饰符，这个决定了变量或方法对于另一个类的可见性。</li>
+<li><strong>Return type</strong>：返回类型，一个方法可以返回一个值。返回类型是方法返回的值的数据类型。如果方法不返回任何值，则返回类型为 <strong>void</strong>。</li>
+<li><strong>Method name</strong>：方法名称，是一个唯一的标识符，且是大小写敏感的。它不能与类中声明的其他标识符相同。</li>
+<li><strong>Parameter list</strong>：参数列表，使用圆括号括起来，该参数是用来传递和接收方法的数据。参数列表是指方法的参数类型、顺序和数量。参数是可选的，也就是说，一个方法可能不包含参数。</li>
+<li><strong>Method body</strong>：方法主体，包含了完成任务所需的指令集。</li>
+</ul>
+<p><strong>按引用传递参数</strong></p>
+<p>引用参数是一个对变量的<strong>内存位置的引用</strong>。当按引用传递参数时，与值参数不同的是，它不会为这些参数创建一个新的存储位置。引用参数表示与提供给方法的实际参数具有相同的内存位置。</p>
+<p>在 C# 中，使用 <strong>ref</strong> 关键字声明引用参数。下面的实例演示了这点：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CalculatorApplication</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">NumberManipulator</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span>(<span class="params"><span class="keyword">ref</span> <span class="keyword">int</span> x, <span class="keyword">ref</span> <span class="keyword">int</span> y</span>)</span></span><br><span class="line"><span class="function"></span>      &#123;</span><br><span class="line">         <span class="keyword">int</span> temp;</span><br><span class="line"></span><br><span class="line">         temp = x; <span class="comment">/* 保存 x 的值 */</span></span><br><span class="line">         x = y;    <span class="comment">/* 把 y 赋值给 x */</span></span><br><span class="line">         y = temp; <span class="comment">/* 把 temp 赋值给 y */</span></span><br><span class="line">       &#125;</span><br><span class="line">   </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>      &#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* 局部变量定义 */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line">         Console.WriteLine(<span class="string">"在交换之前，a 的值： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"在交换之前，b 的值： &#123;0&#125;"</span>, b);</span><br><span class="line"></span><br><span class="line">         <span class="comment">/* 调用函数来交换值 */</span></span><br><span class="line">         n.swap(<span class="keyword">ref</span> a, <span class="keyword">ref</span> b);</span><br><span class="line"></span><br><span class="line">         Console.WriteLine(<span class="string">"在交换之后，a 的值： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"在交换之后，b 的值： &#123;0&#125;"</span>, b);</span><br><span class="line"> </span><br><span class="line">         Console.ReadLine();</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<blockquote>
+<p>在交换之前，a 的值：100<br>在交换之前，b 的值：200<br>在交换之后，a 的值：200<br>在交换之后，b 的值：100</p>
+</blockquote>
+<p><strong>按输出传递参数</strong></p>
+<p>return 语句可用于只从函数中返回一个值。但是，可以使用 <strong>输出参数</strong> 来从函数中返回两个值。输出参数会把方法输出的数据赋给自己，其他方面与引用参数相似。</p>
+<p>下面的实例演示了这点：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CalculatorApplication</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">NumberManipulator</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getValue</span>(<span class="params"><span class="keyword">out</span> <span class="keyword">int</span> x </span>)</span></span><br><span class="line"><span class="function"></span>      &#123;</span><br><span class="line">         <span class="keyword">int</span> temp = <span class="number">5</span>;</span><br><span class="line">         x = temp;</span><br><span class="line">      &#125;</span><br><span class="line">   </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>      &#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* 局部变量定义 */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"在方法调用之前，a 的值： &#123;0&#125;"</span>, a);</span><br><span class="line">         </span><br><span class="line">         <span class="comment">/* 调用函数来获取值 */</span></span><br><span class="line">         n.getValue(<span class="keyword">out</span> a);</span><br><span class="line"></span><br><span class="line">         Console.WriteLine(<span class="string">"在方法调用之后，a 的值： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.ReadLine();</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<blockquote>
+<p>在方法调用之前，a 的值： 100<br>在方法调用之后，a 的值： 5</p>
+</blockquote>
+<p>提供给输出参数的变量不需要赋值。当需要从一个参数没有指定初始值的方法中返回值时，输出参数特别有用。请看下面的实例，来理解这一点：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">CalculatorApplication</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">class</span> <span class="title">NumberManipulator</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getValues</span>(<span class="params"><span class="keyword">out</span> <span class="keyword">int</span> x, <span class="keyword">out</span> <span class="keyword">int</span> y </span>)</span></span><br><span class="line"><span class="function"></span>      &#123;</span><br><span class="line">          Console.WriteLine(<span class="string">"请输入第一个值： "</span>);</span><br><span class="line">          x = Convert.ToInt32(Console.ReadLine());</span><br><span class="line">          Console.WriteLine(<span class="string">"请输入第二个值： "</span>);</span><br><span class="line">          y = Convert.ToInt32(Console.ReadLine());</span><br><span class="line">      &#125;</span><br><span class="line">   </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>      &#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* 局部变量定义 */</span></span><br><span class="line">         <span class="keyword">int</span> a , b;</span><br><span class="line">         </span><br><span class="line">         <span class="comment">/* 调用函数来获取值 */</span></span><br><span class="line">         n.getValues(<span class="keyword">out</span> a, <span class="keyword">out</span> b);</span><br><span class="line"></span><br><span class="line">         Console.WriteLine(<span class="string">"在方法调用之后，a 的值： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"在方法调用之后，b 的值： &#123;0&#125;"</span>, b);</span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当上面的代码被编译和执行时，它会产生下列结果（取决于用户输入）：</p>
+<blockquote>
+<p>请输入第一个值：<br>7<br>请输入第二个值：<br>8<br>在方法调用之后，a 的值： 7<br>在方法调用之后，b 的值： 8</p>
+</blockquote>
 
       </div>
       
       <footer class="post-footer">
         <div class="post-tags">
-            <a href="/tags/C-35/">C&#35;</a>
+            <a href="/tags/C-35/">C&#35</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/">
