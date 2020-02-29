@@ -102,7 +102,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、安装ProBuilder和ProGrids"><span class="toc-text">一、安装ProBuilder和ProGrids</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、搭建关卡原型"><span class="toc-text">二、搭建关卡原型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、配置环境资产"><span class="toc-text">三、配置环境资产</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、创建环境预制体"><span class="toc-text">五、创建环境预制体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、照明"><span class="toc-text">六、照明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#七、粒子系统"><span class="toc-text">七、粒子系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#八、创造光条纹"><span class="toc-text">八、创造光条纹</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、安装ProBuilder和ProGrids"><span class="toc-text">一、安装ProBuilder和ProGrids</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、搭建关卡原型"><span class="toc-text">二、搭建关卡原型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、配置环境资产"><span class="toc-text">三、配置环境资产</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、创建环境预制体"><span class="toc-text">五、创建环境预制体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、照明"><span class="toc-text">六、照明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#七、粒子系统"><span class="toc-text">七、粒子系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#八、创造光条纹"><span class="toc-text">八、创造光条纹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#九、创建环境音乐"><span class="toc-text">九、创建环境音乐</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#十、后期处理"><span class="toc-text">十、后期处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#十一、使用Cinemachine"><span class="toc-text">十一、使用Cinemachine</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#十二、打包生成游戏"><span class="toc-text">十二、打包生成游戏</span></a></li></ol>
     </div>
   </div><div class="post-content"><p>Unity版本：Unity 2018.4.13c1</p>
 <h1 id="一、安装ProBuilder和ProGrids"><a href="#一、安装ProBuilder和ProGrids" class="headerlink" title="一、安装ProBuilder和ProGrids"></a>一、安装ProBuilder和ProGrids</h1><p>开始之前，新建一个场景命名为“Main”，在Assets文件夹下新建一个Prefabs文件夹用于存放预制体。</p>
@@ -233,6 +233,39 @@
 <p><img src="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/image-20200226113058044.png" alt="image-20200226113058044"></p>
 <p>给Line改名为Moonlight，保存到Assets/Prefabs/VFX下（拖拽过去）。我们还可以给场景其他地方添加Moonlight:</p>
 <p><img src="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/image-20200226113755214.png" alt="image-20200226113755214"></p>
+<h1 id="九、创建环境音乐"><a href="#九、创建环境音乐" class="headerlink" title="九、创建环境音乐"></a>九、创建环境音乐</h1><p>在场景中新建一个空Game Object，取名AudioManager，为其添加组件Audio Source。</p>
+<p>在Assets文件夹下新建一个Audio文件夹，向里边导入Unity Fundamentals Source Assets\Audio下的两个音频文件：ForestNight Amb Lp.wav、Torch Lp.wav</p>
+<p>选中AudioManager，将ForestNight Amb Lp.wav添加到Audio Source组件 &gt; AudioClip，勾选Loop，稍微降低Volume（音量）。</p>
+<p>播放游戏，可以听到环境音乐。</p>
+<h1 id="十、后期处理"><a href="#十、后期处理" class="headerlink" title="十、后期处理"></a>十、后期处理</h1><p>打开Unity菜单栏Window &gt; Package Manager，安装Post Processing插件。</p>
+<p><img src="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/image-20200228161608376.png" alt="image-20200228161608376"></p>
+<p>在Hierarchy窗口新建一个空Game Object，命名为PostProcessing，为其添加组件Post Process Volume(Script)，勾选其属性Is Global（这个属性可以影响游戏整个画面），点击Profile旁边的New创建新的Profile。</p>
+<p><img src="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/image-20200228200004457.png" alt="image-20200228200004457"></p>
+<p>给Main Camera添加组件Post Processing Layer(Script)，属性Anti-aliasing &gt; Mode设置为Fast Approximate Anti-aliasing(FXAA)。Main Camera的Layer设置为PostProcessing。</p>
+<p><img src="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/image-20200228200937548.png" alt="image-20200228200937548"></p>
+<p>选中PostProcessing，Layer设置为PostProcessing，在其Post Processing Volume(Script)组件下点击Add effect &gt; Unity &gt; Vignette。展开Vignette，点击All勾选下方全部属性。从Game窗口观察游戏场景，当我们调解Vignette &gt; Intensity时，可以产生让我们的目光聚集在画面中央的效果。</p>
+<p><img src="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/image-20200228205934309.png" alt="image-20200228205934309"></p>
+<p>点击Add effect按钮添加Unity &gt; Bloom，勾选其下方所有属性，观察Game画面适当调解Intensity。</p>
+<p>点击Add effect按钮添加Unity &gt; Chromatic Aberration，勾选其下方所有属性，观察Game画面适当调解Intensity。</p>
+<p>点击Add effect按钮添加Unity &gt; Color Grading，勾选其下方所有属性，观察Game画面适当调解Trackball以改变画面色调。</p>
+<p>我们还可以添加Unity &gt; Grain，继续调解画面，这些后期处理可以改善游戏画面，但也会消耗计算机性能，移动端或低配PC不建议过多调节。</p>
+<h1 id="十一、使用Cinemachine"><a href="#十一、使用Cinemachine" class="headerlink" title="十一、使用Cinemachine"></a>十一、使用Cinemachine</h1><p>打开Unity菜单栏 &gt; Window &gt; Package Manager，安装Cinemachine插件。</p>
+<p>完成安装后通过Unity菜单栏 &gt; Cinemachine &gt; Create Virtual Camera新建一个虚拟摄像机CM vcam1。</p>
+<p>虚拟摄像机可以覆盖主摄像机的设置。</p>
+<p>在Scene窗口下选择合适的观察角色的视角，选中CM vcam1，按快捷键Ctrl+Shift+F。</p>
+<p>将Hero_Low拖拽到CM vcam1的Inspector &gt; Cinemachine Virtual Camera(Script) &gt; Follow和Look At</p>
+<p><img src="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/image-20200229100523509.png" alt="image-20200229100523509"></p>
+<p>Aim设置为Do nothing，Body选择Framing Transposer。</p>
+<p>转到Game视窗，选中CM vcam1，可以看到画面分为三种区域：</p>
+<p>中间区域（原本的颜色）：叫做死亡区域，LookAt的这个目标在这个区域内，摄像机是不会跟随的。<br>蓝色区域：代表缓冲区域，此时摄像机会开始跟随，使目标在中间的透明区域。<br>红色区域：不可到达区域，跟随过程中目标是不可能到达这些区域的。</p>
+<p>我们可以拖动画面上的直线改变这三种区域的大小。</p>
+<p><img src="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/image-20200229121358207.png" alt="image-20200229121358207"></p>
+<p>播放游戏，控制角色行走，摄像机跟随角色移动。</p>
+<p><img src="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/image-20200229121611685.png" alt="image-20200229121611685"></p>
+<p>我们还可以给虚拟摄像机添加其他设置，例如Noice设置为Basic Muti Channel Perlin，Noice Profile设置为Handheld_normal_mild，Amplitude Gain和Frequency Gain均设置为0.5，这样一来游戏中摄像机就有了轻微的晃动。</p>
+<h1 id="十二、打包生成游戏"><a href="#十二、打包生成游戏" class="headerlink" title="十二、打包生成游戏"></a>十二、打包生成游戏</h1><p>将场景保存好后，Unity菜单栏File &gt; Build Settings，确认所有场景都在Scene In Build，选择平台，按需要勾选是否创建VS解决方案或开发build。</p>
+<p>点击Player Settings，在其Inspector面板我们可以修改游戏名称，公司名称，版本号，游戏图标，游戏中的鼠标材质等信息。这里我们添加了一个游戏鼠标材质，其他设置均默认，然后点击Build按钮选好路径生成游戏。</p>
+<p><img src="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/image-20200229145944487.png" alt="image-20200229145944487"></p>
 
       </div>
       

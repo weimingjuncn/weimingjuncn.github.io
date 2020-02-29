@@ -99,7 +99,35 @@
         </span></div>
     </header>
 
-    <div class="post-content">
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、创建用户界面元素"><span class="toc-text">一、创建用户界面元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、编写场景切换脚本"><span class="toc-text">二、编写场景切换脚本</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>Unity 版本：Unity 2018.4.13c1 Personal</p>
+<h1 id="一、创建用户界面元素"><a href="#一、创建用户界面元素" class="headerlink" title="一、创建用户界面元素"></a>一、创建用户界面元素</h1><p>新建一个场景，命名为MainMenu。删掉Directioinal light，切换为2D视角。</p>
+<p>再Lighting窗口，设置Scene &gt; Environment &gt; Environment Lighting &gt; Source为Color，Amibient Color为黑色，Skybox material设置为None(Material)。</p>
+<p>再Hierarchy窗口创建 &gt; UI &gt; Canvas</p>
+<p>再Game窗口下把分辨率由Free Aspect改为16：9</p>
+<p><img src="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/image-20200228112125949.png" alt="image-20200228112125949"></p>
+<p>再Canvas下新建 &gt; UI &gt; Text - TextMeshPro，首次新建会弹出导入TMP必备窗口，点击Import TMP Essentials，导入完成后关闭窗口即可。</p>
+<p>然后重命名TextMeshPro为TitleText，再其Text Mesh Pro UGUI(Script)组件 &gt; Text自定义文本写上游戏名“Sword and Shovels”，在该组件 &gt; Main Settings可以修改字体。我们勾选Font Size &gt; Auto Size，这时字体大小将随文本框大小改变而自动调节。通过Aligment右边的按钮可以调节文本对齐居中等。</p>
+<p>再Canves下新建 &gt; UI &gt; Button，将Button下的Text删掉，再Button下新建Text - TextMeshPro，调整好之后如下图：</p>
+<p><img src="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/image-20200228114127419.png" alt="image-20200228114127419"></p>
+<p>播放游戏，画面中Play按钮可以点击。</p>
+<p><img src="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/image-20200228114309539.png" alt="image-20200228114309539"></p>
+<h1 id="二、编写场景切换脚本"><a href="#二、编写场景切换脚本" class="headerlink" title="二、编写场景切换脚本"></a>二、编写场景切换脚本</h1><p>再Hirarchy窗口新建空Game Object，重命名为SceneSwitcher。再Assest/Scripts下新建SceneSwitcher.cs，用VS2017打开，编写代码如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.SceneManagement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SceneSwitcher</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SceneSwitch</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        SceneManager.LoadScene(<span class="number">1</span>);      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>回到Unity，给SceneSwitcher添加Scene Switcher(Script)组件。</p>
+<p>选中Canvas/Button，在On Click()下添加点击事件，将SceneSwitcher拖拽进来，函数选择SceneSwitcher &gt; SceneSwitch()。</p>
+<p><img src="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/image-20200228122020919.png" alt="image-20200228122020919"></p>
+<p>保存MainMenu场景，然后点击菜单栏File &gt; Build Settings，在Build Settings弹窗点击Add Open Scenes把MainMenu添加进去，然后将Assets/Scenes下建好的Main01场景拖拽添加进来。</p>
+<p><img src="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/image-20200228121302765.png" alt="image-20200228121302765"></p>
+<p>播放游戏，开始进入MainMenu场景，当我们点击Play后，进入Main01场景。</p>
+<p><img src="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/image-20200228122611804.png" alt="image-20200228122611804"></p>
+<p><img src="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/image-20200228122641396.png" alt="image-20200228122641396"></p>
+
       </div>
       
       <footer class="post-footer">
