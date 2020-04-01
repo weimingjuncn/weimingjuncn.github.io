@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Unity 2018 UI基础"/><meta name="keywords" content="Unity, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
+<link rel="canonical" href="https://weimingjuncn.github.io/2020/02/19/Unity 2018 UI基础/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Unity 2018 UI基础 - MJ's Blog</title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">MJ's Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/tags">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">MJ's Blog</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Unity 2018 UI基础
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-19
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、三种画布的添加"><span class="toc-text">一、三种画布的添加</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Overlay"><span class="toc-text">1. Overlay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Camera"><span class="toc-text">2. Camera</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-World-Space"><span class="toc-text">3. World Space</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、不同的分辨率的屏幕"><span class="toc-text">二、不同的分辨率的屏幕</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-高分辨率PC游戏"><span class="toc-text">1. 高分辨率PC游戏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-HTML5网页大小"><span class="toc-text">2. HTML5网页大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-移动设备横屏与竖屏"><span class="toc-text">3. 移动设备横屏与竖屏</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、文本组件"><span class="toc-text">三、文本组件</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>Unity版本：Unity 2018.4.13c1 Personal</p>
+<p>Interface Type 交互界面类型</p>
+<ul>
+<li>Diegetic(剧情的，故事内的)：存档点</li>
+<li>Spatial(受空间条件限制的)：高亮任务NPC或其他玩家，或玩家自己</li>
+<li>Meta：有写摄像机玩家察觉不到，但开发者知道</li>
+<li>Non-Diegetic ：打分面板</li>
+</ul>
+<p>Canvas Type画布类型</p>
+<ul>
+<li>Screen Space Overlay：在场景顶层，HUD，用于标识角色状态等信息</li>
+<li>Screen Space Camera：</li>
+<li>World Space：</li>
+</ul>
+<p>Interface Type Use Canvas Type</p>
+<ul>
+<li><p>Overlay用于做No-diegetic UI</p>
+</li>
+<li><p>Camera用于做No-diegetic &amp; diegetic UI</p>
+</li>
+<li><p>World用于做diegetic UI</p>
+</li>
+</ul>
+<p><strong>What is HUD ?</strong></p>
+<p>HUD - Head-Up Display</p>
+<p>HUD或状态条是游戏UI中视觉传达玩家信息的一种交互方式。</p>
+<p><strong>导入资源包</strong></p>
+<p>新建好项目后，导入ui-fundamentals-2018.unitypackage，进入Scenes文件件，双击打开UIScene</p>
+<h1 id="一、三种画布的添加"><a href="#一、三种画布的添加" class="headerlink" title="一、三种画布的添加"></a>一、三种画布的添加</h1><h2 id="1-Overlay"><a href="#1-Overlay" class="headerlink" title="1. Overlay"></a>1. Overlay</h2><p>新建一个新场景，菜单栏GameObject &gt; UI &gt; Canvas，在其组件Canvas &gt; Render Mode选中Screen Space - Overlay。</p>
+<p>在Canvas下新建一个Cube，但我们却无法在Game视窗看到Cube，无论Cube调整到多大。这就是Overlay型画布。我们可以看见在其上边放置的二维图片，文本，和一些可以互动的东西比如按钮，而三维模型无法看到。</p>
+<p>接着我们在Cube下新建一个UI &gt; Button，通过Game视窗，我们看到一个显示在画布上的按钮。</p>
+<p>想要看到那个Cube，需要将其放置在摄像机的视野中，我们将Cube位置重置，接着将Cube向Z轴正方向移动5个单位长度，使其正好在Main Camera正前方，此时我们得以在Game视窗中看到Cube，注意这个Cube不在画布上。</p>
+<p><img src="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321191703903.png" alt="image-20200321191703903"></p>
+<h2 id="2-Camera"><a href="#2-Camera" class="headerlink" title="2. Camera"></a>2. Camera</h2><p>我们将Carves的Render Mode改成Screen Space - Camera，此时Render Camera没有指定，我们将Main Camera拖拽过去添加上。这时候我们发现Game视窗下的按钮消失了，我们选中Main Camera，将其Camera &gt; Clipping Planes Far由原来的10改成100或1000此时我们又看到了button，或者不改变摄像机的可视范围，将Canves的Plane Distance(平面距离)改为5，即把画布移到摄像机的可视范围内，也同样在Game视窗中显示button。</p>
+<p><img src="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321202535660.png" alt="image-20200321202535660"></p>
+<h2 id="3-World-Space"><a href="#3-World-Space" class="headerlink" title="3. World Space"></a>3. World Space</h2><p>我们将Canves的Render Mode改为World Space。将Cube拖拽到Main Camera的子系。</p>
+<p>接下来我们将按钮Y方向旋转一定角度。</p>
+<p><img src="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321203804848.png" alt="image-20200321203804848"></p>
+<p><img src="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321203711010.png" alt="image-20200321203711010"></p>
+<p>再看Game视窗，可以看到倾斜的按钮</p>
+<p><img src="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321204017725.png" alt="image-20200321204017725"></p>
+<h1 id="二、不同的分辨率的屏幕"><a href="#二、不同的分辨率的屏幕" class="headerlink" title="二、不同的分辨率的屏幕"></a>二、不同的分辨率的屏幕</h1><h2 id="1-高分辨率PC游戏"><a href="#1-高分辨率PC游戏" class="headerlink" title="1. 高分辨率PC游戏"></a>1. 高分辨率PC游戏</h2><h2 id="2-HTML5网页大小"><a href="#2-HTML5网页大小" class="headerlink" title="2. HTML5网页大小"></a>2. HTML5网页大小</h2><h2 id="3-移动设备横屏与竖屏"><a href="#3-移动设备横屏与竖屏" class="headerlink" title="3. 移动设备横屏与竖屏"></a>3. 移动设备横屏与竖屏</h2><p>File &gt; Build Settings，默认是选择PC平台</p>
+<h1 id="三、文本组件"><a href="#三、文本组件" class="headerlink" title="三、文本组件"></a>三、文本组件</h1><p>打开UIStart场景，选中03-Responsive，在菜单栏GameObject下选择UI &gt; Text</p>
+
+      </div>
+      
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Unity/">Unity</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Unity动画基础</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/">
+        <span class="next-text nav-default">Unity载入界面基础</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mingjun4503@163.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">MJ</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

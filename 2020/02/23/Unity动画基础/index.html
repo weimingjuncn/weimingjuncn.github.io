@@ -99,7 +99,51 @@
         </span></div>
     </header>
 
-    <div class="post-content">
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、创建动画片段"><span class="toc-text">一、创建动画片段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、使用动画曲线"><span class="toc-text">二、使用动画曲线</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、重新定时动画"><span class="toc-text">三、重新定时动画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、使用动画事件"><span class="toc-text">四、使用动画事件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、创建多个剪辑"><span class="toc-text">五、创建多个剪辑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、动画控制器基础知识"><span class="toc-text">六、动画控制器基础知识</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>Unity版本：Unity 2017.4.35f1 Personal</p>
+<p>导入资源包unity_animation_fundamentals_module_2_begin.unitypackage</p>
+<h1 id="一、创建动画片段"><a href="#一、创建动画片段" class="headerlink" title="一、创建动画片段"></a>一、创建动画片段</h1><p>在Assets/Animations下新建Animation，命名为Chest_Open。</p>
+<p>在菜单栏 &gt; Window &gt; Animation打开动画窗口。</p>
+<p>找到选中场景中的Chest，在Animation窗口点击Create按钮在弹出的窗口中选中Open_Chest.anim点击保存。</p>
+<p>在窗口中默认提供60帧，我们修改成30帧</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306115006356.png" alt="image-20200306115006356"></p>
+<p>展开Chest选中chest_top，在Animation窗口点击Add Property，展开chest_top &gt; Transform，点击Rotation右边的加号。</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306115504925.png" alt="image-20200306115504925"></p>
+<p>此时我们在动画起始和末尾各创建了一个关键帧，我们将白线拖动到最后一帧，然后点击记录按钮。</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306115942461.png" alt="image-20200306115942461"></p>
+<p>修改chest_top的Rotation的x为-130，再点击记录按钮关闭记录，这时我们点击Animation窗口的播放按钮，Scene窗口将循环播放Chest打开的动画。</p>
+<p>如图操作，点击Clips列表，添加新的动画Clip，命名为Chest_Close</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306135038980.png" alt="image-20200306135038980"></p>
+<p>点击Clips列表，可改变当前要编辑的Clip.</p>
+<p>点击Add Property，选中chest_top &gt; Transform &gt; Rotation。</p>
+<h1 id="二、使用动画曲线"><a href="#二、使用动画曲线" class="headerlink" title="二、使用动画曲线"></a>二、使用动画曲线</h1><p>保持Chest被选中，点击Animation窗口下的Curves按钮，打开动画曲线界面，</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320181825478.png" alt="image-20200320181825478"></p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320182359505.png" alt="image-20200320182359505"></p>
+<h1 id="三、重新定时动画"><a href="#三、重新定时动画" class="headerlink" title="三、重新定时动画"></a>三、重新定时动画</h1><h1 id="四、使用动画事件"><a href="#四、使用动画事件" class="headerlink" title="四、使用动画事件"></a>四、使用动画事件</h1><p>将动画光标移动到箱子完全打开的关键帧位置，点击添加动画事件按钮。</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320215514821.png" alt="image-20200320215514821"></p>
+<p>此时Inpsector面板出现动画事件函数设置。我们在Hierarchy选中Chest，为其添加组件Treasure Chest(Script)。</p>
+<p>为Chest添加空的子GameObject并重命名为Spawner。将其拖拽添加到Chest的Treasure Chest(Script)组件下Spawner属性。从Assets/Prefabs下拖拽Coin到Chest的Treasure Chest(Script)组件下Coin Prefab属性。我们双击该组件下的Script属性打开脚本文件，在其中我们发现有一个OpenChest方法。</p>
+<p>回到Unity，在Animation窗口点击刚才添加的动画事件标记，在Inspector窗口的动画事件函数选项里我们有3种函数可以选择。选择OpenChest，这个函数就与动画事件关联上了。当我们播放游戏时，开箱动画播放到完全打开关键帧时将自动触发动画事件，调用OpenChest函数，弹出硬币。</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320220902629.png" alt="image-20200320220902629"></p>
+<h1 id="五、创建多个剪辑"><a href="#五、创建多个剪辑" class="headerlink" title="五、创建多个剪辑"></a>五、创建多个剪辑</h1><p>首先为Chest_Close添加属性Rotation，通过Ctrl+C/V将Chest_Open的关键帧复制粘贴到Chest_Close里。</p>
+<p>在Chest_Close里，将首尾两个关键帧交换位置，然后调整其动画曲线。</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321082658400.png" alt="image-20200321082658400"></p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321083142461.png" alt="image-20200321083142461"></p>
+<h1 id="六、动画控制器基础知识"><a href="#六、动画控制器基础知识" class="headerlink" title="六、动画控制器基础知识"></a>六、动画控制器基础知识</h1><p>如果我们有多个动画片段，需要管理它们，甚至在一个动画到下一个动画之间转换，需要使用动画控制器。这是一个可以与动画组件一起使用的游戏Assets。当我们创建动画片段时，Unity会自动创建一个动画控制器，该动画控制器需要设置动画的控制参数。</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321083855523.png" alt="image-20200321083855523"></p>
+<p>双击动画控制器，打开Animation窗口</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321092216642.png" alt="image-20200321092216642"></p>
+<p>在Animation窗口中，我们看到四个节点，按住鼠标中键可以移动观图视角</p>
+<p>Any State：特殊节点，允许中断正在播放的当前状态或正在播放以退出并进入另一个状态的当前动画。例如，当玩家的生命值降低到零，玩家处于生命状态并不重要，它将转到死亡动画。</p>
+<p>Entry：任何游戏开始或基础层上的特殊状态机的开始，将进入的第一个默认状态/默认动画。</p>
+<p>Exit：特殊节点，表明状态机应该退出。</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321094443227.png" alt="image-20200321094443227"></p>
+<p>Chest_Open状态是橙色的，表示这个动画将在游戏开始后立即播放，因此我们需要创建一个空状态</p>
+
       </div>
       
       <footer class="post-footer">
@@ -107,13 +151,13 @@
             <a href="/tags/Unity/">Unity</a>
             </div>
         
-        <nav class="post-nav"><a class="prev" href="/2020/02/24/PluralSight%E8%B0%88%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">
+        <nav class="post-nav"><a class="prev" href="/2020/02/24/PluralSight%E8%AF%BE%E7%A8%8B%EF%BC%9A%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">PluralSight谈游戏机制设计基础</span>
+        <span class="prev-text nav-default">PluralSight课程：游戏机制设计基础</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
-    <a class="next" href="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/">
-        <span class="next-text nav-default">Unity载入界面基础</span>
+    <a class="next" href="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/">
+        <span class="next-text nav-default">Unity 2018 UI基础</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
