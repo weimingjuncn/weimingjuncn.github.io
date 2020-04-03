@@ -1,176 +1,416 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>sys模块和os模块 - MJ&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="sys模块和os模块"/><meta name="keywords" content="Python, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
-<link rel="canonical" href="https://weimingjuncn.github.io/2019/03/20/sys模块和os模块/"/>
+<meta name="description" content="This is a personal Blog.">
 
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
 
-<script id="baidu_push">
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-<script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
-</script>
 
-    <title>sys模块和os模块 - MJ's Blog</title>
-  <meta name="generator" content="Hexo 4.2.0"></head>
 
-  <body><div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/." class="logo">MJ's Blog</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
 
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list"><a href="/">
-        <li class="mobile-menu-item">Home
-          </li>
-      </a><a href="/tags">
-        <li class="mobile-menu-item">Tags
-          </li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About
-          </li>
-      </a></ul>
-</nav>
-<div class="container" id="mobile-panel">
-      <header id="header" class="header"><div class="logo-wrapper">
-  <a href="/." class="logo">MJ's Blog</a>
-</div>
+    <meta name="description" content="&amp;#x521D;&amp;#x8BC6;sys&amp;#x6A21;&amp;#x5757;&amp;#x548C;os&amp;#x6A21;&amp;#x5757;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sys模块和os模块">
+<meta property="og:url" content="https://weimingjuncn.github.io/2019/03/20/sys%E6%A8%A1%E5%9D%97%E5%92%8Cos%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="MJ&#39;s Blog">
+<meta property="og:description" content="&amp;#x521D;&amp;#x8BC6;sys&amp;#x6A21;&amp;#x5757;&amp;#x548C;os&amp;#x6A21;&amp;#x5757;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://weimingjuncn.github.io/2019/03/20/sys%E6%A8%A1%E5%9D%97%E5%92%8Cos%E6%A8%A1%E5%9D%97/result_1.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2019/03/20/sys%E6%A8%A1%E5%9D%97%E5%92%8Cos%E6%A8%A1%E5%9D%97/result_2.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2019/03/20/sys%E6%A8%A1%E5%9D%97%E5%92%8Cos%E6%A8%A1%E5%9D%97/result_3.png">
+<meta property="article:published_time" content="2019-03-19T17:04:16.000Z">
+<meta property="article:modified_time" content="2019-06-10T14:14:15.889Z">
+<meta property="article:author" content="MJ">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://weimingjuncn.github.io/2019/03/20/sys%E6%A8%A1%E5%9D%97%E5%92%8Cos%E6%A8%A1%E5%9D%97/result_1.png">
 
-<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
-          <a class="menu-item-link" href="/">
-            Home
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
             </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/tags">
-            Tags
-            </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/about/">
-            About
-            </a>
-        </li>
-      </ul></nav>
-</header>
-
-      <main id="main" class="main">
-        <div class="content-wrapper">
-          <div id="content" class="content"><article class="post">
-    <header class="post-header">
-      <h1 class="post-title">sys模块和os模块
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-03-20
-        </span><span class="post-category">
-            <a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
-            </span>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
-    <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sys模块"><span class="toc-text">sys模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#os模块"><span class="toc-text">os模块</span></a></li></ol>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">归档</a>
+            
+            <a class="navbar-item "
+               href="/tags">标签分类</a>
+            
+            <a class="navbar-item "
+               href="/about">关于</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#sys模块">1&nbsp;&nbsp;<b>sys模块</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#os模块">2&nbsp;&nbsp;<b>os模块</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
     </div>
-  </div><div class="post-content"><p>初识sys模块和os模块</p>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            sys模块和os模块
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-03-19T17:04:16.000Z" itemprop="datePublished">3月 20 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>&#x521D;&#x8BC6;sys&#x6A21;&#x5757;&#x548C;os&#x6A21;&#x5757;</p>
 <a id="more"></a>
 
-<h1 id="sys模块"><a href="#sys模块" class="headerlink" title="sys模块"></a>sys模块</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">先到当前目录下找sys模块，因此py文件起名最好不要和标准库名相同</span></span><br><span class="line"><span class="string">sys.path返回sys模块的所有目录</span></span><br><span class="line"><span class="string">(以Python3.6为例)Python的第三方库一般保存在Python36/Lib/site-packages下，</span></span><br><span class="line"><span class="string">标准库一般存放在Python36/Lib下</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">print(sys.path)<span class="comment">#打印环境变量</span></span><br><span class="line">print(sys.argv)</span><br><span class="line"><span class="comment">#在pycharm中运行打印sys_mod.py的绝对路径</span></span><br><span class="line"><span class="comment">#在命令提示符窗口中运行打印sys_mod.py的相对路径</span></span><br><span class="line">print(sys.argv[<span class="number">2</span>])</span><br><span class="line"><span class="comment">#在命令提示符窗口中运行打印sys_mod.py的相对路径以及第2个参数</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">cmd_res = os.system(<span class="string">"dir"</span>) <span class="comment">#执行命令，不保存结果</span></span><br><span class="line">print(<span class="string">"---&gt;"</span>,cmd_res)</span><br></pre></td></tr></table></figure>
-
-<p>运行后<br><img src="/2019/03/20/sys%E6%A8%A1%E5%9D%97%E5%92%8Cos%E6%A8%A1%E5%9D%97/result_1.png" alt="result_1"></p>
-<p>左下角的代表os.system(“dir”)执行成功返回的状态码，“0”表示成功，非“0”表示失败。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">cmd_res = os.popen(<span class="string">"dir"</span>).read()</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">为什么加read()?</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">因为执行完os.popen("dir")后，结果存在内存的一个临时区域，</span></span><br><span class="line"><span class="string">需要用read()方法把结果取出来。</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">print(<span class="string">"---&gt;"</span>,cmd_res)</span><br></pre></td></tr></table></figure>
-
-<p>运行后</p>
+<h1 id="sys&#x6A21;&#x5757;"><a href="#sys&#x6A21;&#x5757;" class="headerlink" title="sys&#x6A21;&#x5757;"></a>sys&#x6A21;&#x5757;</h1><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="hljs-string">&#x5148;&#x5230;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#x627E;sys&#x6A21;&#x5757;&#xFF0C;&#x56E0;&#x6B64;py&#x6587;&#x4EF6;&#x8D77;&#x540D;&#x6700;&#x597D;&#x4E0D;&#x8981;&#x548C;&#x6807;&#x51C6;&#x5E93;&#x540D;&#x76F8;&#x540C;</span></span><br><span class="line"><span class="hljs-string">sys.path&#x8FD4;&#x56DE;sys&#x6A21;&#x5757;&#x7684;&#x6240;&#x6709;&#x76EE;&#x5F55;</span></span><br><span class="line"><span class="hljs-string">(&#x4EE5;Python3.6&#x4E3A;&#x4F8B;)Python&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x4E00;&#x822C;&#x4FDD;&#x5B58;&#x5728;Python36/Lib/site-packages&#x4E0B;&#xFF0C;</span></span><br><span class="line"><span class="hljs-string">&#x6807;&#x51C6;&#x5E93;&#x4E00;&#x822C;&#x5B58;&#x653E;&#x5728;Python36/Lib&#x4E0B;</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line">print(sys.path)<span class="hljs-comment">#&#x6253;&#x5370;&#x73AF;&#x5883;&#x53D8;&#x91CF;</span></span><br><span class="line">print(sys.argv)</span><br><span class="line"><span class="hljs-comment">#&#x5728;pycharm&#x4E2D;&#x8FD0;&#x884C;&#x6253;&#x5370;sys_mod.py&#x7684;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;</span></span><br><span class="line"><span class="hljs-comment">#&#x5728;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&#x7A97;&#x53E3;&#x4E2D;&#x8FD0;&#x884C;&#x6253;&#x5370;sys_mod.py&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;</span></span><br><span class="line">print(sys.argv[<span class="hljs-number">2</span>])</span><br><span class="line"><span class="hljs-comment">#&#x5728;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&#x7A97;&#x53E3;&#x4E2D;&#x8FD0;&#x884C;&#x6253;&#x5370;sys_mod.py&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x4EE5;&#x53CA;&#x7B2C;2&#x4E2A;&#x53C2;&#x6570;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="os&#x6A21;&#x5757;"><a href="#os&#x6A21;&#x5757;" class="headerlink" title="os&#x6A21;&#x5757;"></a>os&#x6A21;&#x5757;</h1><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"></span><br><span class="line">cmd_res = os.system(<span class="hljs-string">&quot;dir&quot;</span>) <span class="hljs-comment">#&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF0C;&#x4E0D;&#x4FDD;&#x5B58;&#x7ED3;&#x679C;</span></span><br><span class="line">print(<span class="hljs-string">&quot;---&gt;&quot;</span>,cmd_res)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x8FD0;&#x884C;&#x540E;<br><img src="/2019/03/20/sys%E6%A8%A1%E5%9D%97%E5%92%8Cos%E6%A8%A1%E5%9D%97/result_1.png" alt="result_1"></p>
+<p>&#x5DE6;&#x4E0B;&#x89D2;&#x7684;&#x4EE3;&#x8868;os.system(&#x201C;dir&#x201D;)&#x6267;&#x884C;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x7684;&#x72B6;&#x6001;&#x7801;&#xFF0C;&#x201C;0&#x201D;&#x8868;&#x793A;&#x6210;&#x529F;&#xFF0C;&#x975E;&#x201C;0&#x201D;&#x8868;&#x793A;&#x5931;&#x8D25;&#x3002;</p>
+<p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"></span><br><span class="line">cmd_res = os.popen(<span class="hljs-string">&quot;dir&quot;</span>).read()</span><br><span class="line"><span class="hljs-string">&apos;&apos;&apos;</span></span><br><span class="line"><span class="hljs-string">&#x4E3A;&#x4EC0;&#x4E48;&#x52A0;read()?</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">&#x56E0;&#x4E3A;&#x6267;&#x884C;&#x5B8C;os.popen(&quot;dir&quot;)&#x540E;&#xFF0C;&#x7ED3;&#x679C;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x7684;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x533A;&#x57DF;&#xFF0C;</span></span><br><span class="line"><span class="hljs-string">&#x9700;&#x8981;&#x7528;read()&#x65B9;&#x6CD5;&#x628A;&#x7ED3;&#x679C;&#x53D6;&#x51FA;&#x6765;&#x3002;</span></span><br><span class="line"><span class="hljs-string">&apos;&apos;&apos;</span></span><br><span class="line">print(<span class="hljs-string">&quot;---&gt;&quot;</span>,cmd_res)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x8FD0;&#x884C;&#x540E;</p>
 <p><img src="/2019/03/20/sys%E6%A8%A1%E5%9D%97%E5%92%8Cos%E6%A8%A1%E5%9D%97/result_2.png" alt="result_2"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.mkdir(<span class="string">"new_dir"</span>)<span class="comment">#在当前目录创建一个文件夹</span></span><br></pre></td></tr></table></figure>
-<p>运行后</p>
+<p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line">os.mkdir(<span class="hljs-string">&quot;new_dir&quot;</span>)<span class="hljs-comment">#&#x5728;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;</span></span><br></pre></td></tr></tbody></table></figure><br>&#x8FD0;&#x884C;&#x540E;<p></p>
 <p><img src="/2019/03/20/sys%E6%A8%A1%E5%9D%97%E5%92%8Cos%E6%A8%A1%E5%9D%97/result_3.png" alt="result_3"></p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Python/">#Python</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/03/20/Python-3%E7%9A%84byte%E5%92%8Cstring/">Python 3的byte和string</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/03/19/%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A-%E7%BB%88%E7%AB%AF%E8%BE%93%E5%85%A5/">代码注释 &amp; 终端输入 &amp; if_else</a>
+            
+        </span>
+    </div>
+    
+</article>
 
-      </div>
-      
-      <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/Python/">Python</a>
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 MJ&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
             </div>
-        
-        <nav class="post-nav"><a class="prev" href="/2019/03/20/Python-3%E7%9A%84byte%E5%92%8Cstring/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Python 3的byte和string</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    <a class="next" href="/2019/03/19/%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A-%E7%BB%88%E7%AB%AF%E8%BE%93%E5%85%A5/">
-        <span class="next-text nav-default">代码注释 & 终端输入 & if_else</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    </nav></footer>
-    </article></div><div class="comments" id="comments"></div></div>
-      </main>
+            <div class="column is-hidden-mobile"></div>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mingjun4503@163.com" class="iconfont icon-email" title="email"></a>
-        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
-        </div><div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
-  </span>
-
-  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">MJ</span>
-  </span>
-</div>
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
 </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
-      <div class="back-to-top" id="back-to-top">
-        <i class="iconfont icon-up"></i>
-      </div>
-    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Sans Titre)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
 </body>
 </html>

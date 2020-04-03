@@ -1,196 +1,308 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>【GDC】Level Design Workshop：Blockmesh and Lighting Tips - MJ&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="【GDC】Level Design Workshop：Blockmesh and Lighting Tips"/><meta name="keywords" content="Game Design, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
-<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/08/【GDC】Level Design Workshop：Blockmesh and Lighting Tips/"/>
+<meta name="description" content="This is a personal Blog.">
 
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
 
-<script id="baidu_push">
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-<script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
-</script>
 
-    <title>【GDC】Level Design Workshop：Blockmesh and Lighting Tips - MJ's Blog</title>
-  <meta name="generator" content="Hexo 4.2.0"></head>
 
-  <body><div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/." class="logo">MJ's Blog</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
 
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list"><a href="/">
-        <li class="mobile-menu-item">Home
-          </li>
-      </a><a href="/tags">
-        <li class="mobile-menu-item">Tags
-          </li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About
-          </li>
-      </a></ul>
-</nav>
-<div class="container" id="mobile-panel">
-      <header id="header" class="header"><div class="logo-wrapper">
-  <a href="/." class="logo">MJ's Blog</a>
-</div>
+    <meta name="description" content="Invisible Intuition&amp;#xFF1A;Blockmesh and Lighting Tips to Guide Players and Set the MoodWhat is &amp;#x201C;Blockmesh&amp;#x201D; ? Blockmesh &#x3D; Greybox &#x3D; Whitebox, etc. Greybox and Whitebox implt a single col">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【GDC】Level Design Workshop：Blockmesh and Lighting Tips">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/08/%E3%80%90GDC%E3%80%91Level%20Design%20Workshop%EF%BC%9ABlockmesh%20and%20Lighting%20Tips/index.html">
+<meta property="og:site_name" content="MJ&#39;s Blog">
+<meta property="og:description" content="Invisible Intuition&amp;#xFF1A;Blockmesh and Lighting Tips to Guide Players and Set the MoodWhat is &amp;#x201C;Blockmesh&amp;#x201D; ? Blockmesh &#x3D; Greybox &#x3D; Whitebox, etc. Greybox and Whitebox implt a single col">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-08T06:58:13.000Z">
+<meta property="article:modified_time" content="2020-01-08T10:02:16.645Z">
+<meta property="article:author" content="MJ">
+<meta property="article:tag" content="Game Design">
+<meta name="twitter:card" content="summary">
 
-<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
-          <a class="menu-item-link" href="/">
-            Home
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
             </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/tags">
-            Tags
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">归档</a>
+            
+            <a class="navbar-item "
+               href="/tags">标签分类</a>
+            
+            <a class="navbar-item "
+               href="/about">关于</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
             </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/about/">
-            About
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Invisible-Intuition：Blockmesh-and-Lighting-Tips-to-Guide-Players-and-Set-the-Mood">1&nbsp;&nbsp;<b>Invisible Intuition：Blockmesh and Lighting Tips to Guide Players and Set the Mood</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#What-is-“Blockmesh”">1.1&nbsp;&nbsp;What is “Blockmesh” ?</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Level-Design-Pipeline">1.2&nbsp;&nbsp;Level Design Pipeline</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Affordance-可见性">1.3&nbsp;&nbsp;Affordance 可见性</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Affordance-…-in-Games">1.3.1&nbsp;&nbsp;Affordance … in Games</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Denying-Affordance-拒绝式可见性">1.4&nbsp;&nbsp;Denying Affordance 拒绝式可见性</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Visual-Language-Shape">1.5&nbsp;&nbsp;Visual Language - Shape</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Landmarks-aka-weenies-地标">1.6&nbsp;&nbsp;Landmarks (aka weenies) 地标</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Openings-Attract-开放式吸引">1.7&nbsp;&nbsp;Openings Attract 开放式吸引</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Gates-amp-Valves">1.8&nbsp;&nbsp;Gates &amp;amp; Valves</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Leading-Lines-引导线">1.9&nbsp;&nbsp;Leading Lines 引导线</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Pinching-挤压视线">1.10&nbsp;&nbsp;Pinching 挤压视线</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Framing-amp-Composition-框架以及构成">1.11&nbsp;&nbsp;Framing &amp;amp; Composition 框架以及构成</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Breadcrumbs-面包屑">1.12&nbsp;&nbsp;Breadcrumbs 面包屑</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Textures-材质">1.13&nbsp;&nbsp;Textures 材质</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Movement">1.14&nbsp;&nbsp;Movement</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Light-amp-God-Ray-光照以及光线">1.15&nbsp;&nbsp;Light &amp;amp; God Ray 光照以及光线</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Bonus-Tips！——The-Squint-Test-眯眼测试">1.16&nbsp;&nbsp;Bonus Tips！——The Squint Test 眯眼测试</a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
             </a>
-        </li>
-      </ul></nav>
-</header>
-
-      <main id="main" class="main">
-        <div class="content-wrapper">
-          <div id="content" class="content"><article class="post">
-    <header class="post-header">
-      <h1 class="post-title">【GDC】Level Design Workshop：Blockmesh and Lighting Tips
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-08
-        </span></div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
-    <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Invisible-Intuition：Blockmesh-and-Lighting-Tips-to-Guide-Players-and-Set-the-Mood"><span class="toc-text">Invisible Intuition：Blockmesh and Lighting Tips to Guide Players and Set the Mood</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-“Blockmesh”"><span class="toc-text">What is “Blockmesh” ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-Design-Pipeline"><span class="toc-text">Level Design Pipeline</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Affordance-可见性"><span class="toc-text">Affordance 可见性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Affordance-…-in-Games"><span class="toc-text">Affordance … in Games</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Denying-Affordance-拒绝式可见性"><span class="toc-text">Denying Affordance 拒绝式可见性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Visual-Language-Shape"><span class="toc-text">Visual Language - Shape</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Landmarks-aka-weenies-地标"><span class="toc-text">Landmarks (aka weenies) 地标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Openings-Attract-开放式吸引"><span class="toc-text">Openings Attract 开放式吸引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gates-amp-Valves"><span class="toc-text">Gates &amp; Valves</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Leading-Lines-引导线"><span class="toc-text">Leading Lines 引导线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pinching-挤压视线"><span class="toc-text">Pinching 挤压视线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Framing-amp-Composition-框架以及构成"><span class="toc-text">Framing &amp; Composition 框架以及构成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Breadcrumbs-面包屑"><span class="toc-text">Breadcrumbs 面包屑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Textures-材质"><span class="toc-text">Textures 材质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Movement"><span class="toc-text">Movement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Light-amp-God-Ray-光照以及光线"><span class="toc-text">Light &amp; God Ray 光照以及光线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bonus-Tips！——The-Squint-Test-眯眼测试"><span class="toc-text">Bonus Tips！——The Squint Test 眯眼测试</span></a></li></ol></li></ol>
+               
+            
+        </div>
     </div>
-  </div><div class="post-content"><h1 id="Invisible-Intuition：Blockmesh-and-Lighting-Tips-to-Guide-Players-and-Set-the-Mood"><a href="#Invisible-Intuition：Blockmesh-and-Lighting-Tips-to-Guide-Players-and-Set-the-Mood" class="headerlink" title="Invisible Intuition：Blockmesh and Lighting Tips to Guide Players and Set the Mood"></a>Invisible Intuition：Blockmesh and Lighting Tips to Guide Players and Set the Mood</h1><h2 id="What-is-“Blockmesh”"><a href="#What-is-“Blockmesh”" class="headerlink" title="What is “Blockmesh” ?"></a>What is “Blockmesh” ?</h2><ul>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            【GDC】Level Design Workshop：Blockmesh and Lighting Tips
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-01-08T06:58:13.000Z" itemprop="datePublished">1月 8 2020</time>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h1 id="Invisible-Intuition&#xFF1A;Blockmesh-and-Lighting-Tips-to-Guide-Players-and-Set-the-Mood"><a href="#Invisible-Intuition&#xFF1A;Blockmesh-and-Lighting-Tips-to-Guide-Players-and-Set-the-Mood" class="headerlink" title="Invisible Intuition&#xFF1A;Blockmesh and Lighting Tips to Guide Players and Set the Mood"></a>Invisible Intuition&#xFF1A;Blockmesh and Lighting Tips to Guide Players and Set the Mood</h1><h2 id="What-is-&#x201C;Blockmesh&#x201D;"><a href="#What-is-&#x201C;Blockmesh&#x201D;" class="headerlink" title="What is &#x201C;Blockmesh&#x201D; ?"></a>What is &#x201C;Blockmesh&#x201D; ?</h2><ul>
 <li>Blockmesh = Greybox = Whitebox, etc.</li>
-<li>Greybox and Whitebox implt a single color - not ideal! 灰盒和白盒一般只有一种颜色，不够理想</li>
+<li>Greybox and Whitebox implt a single color - not ideal! &#x7070;&#x76D2;&#x548C;&#x767D;&#x76D2;&#x4E00;&#x822C;&#x53EA;&#x6709;&#x4E00;&#x79CD;&#x989C;&#x8272;&#xFF0C;&#x4E0D;&#x591F;&#x7406;&#x60F3;</li>
 </ul>
 <h2 id="Level-Design-Pipeline"><a href="#Level-Design-Pipeline" class="headerlink" title="Level Design Pipeline"></a>Level Design Pipeline</h2><pre class="mermaid">    graph LR
-    A(Level Requirements) --> B(Build Blockmesh Layout 搭建Blockmesh布局)
-    B --> C(Playtest Layout 测试布局)
-    C --> D(Process Feedback 处理反馈)
-    D --> B</pre>
+    A(Level Requirements) --&gt; B(Build Blockmesh Layout &#x642D;&#x5EFA;Blockmesh&#x5E03;&#x5C40;)
+    B --&gt; C(Playtest Layout &#x6D4B;&#x8BD5;&#x5E03;&#x5C40;)
+    C --&gt; D(Process Feedback &#x5904;&#x7406;&#x53CD;&#x9988;)
+    D --&gt; B</pre>
 
 <ul>
-<li>Environment Type 环境需求</li>
-<li>Time of Day 当日时间</li>
-<li>Location in Story 故事地点</li>
-<li>Available Character Abilities 允许玩家使用的能力</li>
-<li>Enemy Type 敌人种类</li>
+<li>Environment Type &#x73AF;&#x5883;&#x9700;&#x6C42;</li>
+<li>Time of Day &#x5F53;&#x65E5;&#x65F6;&#x95F4;</li>
+<li>Location in Story &#x6545;&#x4E8B;&#x5730;&#x70B9;</li>
+<li>Available Character Abilities &#x5141;&#x8BB8;&#x73A9;&#x5BB6;&#x4F7F;&#x7528;&#x7684;&#x80FD;&#x529B;</li>
+<li>Enemy Type &#x654C;&#x4EBA;&#x79CD;&#x7C7B;</li>
 <li>etc.</li>
-<li>Gameplay and Narrative Beats 游戏性以及叙事性的节拍</li>
+<li>Gameplay and Narrative Beats &#x6E38;&#x620F;&#x6027;&#x4EE5;&#x53CA;&#x53D9;&#x4E8B;&#x6027;&#x7684;&#x8282;&#x62CD;</li>
 </ul>
-<h2 id="Affordance-可见性"><a href="#Affordance-可见性" class="headerlink" title="Affordance 可见性"></a>Affordance 可见性</h2><ul>
-<li>Form implies function 形式暗示着功能</li>
+<h2 id="Affordance-&#x53EF;&#x89C1;&#x6027;"><a href="#Affordance-&#x53EF;&#x89C1;&#x6027;" class="headerlink" title="Affordance &#x53EF;&#x89C1;&#x6027;"></a>Affordance &#x53EF;&#x89C1;&#x6027;</h2><ul>
+<li>Form implies function &#x5F62;&#x5F0F;&#x6697;&#x793A;&#x7740;&#x529F;&#x80FD;</li>
 </ul>
-<h3 id="Affordance-…-in-Games"><a href="#Affordance-…-in-Games" class="headerlink" title="Affordance … in Games"></a>Affordance … in Games</h3><ul>
-<li>A way to communicate to the player what to play with or where to go. 一种告诉玩家玩什么或到哪去的方法</li>
-<li>Players learn the affordance rules via consistent color and shape and a trust contract is formed. 玩家通过相同的颜色和形状来学习可见性规则，同时信任该规则</li>
-<li>Ensure affordances work consistently game-wide. 确保可见性规则在游戏内保持一致</li>
-<li>Add to your blockmesh for playtests! 在游戏测试中添加到你的blockmesh中</li>
+<h3 id="Affordance-&#x2026;-in-Games"><a href="#Affordance-&#x2026;-in-Games" class="headerlink" title="Affordance &#x2026; in Games"></a>Affordance &#x2026; in Games</h3><ul>
+<li>A way to communicate to the player what to play with or where to go. &#x4E00;&#x79CD;&#x544A;&#x8BC9;&#x73A9;&#x5BB6;&#x73A9;&#x4EC0;&#x4E48;&#x6216;&#x5230;&#x54EA;&#x53BB;&#x7684;&#x65B9;&#x6CD5;</li>
+<li>Players learn the affordance rules via consistent color and shape and a trust contract is formed. &#x73A9;&#x5BB6;&#x901A;&#x8FC7;&#x76F8;&#x540C;&#x7684;&#x989C;&#x8272;&#x548C;&#x5F62;&#x72B6;&#x6765;&#x5B66;&#x4E60;&#x53EF;&#x89C1;&#x6027;&#x89C4;&#x5219;&#xFF0C;&#x540C;&#x65F6;&#x4FE1;&#x4EFB;&#x8BE5;&#x89C4;&#x5219;</li>
+<li>Ensure affordances work consistently game-wide. &#x786E;&#x4FDD;&#x53EF;&#x89C1;&#x6027;&#x89C4;&#x5219;&#x5728;&#x6E38;&#x620F;&#x5185;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</li>
+<li>Add to your blockmesh for playtests! &#x5728;&#x6E38;&#x620F;&#x6D4B;&#x8BD5;&#x4E2D;&#x6DFB;&#x52A0;&#x5230;&#x4F60;&#x7684;blockmesh&#x4E2D;</li>
 </ul>
-<h2 id="Denying-Affordance-拒绝式可见性"><a href="#Denying-Affordance-拒绝式可见性" class="headerlink" title="Denying Affordance 拒绝式可见性"></a>Denying Affordance 拒绝式可见性</h2><ul>
-<li>Communicates to the player where NOT to go. 告诉玩家不能去的地方</li>
-<li>“Uninvites” the player from going there. 不允许玩家去哪</li>
-<li>Contextualize why the player can’t use it/go there! 根据情境告诉玩家为什么不能使用某物或去某地</li>
-<li>Add to your blockmesh for playtests! 在游戏测试中添加到你的blockmesh中</li>
+<h2 id="Denying-Affordance-&#x62D2;&#x7EDD;&#x5F0F;&#x53EF;&#x89C1;&#x6027;"><a href="#Denying-Affordance-&#x62D2;&#x7EDD;&#x5F0F;&#x53EF;&#x89C1;&#x6027;" class="headerlink" title="Denying Affordance &#x62D2;&#x7EDD;&#x5F0F;&#x53EF;&#x89C1;&#x6027;"></a>Denying Affordance &#x62D2;&#x7EDD;&#x5F0F;&#x53EF;&#x89C1;&#x6027;</h2><ul>
+<li>Communicates to the player where NOT to go. &#x544A;&#x8BC9;&#x73A9;&#x5BB6;&#x4E0D;&#x80FD;&#x53BB;&#x7684;&#x5730;&#x65B9;</li>
+<li>&#x201C;Uninvites&#x201D; the player from going there. &#x4E0D;&#x5141;&#x8BB8;&#x73A9;&#x5BB6;&#x53BB;&#x54EA;</li>
+<li>Contextualize why the player can&#x2019;t use it/go there! &#x6839;&#x636E;&#x60C5;&#x5883;&#x544A;&#x8BC9;&#x73A9;&#x5BB6;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x67D0;&#x7269;&#x6216;&#x53BB;&#x67D0;&#x5730;</li>
+<li>Add to your blockmesh for playtests! &#x5728;&#x6E38;&#x620F;&#x6D4B;&#x8BD5;&#x4E2D;&#x6DFB;&#x52A0;&#x5230;&#x4F60;&#x7684;blockmesh&#x4E2D;</li>
 </ul>
 <h2 id="Visual-Language-Shape"><a href="#Visual-Language-Shape" class="headerlink" title="Visual Language - Shape"></a>Visual Language - Shape</h2><ul>
-<li>绿色圆形代表安全</li>
-<li>黄色矩形代表稳定、实用</li>
-<li>红色三角形代表危险</li>
+<li>&#x7EFF;&#x8272;&#x5706;&#x5F62;&#x4EE3;&#x8868;&#x5B89;&#x5168;</li>
+<li>&#x9EC4;&#x8272;&#x77E9;&#x5F62;&#x4EE3;&#x8868;&#x7A33;&#x5B9A;&#x3001;&#x5B9E;&#x7528;</li>
+<li>&#x7EA2;&#x8272;&#x4E09;&#x89D2;&#x5F62;&#x4EE3;&#x8868;&#x5371;&#x9669;</li>
 </ul>
-<h2 id="Landmarks-aka-weenies-地标"><a href="#Landmarks-aka-weenies-地标" class="headerlink" title="Landmarks (aka weenies) 地标"></a>Landmarks (aka weenies) 地标</h2><ul>
-<li>Orients Players. 引导玩家</li>
-<li>Distant object seen from many vantage points in the level. 从关卡的许多视角都能看到</li>
-<li>A goal to work toward. 一个努力前往的目标</li>
+<h2 id="Landmarks-aka-weenies-&#x5730;&#x6807;"><a href="#Landmarks-aka-weenies-&#x5730;&#x6807;" class="headerlink" title="Landmarks (aka weenies) &#x5730;&#x6807;"></a>Landmarks (aka weenies) &#x5730;&#x6807;</h2><ul>
+<li>Orients Players. &#x5F15;&#x5BFC;&#x73A9;&#x5BB6;</li>
+<li>Distant object seen from many vantage points in the level. &#x4ECE;&#x5173;&#x5361;&#x7684;&#x8BB8;&#x591A;&#x89C6;&#x89D2;&#x90FD;&#x80FD;&#x770B;&#x5230;</li>
+<li>A goal to work toward. &#x4E00;&#x4E2A;&#x52AA;&#x529B;&#x524D;&#x5F80;&#x7684;&#x76EE;&#x6807;</li>
 </ul>
-<h2 id="Openings-Attract-开放式吸引"><a href="#Openings-Attract-开放式吸引" class="headerlink" title="Openings Attract 开放式吸引"></a>Openings Attract 开放式吸引</h2><ul>
-<li>Caves, doors, archways拱门, etc.</li>
-<li>Often leads to a REFUGE SPACE, which psychologically feels safe. 通常导向一个心理上感到安全的避难所</li>
-<li>Mystery神秘感 - “What could be inside?!”</li>
+<h2 id="Openings-Attract-&#x5F00;&#x653E;&#x5F0F;&#x5438;&#x5F15;"><a href="#Openings-Attract-&#x5F00;&#x653E;&#x5F0F;&#x5438;&#x5F15;" class="headerlink" title="Openings Attract &#x5F00;&#x653E;&#x5F0F;&#x5438;&#x5F15;"></a>Openings Attract &#x5F00;&#x653E;&#x5F0F;&#x5438;&#x5F15;</h2><ul>
+<li>Caves, doors, archways&#x62F1;&#x95E8;, etc.</li>
+<li>Often leads to a REFUGE SPACE, which psychologically feels safe. &#x901A;&#x5E38;&#x5BFC;&#x5411;&#x4E00;&#x4E2A;&#x5FC3;&#x7406;&#x4E0A;&#x611F;&#x5230;&#x5B89;&#x5168;&#x7684;&#x907F;&#x96BE;&#x6240;</li>
+<li>Mystery&#x795E;&#x79D8;&#x611F; - &#x201C;What could be inside?!&#x201D;</li>
 </ul>
 <h2 id="Gates-amp-Valves"><a href="#Gates-amp-Valves" class="headerlink" title="Gates &amp; Valves"></a>Gates &amp; Valves</h2><ul>
-<li>Gates stop progress until conditions are met. 在满足条件以前，门不会打开</li>
+<li>Gates stop progress until conditions are met. &#x5728;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x4EE5;&#x524D;&#xFF0C;&#x95E8;&#x4E0D;&#x4F1A;&#x6253;&#x5F00;</li>
 <li>Valves prevent backtracking.</li>
-<li>Both reduce the possibility space and prevent aimless wandering瞎逛.</li>
-<li>Great for linear games, but can be sprinkled运用 into open worlds too!</li>
+<li>Both reduce the possibility space and prevent aimless wandering&#x778E;&#x901B;.</li>
+<li>Great for linear games, but can be sprinkled&#x8FD0;&#x7528; into open worlds too!</li>
 </ul>
-<h2 id="Leading-Lines-引导线"><a href="#Leading-Lines-引导线" class="headerlink" title="Leading Lines 引导线"></a>Leading Lines 引导线</h2><ul>
+<h2 id="Leading-Lines-&#x5F15;&#x5BFC;&#x7EBF;"><a href="#Leading-Lines-&#x5F15;&#x5BFC;&#x7EBF;" class="headerlink" title="Leading Lines &#x5F15;&#x5BFC;&#x7EBF;"></a>Leading Lines &#x5F15;&#x5BFC;&#x7EBF;</h2><ul>
 <li>Lines that draw your eye to the intended point of interest.</li>
 <li>Roads, pipes, cables, etc.</li>
 </ul>
-<h2 id="Pinching-挤压视线"><a href="#Pinching-挤压视线" class="headerlink" title="Pinching 挤压视线"></a>Pinching 挤压视线</h2><ul>
-<li>Angle shapes to funnel players to a specific spot.利用角度吸引玩家到特定地点</li>
-<li>Good for redirection. 适合重新引导</li>
-<li>Great for setting up a reveal. 非常适合设置展示</li>
-<li>Depends on your mobility mechanics! 根据你的移动机制</li>
+<h2 id="Pinching-&#x6324;&#x538B;&#x89C6;&#x7EBF;"><a href="#Pinching-&#x6324;&#x538B;&#x89C6;&#x7EBF;" class="headerlink" title="Pinching &#x6324;&#x538B;&#x89C6;&#x7EBF;"></a>Pinching &#x6324;&#x538B;&#x89C6;&#x7EBF;</h2><ul>
+<li>Angle shapes to funnel players to a specific spot.&#x5229;&#x7528;&#x89D2;&#x5EA6;&#x5438;&#x5F15;&#x73A9;&#x5BB6;&#x5230;&#x7279;&#x5B9A;&#x5730;&#x70B9;</li>
+<li>Good for redirection. &#x9002;&#x5408;&#x91CD;&#x65B0;&#x5F15;&#x5BFC;</li>
+<li>Great for setting up a reveal. &#x975E;&#x5E38;&#x9002;&#x5408;&#x8BBE;&#x7F6E;&#x5C55;&#x793A;</li>
+<li>Depends on your mobility mechanics! &#x6839;&#x636E;&#x4F60;&#x7684;&#x79FB;&#x52A8;&#x673A;&#x5236;</li>
 </ul>
-<h2 id="Framing-amp-Composition-框架以及构成"><a href="#Framing-amp-Composition-框架以及构成" class="headerlink" title="Framing &amp; Composition 框架以及构成"></a>Framing &amp; Composition 框架以及构成</h2><ul>
+<h2 id="Framing-amp-Composition-&#x6846;&#x67B6;&#x4EE5;&#x53CA;&#x6784;&#x6210;"><a href="#Framing-amp-Composition-&#x6846;&#x67B6;&#x4EE5;&#x53CA;&#x6784;&#x6210;" class="headerlink" title="Framing &amp; Composition &#x6846;&#x67B6;&#x4EE5;&#x53CA;&#x6784;&#x6210;"></a>Framing &amp; Composition &#x6846;&#x67B6;&#x4EE5;&#x53CA;&#x6784;&#x6210;</h2><ul>
 <li>Draws attention to point of interest by blocking other parts of the image, making it stand out.</li>
 <li>Google photography composition techniques - lots of good websites!</li>
 <li>Great when combined with Pinching!</li>
 </ul>
-<h2 id="Breadcrumbs-面包屑"><a href="#Breadcrumbs-面包屑" class="headerlink" title="Breadcrumbs 面包屑"></a>Breadcrumbs 面包屑</h2><ul>
-<li>Attract/lead the player, a piece at a time, to a goal.一点点引导玩家到目的地，可以是任何能博眼球的东西</li>
+<h2 id="Breadcrumbs-&#x9762;&#x5305;&#x5C51;"><a href="#Breadcrumbs-&#x9762;&#x5305;&#x5C51;" class="headerlink" title="Breadcrumbs &#x9762;&#x5305;&#x5C51;"></a>Breadcrumbs &#x9762;&#x5305;&#x5C51;</h2><ul>
+<li>Attract/lead the player, a piece at a time, to a goal.&#x4E00;&#x70B9;&#x70B9;&#x5F15;&#x5BFC;&#x73A9;&#x5BB6;&#x5230;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x4F55;&#x80FD;&#x535A;&#x773C;&#x7403;&#x7684;&#x4E1C;&#x897F;</li>
 <li>Can be almost anything that draws the eye:<ul>
-<li>Stuff that breaks up the negative space of floor/walls. 打破地板的东西</li>
-<li>Pickups 可以捡起的东西</li>
-<li>Enemies 敌人</li>
-<li>Lit areas 明亮的区域</li>
+<li>Stuff that breaks up the negative space of floor/walls. &#x6253;&#x7834;&#x5730;&#x677F;&#x7684;&#x4E1C;&#x897F;</li>
+<li>Pickups &#x53EF;&#x4EE5;&#x6361;&#x8D77;&#x7684;&#x4E1C;&#x897F;</li>
+<li>Enemies &#x654C;&#x4EBA;</li>
+<li>Lit areas &#x660E;&#x4EAE;&#x7684;&#x533A;&#x57DF;</li>
 </ul>
 </li>
-<li>Usually better to add after early playtests of blockmesh to see if they are even needed. 最好在早期的游戏测试之后，根据需要添加</li>
+<li>Usually better to add after early playtests of blockmesh to see if they are even needed. &#x6700;&#x597D;&#x5728;&#x65E9;&#x671F;&#x7684;&#x6E38;&#x620F;&#x6D4B;&#x8BD5;&#x4E4B;&#x540E;&#xFF0C;&#x6839;&#x636E;&#x9700;&#x8981;&#x6DFB;&#x52A0;</li>
 </ul>
-<h2 id="Textures-材质"><a href="#Textures-材质" class="headerlink" title="Textures 材质"></a>Textures 材质</h2><ul>
+<h2 id="Textures-&#x6750;&#x8D28;"><a href="#Textures-&#x6750;&#x8D28;" class="headerlink" title="Textures &#x6750;&#x8D28;"></a>Textures &#x6750;&#x8D28;</h2><ul>
 <li>just point the way to go!</li>
 <li>Examples:<ul>
 <li>Arrows pointing the way.</li>
-<li>Scrapes on the ground/walls. 地上或墙上的抓痕</li>
-<li>Signs 标记</li>
+<li>Scrapes on the ground/walls. &#x5730;&#x4E0A;&#x6216;&#x5899;&#x4E0A;&#x7684;&#x6293;&#x75D5;</li>
+<li>Signs &#x6807;&#x8BB0;</li>
 <li>etc.</li>
 </ul>
 </li>
@@ -198,73 +310,261 @@
 <h2 id="Movement"><a href="#Movement" class="headerlink" title="Movement"></a>Movement</h2><ul>
 <li>Use movement to grab the eye.</li>
 <li>Examples:<ul>
-<li>Big scripted moments. 大型脚本</li>
+<li>Big scripted moments. &#x5927;&#x578B;&#x811A;&#x672C;</li>
 <li>Birds</li>
-<li>Spark FX 火花特效</li>
+<li>Spark FX &#x706B;&#x82B1;&#x7279;&#x6548;</li>
 <li>Enemies</li>
-<li>Something flapping in the breeze 微风中漂浮的东西</li>
+<li>Something flapping in the breeze &#x5FAE;&#x98CE;&#x4E2D;&#x6F02;&#x6D6E;&#x7684;&#x4E1C;&#x897F;</li>
 </ul>
 </li>
 <li>Directionality guides the eye to where you want players to go or what you want them to see.</li>
 </ul>
-<h2 id="Light-amp-God-Ray-光照以及光线"><a href="#Light-amp-God-Ray-光照以及光线" class="headerlink" title="Light &amp; God Ray 光照以及光线"></a>Light &amp; God Ray 光照以及光线</h2><ul>
+<h2 id="Light-amp-God-Ray-&#x5149;&#x7167;&#x4EE5;&#x53CA;&#x5149;&#x7EBF;"><a href="#Light-amp-God-Ray-&#x5149;&#x7167;&#x4EE5;&#x53CA;&#x5149;&#x7EBF;" class="headerlink" title="Light &amp; God Ray &#x5149;&#x7167;&#x4EE5;&#x53CA;&#x5149;&#x7EBF;"></a>Light &amp; God Ray &#x5149;&#x7167;&#x4EE5;&#x53CA;&#x5149;&#x7EBF;</h2><ul>
 <li>Players are attracted to the light.</li>
 <li>God rays draw attention and a line to the goal.</li>
-<li>Important in blockmesh phase阶段!</li>
+<li>Important in blockmesh phase&#x9636;&#x6BB5;!</li>
 </ul>
-<h2 id="Bonus-Tips！——The-Squint-Test-眯眼测试"><a href="#Bonus-Tips！——The-Squint-Test-眯眼测试" class="headerlink" title="Bonus Tips！——The Squint Test 眯眼测试"></a>Bonus Tips！——The Squint Test 眯眼测试</h2><ul>
-<li>Step 1: Squint眯 your eyes and look at the game.</li>
-<li>Step 2: Everything wil be blurry模糊, but what stands out?</li>
-<li>Step 3: Adjust your layout布局 and lighting光源 to highlight强调 what you want players to focus on.</li>
+<h2 id="Bonus-Tips&#xFF01;&#x2014;&#x2014;The-Squint-Test-&#x772F;&#x773C;&#x6D4B;&#x8BD5;"><a href="#Bonus-Tips&#xFF01;&#x2014;&#x2014;The-Squint-Test-&#x772F;&#x773C;&#x6D4B;&#x8BD5;" class="headerlink" title="Bonus Tips&#xFF01;&#x2014;&#x2014;The Squint Test &#x772F;&#x773C;&#x6D4B;&#x8BD5;"></a>Bonus Tips&#xFF01;&#x2014;&#x2014;The Squint Test &#x772F;&#x773C;&#x6D4B;&#x8BD5;</h2><ul>
+<li>Step 1: Squint&#x772F; your eyes and look at the game.</li>
+<li>Step 2: Everything wil be blurry&#x6A21;&#x7CCA;, but what stands out?</li>
+<li>Step 3: Adjust your layout&#x5E03;&#x5C40; and lighting&#x5149;&#x6E90; to highlight&#x5F3A;&#x8C03; what you want players to focus on.</li>
 </ul>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Game-Design/">#Game Design</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2020/01/08/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/">如何用Markdown画流程图</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/">UE4蓝图 第2课</a>
+            
+        </span>
+    </div>
+    
+</article>
 
-      </div>
-      
-      <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/Game-Design/">Game Design</a>
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 MJ&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
             </div>
-        
-        <nav class="post-nav"><a class="prev" href="/2020/01/08/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">如何用Markdown画流程图</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    <a class="next" href="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/">
-        <span class="next-text nav-default">UE4蓝图 第2课</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    </nav></footer>
-    </article></div><div class="comments" id="comments"></div></div>
-      </main>
+            <div class="column is-hidden-mobile"></div>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mingjun4503@163.com" class="iconfont icon-email" title="email"></a>
-        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
-        </div><div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
-  </span>
-
-  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">MJ</span>
-  </span>
-</div>
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
 </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
-      <div class="back-to-top" id="back-to-top">
-        <i class="iconfont icon-up"></i>
-      </div>
-    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Sans Titre)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
 </body>
 </html>

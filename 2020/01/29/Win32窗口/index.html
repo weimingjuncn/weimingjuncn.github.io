@@ -1,202 +1,446 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Win32窗口 - MJ&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="Win32窗口"/><meta name="keywords" content="C++, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
-<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/29/Win32窗口/"/>
+<meta name="description" content="This is a personal Blog.">
 
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
 
-<script id="baidu_push">
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-<script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
-</script>
 
-    <title>Win32窗口 - MJ's Blog</title>
-  <meta name="generator" content="Hexo 4.2.0"></head>
 
-  <body><div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/." class="logo">MJ's Blog</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
 
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list"><a href="/">
-        <li class="mobile-menu-item">Home
-          </li>
-      </a><a href="/tags">
-        <li class="mobile-menu-item">Tags
-          </li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About
-          </li>
-      </a></ul>
-</nav>
-<div class="container" id="mobile-panel">
-      <header id="header" class="header"><div class="logo-wrapper">
-  <a href="/." class="logo">MJ's Blog</a>
-</div>
+    <meta name="description" content="&amp;#x4E00;&amp;#x3001;&amp;#x521B;&amp;#x5EFA;&amp;#x9879;&amp;#x76EE; &amp;#x5F00;&amp;#x53D1;&amp;#x8F6F;&amp;#x4EF6;&amp;#xFF1A;VS2017  &amp;#x65B0;&amp;#x5EFA;&amp;#x9879;&amp;#x76EE; &gt; Visual C++ &gt; Windows&amp;#x684C;&amp;#x9762; &gt; Windows&amp;#x684C;&amp;#x97">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Win32窗口">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/29/Win32%E7%AA%97%E5%8F%A3/index.html">
+<meta property="og:site_name" content="MJ&#39;s Blog">
+<meta property="og:description" content="&amp;#x4E00;&amp;#x3001;&amp;#x521B;&amp;#x5EFA;&amp;#x9879;&amp;#x76EE; &amp;#x5F00;&amp;#x53D1;&amp;#x8F6F;&amp;#x4EF6;&amp;#xFF1A;VS2017  &amp;#x65B0;&amp;#x5EFA;&amp;#x9879;&amp;#x76EE; &gt; Visual C++ &gt; Windows&amp;#x684C;&amp;#x9762; &gt; Windows&amp;#x684C;&amp;#x97">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-29T04:15:19.000Z">
+<meta property="article:modified_time" content="2020-01-29T14:17:38.335Z">
+<meta property="article:author" content="MJ">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
 
-<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
-          <a class="menu-item-link" href="/">
-            Home
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
             </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/tags">
-            Tags
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">归档</a>
+            
+            <a class="navbar-item "
+               href="/tags">标签分类</a>
+            
+            <a class="navbar-item "
+               href="/about">关于</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
             </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/about/">
-            About
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#一、创建项目">1&nbsp;&nbsp;<b>一、创建项目</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#二、">2&nbsp;&nbsp;<b>二、</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#三、">3&nbsp;&nbsp;<b>三、</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
             </a>
-        </li>
-      </ul></nav>
-</header>
-
-      <main id="main" class="main">
-        <div class="content-wrapper">
-          <div id="content" class="content"><article class="post">
-    <header class="post-header">
-      <h1 class="post-title">Win32窗口
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-29
-        </span></div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
-    <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、创建项目"><span class="toc-text">一、创建项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、"><span class="toc-text">二、</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、"><span class="toc-text">三、</span></a></li></ol>
+               
+            
+        </div>
     </div>
-  </div><div class="post-content"><h1 id="一、创建项目"><a href="#一、创建项目" class="headerlink" title="一、创建项目"></a>一、创建项目</h1><ul>
-<li>开发软件：VS2017</li>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Win32窗口
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-01-29T04:15:19.000Z" itemprop="datePublished">1月 29 2020</time>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h1 id="&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x9879;&#x76EE;"><a href="#&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x9879;&#x76EE;" class="headerlink" title="&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x9879;&#x76EE;"></a>&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x9879;&#x76EE;</h1><ul>
+<li>&#x5F00;&#x53D1;&#x8F6F;&#x4EF6;&#xFF1A;VS2017</li>
 </ul>
-<p>新建项目 &gt; Visual C++ &gt; Windows桌面 &gt; Windows桌面向导，填好项目名，项目路径后，下一步，选择“桌面应用程序(.exe)”，勾选“空项目”，点击确定。</p>
-<p>PS：在VS2013、2015中，窗口程序叫”Win32项目“，在VS2017、2019中叫做“桌面应用程序”。</p>
-<h1 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h1><p>在线搜索API网址：<a href="https://docs.microsoft.com/zh-cn/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/</a></p>
+<p>&#x65B0;&#x5EFA;&#x9879;&#x76EE; &gt; Visual C++ &gt; Windows&#x684C;&#x9762; &gt; Windows&#x684C;&#x9762;&#x5411;&#x5BFC;&#xFF0C;&#x586B;&#x597D;&#x9879;&#x76EE;&#x540D;&#xFF0C;&#x9879;&#x76EE;&#x8DEF;&#x5F84;&#x540E;&#xFF0C;&#x4E0B;&#x4E00;&#x6B65;&#xFF0C;&#x9009;&#x62E9;&#x201C;&#x684C;&#x9762;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;(.exe)&#x201D;&#xFF0C;&#x52FE;&#x9009;&#x201C;&#x7A7A;&#x9879;&#x76EE;&#x201D;&#xFF0C;&#x70B9;&#x51FB;&#x786E;&#x5B9A;&#x3002;</p>
+<p>PS&#xFF1A;&#x5728;VS2013&#x3001;2015&#x4E2D;&#xFF0C;&#x7A97;&#x53E3;&#x7A0B;&#x5E8F;&#x53EB;&#x201D;Win32&#x9879;&#x76EE;&#x201C;&#xFF0C;&#x5728;VS2017&#x3001;2019&#x4E2D;&#x53EB;&#x505A;&#x201C;&#x684C;&#x9762;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x201D;&#x3002;</p>
+<h1 id="&#x4E8C;&#x3001;"><a href="#&#x4E8C;&#x3001;" class="headerlink" title="&#x4E8C;&#x3001;"></a>&#x4E8C;&#x3001;</h1><p>&#x5728;&#x7EBF;&#x641C;&#x7D22;API&#x7F51;&#x5740;&#xFF1A;<a href="https://docs.microsoft.com/zh-cn/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/</a></p>
 <ol>
-<li><p>头文件：windows.h文件是win32 API的主要头文件，首字母大小写都行。</p>
+<li><p>&#x5934;&#x6587;&#x4EF6;&#xFF1A;windows.h&#x6587;&#x4EF6;&#x662F;win32 API&#x7684;&#x4E3B;&#x8981;&#x5934;&#x6587;&#x4EF6;&#xFF0C;&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5C0F;&#x5199;&#x90FD;&#x884C;&#x3002;</p>
 </li>
-<li><p>主函数WinMain：是main函数的一个自定义函数，在底层由main函数调用它。</p>
-<p>右键函数名，选择“转到定义”可以查看函数的具体定义。</p>
+<li><p>&#x4E3B;&#x51FD;&#x6570;WinMain&#xFF1A;&#x662F;main&#x51FD;&#x6570;&#x7684;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x5E95;&#x5C42;&#x7531;main&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5B83;&#x3002;</p>
+<p>&#x53F3;&#x952E;&#x51FD;&#x6570;&#x540D;&#xFF0C;&#x9009;&#x62E9;&#x201C;&#x8F6C;&#x5230;&#x5B9A;&#x4E49;&#x201D;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x51FD;&#x6570;&#x7684;&#x5177;&#x4F53;&#x5B9A;&#x4E49;&#x3002;</p>
 <ol>
-<li><p>返回值为int类型。</p>
+<li><p>&#x8FD4;&#x56DE;&#x503C;&#x4E3A;int&#x7C7B;&#x578B;&#x3002;</p>
 </li>
-<li><p>调用约定</p>
+<li><p>&#x8C03;&#x7528;&#x7EA6;&#x5B9A;</p>
 <ul>
 <li>WINAPI</li>
-<li>作用：决定函数名字编译方式、参数入栈顺序、函数逻辑调用时间</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x51B3;&#x5B9A;&#x51FD;&#x6570;&#x540D;&#x5B57;&#x7F16;&#x8BD1;&#x65B9;&#x5F0F;&#x3001;&#x53C2;&#x6570;&#x5165;&#x6808;&#x987A;&#x5E8F;&#x3001;&#x51FD;&#x6570;&#x903B;&#x8F91;&#x8C03;&#x7528;&#x65F6;&#x95F4;</li>
 </ul>
 </li>
-<li><p>参数：由系统传递供我们使用</p>
+<li><p>&#x53C2;&#x6570;&#xFF1A;&#x7531;&#x7CFB;&#x7EDF;&#x4F20;&#x9012;&#x4F9B;&#x6211;&#x4EEC;&#x4F7F;&#x7528;</p>
 <ul>
-<li><p>HINSTANCE hInstance：实例句柄，当前软件运行时，系统分配给的唯一ID，int类型。</p>
+<li><p>HINSTANCE hInstance&#xFF1A;&#x5B9E;&#x4F8B;&#x53E5;&#x67C4;&#xFF0C;&#x5F53;&#x524D;&#x8F6F;&#x4EF6;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x5206;&#x914D;&#x7ED9;&#x7684;&#x552F;&#x4E00;ID&#xFF0C;int&#x7C7B;&#x578B;&#x3002;</p>
 </li>
-<li><p>HINSTANCE hPreInstance：前一个实例句柄，即前一个打开的软件的句柄，值为NULL，功能名存实亡。</p>
+<li><p>HINSTANCE hPreInstance&#xFF1A;&#x524D;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x53E5;&#x67C4;&#xFF0C;&#x5373;&#x524D;&#x4E00;&#x4E2A;&#x6253;&#x5F00;&#x7684;&#x8F6F;&#x4EF6;&#x7684;&#x53E5;&#x67C4;&#xFF0C;&#x503C;&#x4E3A;NULL&#xFF0C;&#x529F;&#x80FD;&#x540D;&#x5B58;&#x5B9E;&#x4EA1;&#x3002;</p>
 </li>
-<li><p>LPSTR lpCmdLine：命令行参数，main函数传递到WinMain函数的参数，类型为char*，</p>
-<p>PS：P或LP开头的转义变量类型均为指针类型</p>
+<li><p>LPSTR lpCmdLine&#xFF1A;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#xFF0C;main&#x51FD;&#x6570;&#x4F20;&#x9012;&#x5230;WinMain&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7C7B;&#x578B;&#x4E3A;char*&#xFF0C;</p>
+<p>PS&#xFF1A;P&#x6216;LP&#x5F00;&#x5934;&#x7684;&#x8F6C;&#x4E49;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x5747;&#x4E3A;&#x6307;&#x9488;&#x7C7B;&#x578B;</p>
 </li>
-<li><p>int nShowCmd：窗口显示方式，默认是窗口正常显示，值为1</p>
+<li><p>int nShowCmd&#xFF1A;&#x7A97;&#x53E3;&#x663E;&#x793A;&#x65B9;&#x5F0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x7A97;&#x53E3;&#x6B63;&#x5E38;&#x663E;&#x793A;&#xFF0C;&#x503C;&#x4E3A;1</p>
 </li>
-<li><p>SAL：微软源代码注释语言（8个）</p>
-<p>功能：提醒编译器帮我们检查函数参数可能存在的问题，避免这些问题在运行时爆发。</p>
+<li><p>SAL&#xFF1A;&#x5FAE;&#x8F6F;&#x6E90;&#x4EE3;&#x7801;&#x6CE8;&#x91CA;&#x8BED;&#x8A00;&#xFF08;8&#x4E2A;&#xFF09;</p>
+<p>&#x529F;&#x80FD;&#xFF1A;&#x63D0;&#x9192;&#x7F16;&#x8BD1;&#x5668;&#x5E2E;&#x6211;&#x4EEC;&#x68C0;&#x67E5;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x907F;&#x514D;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x7206;&#x53D1;&#x3002;</p>
 </li>
 </ul>
 </li>
-<li><p>SDL：安全开发生命周期</p>
+<li><p>SDL&#xFF1A;&#x5B89;&#x5168;&#x5F00;&#x53D1;&#x751F;&#x547D;&#x5468;&#x671F;</p>
 </li>
 </ol>
 </li>
 </ol>
-<h1 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h1><ol>
-<li>WNDCLASS：窗口类（类是结构体的拓展）</li>
-<li>WNDCLASSEX：拓展版本的窗口类</li>
+<h1 id="&#x4E09;&#x3001;"><a href="#&#x4E09;&#x3001;" class="headerlink" title="&#x4E09;&#x3001;"></a>&#x4E09;&#x3001;</h1><ol>
+<li>WNDCLASS&#xFF1A;&#x7A97;&#x53E3;&#x7C7B;&#xFF08;&#x7C7B;&#x662F;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x62D3;&#x5C55;&#xFF09;</li>
+<li>WNDCLASSEX&#xFF1A;&#x62D3;&#x5C55;&#x7248;&#x672C;&#x7684;&#x7A97;&#x53E3;&#x7C7B;</li>
 </ol>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/C/">#C++</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/">Unity简易关卡原型开发</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/01/27/2D%E5%9B%9E%E5%90%88%E5%88%B6%E6%B8%B8%E6%88%8FDemo%E5%AE%9E%E7%8E%B0/">2.5D回合制游戏Demo实现</a>
+            
+        </span>
+    </div>
+    
+</article>
 
-      </div>
-      
-      <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/C/">C++</a>
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 MJ&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
             </div>
-        
-        <nav class="post-nav"><a class="prev" href="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Unity简易关卡原型开发</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    <a class="next" href="/2020/01/27/2D%E5%9B%9E%E5%90%88%E5%88%B6%E6%B8%B8%E6%88%8FDemo%E5%AE%9E%E7%8E%B0/">
-        <span class="next-text nav-default">2.5D回合制游戏Demo实现</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    </nav></footer>
-    </article></div><div class="comments" id="comments"></div></div>
-      </main>
+            <div class="column is-hidden-mobile"></div>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mingjun4503@163.com" class="iconfont icon-email" title="email"></a>
-        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
-        </div><div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
-  </span>
-
-  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">MJ</span>
-  </span>
-</div>
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
 </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
-      <div class="back-to-top" id="back-to-top">
-        <i class="iconfont icon-up"></i>
-      </div>
-    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Sans Titre)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
 </body>
 </html>

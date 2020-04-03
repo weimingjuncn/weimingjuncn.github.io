@@ -1,239 +1,509 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Unity简易关卡原型开发 - MJ&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="Unity简易关卡原型开发"/><meta name="keywords" content="Unity, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
-<link rel="canonical" href="https://weimingjuncn.github.io/2020/02/07/Unity简易关卡原型开发/"/>
+<meta name="description" content="This is a personal Blog.">
 
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
 
-<script id="baidu_push">
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-<script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
-</script>
 
-    <title>Unity简易关卡原型开发 - MJ's Blog</title>
-  <meta name="generator" content="Hexo 4.2.0"></head>
 
-  <body><div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/." class="logo">MJ's Blog</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
 
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list"><a href="/">
-        <li class="mobile-menu-item">Home
-          </li>
-      </a><a href="/tags">
-        <li class="mobile-menu-item">Tags
-          </li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About
-          </li>
-      </a></ul>
-</nav>
-<div class="container" id="mobile-panel">
-      <header id="header" class="header"><div class="logo-wrapper">
-  <a href="/." class="logo">MJ's Blog</a>
-</div>
+    <meta name="description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2018.4.13c1 &amp;#x4E00;&amp;#x3001;&amp;#x51C6;&amp;#x5907;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5728;&amp;#x4E00;&amp;#x4E2A;&amp;#x65B0;&amp;#x5EFA;&amp;#x7684;&amp;#x573A;&amp;#x666F;&amp;#x4E0B;&amp;#x65B0;&amp;#x5EFA;&amp;#x4E00;&amp;#x4E2A;C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity简易关卡原型开发">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="MJ&#39;s Blog">
+<meta property="og:description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2018.4.13c1 &amp;#x4E00;&amp;#x3001;&amp;#x51C6;&amp;#x5907;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5728;&amp;#x4E00;&amp;#x4E2A;&amp;#x65B0;&amp;#x5EFA;&amp;#x7684;&amp;#x573A;&amp;#x666F;&amp;#x4E0B;&amp;#x65B0;&amp;#x5EFA;&amp;#x4E00;&amp;#x4E2A;C">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207172113295.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207172929532.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174110820.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174357668.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174606366.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174838667.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209104045071.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209165155270.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209170725519.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209185228053.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209190218401.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213125222589.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213130047903.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213130137382.png">
+<meta property="article:published_time" content="2020-02-07T09:03:06.000Z">
+<meta property="article:modified_time" content="2020-02-17T08:17:13.051Z">
+<meta property="article:author" content="MJ">
+<meta property="article:tag" content="Unity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207172113295.png">
 
-<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
-          <a class="menu-item-link" href="/">
-            Home
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
             </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/tags">
-            Tags
-            </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/about/">
-            About
-            </a>
-        </li>
-      </ul></nav>
-</header>
-
-      <main id="main" class="main">
-        <div class="content-wrapper">
-          <div id="content" class="content"><article class="post">
-    <header class="post-header">
-      <h1 class="post-title">Unity简易关卡原型开发
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-07
-        </span></div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
-    <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、准备工作"><span class="toc-text">一、准备工作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、编写鼠标交互脚本"><span class="toc-text">二、编写鼠标交互脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、使用MavMesh组件实现鼠标点击移动"><span class="toc-text">三、使用MavMesh组件实现鼠标点击移动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、玩家互动行为实现"><span class="toc-text">四、玩家互动行为实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、NPC原型设计"><span class="toc-text">五、NPC原型设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、NPC跟踪玩家角色"><span class="toc-text">六、NPC跟踪玩家角色</span></a></li></ol>
-    </div>
-  </div><div class="post-content"><p>Unity版本：Unity 2018.4.13c1</p>
-<h1 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h1><p>在一个新建的场景下新建一个Cube，调成Cube的大小，使之成为一个扁平面（Scale参考值：x=50，y=0.36，z=50），重命名为“Floor”，重置Floor的位置到（0，0，0）。</p>
-<p>在Floor上方新建一个Capsule,调整大小致合适。</p>
-<p>在Floor上方新建一个Cube,调整大小致门板的样子，重命名为“Door”</p>
-<p>在场景里新建一个空Object，命名为“MouseManager”。</p>
-<p>在项目面板的Assets文件夹下新建一个Materials文件夹，在其中新建一个材质，取名为Gray。将Gray的Inspector面板的MainMaps下把颜色设置成灰色。拖拽Gray致Floor上。</p>
-<p>调整角度到可以同时看到Door、Capsule、Floor和环境的合适位置后，选中Main Camera，使用快捷键【Ctrl + Shift + F】将摄像机快速调整到满足当前观察视角的位置。</p>
-<p>完成后如下图：</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207172113295.png" alt="image-20200207172113295"></p>
-<p>在Assets文件夹下新建一个名叫“Cursors”的文件夹，导入png图片素材如下图：</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207172929532.png" alt="image-20200207172929532"></p>
-<h1 id="二、编写鼠标交互脚本"><a href="#二、编写鼠标交互脚本" class="headerlink" title="二、编写鼠标交互脚本"></a>二、编写鼠标交互脚本</h1><p>在项目面板的Assets文件夹下新建一个名叫“Scripts”的文件夹，在其中新建一个C#脚本文件，取名为MouseManager</p>
-<p>打开MouseManager.cs，编写代码并确定无错误后保存如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MouseManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//which objects are clickable</span></span><br><span class="line">    <span class="keyword">public</span> LayerMask clickableLayer;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Swap cursors per object</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D pointer;<span class="comment">//Normal Pointer</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D target;<span class="comment">//Cursors for clickable objects like world</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D doorway;<span class="comment">//Cursors for doorways</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D combat;<span class="comment">//Cursors for combat sections</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        RaycastHit hit;</span><br><span class="line">        <span class="keyword">if</span>(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), <span class="keyword">out</span> hit, <span class="number">50</span>, clickableLayer.<span class="keyword">value</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">bool</span> door = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span>(hit.collider.gameObject.tag == <span class="string">"Doorway"</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Cursor.SetCursor(doorway, <span class="keyword">new</span> Vector2(<span class="number">16</span>, <span class="number">16</span>), CursorMode.Auto);</span><br><span class="line">                door = <span class="literal">true</span>;                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                Cursor.SetCursor(target, <span class="keyword">new</span> Vector2(<span class="number">16</span>, <span class="number">16</span>), CursorMode.Auto);                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            Cursor.SetCursor(pointer, Vector2.zero, CursorMode.Auto);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>回到Unity编辑器，选中MouseManager，在Inspector面板点击【Add Component】按钮，搜索到MouseManager后单击添加。</p>
-<p>把Cursors文件夹下的png素材拖拽到Mouse Manager组件如下图：</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174110820.png" alt="image-20200207174110820"></p>
-<p>点击Inspector面板上方的Layers下拉按钮，点击Edit Layers</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174357668.png" alt="image-20200207174357668"></p>
-<p>点开Layers，在User Layers 9填写”Clickable“</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174606366.png" alt="image-20200207174606366"></p>
-<p>在Hierachy面板选中MouseManager，在Inspector面板的MouseManager组件下的Clickable Layer选项点击下拉，把默认的Nothing改选成Clickable</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174838667.png" alt="image-20200207174838667"></p>
-<p>点击播放按钮验证效果。当鼠标移动到Floor上时，鼠标样式为target，当鼠标移动到Door上时，鼠标样式为doorway，当鼠标移动到周围环境时，鼠标样式为pointer。</p>
-<h1 id="三、使用MavMesh组件实现鼠标点击移动"><a href="#三、使用MavMesh组件实现鼠标点击移动" class="headerlink" title="三、使用MavMesh组件实现鼠标点击移动"></a>三、使用MavMesh组件实现鼠标点击移动</h1><p>接上一篇鼠标交互</p>
-<p>将路径Unity Fundamentals Source Assets\NaMeshComponents-Master下的两个文件夹Gizmos和NavMeshComponents拖拽复制到Unity编辑器项目面板Assets文件夹下。</p>
-<p>在Hierachy面板新建一个空Object命名为”NavMesh Surface”，点击NavMesh Surface，在Inspector面板点击Add Component，选择NavMeshSurface。</p>
-<p>点击Inspector面板上方的Layers下拉按钮，选择Edit Layers，在User Layer 10填上Player。</p>
-<p>点击Cupsule，在Inspector面板将Layer设置为Player。</p>
-<p>回到NavMeshSurface的Inspector面板，在NavMeshSurface组件下方，Agent Type默认Humanoid，Include Layers取消勾选Player</p>
-<p>点击Bake按钮创建一层附在Floor上的蓝色NavMesh表面</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209104045071.png" alt="image-20200209104045071"></p>
-<p>在Door的Inspector面板添加NavMeshObstacle组件，默认Carve勾选。产生的效果是Capsule无法通过Door，即视Door为一个障碍。</p>
-<p>添加NavMeshModifier组件，取消勾选Ingnore From Build。</p>
-<p>回到NavMesh Surface的Inspector面板，再次点击Bake。</p>
-<p>如果此时向上平移Door，原本Door下方的黑色矩形将消失，视为“门开启”，Capsule可以通过。</p>
-<p>选中Capsule，添加组件NavMeshAgent，Agent Type默认Humanoid。</p>
-<p>在项目面板Scripts文件夹下新建一个C#脚本文件，取名“PlayerController”。</p>
-<p>打开脚本文件，编写代码如下，确认无报错后保存。</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.AI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerController</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//private Animator anim;</span></span><br><span class="line">    <span class="keyword">private</span> NavMeshAgent agent;</span><br><span class="line">    <span class="comment">// Use this for initializtion</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="comment">//  anim = GetComponent&lt;Animator&gt;();</span></span><br><span class="line">      agent = GetComponent&lt;NavMeshAgent&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>打开之前写的MouseManager.cs，修改代码如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.Events;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MouseManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//what objects are clickable</span></span><br><span class="line">    <span class="keyword">public</span> LayerMask clickableLayer;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Swap cursers per object</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D pointer;<span class="comment">//Normal Pointer</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D target;<span class="comment">//Cursers for clickable objects like world</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D doorway;<span class="comment">//Cursers for doorways</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D combat;<span class="comment">//Cursers for combat sections</span></span><br><span class="line">    <span class="keyword">public</span> EventVector3 OnclickEnviroment; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        RaycastHit hit;</span><br><span class="line">        <span class="keyword">if</span>(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), <span class="keyword">out</span> hit, <span class="number">50</span>, clickableLayer.<span class="keyword">value</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">bool</span> door = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span>(hit.collider.gameObject.tag == <span class="string">"Doorway"</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Cursor.SetCursor(doorway, <span class="keyword">new</span> Vector2(<span class="number">16</span>, <span class="number">16</span>), CursorMode.Auto);</span><br><span class="line">                door = <span class="literal">true</span>;                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                Cursor.SetCursor(target, <span class="keyword">new</span> Vector2(<span class="number">16</span>, <span class="number">16</span>), CursorMode.Auto);                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(Input.GetMouseButton(<span class="number">0</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                OnclickEnviroment.Invoke(hit.point);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            Cursor.SetCursor(pointer, Vector2.zero, CursorMode.Auto);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">System.Serializable</span>]</span><br><span class="line">public class EventVector3 : UnityEvent&lt;Vector3&gt;&#123; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>回到Unity编辑器，MouseManager的Inpspector面板的MouseManager组件多出了Onclick Enviroment(Vector3)。</p>
-<p>从Hierarchy面板拖拽Capsule到None(Object)，点击No function下拉框，勾选NavMeshAgent下的destination。</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209165155270.png" alt="image-20200209165155270"></p>
-<p>点击播放后，鼠标单击Floor上任意位置，Capsule移动跟随。</p>
-<p>在Capsule的Inspector面板的NavMeshAgent组件下的Steering部分可以修改移动速度(Speed)、角速度(Angular Speed)、加速度(Acceleration)、制动距离(Stopping Distance)、自动刹车(Auto Braking)。</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209170725519.png" alt="image-20200209170725519"></p>
-<h1 id="四、玩家互动行为实现"><a href="#四、玩家互动行为实现" class="headerlink" title="四、玩家互动行为实现"></a>四、玩家互动行为实现</h1><p>修改MouseManager.cs如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.Events;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MouseManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//what objects are clickable</span></span><br><span class="line">    <span class="keyword">public</span> LayerMask clickableLayer;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Swap cursers per object</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D pointer;<span class="comment">//Normal Pointer</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D target;<span class="comment">//Cursers for clickable objects like world</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D doorway;<span class="comment">//Cursers for doorways</span></span><br><span class="line">    <span class="keyword">public</span> Texture2D combat;<span class="comment">//Cursers for combat sections</span></span><br><span class="line">    <span class="keyword">public</span> EventVector3 OnclickEnviroment;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        RaycastHit hit;</span><br><span class="line">        <span class="keyword">if</span>(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), <span class="keyword">out</span> hit, <span class="number">50</span>, clickableLayer.<span class="keyword">value</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">bool</span> door = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">bool</span> item = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span>(hit.collider.gameObject.tag == <span class="string">"Doorway"</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Cursor.SetCursor(doorway, <span class="keyword">new</span> Vector2(<span class="number">16</span>, <span class="number">16</span>), CursorMode.Auto);</span><br><span class="line">                door = <span class="literal">true</span>;                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(hit.collider.gameObject.tag == <span class="string">"Item"</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Cursor.SetCursor(combat, <span class="keyword">new</span> Vector2(<span class="number">16</span>, <span class="number">16</span>), CursorMode.Auto);</span><br><span class="line">                item = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                Cursor.SetCursor(target, <span class="keyword">new</span> Vector2(<span class="number">16</span>, <span class="number">16</span>), CursorMode.Auto);                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(Input.GetMouseButton(<span class="number">0</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(door)</span><br><span class="line">                &#123;</span><br><span class="line">                    Transform doorway = hit.collider.gameObject.transform;</span><br><span class="line">                    OnclickEnviroment.Invoke(doorway.position);</span><br><span class="line">                    Debug.Log(<span class="string">"DOOR"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(item)</span><br><span class="line">                &#123;</span><br><span class="line">                    Transform itemPos = hit.collider.gameObject.transform;</span><br><span class="line">                    OnclickEnviroment.Invoke(itemPos.position);</span><br><span class="line">                    Debug.Log(<span class="string">"ITEM"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    OnclickEnviroment.Invoke(hit.point);   </span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            Cursor.SetCursor(pointer, Vector2.zero, CursorMode.Auto);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">System.Serializable</span>]</span><br><span class="line">public class EventVector3 : UnityEvent&lt;Vector3&gt;&#123; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>回到Unity编辑器，在Floor上新建一个Cube。</p>
-<p>将其Layer设置成Clickable，点击Untagged按钮，选择Add Tag，点击加号按钮，填写“Item”，保存。</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209185228053.png" alt="image-20200209185228053"></p>
-<p>点击播放，当鼠标点击Door后，Unity编辑器控制台打印消息“DOOR”，当鼠标点击Cube后，控制台打印消息消息“ITEM”。</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209190218401.png" alt="image-20200209190218401"></p>
-<h1 id="五、NPC原型设计"><a href="#五、NPC原型设计" class="headerlink" title="五、NPC原型设计"></a>五、NPC原型设计</h1><p>在Scripts文件夹下新建两个C#脚本文件，分别命名为“NPCController.cs”，“PlayerController.cs”。</p>
-<p>NPCController.cs代码如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.AI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NPCController</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> patrolTime = <span class="number">10f</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> aggroRange = <span class="number">10f</span>;</span><br><span class="line">    <span class="keyword">public</span> Transform[] waypoints;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> index;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> speed, agentSpeed;</span><br><span class="line">    <span class="keyword">private</span> Transform player;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Animator anim;</span><br><span class="line">    <span class="keyword">private</span> NavMeshAgent agent;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        anim= GetComponent&lt;Animator&gt;();</span><br><span class="line">        agent =GetComponent&lt;NavMeshAgent&gt;();</span><br><span class="line">        <span class="keyword">if</span>(agent != <span class="literal">null</span>) &#123; agentSpeed = agent.speed; &#125;</span><br><span class="line">        player = GameObject.FindGameObjectWithTag(<span class="string">"Player"</span>).transform;</span><br><span class="line">        index = Random.Range(<span class="number">0</span>, waypoints.Length);</span><br><span class="line"></span><br><span class="line">        InvokeRepeating(<span class="string">"Tick"</span>, <span class="number">0</span> , <span class="number">0.5f</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(waypoints.Length &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            InvokeRepeating(<span class="string">"Patrol"</span>, <span class="number">0</span>, patrolTime);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Patrol</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        index= index == waypoints.Length - <span class="number">1</span> ? <span class="number">0</span> : index + <span class="number">1</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Tick</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        agent.destination = waypoints[index].position;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>PlayerController.cs代码如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.AI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerController</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//private Animator anim;</span></span><br><span class="line">    <span class="keyword">private</span> NavMeshAgent agent;</span><br><span class="line">    <span class="comment">// Use this for initializtion</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="comment">//  anim = GetComponent&lt;Animator&gt;();</span></span><br><span class="line">      agent = GetComponent&lt;NavMeshAgent&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>复制Capsule一个，移到Door旁边，重命名为NPC，原来的Capsule命名为Player。</p>
-<p>给NPC添加NPCController组件，PlayerController组件虽然暂时用不上，但可以先添加到Player上。</p>
-<p>在Hierarchy面板新建一个空Object Waypoint (1)，在Inspector面板修改图标颜色，操作如下图。</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213125222589.png" alt="image-20200213125222589"></p>
-<p>复制Waypoint (1)，粘贴自动生成一个Waypoint (2)。把两个Waypoint平移到Floor上方便观察的位置。</p>
-<p>选中NPC，点击Inspector面板的锁定面板按钮，同时选中Hierarchy面板的Waypoint (1)、Waypoint (2)拖拽到NPC的NPCController组件下的Waypoints</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213130047903.png" alt="image-20200213130047903"></p>
-<p>拖拽Waypoint过来后：</p>
-<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213130137382.png" alt="image-20200213130137382"></p>
-<p>解除NPC的Inspector面板锁定，保存场景，点击Play播放。</p>
-<p>我们发现NPC会先自己移动到Waypoint (1)，过了几秒后自己移动到Waypoint (2)，然后回到Waypoint (1)，循环往复。</p>
-<h1 id="六、NPC跟踪玩家角色"><a href="#六、NPC跟踪玩家角色" class="headerlink" title="六、NPC跟踪玩家角色"></a>六、NPC跟踪玩家角色</h1><p>修改NPCController.cs的Tick函数如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tick</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    agent.destination = waypoints[index].position;</span><br><span class="line">    agent.speed = agentSpeed / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(player != <span class="literal">null</span> &amp;&amp; Vector2.Distance(transform.position, player.position) &lt; aggroRange)</span><br><span class="line">    &#123;</span><br><span class="line">        agent.destination = player.position;</span><br><span class="line">        agent.speed = agentSpeed;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>保存后回到Unity编辑器，把NPC的NavMeshAgent组件下的Steering&gt;StoppingDistance设为1.5。</p>
-<p>保存场景后点击播放按钮，我们发现，当鼠标点击Floor后，Player移动，NPC跟随在后。</p>
-
-      </div>
-      
-      <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/Unity/">Unity</a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+        </div>
         
-        <nav class="post-nav"><a class="prev" href="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Unity简易关卡设计</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    <a class="next" href="/2020/01/29/Win32%E7%AA%97%E5%8F%A3/">
-        <span class="next-text nav-default">Win32窗口</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    </nav></footer>
-    </article></div><div class="comments" id="comments"></div></div>
-      </main>
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">归档</a>
+            
+            <a class="navbar-item "
+               href="/tags">标签分类</a>
+            
+            <a class="navbar-item "
+               href="/about">关于</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#一、准备工作">1&nbsp;&nbsp;<b>一、准备工作</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#二、编写鼠标交互脚本">2&nbsp;&nbsp;<b>二、编写鼠标交互脚本</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#三、使用MavMesh组件实现鼠标点击移动">3&nbsp;&nbsp;<b>三、使用MavMesh组件实现鼠标点击移动</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#四、玩家互动行为实现">4&nbsp;&nbsp;<b>四、玩家互动行为实现</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#五、NPC原型设计">5&nbsp;&nbsp;<b>五、NPC原型设计</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#六、NPC跟踪玩家角色">6&nbsp;&nbsp;<b>六、NPC跟踪玩家角色</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mingjun4503@163.com" class="iconfont icon-email" title="email"></a>
-        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
-        </div><div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
-  </span>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Unity简易关卡原型开发
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-02-07T09:03:06.000Z" itemprop="datePublished">2月 7 2020</time>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>Unity&#x7248;&#x672C;&#xFF1A;Unity 2018.4.13c1</p>
+<h1 id="&#x4E00;&#x3001;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><a href="#&#x4E00;&#x3001;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x4E00;&#x3001;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"></a>&#x4E00;&#x3001;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h1><p>&#x5728;&#x4E00;&#x4E2A;&#x65B0;&#x5EFA;&#x7684;&#x573A;&#x666F;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Cube&#xFF0C;&#x8C03;&#x6210;Cube&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x4F7F;&#x4E4B;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x6241;&#x5E73;&#x9762;&#xFF08;Scale&#x53C2;&#x8003;&#x503C;&#xFF1A;x=50&#xFF0C;y=0.36&#xFF0C;z=50&#xFF09;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;&#x201C;Floor&#x201D;&#xFF0C;&#x91CD;&#x7F6E;Floor&#x7684;&#x4F4D;&#x7F6E;&#x5230;&#xFF08;0&#xFF0C;0&#xFF0C;0&#xFF09;&#x3002;</p>
+<p>&#x5728;Floor&#x4E0A;&#x65B9;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Capsule,&#x8C03;&#x6574;&#x5927;&#x5C0F;&#x81F4;&#x5408;&#x9002;&#x3002;</p>
+<p>&#x5728;Floor&#x4E0A;&#x65B9;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Cube,&#x8C03;&#x6574;&#x5927;&#x5C0F;&#x81F4;&#x95E8;&#x677F;&#x7684;&#x6837;&#x5B50;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;&#x201C;Door&#x201D;</p>
+<p>&#x5728;&#x573A;&#x666F;&#x91CC;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;Object&#xFF0C;&#x547D;&#x540D;&#x4E3A;&#x201C;MouseManager&#x201D;&#x3002;</p>
+<p>&#x5728;&#x9879;&#x76EE;&#x9762;&#x677F;&#x7684;Assets&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Materials&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x6750;&#x8D28;&#xFF0C;&#x53D6;&#x540D;&#x4E3A;Gray&#x3002;&#x5C06;Gray&#x7684;Inspector&#x9762;&#x677F;&#x7684;MainMaps&#x4E0B;&#x628A;&#x989C;&#x8272;&#x8BBE;&#x7F6E;&#x6210;&#x7070;&#x8272;&#x3002;&#x62D6;&#x62FD;Gray&#x81F4;Floor&#x4E0A;&#x3002;</p>
+<p>&#x8C03;&#x6574;&#x89D2;&#x5EA6;&#x5230;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x770B;&#x5230;Door&#x3001;Capsule&#x3001;Floor&#x548C;&#x73AF;&#x5883;&#x7684;&#x5408;&#x9002;&#x4F4D;&#x7F6E;&#x540E;&#xFF0C;&#x9009;&#x4E2D;Main Camera&#xFF0C;&#x4F7F;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x3010;Ctrl + Shift + F&#x3011;&#x5C06;&#x6444;&#x50CF;&#x673A;&#x5FEB;&#x901F;&#x8C03;&#x6574;&#x5230;&#x6EE1;&#x8DB3;&#x5F53;&#x524D;&#x89C2;&#x5BDF;&#x89C6;&#x89D2;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x5B8C;&#x6210;&#x540E;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207172113295.png" alt="image-20200207172113295"></p>
+<p>&#x5728;Assets&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x53EB;&#x201C;Cursors&#x201D;&#x7684;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5BFC;&#x5165;png&#x56FE;&#x7247;&#x7D20;&#x6750;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207172929532.png" alt="image-20200207172929532"></p>
+<h1 id="&#x4E8C;&#x3001;&#x7F16;&#x5199;&#x9F20;&#x6807;&#x4EA4;&#x4E92;&#x811A;&#x672C;"><a href="#&#x4E8C;&#x3001;&#x7F16;&#x5199;&#x9F20;&#x6807;&#x4EA4;&#x4E92;&#x811A;&#x672C;" class="headerlink" title="&#x4E8C;&#x3001;&#x7F16;&#x5199;&#x9F20;&#x6807;&#x4EA4;&#x4E92;&#x811A;&#x672C;"></a>&#x4E8C;&#x3001;&#x7F16;&#x5199;&#x9F20;&#x6807;&#x4EA4;&#x4E92;&#x811A;&#x672C;</h1><p>&#x5728;&#x9879;&#x76EE;&#x9762;&#x677F;&#x7684;Assets&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x53EB;&#x201C;Scripts&#x201D;&#x7684;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;C#&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x53D6;&#x540D;&#x4E3A;MouseManager</p>
+<p>&#x6253;&#x5F00;MouseManager.cs&#xFF0C;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x5E76;&#x786E;&#x5B9A;&#x65E0;&#x9519;&#x8BEF;&#x540E;&#x4FDD;&#x5B58;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MouseManager</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-comment">//which objects are clickable</span></span><br><span class="line">    <span class="hljs-keyword">public</span> LayerMask clickableLayer;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">//Swap cursors per object</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D pointer;<span class="hljs-comment">//Normal Pointer</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D target;<span class="hljs-comment">//Cursors for clickable objects like world</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D doorway;<span class="hljs-comment">//Cursors for doorways</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D combat;<span class="hljs-comment">//Cursors for combat sections</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        RaycastHit hit;</span><br><span class="line">        <span class="hljs-keyword">if</span>(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), <span class="hljs-keyword">out</span> hit, <span class="hljs-number">50</span>, clickableLayer.<span class="hljs-keyword">value</span>))</span><br><span class="line">        {</span><br><span class="line">            <span class="hljs-keyword">bool</span> door = <span class="hljs-literal">false</span>;</span><br><span class="line">            <span class="hljs-keyword">if</span>(hit.collider.gameObject.tag == <span class="hljs-string">&quot;Doorway&quot;</span>)</span><br><span class="line">            {</span><br><span class="line">                Cursor.SetCursor(doorway, <span class="hljs-keyword">new</span> Vector2(<span class="hljs-number">16</span>, <span class="hljs-number">16</span>), CursorMode.Auto);</span><br><span class="line">                door = <span class="hljs-literal">true</span>;                </span><br><span class="line">            }</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">            {</span><br><span class="line">                Cursor.SetCursor(target, <span class="hljs-keyword">new</span> Vector2(<span class="hljs-number">16</span>, <span class="hljs-number">16</span>), CursorMode.Auto);                </span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            Cursor.SetCursor(pointer, Vector2.zero, CursorMode.Auto);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x56DE;&#x5230;Unity&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x9009;&#x4E2D;MouseManager&#xFF0C;&#x5728;Inspector&#x9762;&#x677F;&#x70B9;&#x51FB;&#x3010;Add Component&#x3011;&#x6309;&#x94AE;&#xFF0C;&#x641C;&#x7D22;&#x5230;MouseManager&#x540E;&#x5355;&#x51FB;&#x6DFB;&#x52A0;&#x3002;</p>
+<p>&#x628A;Cursors&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;png&#x7D20;&#x6750;&#x62D6;&#x62FD;&#x5230;Mouse Manager&#x7EC4;&#x4EF6;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174110820.png" alt="image-20200207174110820"></p>
+<p>&#x70B9;&#x51FB;Inspector&#x9762;&#x677F;&#x4E0A;&#x65B9;&#x7684;Layers&#x4E0B;&#x62C9;&#x6309;&#x94AE;&#xFF0C;&#x70B9;&#x51FB;Edit Layers</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174357668.png" alt="image-20200207174357668"></p>
+<p>&#x70B9;&#x5F00;Layers&#xFF0C;&#x5728;User Layers 9&#x586B;&#x5199;&#x201D;Clickable&#x201C;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174606366.png" alt="image-20200207174606366"></p>
+<p>&#x5728;Hierachy&#x9762;&#x677F;&#x9009;&#x4E2D;MouseManager&#xFF0C;&#x5728;Inspector&#x9762;&#x677F;&#x7684;MouseManager&#x7EC4;&#x4EF6;&#x4E0B;&#x7684;Clickable Layer&#x9009;&#x9879;&#x70B9;&#x51FB;&#x4E0B;&#x62C9;&#xFF0C;&#x628A;&#x9ED8;&#x8BA4;&#x7684;Nothing&#x6539;&#x9009;&#x6210;Clickable</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207174838667.png" alt="image-20200207174838667"></p>
+<p>&#x70B9;&#x51FB;&#x64AD;&#x653E;&#x6309;&#x94AE;&#x9A8C;&#x8BC1;&#x6548;&#x679C;&#x3002;&#x5F53;&#x9F20;&#x6807;&#x79FB;&#x52A8;&#x5230;Floor&#x4E0A;&#x65F6;&#xFF0C;&#x9F20;&#x6807;&#x6837;&#x5F0F;&#x4E3A;target&#xFF0C;&#x5F53;&#x9F20;&#x6807;&#x79FB;&#x52A8;&#x5230;Door&#x4E0A;&#x65F6;&#xFF0C;&#x9F20;&#x6807;&#x6837;&#x5F0F;&#x4E3A;doorway&#xFF0C;&#x5F53;&#x9F20;&#x6807;&#x79FB;&#x52A8;&#x5230;&#x5468;&#x56F4;&#x73AF;&#x5883;&#x65F6;&#xFF0C;&#x9F20;&#x6807;&#x6837;&#x5F0F;&#x4E3A;pointer&#x3002;</p>
+<h1 id="&#x4E09;&#x3001;&#x4F7F;&#x7528;MavMesh&#x7EC4;&#x4EF6;&#x5B9E;&#x73B0;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x79FB;&#x52A8;"><a href="#&#x4E09;&#x3001;&#x4F7F;&#x7528;MavMesh&#x7EC4;&#x4EF6;&#x5B9E;&#x73B0;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x79FB;&#x52A8;" class="headerlink" title="&#x4E09;&#x3001;&#x4F7F;&#x7528;MavMesh&#x7EC4;&#x4EF6;&#x5B9E;&#x73B0;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x79FB;&#x52A8;"></a>&#x4E09;&#x3001;&#x4F7F;&#x7528;MavMesh&#x7EC4;&#x4EF6;&#x5B9E;&#x73B0;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x79FB;&#x52A8;</h1><p>&#x63A5;&#x4E0A;&#x4E00;&#x7BC7;&#x9F20;&#x6807;&#x4EA4;&#x4E92;</p>
+<p>&#x5C06;&#x8DEF;&#x5F84;Unity Fundamentals Source Assets\NaMeshComponents-Master&#x4E0B;&#x7684;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x5939;Gizmos&#x548C;NavMeshComponents&#x62D6;&#x62FD;&#x590D;&#x5236;&#x5230;Unity&#x7F16;&#x8F91;&#x5668;&#x9879;&#x76EE;&#x9762;&#x677F;Assets&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x3002;</p>
+<p>&#x5728;Hierachy&#x9762;&#x677F;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;Object&#x547D;&#x540D;&#x4E3A;&#x201D;NavMesh Surface&#x201D;&#xFF0C;&#x70B9;&#x51FB;NavMesh Surface&#xFF0C;&#x5728;Inspector&#x9762;&#x677F;&#x70B9;&#x51FB;Add Component&#xFF0C;&#x9009;&#x62E9;NavMeshSurface&#x3002;</p>
+<p>&#x70B9;&#x51FB;Inspector&#x9762;&#x677F;&#x4E0A;&#x65B9;&#x7684;Layers&#x4E0B;&#x62C9;&#x6309;&#x94AE;&#xFF0C;&#x9009;&#x62E9;Edit Layers&#xFF0C;&#x5728;User Layer 10&#x586B;&#x4E0A;Player&#x3002;</p>
+<p>&#x70B9;&#x51FB;Cupsule&#xFF0C;&#x5728;Inspector&#x9762;&#x677F;&#x5C06;Layer&#x8BBE;&#x7F6E;&#x4E3A;Player&#x3002;</p>
+<p>&#x56DE;&#x5230;NavMeshSurface&#x7684;Inspector&#x9762;&#x677F;&#xFF0C;&#x5728;NavMeshSurface&#x7EC4;&#x4EF6;&#x4E0B;&#x65B9;&#xFF0C;Agent Type&#x9ED8;&#x8BA4;Humanoid&#xFF0C;Include Layers&#x53D6;&#x6D88;&#x52FE;&#x9009;Player</p>
+<p>&#x70B9;&#x51FB;Bake&#x6309;&#x94AE;&#x521B;&#x5EFA;&#x4E00;&#x5C42;&#x9644;&#x5728;Floor&#x4E0A;&#x7684;&#x84DD;&#x8272;NavMesh&#x8868;&#x9762;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209104045071.png" alt="image-20200209104045071"></p>
+<p>&#x5728;Door&#x7684;Inspector&#x9762;&#x677F;&#x6DFB;&#x52A0;NavMeshObstacle&#x7EC4;&#x4EF6;&#xFF0C;&#x9ED8;&#x8BA4;Carve&#x52FE;&#x9009;&#x3002;&#x4EA7;&#x751F;&#x7684;&#x6548;&#x679C;&#x662F;Capsule&#x65E0;&#x6CD5;&#x901A;&#x8FC7;Door&#xFF0C;&#x5373;&#x89C6;Door&#x4E3A;&#x4E00;&#x4E2A;&#x969C;&#x788D;&#x3002;</p>
+<p>&#x6DFB;&#x52A0;NavMeshModifier&#x7EC4;&#x4EF6;&#xFF0C;&#x53D6;&#x6D88;&#x52FE;&#x9009;Ingnore From Build&#x3002;</p>
+<p>&#x56DE;&#x5230;NavMesh Surface&#x7684;Inspector&#x9762;&#x677F;&#xFF0C;&#x518D;&#x6B21;&#x70B9;&#x51FB;Bake&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6B64;&#x65F6;&#x5411;&#x4E0A;&#x5E73;&#x79FB;Door&#xFF0C;&#x539F;&#x672C;Door&#x4E0B;&#x65B9;&#x7684;&#x9ED1;&#x8272;&#x77E9;&#x5F62;&#x5C06;&#x6D88;&#x5931;&#xFF0C;&#x89C6;&#x4E3A;&#x201C;&#x95E8;&#x5F00;&#x542F;&#x201D;&#xFF0C;Capsule&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x3002;</p>
+<p>&#x9009;&#x4E2D;Capsule&#xFF0C;&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;NavMeshAgent&#xFF0C;Agent Type&#x9ED8;&#x8BA4;Humanoid&#x3002;</p>
+<p>&#x5728;&#x9879;&#x76EE;&#x9762;&#x677F;Scripts&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;C#&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x53D6;&#x540D;&#x201C;PlayerController&#x201D;&#x3002;</p>
+<p>&#x6253;&#x5F00;&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF0C;&#x786E;&#x8BA4;&#x65E0;&#x62A5;&#x9519;&#x540E;&#x4FDD;&#x5B58;&#x3002;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine.AI;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">PlayerController</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-comment">//private Animator anim;</span></span><br><span class="line">    <span class="hljs-keyword">private</span> NavMeshAgent agent;</span><br><span class="line">    <span class="hljs-comment">// Use this for initializtion</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>(<span class="hljs-params"></span>)</span> {</span><br><span class="line">      <span class="hljs-comment">//  anim = GetComponent&lt;Animator&gt;();</span></span><br><span class="line">      agent = GetComponent&lt;NavMeshAgent&gt;();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x6253;&#x5F00;&#x4E4B;&#x524D;&#x5199;&#x7684;MouseManager.cs&#xFF0C;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine.Events;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MouseManager</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-comment">//what objects are clickable</span></span><br><span class="line">    <span class="hljs-keyword">public</span> LayerMask clickableLayer;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">//Swap cursers per object</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D pointer;<span class="hljs-comment">//Normal Pointer</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D target;<span class="hljs-comment">//Cursers for clickable objects like world</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D doorway;<span class="hljs-comment">//Cursers for doorways</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D combat;<span class="hljs-comment">//Cursers for combat sections</span></span><br><span class="line">    <span class="hljs-keyword">public</span> EventVector3 OnclickEnviroment; </span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        RaycastHit hit;</span><br><span class="line">        <span class="hljs-keyword">if</span>(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), <span class="hljs-keyword">out</span> hit, <span class="hljs-number">50</span>, clickableLayer.<span class="hljs-keyword">value</span>))</span><br><span class="line">        {</span><br><span class="line">            <span class="hljs-keyword">bool</span> door = <span class="hljs-literal">false</span>;</span><br><span class="line">            <span class="hljs-keyword">if</span>(hit.collider.gameObject.tag == <span class="hljs-string">&quot;Doorway&quot;</span>)</span><br><span class="line">            {</span><br><span class="line">                Cursor.SetCursor(doorway, <span class="hljs-keyword">new</span> Vector2(<span class="hljs-number">16</span>, <span class="hljs-number">16</span>), CursorMode.Auto);</span><br><span class="line">                door = <span class="hljs-literal">true</span>;                </span><br><span class="line">            }</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">            {</span><br><span class="line">                Cursor.SetCursor(target, <span class="hljs-keyword">new</span> Vector2(<span class="hljs-number">16</span>, <span class="hljs-number">16</span>), CursorMode.Auto);                </span><br><span class="line">            }</span><br><span class="line">            <span class="hljs-keyword">if</span>(Input.GetMouseButton(<span class="hljs-number">0</span>))</span><br><span class="line">            {</span><br><span class="line">                OnclickEnviroment.Invoke(hit.point);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            Cursor.SetCursor(pointer, Vector2.zero, CursorMode.Auto);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">[<span class="hljs-meta">System.Serializable</span>]</span><br><span class="line">public class EventVector3 : UnityEvent&lt;Vector3&gt;{ }</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x56DE;&#x5230;Unity&#x7F16;&#x8F91;&#x5668;&#xFF0C;MouseManager&#x7684;Inpspector&#x9762;&#x677F;&#x7684;MouseManager&#x7EC4;&#x4EF6;&#x591A;&#x51FA;&#x4E86;Onclick Enviroment(Vector3)&#x3002;</p>
+<p>&#x4ECE;Hierarchy&#x9762;&#x677F;&#x62D6;&#x62FD;Capsule&#x5230;None(Object)&#xFF0C;&#x70B9;&#x51FB;No function&#x4E0B;&#x62C9;&#x6846;&#xFF0C;&#x52FE;&#x9009;NavMeshAgent&#x4E0B;&#x7684;destination&#x3002;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209165155270.png" alt="image-20200209165155270"></p>
+<p>&#x70B9;&#x51FB;&#x64AD;&#x653E;&#x540E;&#xFF0C;&#x9F20;&#x6807;&#x5355;&#x51FB;Floor&#x4E0A;&#x4EFB;&#x610F;&#x4F4D;&#x7F6E;&#xFF0C;Capsule&#x79FB;&#x52A8;&#x8DDF;&#x968F;&#x3002;</p>
+<p>&#x5728;Capsule&#x7684;Inspector&#x9762;&#x677F;&#x7684;NavMeshAgent&#x7EC4;&#x4EF6;&#x4E0B;&#x7684;Steering&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x79FB;&#x52A8;&#x901F;&#x5EA6;(Speed)&#x3001;&#x89D2;&#x901F;&#x5EA6;(Angular Speed)&#x3001;&#x52A0;&#x901F;&#x5EA6;(Acceleration)&#x3001;&#x5236;&#x52A8;&#x8DDD;&#x79BB;(Stopping Distance)&#x3001;&#x81EA;&#x52A8;&#x5239;&#x8F66;(Auto Braking)&#x3002;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209170725519.png" alt="image-20200209170725519"></p>
+<h1 id="&#x56DB;&#x3001;&#x73A9;&#x5BB6;&#x4E92;&#x52A8;&#x884C;&#x4E3A;&#x5B9E;&#x73B0;"><a href="#&#x56DB;&#x3001;&#x73A9;&#x5BB6;&#x4E92;&#x52A8;&#x884C;&#x4E3A;&#x5B9E;&#x73B0;" class="headerlink" title="&#x56DB;&#x3001;&#x73A9;&#x5BB6;&#x4E92;&#x52A8;&#x884C;&#x4E3A;&#x5B9E;&#x73B0;"></a>&#x56DB;&#x3001;&#x73A9;&#x5BB6;&#x4E92;&#x52A8;&#x884C;&#x4E3A;&#x5B9E;&#x73B0;</h1><p>&#x4FEE;&#x6539;MouseManager.cs&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine.Events;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MouseManager</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-comment">//what objects are clickable</span></span><br><span class="line">    <span class="hljs-keyword">public</span> LayerMask clickableLayer;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">//Swap cursers per object</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D pointer;<span class="hljs-comment">//Normal Pointer</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D target;<span class="hljs-comment">//Cursers for clickable objects like world</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D doorway;<span class="hljs-comment">//Cursers for doorways</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Texture2D combat;<span class="hljs-comment">//Cursers for combat sections</span></span><br><span class="line">    <span class="hljs-keyword">public</span> EventVector3 OnclickEnviroment;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        RaycastHit hit;</span><br><span class="line">        <span class="hljs-keyword">if</span>(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), <span class="hljs-keyword">out</span> hit, <span class="hljs-number">50</span>, clickableLayer.<span class="hljs-keyword">value</span>))</span><br><span class="line">        {</span><br><span class="line">            <span class="hljs-keyword">bool</span> door = <span class="hljs-literal">false</span>;</span><br><span class="line">            <span class="hljs-keyword">bool</span> item = <span class="hljs-literal">false</span>;</span><br><span class="line">            <span class="hljs-keyword">if</span>(hit.collider.gameObject.tag == <span class="hljs-string">&quot;Doorway&quot;</span>)</span><br><span class="line">            {</span><br><span class="line">                Cursor.SetCursor(doorway, <span class="hljs-keyword">new</span> Vector2(<span class="hljs-number">16</span>, <span class="hljs-number">16</span>), CursorMode.Auto);</span><br><span class="line">                door = <span class="hljs-literal">true</span>;                </span><br><span class="line">            }</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(hit.collider.gameObject.tag == <span class="hljs-string">&quot;Item&quot;</span>)</span><br><span class="line">            {</span><br><span class="line">                Cursor.SetCursor(combat, <span class="hljs-keyword">new</span> Vector2(<span class="hljs-number">16</span>, <span class="hljs-number">16</span>), CursorMode.Auto);</span><br><span class="line">                item = <span class="hljs-literal">true</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">            {</span><br><span class="line">                Cursor.SetCursor(target, <span class="hljs-keyword">new</span> Vector2(<span class="hljs-number">16</span>, <span class="hljs-number">16</span>), CursorMode.Auto);                </span><br><span class="line">            }</span><br><span class="line">            <span class="hljs-keyword">if</span>(Input.GetMouseButton(<span class="hljs-number">0</span>))</span><br><span class="line">            {</span><br><span class="line">                <span class="hljs-keyword">if</span>(door)</span><br><span class="line">                {</span><br><span class="line">                    Transform doorway = hit.collider.gameObject.transform;</span><br><span class="line">                    OnclickEnviroment.Invoke(doorway.position);</span><br><span class="line">                    Debug.Log(<span class="hljs-string">&quot;DOOR&quot;</span>);</span><br><span class="line">                }</span><br><span class="line">                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(item)</span><br><span class="line">                {</span><br><span class="line">                    Transform itemPos = hit.collider.gameObject.transform;</span><br><span class="line">                    OnclickEnviroment.Invoke(itemPos.position);</span><br><span class="line">                    Debug.Log(<span class="hljs-string">&quot;ITEM&quot;</span>);</span><br><span class="line">                }</span><br><span class="line">                <span class="hljs-keyword">else</span></span><br><span class="line">                {</span><br><span class="line">                    OnclickEnviroment.Invoke(hit.point);   </span><br><span class="line">                }</span><br><span class="line">                </span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            Cursor.SetCursor(pointer, Vector2.zero, CursorMode.Auto);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">[<span class="hljs-meta">System.Serializable</span>]</span><br><span class="line">public class EventVector3 : UnityEvent&lt;Vector3&gt;{ }</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x56DE;&#x5230;Unity&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x5728;Floor&#x4E0A;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Cube&#x3002;</p>
+<p>&#x5C06;&#x5176;Layer&#x8BBE;&#x7F6E;&#x6210;Clickable&#xFF0C;&#x70B9;&#x51FB;Untagged&#x6309;&#x94AE;&#xFF0C;&#x9009;&#x62E9;Add Tag&#xFF0C;&#x70B9;&#x51FB;&#x52A0;&#x53F7;&#x6309;&#x94AE;&#xFF0C;&#x586B;&#x5199;&#x201C;Item&#x201D;&#xFF0C;&#x4FDD;&#x5B58;&#x3002;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209185228053.png" alt="image-20200209185228053"></p>
+<p>&#x70B9;&#x51FB;&#x64AD;&#x653E;&#xFF0C;&#x5F53;&#x9F20;&#x6807;&#x70B9;&#x51FB;Door&#x540E;&#xFF0C;Unity&#x7F16;&#x8F91;&#x5668;&#x63A7;&#x5236;&#x53F0;&#x6253;&#x5370;&#x6D88;&#x606F;&#x201C;DOOR&#x201D;&#xFF0C;&#x5F53;&#x9F20;&#x6807;&#x70B9;&#x51FB;Cube&#x540E;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x6253;&#x5370;&#x6D88;&#x606F;&#x6D88;&#x606F;&#x201C;ITEM&#x201D;&#x3002;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200209190218401.png" alt="image-20200209190218401"></p>
+<h1 id="&#x4E94;&#x3001;NPC&#x539F;&#x578B;&#x8BBE;&#x8BA1;"><a href="#&#x4E94;&#x3001;NPC&#x539F;&#x578B;&#x8BBE;&#x8BA1;" class="headerlink" title="&#x4E94;&#x3001;NPC&#x539F;&#x578B;&#x8BBE;&#x8BA1;"></a>&#x4E94;&#x3001;NPC&#x539F;&#x578B;&#x8BBE;&#x8BA1;</h1><p>&#x5728;Scripts&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x65B0;&#x5EFA;&#x4E24;&#x4E2A;C#&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x5206;&#x522B;&#x547D;&#x540D;&#x4E3A;&#x201C;NPCController.cs&#x201D;&#xFF0C;&#x201C;PlayerController.cs&#x201D;&#x3002;</p>
+<p>NPCController.cs&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine.AI;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">NPCController</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> patrolTime = <span class="hljs-number">10f</span>;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> aggroRange = <span class="hljs-number">10f</span>;</span><br><span class="line">    <span class="hljs-keyword">public</span> Transform[] waypoints;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> index;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> speed, agentSpeed;</span><br><span class="line">    <span class="hljs-keyword">private</span> Transform player;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> Animator anim;</span><br><span class="line">    <span class="hljs-keyword">private</span> NavMeshAgent agent;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>(<span class="hljs-params"></span>)</span> {</span><br><span class="line">        anim= GetComponent&lt;Animator&gt;();</span><br><span class="line">        agent =GetComponent&lt;NavMeshAgent&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span>(agent != <span class="hljs-literal">null</span>) { agentSpeed = agent.speed; }</span><br><span class="line">        player = GameObject.FindGameObjectWithTag(<span class="hljs-string">&quot;Player&quot;</span>).transform;</span><br><span class="line">        index = Random.Range(<span class="hljs-number">0</span>, waypoints.Length);</span><br><span class="line"></span><br><span class="line">        InvokeRepeating(<span class="hljs-string">&quot;Tick&quot;</span>, <span class="hljs-number">0</span> , <span class="hljs-number">0.5f</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span>(waypoints.Length &gt; <span class="hljs-number">0</span>)</span><br><span class="line">        {</span><br><span class="line">            InvokeRepeating(<span class="hljs-string">&quot;Patrol&quot;</span>, <span class="hljs-number">0</span>, patrolTime);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Patrol</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        index= index == waypoints.Length - <span class="hljs-number">1</span> ? <span class="hljs-number">0</span> : index + <span class="hljs-number">1</span>;  </span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Tick</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        agent.destination = waypoints[index].position;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>PlayerController.cs&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine.AI;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">PlayerController</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-comment">//private Animator anim;</span></span><br><span class="line">    <span class="hljs-keyword">private</span> NavMeshAgent agent;</span><br><span class="line">    <span class="hljs-comment">// Use this for initializtion</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>(<span class="hljs-params"></span>)</span> {</span><br><span class="line">      <span class="hljs-comment">//  anim = GetComponent&lt;Animator&gt;();</span></span><br><span class="line">      agent = GetComponent&lt;NavMeshAgent&gt;();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x590D;&#x5236;Capsule&#x4E00;&#x4E2A;&#xFF0C;&#x79FB;&#x5230;Door&#x65C1;&#x8FB9;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;NPC&#xFF0C;&#x539F;&#x6765;&#x7684;Capsule&#x547D;&#x540D;&#x4E3A;Player&#x3002;</p>
+<p>&#x7ED9;NPC&#x6DFB;&#x52A0;NPCController&#x7EC4;&#x4EF6;&#xFF0C;PlayerController&#x7EC4;&#x4EF6;&#x867D;&#x7136;&#x6682;&#x65F6;&#x7528;&#x4E0D;&#x4E0A;&#xFF0C;&#x4F46;&#x53EF;&#x4EE5;&#x5148;&#x6DFB;&#x52A0;&#x5230;Player&#x4E0A;&#x3002;</p>
+<p>&#x5728;Hierarchy&#x9762;&#x677F;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;Object Waypoint (1)&#xFF0C;&#x5728;Inspector&#x9762;&#x677F;&#x4FEE;&#x6539;&#x56FE;&#x6807;&#x989C;&#x8272;&#xFF0C;&#x64CD;&#x4F5C;&#x5982;&#x4E0B;&#x56FE;&#x3002;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213125222589.png" alt="image-20200213125222589"></p>
+<p>&#x590D;&#x5236;Waypoint (1)&#xFF0C;&#x7C98;&#x8D34;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E00;&#x4E2A;Waypoint (2)&#x3002;&#x628A;&#x4E24;&#x4E2A;Waypoint&#x5E73;&#x79FB;&#x5230;Floor&#x4E0A;&#x65B9;&#x4FBF;&#x89C2;&#x5BDF;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x9009;&#x4E2D;NPC&#xFF0C;&#x70B9;&#x51FB;Inspector&#x9762;&#x677F;&#x7684;&#x9501;&#x5B9A;&#x9762;&#x677F;&#x6309;&#x94AE;&#xFF0C;&#x540C;&#x65F6;&#x9009;&#x4E2D;Hierarchy&#x9762;&#x677F;&#x7684;Waypoint (1)&#x3001;Waypoint (2)&#x62D6;&#x62FD;&#x5230;NPC&#x7684;NPCController&#x7EC4;&#x4EF6;&#x4E0B;&#x7684;Waypoints</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213130047903.png" alt="image-20200213130047903"></p>
+<p>&#x62D6;&#x62FD;Waypoint&#x8FC7;&#x6765;&#x540E;&#xFF1A;</p>
+<p><img src="/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213130137382.png" alt="image-20200213130137382"></p>
+<p>&#x89E3;&#x9664;NPC&#x7684;Inspector&#x9762;&#x677F;&#x9501;&#x5B9A;&#xFF0C;&#x4FDD;&#x5B58;&#x573A;&#x666F;&#xFF0C;&#x70B9;&#x51FB;Play&#x64AD;&#x653E;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53D1;&#x73B0;NPC&#x4F1A;&#x5148;&#x81EA;&#x5DF1;&#x79FB;&#x52A8;&#x5230;Waypoint (1)&#xFF0C;&#x8FC7;&#x4E86;&#x51E0;&#x79D2;&#x540E;&#x81EA;&#x5DF1;&#x79FB;&#x52A8;&#x5230;Waypoint (2)&#xFF0C;&#x7136;&#x540E;&#x56DE;&#x5230;Waypoint (1)&#xFF0C;&#x5FAA;&#x73AF;&#x5F80;&#x590D;&#x3002;</p>
+<h1 id="&#x516D;&#x3001;NPC&#x8DDF;&#x8E2A;&#x73A9;&#x5BB6;&#x89D2;&#x8272;"><a href="#&#x516D;&#x3001;NPC&#x8DDF;&#x8E2A;&#x73A9;&#x5BB6;&#x89D2;&#x8272;" class="headerlink" title="&#x516D;&#x3001;NPC&#x8DDF;&#x8E2A;&#x73A9;&#x5BB6;&#x89D2;&#x8272;"></a>&#x516D;&#x3001;NPC&#x8DDF;&#x8E2A;&#x73A9;&#x5BB6;&#x89D2;&#x8272;</h1><p>&#x4FEE;&#x6539;NPCController.cs&#x7684;Tick&#x51FD;&#x6570;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Tick</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    agent.destination = waypoints[index].position;</span><br><span class="line">    agent.speed = agentSpeed / <span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(player != <span class="hljs-literal">null</span> &amp;&amp; Vector2.Distance(transform.position, player.position) &lt; aggroRange)</span><br><span class="line">    {</span><br><span class="line">        agent.destination = player.position;</span><br><span class="line">        agent.speed = agentSpeed;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x4FDD;&#x5B58;&#x540E;&#x56DE;&#x5230;Unity&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x628A;NPC&#x7684;NavMeshAgent&#x7EC4;&#x4EF6;&#x4E0B;&#x7684;Steering&gt;StoppingDistance&#x8BBE;&#x4E3A;1.5&#x3002;</p>
+<p>&#x4FDD;&#x5B58;&#x573A;&#x666F;&#x540E;&#x70B9;&#x51FB;&#x64AD;&#x653E;&#x6309;&#x94AE;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#xFF0C;&#x5F53;&#x9F20;&#x6807;&#x70B9;&#x51FB;Floor&#x540E;&#xFF0C;Player&#x79FB;&#x52A8;&#xFF0C;NPC&#x8DDF;&#x968F;&#x5728;&#x540E;&#x3002;</p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Unity/">#Unity</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/">Unity简易关卡设计</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/01/29/Win32%E7%AA%97%E5%8F%A3/">Win32窗口</a>
+            
+        </span>
+    </div>
+    
+</article>
 
-  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">MJ</span>
-  </span>
-</div>
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 MJ&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
 </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
-      <div class="back-to-top" id="back-to-top">
-        <i class="iconfont icon-up"></i>
-      </div>
-    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Sans Titre)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
 </body>
 </html>

@@ -1,175 +1,403 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Python头部“#!/usr/bin/env python” 和“#!/usr/bin/python”的区别 - MJ&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="Python头部“#!/usr/bin/env python” 和“#!/usr/bin/python”的区别"/><meta name="keywords" content="Python, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
-<link rel="canonical" href="https://weimingjuncn.github.io/2019/03/19/Python头部-usr-bin-python-和-usr-bin-env-的区别/"/>
+<meta name="description" content="This is a personal Blog.">
 
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
 
-<script id="baidu_push">
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-<script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
-</script>
 
-    <title>Python头部“#!/usr/bin/env python” 和“#!/usr/bin/python”的区别 - MJ's Blog</title>
-  <meta name="generator" content="Hexo 4.2.0"></head>
 
-  <body><div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/." class="logo">MJ's Blog</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
 
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list"><a href="/">
-        <li class="mobile-menu-item">Home
-          </li>
-      </a><a href="/tags">
-        <li class="mobile-menu-item">Tags
-          </li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About
-          </li>
-      </a></ul>
-</nav>
-<div class="container" id="mobile-panel">
-      <header id="header" class="header"><div class="logo-wrapper">
-  <a href="/." class="logo">MJ's Blog</a>
-</div>
+    <meta name="description" content="&amp;#x5927;&amp;#x90E8;&amp;#x5206;Python&amp;#x6587;&amp;#x4EF6;&amp;#x7684;&amp;#x7B2C;&amp;#x4E00;&amp;#x884C;&amp;#x5199;&amp;#x7740;#!&#x2F;usr&#x2F;bin&#x2F;env python&amp;#x6216;&amp;#x8005;#!&#x2F;usr&#x2F;bin&#x2F;python&amp;#xFF0C;&amp;#x8FD9;&amp;#x4E24;&amp;#x6761;&amp;#x8BED;&amp;#x53E5;&amp;#x5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python头部“#!&#x2F;usr&#x2F;bin&#x2F;env python” 和“#!&#x2F;usr&#x2F;bin&#x2F;python”的区别">
+<meta property="og:url" content="https://weimingjuncn.github.io/2019/03/19/Python%E5%A4%B4%E9%83%A8-usr-bin-python-%E5%92%8C-usr-bin-env-%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="MJ&#39;s Blog">
+<meta property="og:description" content="&amp;#x5927;&amp;#x90E8;&amp;#x5206;Python&amp;#x6587;&amp;#x4EF6;&amp;#x7684;&amp;#x7B2C;&amp;#x4E00;&amp;#x884C;&amp;#x5199;&amp;#x7740;#!&#x2F;usr&#x2F;bin&#x2F;env python&amp;#x6216;&amp;#x8005;#!&#x2F;usr&#x2F;bin&#x2F;python&amp;#xFF0C;&amp;#x8FD9;&amp;#x4E24;&amp;#x6761;&amp;#x8BED;&amp;#x53E5;&amp;#x5">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-19T08:16:12.000Z">
+<meta property="article:modified_time" content="2019-06-10T14:13:59.308Z">
+<meta property="article:author" content="MJ">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
 
-<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
-          <a class="menu-item-link" href="/">
-            Home
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
             </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/tags">
-            Tags
-            </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/about/">
-            About
-            </a>
-        </li>
-      </ul></nav>
-</header>
-
-      <main id="main" class="main">
-        <div class="content-wrapper">
-          <div id="content" class="content"><article class="post">
-    <header class="post-header">
-      <h1 class="post-title">Python头部“#!/usr/bin/env python” 和“#!/usr/bin/python”的区别
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-03-19
-        </span><span class="post-category">
-            <a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
-            </span>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
-    <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#两条语句逐一解释如下："><span class="toc-text">两条语句逐一解释如下：</span></a></li></ol>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">归档</a>
+            
+            <a class="navbar-item "
+               href="/tags">标签分类</a>
+            
+            <a class="navbar-item "
+               href="/about">关于</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#两条语句逐一解释如下：">1&nbsp;&nbsp;<b>两条语句逐一解释如下：</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
     </div>
-  </div><div class="post-content"><p>大部分Python文件的第一行写着<code>#!/usr/bin/env python</code>或者<code>#!/usr/bin/python</code>，这两条语句和运行模式有关。</p>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Python头部“#!/usr/bin/env python” 和“#!/usr/bin/python”的区别
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-03-19T08:16:12.000Z" itemprop="datePublished">3月 19 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>&#x5927;&#x90E8;&#x5206;Python&#x6587;&#x4EF6;&#x7684;&#x7B2C;&#x4E00;&#x884C;&#x5199;&#x7740;<code>#!/usr/bin/env python</code>&#x6216;&#x8005;<code>#!/usr/bin/python</code>&#xFF0C;&#x8FD9;&#x4E24;&#x6761;&#x8BED;&#x53E5;&#x548C;&#x8FD0;&#x884C;&#x6A21;&#x5F0F;&#x6709;&#x5173;&#x3002;</p>
 <a id="more"></a>
 
-<p>如果我们用普通运行模式例如（在Linux下执行命令）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python *.py</span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x7528;&#x666E;&#x901A;&#x8FD0;&#x884C;&#x6A21;&#x5F0F;&#x4F8B;&#x5982;&#xFF08;&#x5728;Linux&#x4E0B;&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF09;&#xFF1A;<br></p><figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python *.py</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x90A3;&#x4E48;&#x8FD9;&#x4E24;&#x6761;&#x5934;&#x90E8;&#x8BED;&#x53E5;&#x6CA1;&#x4EC0;&#x4E48;&#x5375;&#x7528;&#x3002;&#x4F46;&#x5982;&#x679C;&#x6253;&#x7B97;&#x8BA9;Python&#x7A0B;&#x5E8F;&#x50CF;&#x666E;&#x901A;&#x7A0B;&#x5E8F;&#x4E00;&#x6837;&#x8FD0;&#x884C;&#xFF0C;&#x4F8B;&#x5982;&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF08;&#x6CE8;&#xFF1A;&#x6587;&#x4EF6;&#x8981;&#x6709;&#x53EF;&#x6267;&#x884C;&#x6743;&#x9650;chmod a+x *.py&#xFF09;&#xFF1A;<br></p><figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./*.py</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x8FD9;&#x4E24;&#x6761;&#x5934;&#x90E8;&#x8BED;&#x53E5;&#x5C31;&#x8D77;&#x4F5C;&#x7528;&#x4E86;&#xFF0C;&#x5B83;&#x4EEC;&#x7528;&#x6765;&#x4E3A;&#x811A;&#x672C;&#x8BED;&#x8A00;&#x6307;&#x5B9A;&#x89E3;&#x91CA;&#x5668;&#xFF0C;&#x901A;&#x5E38;&#x8BA4;&#x4E3A;&#x7528;<code>#!/usr/bin/env python</code>&#x8981;&#x6BD4;<code>#!/usr/bin/python</code>&#x66F4;&#x597D;&#xFF0C;&#x56E0;&#x4E3A;Python&#x89E3;&#x91CA;&#x5668;&#x6709;&#x65F6;&#x5E76;&#x4E0D;&#x5B89;&#x88C5;&#x5728;&#x9ED8;&#x8BA4;&#x8DEF;&#x5F84;&#xFF0C;&#x6BD4;&#x5982;&#x5B89;&#x88C5;&#x5728;&#x865A;&#x62DF;&#x73AF;&#x5883;&#x4E2D;&#x3002;</p>
+<h3 id="&#x4E24;&#x6761;&#x8BED;&#x53E5;&#x9010;&#x4E00;&#x89E3;&#x91CA;&#x5982;&#x4E0B;&#xFF1A;"><a href="#&#x4E24;&#x6761;&#x8BED;&#x53E5;&#x9010;&#x4E00;&#x89E3;&#x91CA;&#x5982;&#x4E0B;&#xFF1A;" class="headerlink" title="&#x4E24;&#x6761;&#x8BED;&#x53E5;&#x9010;&#x4E00;&#x89E3;&#x91CA;&#x5982;&#x4E0B;&#xFF1A;"></a>&#x4E24;&#x6761;&#x8BED;&#x53E5;&#x9010;&#x4E00;&#x89E3;&#x91CA;&#x5982;&#x4E0B;&#xFF1A;</h3><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/env python</span></span><br></pre></td></tr></tbody></table></figure><br>&#x5F53;&#x673A;&#x5668;&#x4E0A;&#x5B89;&#x88C5;&#x4E86;&#x591A;&#x4E2A;&#x7248;&#x672C;&#x7684;Python&#x65F6;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x624D;&#x6709;&#x610F;&#x4E49;&#x3002;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x673A;&#x5668;&#x4F1A;&#x5148;&#x53BB;&#x53D6;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x7684;<code>PATH</code>&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;Python&#x6765;&#x6267;&#x884C;&#x60A8;&#x7684;&#x811A;&#x672C;&#x3002;&#x5982;&#x679C;&#x60A8;&#x914D;&#x7F6E;&#x4E86;&#x865A;&#x62DF;&#x73AF;&#x5883;&#xFF0C;&#x8FD9;&#x6761;&#x5934;&#x90E8;&#x8BED;&#x53E5;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x811A;&#x672C;&#x7531;&#x60A8;&#x7684;&#x865A;&#x62DF;&#x73AF;&#x5883;python&#x4E2D;&#x7684;Python&#x6765;&#x6267;&#x884C;&#x3002;<p></p>
+<p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python</span></span><br></pre></td></tr></tbody></table></figure><br>&#x8868;&#x793A;&#x5199;&#x6B7B;&#x4E86;&#x5C31;&#x662F;&#x8981;&#x7528;&#x76EE;&#x5F55;<code>/usr/bin/python</code>&#x4E0B;&#x7684;Python&#x6765;&#x6267;&#x884C;&#x60A8;&#x7684;&#x811A;&#x672C;&#x3002;&#x8FD9;&#x6837;&#x5199;&#x7A0B;&#x5E8F;&#x7684;&#x53EF;&#x79FB;&#x690D;&#x6027;&#x6BD4;&#x8F83;&#x5DEE;&#xFF0C;&#x5982;&#x679C;&#x6B64;&#x8DEF;&#x5F84;&#x4E0B;&#x7684;Python&#x4E0D;&#x5B58;&#x5728;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#x3002;<p></p>
+<p>&#x56E0;&#x6B64;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x91C7;&#x7528;&#x7B2C;&#x4E00;&#x79CD;&#x5199;&#x6CD5;&#x3002;</p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Python/">#Python</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/03/19/%E8%AE%BE%E7%BD%AE%E6%82%A8%E7%9A%84PyCharm/">设置您的PyCharm</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/02/13/Markdown%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%88%E4%B8%80%EF%BC%89/">Markdown小技巧（一）</a>
+            
+        </span>
+    </div>
+    
+</article>
 
-<p>那么这两条头部语句没什么卵用。但如果打算让Python程序像普通程序一样运行，例如执行命令（注：文件要有可执行权限chmod a+x *.py）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;*.py</span><br></pre></td></tr></table></figure>
 
-<p>这两条头部语句就起作用了，它们用来为脚本语言指定解释器，通常认为用<code>#!/usr/bin/env python</code>要比<code>#!/usr/bin/python</code>更好，因为Python解释器有时并不安装在默认路径，比如安装在虚拟环境中。</p>
-<h3 id="两条语句逐一解释如下："><a href="#两条语句逐一解释如下：" class="headerlink" title="两条语句逐一解释如下："></a>两条语句逐一解释如下：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br></pre></td></tr></table></figure>
-<p>当机器上安装了多个版本的Python时这种写法才有意义。程序运行时机器会先去取环境变量的<code>PATH</code>中指定的第一个Python来执行您的脚本。如果您配置了虚拟环境，这条头部语句可以保证脚本由您的虚拟环境python中的Python来执行。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br></pre></td></tr></table></figure>
-<p>表示写死了就是要用目录<code>/usr/bin/python</code>下的Python来执行您的脚本。这样写程序的可移植性比较差，如果此路径下的Python不存在就会报错。</p>
-<p>因此一般情况下采用第一种写法。</p>
 
-      </div>
-      
-      <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/Python/">Python</a>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 MJ&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
             </div>
-        
-        <nav class="post-nav"><a class="prev" href="/2019/03/19/%E8%AE%BE%E7%BD%AE%E6%82%A8%E7%9A%84PyCharm/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">设置您的PyCharm</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    <a class="next" href="/2019/02/13/Markdown%E5%B0%8F%E6%8A%80%E5%B7%A7/">
-        <span class="next-text nav-default">Markdown小技巧（一）</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    </nav></footer>
-    </article></div><div class="comments" id="comments"></div></div>
-      </main>
+            <div class="column is-hidden-mobile"></div>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mingjun4503@163.com" class="iconfont icon-email" title="email"></a>
-        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
-        </div><div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
-  </span>
-
-  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">MJ</span>
-  </span>
-</div>
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
 </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
-      <div class="back-to-top" id="back-to-top">
-        <i class="iconfont icon-up"></i>
-      </div>
-    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Sans Titre)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
 </body>
 </html>

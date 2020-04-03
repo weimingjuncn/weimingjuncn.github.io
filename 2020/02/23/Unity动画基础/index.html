@@ -1,196 +1,472 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Unity动画基础 - MJ&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="Unity动画基础"/><meta name="keywords" content="Unity, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
-<link rel="canonical" href="https://weimingjuncn.github.io/2020/02/23/Unity动画基础/"/>
+<meta name="description" content="This is a personal Blog.">
 
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
 
-<script id="baidu_push">
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-<script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
-</script>
 
-    <title>Unity动画基础 - MJ's Blog</title>
-  <meta name="generator" content="Hexo 4.2.0"></head>
 
-  <body><div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/." class="logo">MJ's Blog</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
 
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list"><a href="/">
-        <li class="mobile-menu-item">Home
-          </li>
-      </a><a href="/tags">
-        <li class="mobile-menu-item">Tags
-          </li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About
-          </li>
-      </a></ul>
-</nav>
-<div class="container" id="mobile-panel">
-      <header id="header" class="header"><div class="logo-wrapper">
-  <a href="/." class="logo">MJ's Blog</a>
-</div>
+    <meta name="description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2017.4.35f1 Personal &amp;#x5BFC;&amp;#x5165;&amp;#x8D44;&amp;#x6E90;&amp;#x5305;unity_animation_fundamentals_module_2_begin.unitypackage &amp;#x4E00;&amp;#x3001;&amp;#x521B;&amp;#x5EFA;&amp;#x52A8;&amp;#x753B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity动画基础">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="MJ&#39;s Blog">
+<meta property="og:description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2017.4.35f1 Personal &amp;#x5BFC;&amp;#x5165;&amp;#x8D44;&amp;#x6E90;&amp;#x5305;unity_animation_fundamentals_module_2_begin.unitypackage &amp;#x4E00;&amp;#x3001;&amp;#x521B;&amp;#x5EFA;&amp;#x52A8;&amp;#x753B">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306115006356.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306115504925.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306115942461.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306135038980.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320181825478.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320182359505.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320215514821.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320220902629.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321082658400.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321083142461.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321083855523.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321092216642.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321094443227.png">
+<meta property="article:published_time" content="2020-02-23T14:36:46.000Z">
+<meta property="article:modified_time" content="2020-03-21T09:19:50.435Z">
+<meta property="article:author" content="MJ">
+<meta property="article:tag" content="Unity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306115006356.png">
 
-<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
-          <a class="menu-item-link" href="/">
-            Home
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
             </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/tags">
-            Tags
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">归档</a>
+            
+            <a class="navbar-item "
+               href="/tags">标签分类</a>
+            
+            <a class="navbar-item "
+               href="/about">关于</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
             </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/about/">
-            About
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#一、创建动画片段">1&nbsp;&nbsp;<b>一、创建动画片段</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#二、使用动画曲线">2&nbsp;&nbsp;<b>二、使用动画曲线</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#三、重新定时动画">3&nbsp;&nbsp;<b>三、重新定时动画</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#四、使用动画事件">4&nbsp;&nbsp;<b>四、使用动画事件</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#五、创建多个剪辑">5&nbsp;&nbsp;<b>五、创建多个剪辑</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#六、动画控制器基础知识">6&nbsp;&nbsp;<b>六、动画控制器基础知识</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
             </a>
-        </li>
-      </ul></nav>
-</header>
-
-      <main id="main" class="main">
-        <div class="content-wrapper">
-          <div id="content" class="content"><article class="post">
-    <header class="post-header">
-      <h1 class="post-title">Unity动画基础
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-23
-        </span></div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
-    <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、创建动画片段"><span class="toc-text">一、创建动画片段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、使用动画曲线"><span class="toc-text">二、使用动画曲线</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、重新定时动画"><span class="toc-text">三、重新定时动画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、使用动画事件"><span class="toc-text">四、使用动画事件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、创建多个剪辑"><span class="toc-text">五、创建多个剪辑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、动画控制器基础知识"><span class="toc-text">六、动画控制器基础知识</span></a></li></ol>
+               
+            
+        </div>
     </div>
-  </div><div class="post-content"><p>Unity版本：Unity 2017.4.35f1 Personal</p>
-<p>导入资源包unity_animation_fundamentals_module_2_begin.unitypackage</p>
-<h1 id="一、创建动画片段"><a href="#一、创建动画片段" class="headerlink" title="一、创建动画片段"></a>一、创建动画片段</h1><p>在Assets/Animations下新建Animation，命名为Chest_Open。</p>
-<p>在菜单栏 &gt; Window &gt; Animation打开动画窗口。</p>
-<p>找到选中场景中的Chest，在Animation窗口点击Create按钮在弹出的窗口中选中Open_Chest.anim点击保存。</p>
-<p>在窗口中默认提供60帧，我们修改成30帧</p>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Unity动画基础
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-02-23T14:36:46.000Z" itemprop="datePublished">2月 23 2020</time>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>Unity&#x7248;&#x672C;&#xFF1A;Unity 2017.4.35f1 Personal</p>
+<p>&#x5BFC;&#x5165;&#x8D44;&#x6E90;&#x5305;unity_animation_fundamentals_module_2_begin.unitypackage</p>
+<h1 id="&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;"><a href="#&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;" class="headerlink" title="&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;"></a>&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;</h1><p>&#x5728;Assets/Animations&#x4E0B;&#x65B0;&#x5EFA;Animation&#xFF0C;&#x547D;&#x540D;&#x4E3A;Chest_Open&#x3002;</p>
+<p>&#x5728;&#x83DC;&#x5355;&#x680F; &gt; Window &gt; Animation&#x6253;&#x5F00;&#x52A8;&#x753B;&#x7A97;&#x53E3;&#x3002;</p>
+<p>&#x627E;&#x5230;&#x9009;&#x4E2D;&#x573A;&#x666F;&#x4E2D;&#x7684;Chest&#xFF0C;&#x5728;Animation&#x7A97;&#x53E3;&#x70B9;&#x51FB;Create&#x6309;&#x94AE;&#x5728;&#x5F39;&#x51FA;&#x7684;&#x7A97;&#x53E3;&#x4E2D;&#x9009;&#x4E2D;Open_Chest.anim&#x70B9;&#x51FB;&#x4FDD;&#x5B58;&#x3002;</p>
+<p>&#x5728;&#x7A97;&#x53E3;&#x4E2D;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;60&#x5E27;&#xFF0C;&#x6211;&#x4EEC;&#x4FEE;&#x6539;&#x6210;30&#x5E27;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306115006356.png" alt="image-20200306115006356"></p>
-<p>展开Chest选中chest_top，在Animation窗口点击Add Property，展开chest_top &gt; Transform，点击Rotation右边的加号。</p>
+<p>&#x5C55;&#x5F00;Chest&#x9009;&#x4E2D;chest_top&#xFF0C;&#x5728;Animation&#x7A97;&#x53E3;&#x70B9;&#x51FB;Add Property&#xFF0C;&#x5C55;&#x5F00;chest_top &gt; Transform&#xFF0C;&#x70B9;&#x51FB;Rotation&#x53F3;&#x8FB9;&#x7684;&#x52A0;&#x53F7;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306115504925.png" alt="image-20200306115504925"></p>
-<p>此时我们在动画起始和末尾各创建了一个关键帧，我们将白线拖动到最后一帧，然后点击记录按钮。</p>
+<p>&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x5728;&#x52A8;&#x753B;&#x8D77;&#x59CB;&#x548C;&#x672B;&#x5C3E;&#x5404;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x767D;&#x7EBF;&#x62D6;&#x52A8;&#x5230;&#x6700;&#x540E;&#x4E00;&#x5E27;&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x8BB0;&#x5F55;&#x6309;&#x94AE;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306115942461.png" alt="image-20200306115942461"></p>
-<p>修改chest_top的Rotation的x为-130，再点击记录按钮关闭记录，这时我们点击Animation窗口的播放按钮，Scene窗口将循环播放Chest打开的动画。</p>
-<p>如图操作，点击Clips列表，添加新的动画Clip，命名为Chest_Close</p>
+<p>&#x4FEE;&#x6539;chest_top&#x7684;Rotation&#x7684;x&#x4E3A;-130&#xFF0C;&#x518D;&#x70B9;&#x51FB;&#x8BB0;&#x5F55;&#x6309;&#x94AE;&#x5173;&#x95ED;&#x8BB0;&#x5F55;&#xFF0C;&#x8FD9;&#x65F6;&#x6211;&#x4EEC;&#x70B9;&#x51FB;Animation&#x7A97;&#x53E3;&#x7684;&#x64AD;&#x653E;&#x6309;&#x94AE;&#xFF0C;Scene&#x7A97;&#x53E3;&#x5C06;&#x5FAA;&#x73AF;&#x64AD;&#x653E;Chest&#x6253;&#x5F00;&#x7684;&#x52A8;&#x753B;&#x3002;</p>
+<p>&#x5982;&#x56FE;&#x64CD;&#x4F5C;&#xFF0C;&#x70B9;&#x51FB;Clips&#x5217;&#x8868;&#xFF0C;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x52A8;&#x753B;Clip&#xFF0C;&#x547D;&#x540D;&#x4E3A;Chest_Close</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200306135038980.png" alt="image-20200306135038980"></p>
-<p>点击Clips列表，可改变当前要编辑的Clip.</p>
-<p>点击Add Property，选中chest_top &gt; Transform &gt; Rotation。</p>
-<h1 id="二、使用动画曲线"><a href="#二、使用动画曲线" class="headerlink" title="二、使用动画曲线"></a>二、使用动画曲线</h1><p>保持Chest被选中，点击Animation窗口下的Curves按钮，打开动画曲线界面，</p>
+<p>&#x70B9;&#x51FB;Clips&#x5217;&#x8868;&#xFF0C;&#x53EF;&#x6539;&#x53D8;&#x5F53;&#x524D;&#x8981;&#x7F16;&#x8F91;&#x7684;Clip.</p>
+<p>&#x70B9;&#x51FB;Add Property&#xFF0C;&#x9009;&#x4E2D;chest_top &gt; Transform &gt; Rotation&#x3002;</p>
+<h1 id="&#x4E8C;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;"><a href="#&#x4E8C;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;" class="headerlink" title="&#x4E8C;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;"></a>&#x4E8C;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;</h1><p>&#x4FDD;&#x6301;Chest&#x88AB;&#x9009;&#x4E2D;&#xFF0C;&#x70B9;&#x51FB;Animation&#x7A97;&#x53E3;&#x4E0B;&#x7684;Curves&#x6309;&#x94AE;&#xFF0C;&#x6253;&#x5F00;&#x52A8;&#x753B;&#x66F2;&#x7EBF;&#x754C;&#x9762;&#xFF0C;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320181825478.png" alt="image-20200320181825478"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320182359505.png" alt="image-20200320182359505"></p>
-<h1 id="三、重新定时动画"><a href="#三、重新定时动画" class="headerlink" title="三、重新定时动画"></a>三、重新定时动画</h1><h1 id="四、使用动画事件"><a href="#四、使用动画事件" class="headerlink" title="四、使用动画事件"></a>四、使用动画事件</h1><p>将动画光标移动到箱子完全打开的关键帧位置，点击添加动画事件按钮。</p>
+<h1 id="&#x4E09;&#x3001;&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;"><a href="#&#x4E09;&#x3001;&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;" class="headerlink" title="&#x4E09;&#x3001;&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;"></a>&#x4E09;&#x3001;&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;</h1><h1 id="&#x56DB;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;"><a href="#&#x56DB;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x56DB;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;"></a>&#x56DB;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;</h1><p>&#x5C06;&#x52A8;&#x753B;&#x5149;&#x6807;&#x79FB;&#x52A8;&#x5230;&#x7BB1;&#x5B50;&#x5B8C;&#x5168;&#x6253;&#x5F00;&#x7684;&#x5173;&#x952E;&#x5E27;&#x4F4D;&#x7F6E;&#xFF0C;&#x70B9;&#x51FB;&#x6DFB;&#x52A0;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x6309;&#x94AE;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320215514821.png" alt="image-20200320215514821"></p>
-<p>此时Inpsector面板出现动画事件函数设置。我们在Hierarchy选中Chest，为其添加组件Treasure Chest(Script)。</p>
-<p>为Chest添加空的子GameObject并重命名为Spawner。将其拖拽添加到Chest的Treasure Chest(Script)组件下Spawner属性。从Assets/Prefabs下拖拽Coin到Chest的Treasure Chest(Script)组件下Coin Prefab属性。我们双击该组件下的Script属性打开脚本文件，在其中我们发现有一个OpenChest方法。</p>
-<p>回到Unity，在Animation窗口点击刚才添加的动画事件标记，在Inspector窗口的动画事件函数选项里我们有3种函数可以选择。选择OpenChest，这个函数就与动画事件关联上了。当我们播放游戏时，开箱动画播放到完全打开关键帧时将自动触发动画事件，调用OpenChest函数，弹出硬币。</p>
+<p>&#x6B64;&#x65F6;Inpsector&#x9762;&#x677F;&#x51FA;&#x73B0;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#x3002;&#x6211;&#x4EEC;&#x5728;Hierarchy&#x9009;&#x4E2D;Chest&#xFF0C;&#x4E3A;&#x5176;&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;Treasure Chest(Script)&#x3002;</p>
+<p>&#x4E3A;Chest&#x6DFB;&#x52A0;&#x7A7A;&#x7684;&#x5B50;GameObject&#x5E76;&#x91CD;&#x547D;&#x540D;&#x4E3A;Spawner&#x3002;&#x5C06;&#x5176;&#x62D6;&#x62FD;&#x6DFB;&#x52A0;&#x5230;Chest&#x7684;Treasure Chest(Script)&#x7EC4;&#x4EF6;&#x4E0B;Spawner&#x5C5E;&#x6027;&#x3002;&#x4ECE;Assets/Prefabs&#x4E0B;&#x62D6;&#x62FD;Coin&#x5230;Chest&#x7684;Treasure Chest(Script)&#x7EC4;&#x4EF6;&#x4E0B;Coin Prefab&#x5C5E;&#x6027;&#x3002;&#x6211;&#x4EEC;&#x53CC;&#x51FB;&#x8BE5;&#x7EC4;&#x4EF6;&#x4E0B;&#x7684;Script&#x5C5E;&#x6027;&#x6253;&#x5F00;&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x6709;&#x4E00;&#x4E2A;OpenChest&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x56DE;&#x5230;Unity&#xFF0C;&#x5728;Animation&#x7A97;&#x53E3;&#x70B9;&#x51FB;&#x521A;&#x624D;&#x6DFB;&#x52A0;&#x7684;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x6807;&#x8BB0;&#xFF0C;&#x5728;Inspector&#x7A97;&#x53E3;&#x7684;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;&#x9009;&#x9879;&#x91CC;&#x6211;&#x4EEC;&#x6709;3&#x79CD;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x3002;&#x9009;&#x62E9;OpenChest&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5C31;&#x4E0E;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x5173;&#x8054;&#x4E0A;&#x4E86;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x64AD;&#x653E;&#x6E38;&#x620F;&#x65F6;&#xFF0C;&#x5F00;&#x7BB1;&#x52A8;&#x753B;&#x64AD;&#x653E;&#x5230;&#x5B8C;&#x5168;&#x6253;&#x5F00;&#x5173;&#x952E;&#x5E27;&#x65F6;&#x5C06;&#x81EA;&#x52A8;&#x89E6;&#x53D1;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#xFF0C;&#x8C03;&#x7528;OpenChest&#x51FD;&#x6570;&#xFF0C;&#x5F39;&#x51FA;&#x786C;&#x5E01;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200320220902629.png" alt="image-20200320220902629"></p>
-<h1 id="五、创建多个剪辑"><a href="#五、创建多个剪辑" class="headerlink" title="五、创建多个剪辑"></a>五、创建多个剪辑</h1><p>首先为Chest_Close添加属性Rotation，通过Ctrl+C/V将Chest_Open的关键帧复制粘贴到Chest_Close里。</p>
-<p>在Chest_Close里，将首尾两个关键帧交换位置，然后调整其动画曲线。</p>
+<h1 id="&#x4E94;&#x3001;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;"><a href="#&#x4E94;&#x3001;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;" class="headerlink" title="&#x4E94;&#x3001;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;"></a>&#x4E94;&#x3001;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;</h1><p>&#x9996;&#x5148;&#x4E3A;Chest_Close&#x6DFB;&#x52A0;&#x5C5E;&#x6027;Rotation&#xFF0C;&#x901A;&#x8FC7;Ctrl+C/V&#x5C06;Chest_Open&#x7684;&#x5173;&#x952E;&#x5E27;&#x590D;&#x5236;&#x7C98;&#x8D34;&#x5230;Chest_Close&#x91CC;&#x3002;</p>
+<p>&#x5728;Chest_Close&#x91CC;&#xFF0C;&#x5C06;&#x9996;&#x5C3E;&#x4E24;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#x4EA4;&#x6362;&#x4F4D;&#x7F6E;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x6574;&#x5176;&#x52A8;&#x753B;&#x66F2;&#x7EBF;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321082658400.png" alt="image-20200321082658400"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321083142461.png" alt="image-20200321083142461"></p>
-<h1 id="六、动画控制器基础知识"><a href="#六、动画控制器基础知识" class="headerlink" title="六、动画控制器基础知识"></a>六、动画控制器基础知识</h1><p>如果我们有多个动画片段，需要管理它们，甚至在一个动画到下一个动画之间转换，需要使用动画控制器。这是一个可以与动画组件一起使用的游戏Assets。当我们创建动画片段时，Unity会自动创建一个动画控制器，该动画控制器需要设置动画的控制参数。</p>
+<h1 id="&#x516D;&#x3001;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x57FA;&#x7840;&#x77E5;&#x8BC6;"><a href="#&#x516D;&#x3001;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x57FA;&#x7840;&#x77E5;&#x8BC6;" class="headerlink" title="&#x516D;&#x3001;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x57FA;&#x7840;&#x77E5;&#x8BC6;"></a>&#x516D;&#x3001;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h1><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6709;&#x591A;&#x4E2A;&#x52A8;&#x753B;&#x7247;&#x6BB5;&#xFF0C;&#x9700;&#x8981;&#x7BA1;&#x7406;&#x5B83;&#x4EEC;&#xFF0C;&#x751A;&#x81F3;&#x5728;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x4E4B;&#x95F4;&#x8F6C;&#x6362;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x4E0E;&#x52A8;&#x753B;&#x7EC4;&#x4EF6;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x7684;&#x6E38;&#x620F;Assets&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;&#x65F6;&#xFF0C;Unity&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x8BE5;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x52A8;&#x753B;&#x7684;&#x63A7;&#x5236;&#x53C2;&#x6570;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321083855523.png" alt="image-20200321083855523"></p>
-<p>双击动画控制器，打开Animation窗口</p>
+<p>&#x53CC;&#x51FB;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x6253;&#x5F00;Animation&#x7A97;&#x53E3;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321092216642.png" alt="image-20200321092216642"></p>
-<p>在Animation窗口中，我们看到四个节点，按住鼠标中键可以移动观图视角</p>
-<p>Any State：特殊节点，允许中断正在播放的当前状态或正在播放以退出并进入另一个状态的当前动画。例如，当玩家的生命值降低到零，玩家处于生命状态并不重要，它将转到死亡动画。</p>
-<p>Entry：任何游戏开始或基础层上的特殊状态机的开始，将进入的第一个默认状态/默认动画。</p>
-<p>Exit：特殊节点，表明状态机应该退出。</p>
+<p>&#x5728;Animation&#x7A97;&#x53E3;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x56DB;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6309;&#x4F4F;&#x9F20;&#x6807;&#x4E2D;&#x952E;&#x53EF;&#x4EE5;&#x79FB;&#x52A8;&#x89C2;&#x56FE;&#x89C6;&#x89D2;</p>
+<p>Any State&#xFF1A;&#x7279;&#x6B8A;&#x8282;&#x70B9;&#xFF0C;&#x5141;&#x8BB8;&#x4E2D;&#x65AD;&#x6B63;&#x5728;&#x64AD;&#x653E;&#x7684;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x6216;&#x6B63;&#x5728;&#x64AD;&#x653E;&#x4EE5;&#x9000;&#x51FA;&#x5E76;&#x8FDB;&#x5165;&#x53E6;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x7684;&#x5F53;&#x524D;&#x52A8;&#x753B;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5F53;&#x73A9;&#x5BB6;&#x7684;&#x751F;&#x547D;&#x503C;&#x964D;&#x4F4E;&#x5230;&#x96F6;&#xFF0C;&#x73A9;&#x5BB6;&#x5904;&#x4E8E;&#x751F;&#x547D;&#x72B6;&#x6001;&#x5E76;&#x4E0D;&#x91CD;&#x8981;&#xFF0C;&#x5B83;&#x5C06;&#x8F6C;&#x5230;&#x6B7B;&#x4EA1;&#x52A8;&#x753B;&#x3002;</p>
+<p>Entry&#xFF1A;&#x4EFB;&#x4F55;&#x6E38;&#x620F;&#x5F00;&#x59CB;&#x6216;&#x57FA;&#x7840;&#x5C42;&#x4E0A;&#x7684;&#x7279;&#x6B8A;&#x72B6;&#x6001;&#x673A;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x5C06;&#x8FDB;&#x5165;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;/&#x9ED8;&#x8BA4;&#x52A8;&#x753B;&#x3002;</p>
+<p>Exit&#xFF1A;&#x7279;&#x6B8A;&#x8282;&#x70B9;&#xFF0C;&#x8868;&#x660E;&#x72B6;&#x6001;&#x673A;&#x5E94;&#x8BE5;&#x9000;&#x51FA;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321094443227.png" alt="image-20200321094443227"></p>
-<p>Chest_Open状态是橙色的，表示这个动画将在游戏开始后立即播放，因此我们需要创建一个空状态</p>
+<p>Chest_Open&#x72B6;&#x6001;&#x662F;&#x6A59;&#x8272;&#x7684;&#xFF0C;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x5C06;&#x5728;&#x6E38;&#x620F;&#x5F00;&#x59CB;&#x540E;&#x7ACB;&#x5373;&#x64AD;&#x653E;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x72B6;&#x6001;</p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Unity/">#Unity</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2020/02/24/PluralSight%E8%AF%BE%E7%A8%8B%EF%BC%9A%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">PluralSight课程：游戏机制设计基础</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/">Unity 2018 UI基础</a>
+            
+        </span>
+    </div>
+    
+</article>
 
-      </div>
-      
-      <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/Unity/">Unity</a>
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 MJ&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
             </div>
-        
-        <nav class="post-nav"><a class="prev" href="/2020/02/24/PluralSight%E8%AF%BE%E7%A8%8B%EF%BC%9A%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">PluralSight课程：游戏机制设计基础</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    <a class="next" href="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/">
-        <span class="next-text nav-default">Unity 2018 UI基础</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    </nav></footer>
-    </article></div><div class="comments" id="comments"></div></div>
-      </main>
+            <div class="column is-hidden-mobile"></div>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mingjun4503@163.com" class="iconfont icon-email" title="email"></a>
-        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
-        </div><div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
-  </span>
-
-  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">MJ</span>
-  </span>
-</div>
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
 </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
-      <div class="back-to-top" id="back-to-top">
-        <i class="iconfont icon-up"></i>
-      </div>
-    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Sans Titre)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
 </body>
 </html>

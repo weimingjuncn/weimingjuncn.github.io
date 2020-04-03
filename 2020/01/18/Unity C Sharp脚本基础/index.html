@@ -1,303 +1,566 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Unity C#脚本基础 - MJ&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="Unity C#脚本基础"/><meta name="keywords" content="Unity, C&#35, MJ's Blog" /><link rel="alternate" href="/atom.xml" title="MJ's Blog"><link rel="shortcut icon" type="image/x-icon" href="/assassins_creed.ico?v=2.11.0" />
-<link rel="canonical" href="https://weimingjuncn.github.io/2020/01/18/Unity C Sharp脚本基础/"/>
+<meta name="description" content="This is a personal Blog.">
 
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
 
-<script id="baidu_push">
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-<script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
-</script>
 
-    <title>Unity C#脚本基础 - MJ's Blog</title>
-  <meta name="generator" content="Hexo 4.2.0"></head>
 
-  <body><div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/." class="logo">MJ's Blog</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
 
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list"><a href="/">
-        <li class="mobile-menu-item">Home
-          </li>
-      </a><a href="/tags">
-        <li class="mobile-menu-item">Tags
-          </li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About
-          </li>
-      </a></ul>
-</nav>
-<div class="container" id="mobile-panel">
-      <header id="header" class="header"><div class="logo-wrapper">
-  <a href="/." class="logo">MJ's Blog</a>
-</div>
+    <meta name="description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2017.4.35f1 Personal &amp;#x4E00;&amp;#x3001;&amp;#x5728;Unity&amp;#x4E2D;&amp;#x521B;&amp;#x5EFA;C#&amp;#x811A;&amp;#x672C; Project&gt;Assets&amp;#x4E0B;&amp;#x65B0;&amp;#x5EFA;&amp;#x4E00;&amp;#x4E2A;&amp;#x53EB;&amp;#x201C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity C#脚本基础">
+<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="MJ&#39;s Blog">
+<meta property="og:description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2017.4.35f1 Personal &amp;#x4E00;&amp;#x3001;&amp;#x5728;Unity&amp;#x4E2D;&amp;#x521B;&amp;#x5EFA;C#&amp;#x811A;&amp;#x672C; Project&gt;Assets&amp;#x4E0B;&amp;#x65B0;&amp;#x5EFA;&amp;#x4E00;&amp;#x4E2A;&amp;#x53EB;&amp;#x201C">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200222183920131.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200222170229708.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223115839508.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223174012993.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223202521447.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223221512891.png">
+<meta property="article:published_time" content="2020-01-18T09:34:55.000Z">
+<meta property="article:modified_time" content="2020-02-23T14:38:05.000Z">
+<meta property="article:author" content="MJ">
+<meta property="article:tag" content="Unity">
+<meta property="article:tag" content="C&amp;#35">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200222183920131.png">
 
-<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
-          <a class="menu-item-link" href="/">
-            Home
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
             </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/tags">
-            Tags
-            </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/about/">
-            About
-            </a>
-        </li>
-      </ul></nav>
-</header>
-
-      <main id="main" class="main">
-        <div class="content-wrapper">
-          <div id="content" class="content"><article class="post">
-    <header class="post-header">
-      <h1 class="post-title">Unity C#脚本基础
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-01-18
-        </span></div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
-    <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、在Unity中创建C-脚本"><span class="toc-text">一、在Unity中创建C#脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、脚本结构"><span class="toc-text">二、脚本结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、对游戏对象的基本操作"><span class="toc-text">三、对游戏对象的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-访问、操纵游戏对象组件"><span class="toc-text">1. 访问、操纵游戏对象组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-用户输入"><span class="toc-text">2. 用户输入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、游戏对象之间的交互"><span class="toc-text">四、游戏对象之间的交互</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-脚本之间交互"><span class="toc-text">1. 脚本之间交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-碰撞交互"><span class="toc-text">2. 碰撞交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-触发器"><span class="toc-text">3. 触发器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-射线侦测（Raycasting）"><span class="toc-text">4. 射线侦测（Raycasting）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-实例化（Instantiate）和销毁"><span class="toc-text">5. 实例化（Instantiate）和销毁</span></a></li></ol></li></ol>
-    </div>
-  </div><div class="post-content"><p>Unity版本：Unity 2017.4.35f1 Personal</p>
-<h1 id="一、在Unity中创建C-脚本"><a href="#一、在Unity中创建C-脚本" class="headerlink" title="一、在Unity中创建C#脚本"></a>一、在Unity中创建C#脚本</h1><ol>
-<li><p>Project&gt;Assets下新建一个叫“Scripts”的文件夹用于存放脚本</p>
-</li>
-<li><p>在Scripts文件夹下右键&gt;Create&gt;C# Script，取名“ExampleScript”</p>
-</li>
-</ol>
-<p>两种方法给物体添加脚本：</p>
-<ol>
-<li><p>左键单击并将脚本从项目文件夹拖拽到物体上</p>
-</li>
-<li><p>在物体的Inspector窗口点击Add Component按钮，选择Scripts添加现有的脚本。</p>
-<p>通过Add Component按钮，选择New Script添加新建脚本，但脚本是被添加到Assets文件夹，而非Scripts文件夹。</p>
-</li>
-</ol>
-<p>删除物体的脚本：在物体的Inspector面板找到例如ExampleScript(Script)，点击小齿轮，选择Remove Component</p>
-<p>调试时打开和关闭脚本：勾选或取消勾选相应的脚本。脚本中可能有错误，如果禁用它，它可能仍会出现并在底部显示错误。因此需要使用代码注释来屏蔽代码块</p>
-<p>注意：项目窗口的脚本删除后无法撤销删除。</p>
-<h1 id="二、脚本结构"><a href="#二、脚本结构" class="headerlink" title="二、脚本结构"></a>二、脚本结构</h1><p>双击ExampleScript将自动加载到Visual Studio 2017，如果遇到”File Modification Detected“弹窗，选择“Reload All”重新加载脚本。在Visual Studio将看到ExampleScript.cs的代码：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;<span class="comment">//命名空间</span></span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;<span class="comment">//命名空间只是引用类的名称的集合</span></span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NewBehaviourScript</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"><span class="comment">//每一个通过Unity新建的脚本都继承自MonoBehavior</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>MonoBehavior</strong>来自命名空间UnityEngine，每一个通过Unity新建的脚本都继承自MonoBehavior。</p>
-<p>MonoBehavior允许你将脚本作为组件附加到游戏对象中。</p>
-<p><strong>类(Class)</strong>，只是变量和方法的容器</p>
-<p>注意到，类名和.cs文件名相同。如果要修改类的名字，.cs文件名也要一起修改。</p>
-<p>起始函数Start()：脚本一启动就执行的方法。</p>
-<p>更新函数Update()：每一帧都在执行以保证更新的方法。</p>
-<h1 id="三、对游戏对象的基本操作"><a href="#三、对游戏对象的基本操作" class="headerlink" title="三、对游戏对象的基本操作"></a>三、对游戏对象的基本操作</h1><h2 id="1-访问、操纵游戏对象组件"><a href="#1-访问、操纵游戏对象组件" class="headerlink" title="1. 访问、操纵游戏对象组件"></a>1. 访问、操纵游戏对象组件</h2><ol>
-<li><p>导入资源包：首先在Assets文件夹导入Unity_C_Sharp_Fundamentals_Assets.unitypackage。</p>
-</li>
-<li><p>创建一个Floor：在Assets/Standard Assets/Prototyping/Prefabs下找到FloorPrototype08x01x08，拖拽到场景中，重置其位置。</p>
-</li>
-<li><p>放入角色：在Assets/Prefabs下找到dwarf_hero，拖拽到场景中的Floor上。给角色添加Capsule Collider组件，并将Capsule Collider下的Center &gt; Y设为0.8，Radius设为0.4，Height设为1.6。</p>
-</li>
-<li><p>为角色添加脚本：在Assets/Scripts下创建脚本Player.cs，打开脚本，编辑代码如下并保存。</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Player</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> CapsuleCollider playerConllider;</span><br><span class="line">	<span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">        playerConllider = GetComponent&lt;CapsuleCollider&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>回到Unity编辑器，将Player.cs拖拽到角色的Inspector窗口里。可以看到角色增加了一个叫Player(Script)的组件，里边的Player Collider的值为None(Collider)。当我们点击播放按钮，Player Collider会很容易地自动获取到Collider组件，因为Capsule Collider组件和脚本组件在同一个游戏物体里（角色）。</p>
-<p>如果我们在上边的代码中<strong>public Collider playerCollider;</strong>下插入一行<strong>playerCollider.enabled = false;</strong>，保存脚本回到Unity点击播放，则可以看到Capsule Collider组件被取消勾选。</p>
-<p>同理，如果我们在上边的代码中<strong>public Collider playerCollider;</strong>下插入一行<strong>playerConllider.isTrigger = true;</strong>，保存脚本回到Unity点击播放，则可以看到Capsule Collider组件下的Is Trigger被勾选。</p>
-<p>如果我们要在游戏启动时修改Capsule Collider的长度、中心位置，我们可以编写代码如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">    playerCollider = GetComponent&lt;CapsuleCollider&gt;();</span><br><span class="line">    <span class="comment">//playerCollider.enabled = false; //取消勾选Capsule Collider组件</span></span><br><span class="line">    <span class="comment">//playerCollider.isTrigger = true; //勾选Capsule Collider组件下Is Trigger选项</span></span><br><span class="line">    playerCollider.height = <span class="number">3f</span>; <span class="comment">//修改胶囊碰撞体的高（长度）</span></span><br><span class="line">    playerCollider.center = <span class="keyword">new</span> Vector3(<span class="number">0f</span>, <span class="number">2f</span>, <span class="number">0f</span>); <span class="comment">//修改胶囊碰撞体中心的位置坐标</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="2-用户输入"><a href="#2-用户输入" class="headerlink" title="2. 用户输入"></a>2. 用户输入</h2><p>在Unity编辑器菜单栏，点击Edit &gt; Project Settings &gt; Input在Inspector窗口打开<strong>InputManager</strong>。我们可以在InputManager中编辑用户输入控制。</p>
-<p>我们回到Player.cs，编辑Update函数如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> moveHorizontal = Input.GetAxis(<span class="string">"Horizontal"</span>);</span><br><span class="line">	<span class="keyword">float</span> moveVertical = Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line"></span><br><span class="line">	print(moveHorizontal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>保存后回到Unity编辑器点击播放，当我们按住【A】键时，控制台将打印消息一系列大于-1且小于0的小数，打印的小数快速减小直到打印出-1，松开键盘后归0，按住【D】键，打印大于0且小于1的小数，并且打印的小数快速增大直至打印出1。</p>
-<p>由此我们得知，按键A关联水平负方向，W关联水平正方向。</p>
-<p>接下来将Player.cs编辑如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Player</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> moveSpeed = <span class="number">5f</span>;	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">float</span> moveHorizontal = Input.GetAxis(<span class="string">"Horizontal"</span>);<span class="comment">//获取左右移动分量</span></span><br><span class="line">        <span class="keyword">float</span> moveVertical = Input.GetAxis(<span class="string">"Vertical"</span>);<span class="comment">//获取前后移动分量</span></span><br><span class="line">		<span class="comment">//创建水平面移动矢量</span></span><br><span class="line">        Vector3 movement = <span class="keyword">new</span> Vector3(moveHorizontal, <span class="number">0f</span>, moveVertical);</span><br><span class="line">		<span class="comment">//将移动矢量转译到Transform组件</span></span><br><span class="line">        transform.Translate(movement * Time.deltaTime * moveSpeed);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>保存后，在Unity编辑器将镜头摆到合适观察角色的位置，点击播放。通过【W】【A】【S】【D】键，我们可以控制角色前后左右移动。</p>
-<h1 id="四、游戏对象之间的交互"><a href="#四、游戏对象之间的交互" class="headerlink" title="四、游戏对象之间的交互"></a>四、游戏对象之间的交互</h1><h2 id="1-脚本之间交互"><a href="#1-脚本之间交互" class="headerlink" title="1. 脚本之间交互"></a>1. 脚本之间交互</h2><p>在Assets/Prefabs下找到Battle_Dummy，拖拽进场景到Floor上。在Scripts文件夹新建一个Enemy.cs。将Enemy.cs拖拽到Battle_Dummy的Inpsector窗口中形成Enemy(Script)组件。</p>
-<p>给Enemy添加上一个Health属性，即编辑Enemy.cs如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Enemy</span> : <span class="title">MonoBehaviour</span> &#123; <span class="comment">//声明Enemy类</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> enemyHealth = <span class="number">4</span>; <span class="comment">//声明enemyHealth并初始化</span></span><br><span class="line">	<span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编辑Player.cs如下</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Player</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> moveSpeed = <span class="number">5f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> GameObject enemy;</span><br><span class="line">    <span class="keyword">private</span> Enemy enemyScript;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        enemy = GameObject.Find(<span class="string">"Battle_Dummy"</span>);</span><br><span class="line">        enemyScript = enemy.GetComponent&lt;Enemy&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">float</span> moveHorizontal = Input.GetAxis(<span class="string">"Horizontal"</span>);</span><br><span class="line">        <span class="keyword">float</span> moveVertical = Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line"></span><br><span class="line">        Vector3 movement = <span class="keyword">new</span> Vector3(moveHorizontal, <span class="number">0f</span>, moveVertical);</span><br><span class="line"></span><br><span class="line">        transform.Translate(movement * Time.deltaTime * moveSpeed);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.Space)) <span class="comment">//当键盘按下空格键时执行</span></span><br><span class="line">        &#123;</span><br><span class="line">            enemyScript.enemyHealth--; <span class="comment">//Health自减1</span></span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>保存脚本后，回到Unity点击播放，当我们每按一次【空格】键时，点击Battle_Dummy，通过Inspector窗口可以看到Enemy组件下的Enemy Health都会减1。</p>
-<h2 id="2-碰撞交互"><a href="#2-碰撞交互" class="headerlink" title="2. 碰撞交互"></a>2. 碰撞交互</h2><p>给角色添加Rigidbody组件,并设置Constraints如图</p>
-<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200222183920131.png" alt="image-20200222183920131"></p>
-<p>给Battle_Dummy添加Capsule Collider组件，Center设置为（0，0.5，0），Radius设置为0.4，Height设置为2。通过快捷键Ctrl+D快速生成两个复制品，拖到旁边如图：</p>
-<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200222170229708.png" alt="image-20200222170229708"></p>
-<p>在Player.cs里为类Player添加方法OnCollisionEnter：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnCollisionEnter</span>(<span class="params">Collision collision</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(collision.gameObject.tag == <span class="string">"Enemy"</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        enemyScript.enemyHealth--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>回到Unity给3个Battle_Bummy添加Tag Enemy，角色添加Tag Player。</p>
-<p>点击播放，选中Battle_Bummy，控制角色碰到Battle_Bummy一次，其Enemy组件下EnemyHealth减1一次。</p>
-<p>但当我们控制角色碰撞Battle_Bummy(1)、Battle_Bummy(2)时，它们的EnemyHealth却没有减少。</p>
-<p>修改Player.cs如下后即可解决问题：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Player</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> moveSpeed = <span class="number">5f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//private GameObject enemy;</span></span><br><span class="line">    <span class="keyword">private</span> Enemy enemyScript;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">//enemy = GameObject.Find("Battle_Dummy");</span></span><br><span class="line">        <span class="comment">//enemyScript = enemy.GetComponent&lt;Enemy&gt;();</span></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">float</span> moveHorizontal = Input.GetAxis(<span class="string">"Horizontal"</span>);</span><br><span class="line">        <span class="keyword">float</span> moveVertical = Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line"></span><br><span class="line">        Vector3 movement = <span class="keyword">new</span> Vector3(moveHorizontal, <span class="number">0f</span>, moveVertical);</span><br><span class="line">        <span class="comment">//角色移动</span></span><br><span class="line">        transform.Translate(movement * Time.deltaTime * moveSpeed);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnCollisionEnter</span>(<span class="params">Collision collision</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(collision.gameObject.tag == <span class="string">"Enemy"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            enemyScript = collision.gameObject.GetComponent&lt;Enemy&gt;();</span><br><span class="line">            enemyScript.enemyHealth--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-触发器"><a href="#3-触发器" class="headerlink" title="3. 触发器"></a>3. 触发器</h2><p>我们从Assets/Prefabs往场景里添加一个Chest</p>
-<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223115839508.png" alt="image-20200223115839508"></p>
-<p>在Scripts文件夹里新建一个TreasureChest.cs，为类TreasureChest添加一个<strong>OnTriggerEnter</strong>方法。</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(other.gameObject.tag == <span class="string">"Player"</span>)</span><br><span class="line">    &#123;</span><br><span class="line">	    print(<span class="string">"Interacting!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在Unity中，给Chest添加上TreasureChest(Script)组件。</p>
-<p>点击播放，当我们控制角色碰到Chest一次，控制台打印消息“Interacting!”一次。</p>
-<p>如果把<strong>OnTriggerEnter</strong>换成<strong>OnTriggerStay</strong>，当我们控制角色停留在Chest旁边时，控制台会持续打印消息“Interacting!”。</p>
-<p>如果在<strong>OnTriggerEnter</strong>方法下方添加<strong>OnTriggerExit</strong>方法：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnTriggerExit</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(other.gameObject.tag == <span class="string">"Player"</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        print(<span class="string">"Hey!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当我们的角色靠近Chest在离开，控制台将打印一次消息“Hey!”。</p>
-<p>我们给TreasureChest添加一个布尔类型的公共属性interactable，并初始化为false。修改<strong>OnTriggerEnter</strong>方法和<strong>OnTriggerExit</strong>方法的内容如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TreasureChest</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> interactable = <span class="literal">false</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(other.gameObject.tag == <span class="string">"Player"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            interactable = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerExit</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(other.gameObject.tag == <span class="string">"Player"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            interactable = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当我们播放游戏时，Chest的TreasureChest(Script)组件下会生成一个interactable选项，当角色靠近Chest时，interactable被勾选（值为true），当角色离开时，interactable取消勾选（值为false）。</p>
-<p>接下来加入动画，</p>
-<p>点击Unity菜单栏的Window &gt; Animator打开Animator窗口，可以看到Parameters下有一个openChest，右边的转变图里，选中Idle_State，我们看到Transition下有一个转变情况：Idle_State -&gt; ChestOpen。点击，下方出现转变条件（Conditions）——openChest的值为true（默认）。因此我们在Update方法里可以写上，当开箱按键（这里设为空格）按下后，动画设置openChest为true。</p>
-<p>编辑后的TreasureChest.cs如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TreasureChest</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> interactable = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">private</span> Animator anim;</span><br><span class="line">    <span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">        anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(interactable &amp;&amp; Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">        &#123;</span><br><span class="line">            anim.SetBool(<span class="string">"openChest"</span>, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(other.gameObject.tag == <span class="string">"Player"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            interactable = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerExit</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(other.gameObject.tag == <span class="string">"Player"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            interactable = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>播放游戏，当角色靠近Chest按下空格键，播放箱子打开动画。</p>
-<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223174012993.png" alt="image-20200223174012993"></p>
-<h2 id="4-射线侦测（Raycasting）"><a href="#4-射线侦测（Raycasting）" class="headerlink" title="4. 射线侦测（Raycasting）"></a>4. 射线侦测（Raycasting）</h2><p>射线的一个应用时侦测角色周围是否有敌人。</p>
-<p>回到Player.cs，我们给类Player添加以下3个变量：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> RaycastHit hit;</span><br><span class="line"><span class="keyword">private</span> Ray ray;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">float</span> rayDistance = <span class="number">4f</span>;</span><br></pre></td></tr></table></figure>
-
-<p>在Update方法做如下应用：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ray = <span class="keyword">new</span> Ray(transform.position, transform.forward);</span><br><span class="line">Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);</span><br></pre></td></tr></table></figure>
-
-<p>回到Unity播放游戏，点击Scene窗口，我们发现角色脚下正前方（Z轴正方向）出现一条4格长度的红线。</p>
-<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223202521447.png" alt="image-20200223202521447"></p>
-<p>要把红线上移到角色重新，我们可以对上边两行代码的第一行修改成如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ray = <span class="keyword">new</span> Ray(transform.position + <span class="keyword">new</span> Vector3(<span class="number">0f</span>,playerCollider.center.y,<span class="number">0f</span>), transform.forward);</span><br></pre></td></tr></table></figure>
-
-<p>接下来实现射线反馈，在Update方法里继续编写如下代码：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(Physics.Raycast(ray, <span class="keyword">out</span> hit))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(hit.distance &lt; rayDistance)</span><br><span class="line">    &#123;</span><br><span class="line">        print(<span class="string">"We hit something!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>播放游戏，移动角色，当红线触及Battle_Dummy或Chest时（其实时触及它们的碰撞体），控制台持续打印消息“We hit something!”。</p>
-<p>接下来修改执行反馈的代码如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(Physics.Raycast(ray, <span class="keyword">out</span> hit))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(hit.distance &lt; rayDistance)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(hit.collider.gameObject.tag == <span class="string">"Enemy"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            print(<span class="string">"There is an enemy ahead!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>播放游戏，当角色移动到Chest前边时，反馈但没有打印消息，当角色移动到Battle_Dummy前边时，控制台持续打印消息“There is an enemy ahead!”</p>
-<p>至此，Player.cs完整代码如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Player</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> CapsuleCollider playerCollider;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> moveSpeed = <span class="number">5f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Enemy enemyScript;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> RaycastHit hit;</span><br><span class="line">    <span class="keyword">private</span> Ray ray;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> rayDistance = <span class="number">4f</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        playerCollider = GetComponent&lt;CapsuleCollider&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">float</span> moveHorizontal = Input.GetAxis(<span class="string">"Horizontal"</span>);</span><br><span class="line">        <span class="keyword">float</span> moveVertical = Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line"></span><br><span class="line">        Vector3 movement = <span class="keyword">new</span> Vector3(moveHorizontal, <span class="number">0f</span>, moveVertical);</span><br><span class="line">        <span class="comment">//角色移动</span></span><br><span class="line">        transform.Translate(movement * Time.deltaTime * moveSpeed);</span><br><span class="line"></span><br><span class="line">        ray = <span class="keyword">new</span> Ray(transform.position + <span class="keyword">new</span> Vector3(<span class="number">0f</span>,playerCollider.center.y,<span class="number">0f</span>), transform.forward);</span><br><span class="line">        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(Physics.Raycast(ray, <span class="keyword">out</span> hit))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(hit.distance &lt; rayDistance)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(hit.collider.gameObject.tag == <span class="string">"Enemy"</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    print(<span class="string">"There is an enemy ahead!"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnCollisionEnter</span>(<span class="params">Collision collision</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(collision.gameObject.tag == <span class="string">"Enemy"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            enemyScript = collision.gameObject.GetComponent&lt;Enemy&gt;();</span><br><span class="line">            enemyScript.enemyHealth--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-实例化（Instantiate）和销毁"><a href="#5-实例化（Instantiate）和销毁" class="headerlink" title="5. 实例化（Instantiate）和销毁"></a>5. 实例化（Instantiate）和销毁</h2><p>打开TreasureChest.cs，为将要实例化的预制体创建供存储的变量。</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Rigidbody coinPrefab;</span><br><span class="line"><span class="keyword">public</span> Transform spawner;</span><br></pre></td></tr></table></figure>
-<p>编辑Update函数如下：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(interactable &amp;&amp; Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">    &#123;</span><br><span class="line">        anim.SetBool(<span class="string">"openChest"</span>, <span class="literal">true</span>);</span><br><span class="line">        Rigidbody coinInstance;</span><br><span class="line">        coinInstance = Instantiate(coinPrefab, spawner.position, spawner.rotation) <span class="keyword">as</span> Rigidbody;<span class="comment">//将实例化结果由Object类型强转成Rigidbody类型</span></span><br><span class="line">        coinInstance.AddForce(spawner.up * <span class="number">100</span>);<span class="comment">//给coinInstance在Y轴正方向上添加受力</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>回到Unity，我们看到Chest的Treasure Chest(Script)组件下多了两个属性Coin Prefabs和Spawner。从Assets/Prefabs拖拽Coin到Coin Prefabs，注意到我们的预制体Coin也具备Rigidbody组件，因此可以放入要求Rigidbody类型的Coin Prefabs。</p>
-<p>选中Chest新建一个空的子Object，命名为spawner，将其拖拽到Chest的TreasureChest组件下Spawner属性。</p>
-<p>选中spawner，将其往Y轴正方向移动到Chest上方（此处移动了0.86）。</p>
-<p>播放游戏，当角色移动到Chest前，按一次空格键，Chest打开并弹起一个Coin然后垂直落回原位，Hierarchy窗口也会生成一个Coin(Clone)。</p>
-<p>如果此时再按空格，则Coin继续弹出，并叠在之前的Coin上。</p>
-<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223221512891.png" alt="image-20200223221512891"></p>
-<p>接下来我们实现Coin实例的销毁。</p>
-<p>在Assets/Scripts下新建Coin.cs并在Visual Studio打开，在Start方法里添加语句：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Destroy(gameObject, <span class="number">2.0f</span>); <span class="comment">//两秒后销毁gameObject</span></span><br></pre></td></tr></table></figure>
-
-<p>给Assets/Prefabs下的预制体Coin添加组件Coin(Script)</p>
-<p>再次播放游戏，当我们每按一次空格，箱子里弹出的硬币均仅仅存在2秒。</p>
-<p>Coin.cs完整代码：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Coin</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">	<span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">        Destroy(gameObject, <span class="number">2.0f</span>); <span class="comment">//两秒后销毁gameObject</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>TreasureChest.cs最终代码：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TreasureChest</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> interactable = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">private</span> Animator anim;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Rigidbody coinPrefab;</span><br><span class="line">    <span class="keyword">public</span> Transform spawner;</span><br><span class="line">    <span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">        anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(interactable &amp;&amp; Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">        &#123;</span><br><span class="line">            anim.SetBool(<span class="string">"openChest"</span>, <span class="literal">true</span>);</span><br><span class="line">            Rigidbody coinInstance;</span><br><span class="line">            coinInstance = Instantiate(coinPrefab, spawner.position, spawner.rotation) <span class="keyword">as</span> Rigidbody;<span class="comment">//将实例化结果由Object类型强转成Rigidbody类型</span></span><br><span class="line">            coinInstance.AddForce(spawner.up * <span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(other.gameObject.tag == <span class="string">"Player"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            interactable = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerExit</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(other.gameObject.tag == <span class="string">"Player"</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            interactable = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      </div>
-      
-      <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/Unity/">Unity</a>
-            <a href="/tags/C-35/">C&#35</a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+        </div>
         
-        <nav class="post-nav"><a class="prev" href="/2020/01/23/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEWin10%E5%8F%B3%E9%94%AE%E6%89%93%E5%BC%80CMD/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">如何设置Win10右键打开CMD</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    <a class="next" href="/2020/01/17/C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/">
-        <span class="next-text nav-default">C#脚本基础</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    </nav></footer>
-    </article></div><div class="comments" id="comments"></div></div>
-      </main>
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">归档</a>
+            
+            <a class="navbar-item "
+               href="/tags">标签分类</a>
+            
+            <a class="navbar-item "
+               href="/about">关于</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#一、在Unity中创建C-脚本">1&nbsp;&nbsp;<b>一、在Unity中创建C#脚本</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#二、脚本结构">2&nbsp;&nbsp;<b>二、脚本结构</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#三、对游戏对象的基本操作">3&nbsp;&nbsp;<b>三、对游戏对象的基本操作</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#1-访问、操纵游戏对象组件">3.1&nbsp;&nbsp;1. 访问、操纵游戏对象组件</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#2-用户输入">3.2&nbsp;&nbsp;2. 用户输入</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#四、游戏对象之间的交互">4&nbsp;&nbsp;<b>四、游戏对象之间的交互</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#1-脚本之间交互">4.1&nbsp;&nbsp;1. 脚本之间交互</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#2-碰撞交互">4.2&nbsp;&nbsp;2. 碰撞交互</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#3-触发器">4.3&nbsp;&nbsp;3. 触发器</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#4-射线侦测（Raycasting）">4.4&nbsp;&nbsp;4. 射线侦测（Raycasting）</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#5-实例化（Instantiate）和销毁">4.5&nbsp;&nbsp;5. 实例化（Instantiate）和销毁</a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mingjun4503@163.com" class="iconfont icon-email" title="email"></a>
-        <a href="https://github.com/weimingjuncn" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
-        </div><div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
-  </span>
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Unity C#脚本基础
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-01-18T09:34:55.000Z" itemprop="datePublished">1月 18 2020</time>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>Unity&#x7248;&#x672C;&#xFF1A;Unity 2017.4.35f1 Personal</p>
+<h1 id="&#x4E00;&#x3001;&#x5728;Unity&#x4E2D;&#x521B;&#x5EFA;C-&#x811A;&#x672C;"><a href="#&#x4E00;&#x3001;&#x5728;Unity&#x4E2D;&#x521B;&#x5EFA;C-&#x811A;&#x672C;" class="headerlink" title="&#x4E00;&#x3001;&#x5728;Unity&#x4E2D;&#x521B;&#x5EFA;C#&#x811A;&#x672C;"></a>&#x4E00;&#x3001;&#x5728;Unity&#x4E2D;&#x521B;&#x5EFA;C#&#x811A;&#x672C;</h1><ol>
+<li><p>Project&gt;Assets&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x53EB;&#x201C;Scripts&#x201D;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x811A;&#x672C;</p>
+</li>
+<li><p>&#x5728;Scripts&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x53F3;&#x952E;&gt;Create&gt;C# Script&#xFF0C;&#x53D6;&#x540D;&#x201C;ExampleScript&#x201D;</p>
+</li>
+</ol>
+<p>&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x7ED9;&#x7269;&#x4F53;&#x6DFB;&#x52A0;&#x811A;&#x672C;&#xFF1A;</p>
+<ol>
+<li><p>&#x5DE6;&#x952E;&#x5355;&#x51FB;&#x5E76;&#x5C06;&#x811A;&#x672C;&#x4ECE;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x5939;&#x62D6;&#x62FD;&#x5230;&#x7269;&#x4F53;&#x4E0A;</p>
+</li>
+<li><p>&#x5728;&#x7269;&#x4F53;&#x7684;Inspector&#x7A97;&#x53E3;&#x70B9;&#x51FB;Add Component&#x6309;&#x94AE;&#xFF0C;&#x9009;&#x62E9;Scripts&#x6DFB;&#x52A0;&#x73B0;&#x6709;&#x7684;&#x811A;&#x672C;&#x3002;</p>
+<p>&#x901A;&#x8FC7;Add Component&#x6309;&#x94AE;&#xFF0C;&#x9009;&#x62E9;New Script&#x6DFB;&#x52A0;&#x65B0;&#x5EFA;&#x811A;&#x672C;&#xFF0C;&#x4F46;&#x811A;&#x672C;&#x662F;&#x88AB;&#x6DFB;&#x52A0;&#x5230;Assets&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x800C;&#x975E;Scripts&#x6587;&#x4EF6;&#x5939;&#x3002;</p>
+</li>
+</ol>
+<p>&#x5220;&#x9664;&#x7269;&#x4F53;&#x7684;&#x811A;&#x672C;&#xFF1A;&#x5728;&#x7269;&#x4F53;&#x7684;Inspector&#x9762;&#x677F;&#x627E;&#x5230;&#x4F8B;&#x5982;ExampleScript(Script)&#xFF0C;&#x70B9;&#x51FB;&#x5C0F;&#x9F7F;&#x8F6E;&#xFF0C;&#x9009;&#x62E9;Remove Component</p>
+<p>&#x8C03;&#x8BD5;&#x65F6;&#x6253;&#x5F00;&#x548C;&#x5173;&#x95ED;&#x811A;&#x672C;&#xFF1A;&#x52FE;&#x9009;&#x6216;&#x53D6;&#x6D88;&#x52FE;&#x9009;&#x76F8;&#x5E94;&#x7684;&#x811A;&#x672C;&#x3002;&#x811A;&#x672C;&#x4E2D;&#x53EF;&#x80FD;&#x6709;&#x9519;&#x8BEF;&#xFF0C;&#x5982;&#x679C;&#x7981;&#x7528;&#x5B83;&#xFF0C;&#x5B83;&#x53EF;&#x80FD;&#x4ECD;&#x4F1A;&#x51FA;&#x73B0;&#x5E76;&#x5728;&#x5E95;&#x90E8;&#x663E;&#x793A;&#x9519;&#x8BEF;&#x3002;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x4EE3;&#x7801;&#x6CE8;&#x91CA;&#x6765;&#x5C4F;&#x853D;&#x4EE3;&#x7801;&#x5757;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x9879;&#x76EE;&#x7A97;&#x53E3;&#x7684;&#x811A;&#x672C;&#x5220;&#x9664;&#x540E;&#x65E0;&#x6CD5;&#x64A4;&#x9500;&#x5220;&#x9664;&#x3002;</p>
+<h1 id="&#x4E8C;&#x3001;&#x811A;&#x672C;&#x7ED3;&#x6784;"><a href="#&#x4E8C;&#x3001;&#x811A;&#x672C;&#x7ED3;&#x6784;" class="headerlink" title="&#x4E8C;&#x3001;&#x811A;&#x672C;&#x7ED3;&#x6784;"></a>&#x4E8C;&#x3001;&#x811A;&#x672C;&#x7ED3;&#x6784;</h1><p>&#x53CC;&#x51FB;ExampleScript&#x5C06;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x5230;Visual Studio 2017&#xFF0C;&#x5982;&#x679C;&#x9047;&#x5230;&#x201D;File Modification Detected&#x201C;&#x5F39;&#x7A97;&#xFF0C;&#x9009;&#x62E9;&#x201C;Reload All&#x201D;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x811A;&#x672C;&#x3002;&#x5728;Visual Studio&#x5C06;&#x770B;&#x5230;ExampleScript.cs&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;<span class="hljs-comment">//&#x547D;&#x540D;&#x7A7A;&#x95F4;</span></span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;<span class="hljs-comment">//&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x53EA;&#x662F;&#x5F15;&#x7528;&#x7C7B;&#x7684;&#x540D;&#x79F0;&#x7684;&#x96C6;&#x5408;</span></span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">NewBehaviourScript</span> : <span class="hljs-title">MonoBehaviour</span> {</span><br><span class="line"><span class="hljs-comment">//&#x6BCF;&#x4E00;&#x4E2A;&#x901A;&#x8FC7;Unity&#x65B0;&#x5EFA;&#x7684;&#x811A;&#x672C;&#x90FD;&#x7EE7;&#x627F;&#x81EA;MonoBehavior</span></span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">		</span><br><span class="line">	}	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p><strong>MonoBehavior</strong>&#x6765;&#x81EA;&#x547D;&#x540D;&#x7A7A;&#x95F4;UnityEngine&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x901A;&#x8FC7;Unity&#x65B0;&#x5EFA;&#x7684;&#x811A;&#x672C;&#x90FD;&#x7EE7;&#x627F;&#x81EA;MonoBehavior&#x3002;</p>
+<p>MonoBehavior&#x5141;&#x8BB8;&#x4F60;&#x5C06;&#x811A;&#x672C;&#x4F5C;&#x4E3A;&#x7EC4;&#x4EF6;&#x9644;&#x52A0;&#x5230;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x4E2D;&#x3002;</p>
+<p><strong>&#x7C7B;(Class)</strong>&#xFF0C;&#x53EA;&#x662F;&#x53D8;&#x91CF;&#x548C;&#x65B9;&#x6CD5;&#x7684;&#x5BB9;&#x5668;</p>
+<p>&#x6CE8;&#x610F;&#x5230;&#xFF0C;&#x7C7B;&#x540D;&#x548C;.cs&#x6587;&#x4EF6;&#x540D;&#x76F8;&#x540C;&#x3002;&#x5982;&#x679C;&#x8981;&#x4FEE;&#x6539;&#x7C7B;&#x7684;&#x540D;&#x5B57;&#xFF0C;.cs&#x6587;&#x4EF6;&#x540D;&#x4E5F;&#x8981;&#x4E00;&#x8D77;&#x4FEE;&#x6539;&#x3002;</p>
+<p>&#x8D77;&#x59CB;&#x51FD;&#x6570;Start()&#xFF1A;&#x811A;&#x672C;&#x4E00;&#x542F;&#x52A8;&#x5C31;&#x6267;&#x884C;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x66F4;&#x65B0;&#x51FD;&#x6570;Update()&#xFF1A;&#x6BCF;&#x4E00;&#x5E27;&#x90FD;&#x5728;&#x6267;&#x884C;&#x4EE5;&#x4FDD;&#x8BC1;&#x66F4;&#x65B0;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<h1 id="&#x4E09;&#x3001;&#x5BF9;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;"><a href="#&#x4E09;&#x3001;&#x5BF9;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;" class="headerlink" title="&#x4E09;&#x3001;&#x5BF9;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;"></a>&#x4E09;&#x3001;&#x5BF9;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h1><h2 id="1-&#x8BBF;&#x95EE;&#x3001;&#x64CD;&#x7EB5;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x7EC4;&#x4EF6;"><a href="#1-&#x8BBF;&#x95EE;&#x3001;&#x64CD;&#x7EB5;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x7EC4;&#x4EF6;" class="headerlink" title="1. &#x8BBF;&#x95EE;&#x3001;&#x64CD;&#x7EB5;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x7EC4;&#x4EF6;"></a>1. &#x8BBF;&#x95EE;&#x3001;&#x64CD;&#x7EB5;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x7EC4;&#x4EF6;</h2><ol>
+<li><p>&#x5BFC;&#x5165;&#x8D44;&#x6E90;&#x5305;&#xFF1A;&#x9996;&#x5148;&#x5728;Assets&#x6587;&#x4EF6;&#x5939;&#x5BFC;&#x5165;Unity_C_Sharp_Fundamentals_Assets.unitypackage&#x3002;</p>
+</li>
+<li><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Floor&#xFF1A;&#x5728;Assets/Standard Assets/Prototyping/Prefabs&#x4E0B;&#x627E;&#x5230;FloorPrototype08x01x08&#xFF0C;&#x62D6;&#x62FD;&#x5230;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x91CD;&#x7F6E;&#x5176;&#x4F4D;&#x7F6E;&#x3002;</p>
+</li>
+<li><p>&#x653E;&#x5165;&#x89D2;&#x8272;&#xFF1A;&#x5728;Assets/Prefabs&#x4E0B;&#x627E;&#x5230;dwarf_hero&#xFF0C;&#x62D6;&#x62FD;&#x5230;&#x573A;&#x666F;&#x4E2D;&#x7684;Floor&#x4E0A;&#x3002;&#x7ED9;&#x89D2;&#x8272;&#x6DFB;&#x52A0;Capsule Collider&#x7EC4;&#x4EF6;&#xFF0C;&#x5E76;&#x5C06;Capsule Collider&#x4E0B;&#x7684;Center &gt; Y&#x8BBE;&#x4E3A;0.8&#xFF0C;Radius&#x8BBE;&#x4E3A;0.4&#xFF0C;Height&#x8BBE;&#x4E3A;1.6&#x3002;</p>
+</li>
+<li><p>&#x4E3A;&#x89D2;&#x8272;&#x6DFB;&#x52A0;&#x811A;&#x672C;&#xFF1A;&#x5728;Assets/Scripts&#x4E0B;&#x521B;&#x5EFA;&#x811A;&#x672C;Player.cs&#xFF0C;&#x6253;&#x5F00;&#x811A;&#x672C;&#xFF0C;&#x7F16;&#x8F91;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x5E76;&#x4FDD;&#x5B58;&#x3002;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Player</span> : <span class="hljs-title">MonoBehaviour</span> {</span><br><span class="line">    <span class="hljs-keyword">public</span> CapsuleCollider playerConllider;</span><br><span class="line">	<span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">        playerConllider = GetComponent&lt;CapsuleCollider&gt;();</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x56DE;&#x5230;Unity&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x5C06;Player.cs&#x62D6;&#x62FD;&#x5230;&#x89D2;&#x8272;&#x7684;Inspector&#x7A97;&#x53E3;&#x91CC;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x89D2;&#x8272;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x53EB;Player(Script)&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x91CC;&#x8FB9;&#x7684;Player Collider&#x7684;&#x503C;&#x4E3A;None(Collider)&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x70B9;&#x51FB;&#x64AD;&#x653E;&#x6309;&#x94AE;&#xFF0C;Player Collider&#x4F1A;&#x5F88;&#x5BB9;&#x6613;&#x5730;&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x5230;Collider&#x7EC4;&#x4EF6;&#xFF0C;&#x56E0;&#x4E3A;Capsule Collider&#x7EC4;&#x4EF6;&#x548C;&#x811A;&#x672C;&#x7EC4;&#x4EF6;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x6E38;&#x620F;&#x7269;&#x4F53;&#x91CC;&#xFF08;&#x89D2;&#x8272;&#xFF09;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x4E0A;&#x8FB9;&#x7684;&#x4EE3;&#x7801;&#x4E2D;<strong>public Collider playerCollider;</strong>&#x4E0B;&#x63D2;&#x5165;&#x4E00;&#x884C;<strong>playerCollider.enabled = false;</strong>&#xFF0C;&#x4FDD;&#x5B58;&#x811A;&#x672C;&#x56DE;&#x5230;Unity&#x70B9;&#x51FB;&#x64AD;&#x653E;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x770B;&#x5230;Capsule Collider&#x7EC4;&#x4EF6;&#x88AB;&#x53D6;&#x6D88;&#x52FE;&#x9009;&#x3002;</p>
+<p>&#x540C;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x4E0A;&#x8FB9;&#x7684;&#x4EE3;&#x7801;&#x4E2D;<strong>public Collider playerCollider;</strong>&#x4E0B;&#x63D2;&#x5165;&#x4E00;&#x884C;<strong>playerConllider.isTrigger = true;</strong>&#xFF0C;&#x4FDD;&#x5B58;&#x811A;&#x672C;&#x56DE;&#x5230;Unity&#x70B9;&#x51FB;&#x64AD;&#x653E;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x770B;&#x5230;Capsule Collider&#x7EC4;&#x4EF6;&#x4E0B;&#x7684;Is Trigger&#x88AB;&#x52FE;&#x9009;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x8981;&#x5728;&#x6E38;&#x620F;&#x542F;&#x52A8;&#x65F6;&#x4FEE;&#x6539;Capsule Collider&#x7684;&#x957F;&#x5EA6;&#x3001;&#x4E2D;&#x5FC3;&#x4F4D;&#x7F6E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">    playerCollider = GetComponent&lt;CapsuleCollider&gt;();</span><br><span class="line">    <span class="hljs-comment">//playerCollider.enabled = false; //&#x53D6;&#x6D88;&#x52FE;&#x9009;Capsule Collider&#x7EC4;&#x4EF6;</span></span><br><span class="line">    <span class="hljs-comment">//playerCollider.isTrigger = true; //&#x52FE;&#x9009;Capsule Collider&#x7EC4;&#x4EF6;&#x4E0B;Is Trigger&#x9009;&#x9879;</span></span><br><span class="line">    playerCollider.height = <span class="hljs-number">3f</span>; <span class="hljs-comment">//&#x4FEE;&#x6539;&#x80F6;&#x56CA;&#x78B0;&#x649E;&#x4F53;&#x7684;&#x9AD8;&#xFF08;&#x957F;&#x5EA6;&#xFF09;</span></span><br><span class="line">    playerCollider.center = <span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">0f</span>, <span class="hljs-number">2f</span>, <span class="hljs-number">0f</span>); <span class="hljs-comment">//&#x4FEE;&#x6539;&#x80F6;&#x56CA;&#x78B0;&#x649E;&#x4F53;&#x4E2D;&#x5FC3;&#x7684;&#x4F4D;&#x7F6E;&#x5750;&#x6807;</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+</li>
+</ol>
+<h2 id="2-&#x7528;&#x6237;&#x8F93;&#x5165;"><a href="#2-&#x7528;&#x6237;&#x8F93;&#x5165;" class="headerlink" title="2. &#x7528;&#x6237;&#x8F93;&#x5165;"></a>2. &#x7528;&#x6237;&#x8F93;&#x5165;</h2><p>&#x5728;Unity&#x7F16;&#x8F91;&#x5668;&#x83DC;&#x5355;&#x680F;&#xFF0C;&#x70B9;&#x51FB;Edit &gt; Project Settings &gt; Input&#x5728;Inspector&#x7A97;&#x53E3;&#x6253;&#x5F00;<strong>InputManager</strong>&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;InputManager&#x4E2D;&#x7F16;&#x8F91;&#x7528;&#x6237;&#x8F93;&#x5165;&#x63A7;&#x5236;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x56DE;&#x5230;Player.cs&#xFF0C;&#x7F16;&#x8F91;Update&#x51FD;&#x6570;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">	<span class="hljs-keyword">float</span> moveHorizontal = Input.GetAxis(<span class="hljs-string">&quot;Horizontal&quot;</span>);</span><br><span class="line">	<span class="hljs-keyword">float</span> moveVertical = Input.GetAxis(<span class="hljs-string">&quot;Vertical&quot;</span>);</span><br><span class="line"></span><br><span class="line">	print(moveHorizontal);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x4FDD;&#x5B58;&#x540E;&#x56DE;&#x5230;Unity&#x7F16;&#x8F91;&#x5668;&#x70B9;&#x51FB;&#x64AD;&#x653E;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x6309;&#x4F4F;&#x3010;A&#x3011;&#x952E;&#x65F6;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x5C06;&#x6253;&#x5370;&#x6D88;&#x606F;&#x4E00;&#x7CFB;&#x5217;&#x5927;&#x4E8E;-1&#x4E14;&#x5C0F;&#x4E8E;0&#x7684;&#x5C0F;&#x6570;&#xFF0C;&#x6253;&#x5370;&#x7684;&#x5C0F;&#x6570;&#x5FEB;&#x901F;&#x51CF;&#x5C0F;&#x76F4;&#x5230;&#x6253;&#x5370;&#x51FA;-1&#xFF0C;&#x677E;&#x5F00;&#x952E;&#x76D8;&#x540E;&#x5F52;0&#xFF0C;&#x6309;&#x4F4F;&#x3010;D&#x3011;&#x952E;&#xFF0C;&#x6253;&#x5370;&#x5927;&#x4E8E;0&#x4E14;&#x5C0F;&#x4E8E;1&#x7684;&#x5C0F;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x6253;&#x5370;&#x7684;&#x5C0F;&#x6570;&#x5FEB;&#x901F;&#x589E;&#x5927;&#x76F4;&#x81F3;&#x6253;&#x5370;&#x51FA;1&#x3002;</p>
+<p>&#x7531;&#x6B64;&#x6211;&#x4EEC;&#x5F97;&#x77E5;&#xFF0C;&#x6309;&#x952E;A&#x5173;&#x8054;&#x6C34;&#x5E73;&#x8D1F;&#x65B9;&#x5411;&#xFF0C;W&#x5173;&#x8054;&#x6C34;&#x5E73;&#x6B63;&#x65B9;&#x5411;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5C06;Player.cs&#x7F16;&#x8F91;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Player</span> : <span class="hljs-title">MonoBehaviour</span> {</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> moveSpeed = <span class="hljs-number">5f</span>;	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">float</span> moveHorizontal = Input.GetAxis(<span class="hljs-string">&quot;Horizontal&quot;</span>);<span class="hljs-comment">//&#x83B7;&#x53D6;&#x5DE6;&#x53F3;&#x79FB;&#x52A8;&#x5206;&#x91CF;</span></span><br><span class="line">        <span class="hljs-keyword">float</span> moveVertical = Input.GetAxis(<span class="hljs-string">&quot;Vertical&quot;</span>);<span class="hljs-comment">//&#x83B7;&#x53D6;&#x524D;&#x540E;&#x79FB;&#x52A8;&#x5206;&#x91CF;</span></span><br><span class="line">		<span class="hljs-comment">//&#x521B;&#x5EFA;&#x6C34;&#x5E73;&#x9762;&#x79FB;&#x52A8;&#x77E2;&#x91CF;</span></span><br><span class="line">        Vector3 movement = <span class="hljs-keyword">new</span> Vector3(moveHorizontal, <span class="hljs-number">0f</span>, moveVertical);</span><br><span class="line">		<span class="hljs-comment">//&#x5C06;&#x79FB;&#x52A8;&#x77E2;&#x91CF;&#x8F6C;&#x8BD1;&#x5230;Transform&#x7EC4;&#x4EF6;</span></span><br><span class="line">        transform.Translate(movement * Time.deltaTime * moveSpeed);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x4FDD;&#x5B58;&#x540E;&#xFF0C;&#x5728;Unity&#x7F16;&#x8F91;&#x5668;&#x5C06;&#x955C;&#x5934;&#x6446;&#x5230;&#x5408;&#x9002;&#x89C2;&#x5BDF;&#x89D2;&#x8272;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x70B9;&#x51FB;&#x64AD;&#x653E;&#x3002;&#x901A;&#x8FC7;&#x3010;W&#x3011;&#x3010;A&#x3011;&#x3010;S&#x3011;&#x3010;D&#x3011;&#x952E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x524D;&#x540E;&#x5DE6;&#x53F3;&#x79FB;&#x52A8;&#x3002;</p>
+<h1 id="&#x56DB;&#x3001;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x7684;&#x4EA4;&#x4E92;"><a href="#&#x56DB;&#x3001;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x7684;&#x4EA4;&#x4E92;" class="headerlink" title="&#x56DB;&#x3001;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x7684;&#x4EA4;&#x4E92;"></a>&#x56DB;&#x3001;&#x6E38;&#x620F;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x7684;&#x4EA4;&#x4E92;</h1><h2 id="1-&#x811A;&#x672C;&#x4E4B;&#x95F4;&#x4EA4;&#x4E92;"><a href="#1-&#x811A;&#x672C;&#x4E4B;&#x95F4;&#x4EA4;&#x4E92;" class="headerlink" title="1. &#x811A;&#x672C;&#x4E4B;&#x95F4;&#x4EA4;&#x4E92;"></a>1. &#x811A;&#x672C;&#x4E4B;&#x95F4;&#x4EA4;&#x4E92;</h2><p>&#x5728;Assets/Prefabs&#x4E0B;&#x627E;&#x5230;Battle_Dummy&#xFF0C;&#x62D6;&#x62FD;&#x8FDB;&#x573A;&#x666F;&#x5230;Floor&#x4E0A;&#x3002;&#x5728;Scripts&#x6587;&#x4EF6;&#x5939;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Enemy.cs&#x3002;&#x5C06;Enemy.cs&#x62D6;&#x62FD;&#x5230;Battle_Dummy&#x7684;Inpsector&#x7A97;&#x53E3;&#x4E2D;&#x5F62;&#x6210;Enemy(Script)&#x7EC4;&#x4EF6;&#x3002;</p>
+<p>&#x7ED9;Enemy&#x6DFB;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;Health&#x5C5E;&#x6027;&#xFF0C;&#x5373;&#x7F16;&#x8F91;Enemy.cs&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Enemy</span> : <span class="hljs-title">MonoBehaviour</span> { <span class="hljs-comment">//&#x58F0;&#x660E;Enemy&#x7C7B;</span></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> enemyHealth = <span class="hljs-number">4</span>; <span class="hljs-comment">//&#x58F0;&#x660E;enemyHealth&#x5E76;&#x521D;&#x59CB;&#x5316;</span></span><br><span class="line">	<span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span>{</span><br><span class="line">		</span><br><span class="line">	}	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span>{</span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x7F16;&#x8F91;Player.cs&#x5982;&#x4E0B;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Player</span> : <span class="hljs-title">MonoBehaviour</span> {</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> moveSpeed = <span class="hljs-number">5f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> GameObject enemy;</span><br><span class="line">    <span class="hljs-keyword">private</span> Enemy enemyScript;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span>{</span><br><span class="line">        enemy = GameObject.Find(<span class="hljs-string">&quot;Battle_Dummy&quot;</span>);</span><br><span class="line">        enemyScript = enemy.GetComponent&lt;Enemy&gt;();</span><br><span class="line">    }</span><br><span class="line">	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span>{</span><br><span class="line">        <span class="hljs-keyword">float</span> moveHorizontal = Input.GetAxis(<span class="hljs-string">&quot;Horizontal&quot;</span>);</span><br><span class="line">        <span class="hljs-keyword">float</span> moveVertical = Input.GetAxis(<span class="hljs-string">&quot;Vertical&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Vector3 movement = <span class="hljs-keyword">new</span> Vector3(moveHorizontal, <span class="hljs-number">0f</span>, moveVertical);</span><br><span class="line"></span><br><span class="line">        transform.Translate(movement * Time.deltaTime * moveSpeed);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (Input.GetKeyDown(KeyCode.Space)) <span class="hljs-comment">//&#x5F53;&#x952E;&#x76D8;&#x6309;&#x4E0B;&#x7A7A;&#x683C;&#x952E;&#x65F6;&#x6267;&#x884C;</span></span><br><span class="line">        {</span><br><span class="line">            enemyScript.enemyHealth--; <span class="hljs-comment">//Health&#x81EA;&#x51CF;1</span></span><br><span class="line">        }</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x4FDD;&#x5B58;&#x811A;&#x672C;&#x540E;&#xFF0C;&#x56DE;&#x5230;Unity&#x70B9;&#x51FB;&#x64AD;&#x653E;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x6BCF;&#x6309;&#x4E00;&#x6B21;&#x3010;&#x7A7A;&#x683C;&#x3011;&#x952E;&#x65F6;&#xFF0C;&#x70B9;&#x51FB;Battle_Dummy&#xFF0C;&#x901A;&#x8FC7;Inspector&#x7A97;&#x53E3;&#x53EF;&#x4EE5;&#x770B;&#x5230;Enemy&#x7EC4;&#x4EF6;&#x4E0B;&#x7684;Enemy Health&#x90FD;&#x4F1A;&#x51CF;1&#x3002;</p>
+<h2 id="2-&#x78B0;&#x649E;&#x4EA4;&#x4E92;"><a href="#2-&#x78B0;&#x649E;&#x4EA4;&#x4E92;" class="headerlink" title="2. &#x78B0;&#x649E;&#x4EA4;&#x4E92;"></a>2. &#x78B0;&#x649E;&#x4EA4;&#x4E92;</h2><p>&#x7ED9;&#x89D2;&#x8272;&#x6DFB;&#x52A0;Rigidbody&#x7EC4;&#x4EF6;,&#x5E76;&#x8BBE;&#x7F6E;Constraints&#x5982;&#x56FE;</p>
+<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200222183920131.png" alt="image-20200222183920131"></p>
+<p>&#x7ED9;Battle_Dummy&#x6DFB;&#x52A0;Capsule Collider&#x7EC4;&#x4EF6;&#xFF0C;Center&#x8BBE;&#x7F6E;&#x4E3A;&#xFF08;0&#xFF0C;0.5&#xFF0C;0&#xFF09;&#xFF0C;Radius&#x8BBE;&#x7F6E;&#x4E3A;0.4&#xFF0C;Height&#x8BBE;&#x7F6E;&#x4E3A;2&#x3002;&#x901A;&#x8FC7;&#x5FEB;&#x6377;&#x952E;Ctrl+D&#x5FEB;&#x901F;&#x751F;&#x6210;&#x4E24;&#x4E2A;&#x590D;&#x5236;&#x54C1;&#xFF0C;&#x62D6;&#x5230;&#x65C1;&#x8FB9;&#x5982;&#x56FE;&#xFF1A;</p>
+<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200222170229708.png" alt="image-20200222170229708"></p>
+<p>&#x5728;Player.cs&#x91CC;&#x4E3A;&#x7C7B;Player&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;OnCollisionEnter&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnCollisionEnter</span>(<span class="hljs-params">Collision collision</span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">if</span>(collision.gameObject.tag == <span class="hljs-string">&quot;Enemy&quot;</span>)</span><br><span class="line">    {</span><br><span class="line">        enemyScript.enemyHealth--;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x56DE;&#x5230;Unity&#x7ED9;3&#x4E2A;Battle_Bummy&#x6DFB;&#x52A0;Tag Enemy&#xFF0C;&#x89D2;&#x8272;&#x6DFB;&#x52A0;Tag Player&#x3002;</p>
+<p>&#x70B9;&#x51FB;&#x64AD;&#x653E;&#xFF0C;&#x9009;&#x4E2D;Battle_Bummy&#xFF0C;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x78B0;&#x5230;Battle_Bummy&#x4E00;&#x6B21;&#xFF0C;&#x5176;Enemy&#x7EC4;&#x4EF6;&#x4E0B;EnemyHealth&#x51CF;1&#x4E00;&#x6B21;&#x3002;</p>
+<p>&#x4F46;&#x5F53;&#x6211;&#x4EEC;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x78B0;&#x649E;Battle_Bummy(1)&#x3001;Battle_Bummy(2)&#x65F6;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;EnemyHealth&#x5374;&#x6CA1;&#x6709;&#x51CF;&#x5C11;&#x3002;</p>
+<p>&#x4FEE;&#x6539;Player.cs&#x5982;&#x4E0B;&#x540E;&#x5373;&#x53EF;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Player</span> : <span class="hljs-title">MonoBehaviour</span> {</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> moveSpeed = <span class="hljs-number">5f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//private GameObject enemy;</span></span><br><span class="line">    <span class="hljs-keyword">private</span> Enemy enemyScript;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-comment">//enemy = GameObject.Find(&quot;Battle_Dummy&quot;);</span></span><br><span class="line">        <span class="hljs-comment">//enemyScript = enemy.GetComponent&lt;Enemy&gt;();</span></span><br><span class="line">    }</span><br><span class="line">	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">float</span> moveHorizontal = Input.GetAxis(<span class="hljs-string">&quot;Horizontal&quot;</span>);</span><br><span class="line">        <span class="hljs-keyword">float</span> moveVertical = Input.GetAxis(<span class="hljs-string">&quot;Vertical&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Vector3 movement = <span class="hljs-keyword">new</span> Vector3(moveHorizontal, <span class="hljs-number">0f</span>, moveVertical);</span><br><span class="line">        <span class="hljs-comment">//&#x89D2;&#x8272;&#x79FB;&#x52A8;</span></span><br><span class="line">        transform.Translate(movement * Time.deltaTime * moveSpeed);</span><br><span class="line"></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnCollisionEnter</span>(<span class="hljs-params">Collision collision</span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span>(collision.gameObject.tag == <span class="hljs-string">&quot;Enemy&quot;</span>)</span><br><span class="line">        {</span><br><span class="line">            enemyScript = collision.gameObject.GetComponent&lt;Enemy&gt;();</span><br><span class="line">            enemyScript.enemyHealth--;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="3-&#x89E6;&#x53D1;&#x5668;"><a href="#3-&#x89E6;&#x53D1;&#x5668;" class="headerlink" title="3. &#x89E6;&#x53D1;&#x5668;"></a>3. &#x89E6;&#x53D1;&#x5668;</h2><p>&#x6211;&#x4EEC;&#x4ECE;Assets/Prefabs&#x5F80;&#x573A;&#x666F;&#x91CC;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;Chest</p>
+<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223115839508.png" alt="image-20200223115839508"></p>
+<p>&#x5728;Scripts&#x6587;&#x4EF6;&#x5939;&#x91CC;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;TreasureChest.cs&#xFF0C;&#x4E3A;&#x7C7B;TreasureChest&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;<strong>OnTriggerEnter</strong>&#x65B9;&#x6CD5;&#x3002;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnTriggerEnter</span>(<span class="hljs-params">Collider other</span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">if</span>(other.gameObject.tag == <span class="hljs-string">&quot;Player&quot;</span>)</span><br><span class="line">    {</span><br><span class="line">	    print(<span class="hljs-string">&quot;Interacting!&quot;</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x5728;Unity&#x4E2D;&#xFF0C;&#x7ED9;Chest&#x6DFB;&#x52A0;&#x4E0A;TreasureChest(Script)&#x7EC4;&#x4EF6;&#x3002;</p>
+<p>&#x70B9;&#x51FB;&#x64AD;&#x653E;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x78B0;&#x5230;Chest&#x4E00;&#x6B21;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x6253;&#x5370;&#x6D88;&#x606F;&#x201C;Interacting!&#x201D;&#x4E00;&#x6B21;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x628A;<strong>OnTriggerEnter</strong>&#x6362;&#x6210;<strong>OnTriggerStay</strong>&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x505C;&#x7559;&#x5728;Chest&#x65C1;&#x8FB9;&#x65F6;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x6301;&#x7EED;&#x6253;&#x5370;&#x6D88;&#x606F;&#x201C;Interacting!&#x201D;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5728;<strong>OnTriggerEnter</strong>&#x65B9;&#x6CD5;&#x4E0B;&#x65B9;&#x6DFB;&#x52A0;<strong>OnTriggerExit</strong>&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnTriggerExit</span>(<span class="hljs-params">Collider other</span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">if</span>(other.gameObject.tag == <span class="hljs-string">&quot;Player&quot;</span>)</span><br><span class="line">    {</span><br><span class="line">        print(<span class="hljs-string">&quot;Hey!&quot;</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x7684;&#x89D2;&#x8272;&#x9760;&#x8FD1;Chest&#x5728;&#x79BB;&#x5F00;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x5C06;&#x6253;&#x5370;&#x4E00;&#x6B21;&#x6D88;&#x606F;&#x201C;Hey!&#x201D;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x7ED9;TreasureChest&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x7684;&#x516C;&#x5171;&#x5C5E;&#x6027;interactable&#xFF0C;&#x5E76;&#x521D;&#x59CB;&#x5316;&#x4E3A;false&#x3002;&#x4FEE;&#x6539;<strong>OnTriggerEnter</strong>&#x65B9;&#x6CD5;&#x548C;<strong>OnTriggerExit</strong>&#x65B9;&#x6CD5;&#x7684;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TreasureChest</span> : <span class="hljs-title">MonoBehaviour</span> {</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> interactable = <span class="hljs-literal">false</span>;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnTriggerEnter</span>(<span class="hljs-params">Collider other</span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span>(other.gameObject.tag == <span class="hljs-string">&quot;Player&quot;</span>)</span><br><span class="line">        {</span><br><span class="line">            interactable = <span class="hljs-literal">true</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnTriggerExit</span>(<span class="hljs-params">Collider other</span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span>(other.gameObject.tag == <span class="hljs-string">&quot;Player&quot;</span>)</span><br><span class="line">        {</span><br><span class="line">            interactable = <span class="hljs-literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x64AD;&#x653E;&#x6E38;&#x620F;&#x65F6;&#xFF0C;Chest&#x7684;TreasureChest(Script)&#x7EC4;&#x4EF6;&#x4E0B;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;interactable&#x9009;&#x9879;&#xFF0C;&#x5F53;&#x89D2;&#x8272;&#x9760;&#x8FD1;Chest&#x65F6;&#xFF0C;interactable&#x88AB;&#x52FE;&#x9009;&#xFF08;&#x503C;&#x4E3A;true&#xFF09;&#xFF0C;&#x5F53;&#x89D2;&#x8272;&#x79BB;&#x5F00;&#x65F6;&#xFF0C;interactable&#x53D6;&#x6D88;&#x52FE;&#x9009;&#xFF08;&#x503C;&#x4E3A;false&#xFF09;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x52A0;&#x5165;&#x52A8;&#x753B;&#xFF0C;</p>
+<p>&#x70B9;&#x51FB;Unity&#x83DC;&#x5355;&#x680F;&#x7684;Window &gt; Animator&#x6253;&#x5F00;Animator&#x7A97;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;Parameters&#x4E0B;&#x6709;&#x4E00;&#x4E2A;openChest&#xFF0C;&#x53F3;&#x8FB9;&#x7684;&#x8F6C;&#x53D8;&#x56FE;&#x91CC;&#xFF0C;&#x9009;&#x4E2D;Idle_State&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;Transition&#x4E0B;&#x6709;&#x4E00;&#x4E2A;&#x8F6C;&#x53D8;&#x60C5;&#x51B5;&#xFF1A;Idle_State -&gt; ChestOpen&#x3002;&#x70B9;&#x51FB;&#xFF0C;&#x4E0B;&#x65B9;&#x51FA;&#x73B0;&#x8F6C;&#x53D8;&#x6761;&#x4EF6;&#xFF08;Conditions&#xFF09;&#x2014;&#x2014;openChest&#x7684;&#x503C;&#x4E3A;true&#xFF08;&#x9ED8;&#x8BA4;&#xFF09;&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5728;Update&#x65B9;&#x6CD5;&#x91CC;&#x53EF;&#x4EE5;&#x5199;&#x4E0A;&#xFF0C;&#x5F53;&#x5F00;&#x7BB1;&#x6309;&#x952E;&#xFF08;&#x8FD9;&#x91CC;&#x8BBE;&#x4E3A;&#x7A7A;&#x683C;&#xFF09;&#x6309;&#x4E0B;&#x540E;&#xFF0C;&#x52A8;&#x753B;&#x8BBE;&#x7F6E;openChest&#x4E3A;true&#x3002;</p>
+<p>&#x7F16;&#x8F91;&#x540E;&#x7684;TreasureChest.cs&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TreasureChest</span> : <span class="hljs-title">MonoBehaviour</span> {</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> interactable = <span class="hljs-literal">false</span>;</span><br><span class="line">    <span class="hljs-keyword">private</span> Animator anim;</span><br><span class="line">    <span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">        anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">		<span class="hljs-keyword">if</span>(interactable &amp;&amp; Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">        {</span><br><span class="line">            anim.SetBool(<span class="hljs-string">&quot;openChest&quot;</span>, <span class="hljs-literal">true</span>);</span><br><span class="line">        }</span><br><span class="line">	}</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnTriggerEnter</span>(<span class="hljs-params">Collider other</span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span>(other.gameObject.tag == <span class="hljs-string">&quot;Player&quot;</span>)</span><br><span class="line">        {</span><br><span class="line">            interactable = <span class="hljs-literal">true</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnTriggerExit</span>(<span class="hljs-params">Collider other</span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span>(other.gameObject.tag == <span class="hljs-string">&quot;Player&quot;</span>)</span><br><span class="line">        {</span><br><span class="line">            interactable = <span class="hljs-literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;&#x89D2;&#x8272;&#x9760;&#x8FD1;Chest&#x6309;&#x4E0B;&#x7A7A;&#x683C;&#x952E;&#xFF0C;&#x64AD;&#x653E;&#x7BB1;&#x5B50;&#x6253;&#x5F00;&#x52A8;&#x753B;&#x3002;</p>
+<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223174012993.png" alt="image-20200223174012993"></p>
+<h2 id="4-&#x5C04;&#x7EBF;&#x4FA6;&#x6D4B;&#xFF08;Raycasting&#xFF09;"><a href="#4-&#x5C04;&#x7EBF;&#x4FA6;&#x6D4B;&#xFF08;Raycasting&#xFF09;" class="headerlink" title="4. &#x5C04;&#x7EBF;&#x4FA6;&#x6D4B;&#xFF08;Raycasting&#xFF09;"></a>4. &#x5C04;&#x7EBF;&#x4FA6;&#x6D4B;&#xFF08;Raycasting&#xFF09;</h2><p>&#x5C04;&#x7EBF;&#x7684;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x65F6;&#x4FA6;&#x6D4B;&#x89D2;&#x8272;&#x5468;&#x56F4;&#x662F;&#x5426;&#x6709;&#x654C;&#x4EBA;&#x3002;</p>
+<p>&#x56DE;&#x5230;Player.cs&#xFF0C;&#x6211;&#x4EEC;&#x7ED9;&#x7C7B;Player&#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;3&#x4E2A;&#x53D8;&#x91CF;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> RaycastHit hit;</span><br><span class="line"><span class="hljs-keyword">private</span> Ray ray;</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> rayDistance = <span class="hljs-number">4f</span>;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x5728;Update&#x65B9;&#x6CD5;&#x505A;&#x5982;&#x4E0B;&#x5E94;&#x7528;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ray = <span class="hljs-keyword">new</span> Ray(transform.position, transform.forward);</span><br><span class="line">Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x56DE;&#x5230;Unity&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x70B9;&#x51FB;Scene&#x7A97;&#x53E3;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x89D2;&#x8272;&#x811A;&#x4E0B;&#x6B63;&#x524D;&#x65B9;&#xFF08;Z&#x8F74;&#x6B63;&#x65B9;&#x5411;&#xFF09;&#x51FA;&#x73B0;&#x4E00;&#x6761;4&#x683C;&#x957F;&#x5EA6;&#x7684;&#x7EA2;&#x7EBF;&#x3002;</p>
+<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223202521447.png" alt="image-20200223202521447"></p>
+<p>&#x8981;&#x628A;&#x7EA2;&#x7EBF;&#x4E0A;&#x79FB;&#x5230;&#x89D2;&#x8272;&#x91CD;&#x65B0;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x4E0A;&#x8FB9;&#x4E24;&#x884C;&#x4EE3;&#x7801;&#x7684;&#x7B2C;&#x4E00;&#x884C;&#x4FEE;&#x6539;&#x6210;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ray = <span class="hljs-keyword">new</span> Ray(transform.position + <span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">0f</span>,playerCollider.center.y,<span class="hljs-number">0f</span>), transform.forward);</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5B9E;&#x73B0;&#x5C04;&#x7EBF;&#x53CD;&#x9988;&#xFF0C;&#x5728;Update&#x65B9;&#x6CD5;&#x91CC;&#x7EE7;&#x7EED;&#x7F16;&#x5199;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>(Physics.Raycast(ray, <span class="hljs-keyword">out</span> hit))</span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">if</span>(hit.distance &lt; rayDistance)</span><br><span class="line">    {</span><br><span class="line">        print(<span class="hljs-string">&quot;We hit something!&quot;</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x79FB;&#x52A8;&#x89D2;&#x8272;&#xFF0C;&#x5F53;&#x7EA2;&#x7EBF;&#x89E6;&#x53CA;Battle_Dummy&#x6216;Chest&#x65F6;&#xFF08;&#x5176;&#x5B9E;&#x65F6;&#x89E6;&#x53CA;&#x5B83;&#x4EEC;&#x7684;&#x78B0;&#x649E;&#x4F53;&#xFF09;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x6301;&#x7EED;&#x6253;&#x5370;&#x6D88;&#x606F;&#x201C;We hit something!&#x201D;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x4FEE;&#x6539;&#x6267;&#x884C;&#x53CD;&#x9988;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>(Physics.Raycast(ray, <span class="hljs-keyword">out</span> hit))</span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">if</span>(hit.distance &lt; rayDistance)</span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-keyword">if</span>(hit.collider.gameObject.tag == <span class="hljs-string">&quot;Enemy&quot;</span>)</span><br><span class="line">        {</span><br><span class="line">            print(<span class="hljs-string">&quot;There is an enemy ahead!&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;&#x89D2;&#x8272;&#x79FB;&#x52A8;&#x5230;Chest&#x524D;&#x8FB9;&#x65F6;&#xFF0C;&#x53CD;&#x9988;&#x4F46;&#x6CA1;&#x6709;&#x6253;&#x5370;&#x6D88;&#x606F;&#xFF0C;&#x5F53;&#x89D2;&#x8272;&#x79FB;&#x52A8;&#x5230;Battle_Dummy&#x524D;&#x8FB9;&#x65F6;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x6301;&#x7EED;&#x6253;&#x5370;&#x6D88;&#x606F;&#x201C;There is an enemy ahead!&#x201D;</p>
+<p>&#x81F3;&#x6B64;&#xFF0C;Player.cs&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Player</span> : <span class="hljs-title">MonoBehaviour</span> {</span><br><span class="line">    <span class="hljs-keyword">public</span> CapsuleCollider playerCollider;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> moveSpeed = <span class="hljs-number">5f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> Enemy enemyScript;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> RaycastHit hit;</span><br><span class="line">    <span class="hljs-keyword">private</span> Ray ray;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> rayDistance = <span class="hljs-number">4f</span>;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        playerCollider = GetComponent&lt;CapsuleCollider&gt;();</span><br><span class="line">    }</span><br><span class="line">	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">float</span> moveHorizontal = Input.GetAxis(<span class="hljs-string">&quot;Horizontal&quot;</span>);</span><br><span class="line">        <span class="hljs-keyword">float</span> moveVertical = Input.GetAxis(<span class="hljs-string">&quot;Vertical&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Vector3 movement = <span class="hljs-keyword">new</span> Vector3(moveHorizontal, <span class="hljs-number">0f</span>, moveVertical);</span><br><span class="line">        <span class="hljs-comment">//&#x89D2;&#x8272;&#x79FB;&#x52A8;</span></span><br><span class="line">        transform.Translate(movement * Time.deltaTime * moveSpeed);</span><br><span class="line"></span><br><span class="line">        ray = <span class="hljs-keyword">new</span> Ray(transform.position + <span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">0f</span>,playerCollider.center.y,<span class="hljs-number">0f</span>), transform.forward);</span><br><span class="line">        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span>(Physics.Raycast(ray, <span class="hljs-keyword">out</span> hit))</span><br><span class="line">        {</span><br><span class="line">            <span class="hljs-keyword">if</span>(hit.distance &lt; rayDistance)</span><br><span class="line">            {</span><br><span class="line">                <span class="hljs-keyword">if</span>(hit.collider.gameObject.tag == <span class="hljs-string">&quot;Enemy&quot;</span>)</span><br><span class="line">                {</span><br><span class="line">                    print(<span class="hljs-string">&quot;There is an enemy ahead!&quot;</span>);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnCollisionEnter</span>(<span class="hljs-params">Collision collision</span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span>(collision.gameObject.tag == <span class="hljs-string">&quot;Enemy&quot;</span>)</span><br><span class="line">        {</span><br><span class="line">            enemyScript = collision.gameObject.GetComponent&lt;Enemy&gt;();</span><br><span class="line">            enemyScript.enemyHealth--;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="5-&#x5B9E;&#x4F8B;&#x5316;&#xFF08;Instantiate&#xFF09;&#x548C;&#x9500;&#x6BC1;"><a href="#5-&#x5B9E;&#x4F8B;&#x5316;&#xFF08;Instantiate&#xFF09;&#x548C;&#x9500;&#x6BC1;" class="headerlink" title="5. &#x5B9E;&#x4F8B;&#x5316;&#xFF08;Instantiate&#xFF09;&#x548C;&#x9500;&#x6BC1;"></a>5. &#x5B9E;&#x4F8B;&#x5316;&#xFF08;Instantiate&#xFF09;&#x548C;&#x9500;&#x6BC1;</h2><p>&#x6253;&#x5F00;TreasureChest.cs&#xFF0C;&#x4E3A;&#x5C06;&#x8981;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x9884;&#x5236;&#x4F53;&#x521B;&#x5EFA;&#x4F9B;&#x5B58;&#x50A8;&#x7684;&#x53D8;&#x91CF;&#x3002;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> Rigidbody coinPrefab;</span><br><span class="line"><span class="hljs-keyword">public</span> Transform spawner;</span><br></pre></td></tr></tbody></table></figure><br>&#x7F16;&#x8F91;Update&#x51FD;&#x6570;&#x5982;&#x4E0B;&#xFF1A;<p></p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">    <span class="hljs-keyword">if</span>(interactable &amp;&amp; Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">    {</span><br><span class="line">        anim.SetBool(<span class="hljs-string">&quot;openChest&quot;</span>, <span class="hljs-literal">true</span>);</span><br><span class="line">        Rigidbody coinInstance;</span><br><span class="line">        coinInstance = Instantiate(coinPrefab, spawner.position, spawner.rotation) <span class="hljs-keyword">as</span> Rigidbody;<span class="hljs-comment">//&#x5C06;&#x5B9E;&#x4F8B;&#x5316;&#x7ED3;&#x679C;&#x7531;Object&#x7C7B;&#x578B;&#x5F3A;&#x8F6C;&#x6210;Rigidbody&#x7C7B;&#x578B;</span></span><br><span class="line">        coinInstance.AddForce(spawner.up * <span class="hljs-number">100</span>);<span class="hljs-comment">//&#x7ED9;coinInstance&#x5728;Y&#x8F74;&#x6B63;&#x65B9;&#x5411;&#x4E0A;&#x6DFB;&#x52A0;&#x53D7;&#x529B;</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x56DE;&#x5230;Unity&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;Chest&#x7684;Treasure Chest(Script)&#x7EC4;&#x4EF6;&#x4E0B;&#x591A;&#x4E86;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;Coin Prefabs&#x548C;Spawner&#x3002;&#x4ECE;Assets/Prefabs&#x62D6;&#x62FD;Coin&#x5230;Coin Prefabs&#xFF0C;&#x6CE8;&#x610F;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x9884;&#x5236;&#x4F53;Coin&#x4E5F;&#x5177;&#x5907;Rigidbody&#x7EC4;&#x4EF6;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x653E;&#x5165;&#x8981;&#x6C42;Rigidbody&#x7C7B;&#x578B;&#x7684;Coin Prefabs&#x3002;</p>
+<p>&#x9009;&#x4E2D;Chest&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;&#x5B50;Object&#xFF0C;&#x547D;&#x540D;&#x4E3A;spawner&#xFF0C;&#x5C06;&#x5176;&#x62D6;&#x62FD;&#x5230;Chest&#x7684;TreasureChest&#x7EC4;&#x4EF6;&#x4E0B;Spawner&#x5C5E;&#x6027;&#x3002;</p>
+<p>&#x9009;&#x4E2D;spawner&#xFF0C;&#x5C06;&#x5176;&#x5F80;Y&#x8F74;&#x6B63;&#x65B9;&#x5411;&#x79FB;&#x52A8;&#x5230;Chest&#x4E0A;&#x65B9;&#xFF08;&#x6B64;&#x5904;&#x79FB;&#x52A8;&#x4E86;0.86&#xFF09;&#x3002;</p>
+<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;&#x89D2;&#x8272;&#x79FB;&#x52A8;&#x5230;Chest&#x524D;&#xFF0C;&#x6309;&#x4E00;&#x6B21;&#x7A7A;&#x683C;&#x952E;&#xFF0C;Chest&#x6253;&#x5F00;&#x5E76;&#x5F39;&#x8D77;&#x4E00;&#x4E2A;Coin&#x7136;&#x540E;&#x5782;&#x76F4;&#x843D;&#x56DE;&#x539F;&#x4F4D;&#xFF0C;Hierarchy&#x7A97;&#x53E3;&#x4E5F;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;Coin(Clone)&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6B64;&#x65F6;&#x518D;&#x6309;&#x7A7A;&#x683C;&#xFF0C;&#x5219;Coin&#x7EE7;&#x7EED;&#x5F39;&#x51FA;&#xFF0C;&#x5E76;&#x53E0;&#x5728;&#x4E4B;&#x524D;&#x7684;Coin&#x4E0A;&#x3002;</p>
+<p><img src="/2020/01/18/Unity%20C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/image-20200223221512891.png" alt="image-20200223221512891"></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;Coin&#x5B9E;&#x4F8B;&#x7684;&#x9500;&#x6BC1;&#x3002;</p>
+<p>&#x5728;Assets/Scripts&#x4E0B;&#x65B0;&#x5EFA;Coin.cs&#x5E76;&#x5728;Visual Studio&#x6253;&#x5F00;&#xFF0C;&#x5728;Start&#x65B9;&#x6CD5;&#x91CC;&#x6DFB;&#x52A0;&#x8BED;&#x53E5;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Destroy(gameObject, <span class="hljs-number">2.0f</span>); <span class="hljs-comment">//&#x4E24;&#x79D2;&#x540E;&#x9500;&#x6BC1;gameObject</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x7ED9;Assets/Prefabs&#x4E0B;&#x7684;&#x9884;&#x5236;&#x4F53;Coin&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;Coin(Script)</p>
+<p>&#x518D;&#x6B21;&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x6BCF;&#x6309;&#x4E00;&#x6B21;&#x7A7A;&#x683C;&#xFF0C;&#x7BB1;&#x5B50;&#x91CC;&#x5F39;&#x51FA;&#x7684;&#x786C;&#x5E01;&#x5747;&#x4EC5;&#x4EC5;&#x5B58;&#x5728;2&#x79D2;&#x3002;</p>
+<p>Coin.cs&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Coin</span> : <span class="hljs-title">MonoBehaviour</span> {</span><br><span class="line">	<span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">        Destroy(gameObject, <span class="hljs-number">2.0f</span>); <span class="hljs-comment">//&#x4E24;&#x79D2;&#x540E;&#x9500;&#x6BC1;gameObject</span></span><br><span class="line">	}</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>TreasureChest.cs&#x6700;&#x7EC8;&#x4EE3;&#x7801;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TreasureChest</span> : <span class="hljs-title">MonoBehaviour</span> {</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> interactable = <span class="hljs-literal">false</span>;</span><br><span class="line">    <span class="hljs-keyword">private</span> Animator anim;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> Rigidbody coinPrefab;</span><br><span class="line">    <span class="hljs-keyword">public</span> Transform spawner;</span><br><span class="line">    <span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">        anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span> {</span><br><span class="line">		<span class="hljs-keyword">if</span>(interactable &amp;&amp; Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">        {</span><br><span class="line">            anim.SetBool(<span class="hljs-string">&quot;openChest&quot;</span>, <span class="hljs-literal">true</span>);</span><br><span class="line">            Rigidbody coinInstance;</span><br><span class="line">            coinInstance = Instantiate(coinPrefab, spawner.position, spawner.rotation) <span class="hljs-keyword">as</span> Rigidbody;<span class="hljs-comment">//&#x5C06;&#x5B9E;&#x4F8B;&#x5316;&#x7ED3;&#x679C;&#x7531;Object&#x7C7B;&#x578B;&#x5F3A;&#x8F6C;&#x6210;Rigidbody&#x7C7B;&#x578B;</span></span><br><span class="line">            coinInstance.AddForce(spawner.up * <span class="hljs-number">100</span>);</span><br><span class="line">        }</span><br><span class="line">	}</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnTriggerEnter</span>(<span class="hljs-params">Collider other</span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span>(other.gameObject.tag == <span class="hljs-string">&quot;Player&quot;</span>)</span><br><span class="line">        {</span><br><span class="line">            interactable = <span class="hljs-literal">true</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnTriggerExit</span>(<span class="hljs-params">Collider other</span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span>(other.gameObject.tag == <span class="hljs-string">&quot;Player&quot;</span>)</span><br><span class="line">        {</span><br><span class="line">            interactable = <span class="hljs-literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Unity/">#Unity</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/C-35/">#C&amp;#35</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2020/01/23/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEWin10%E5%8F%B3%E9%94%AE%E6%89%93%E5%BC%80CMD/">如何设置Win10右键打开CMD</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/01/17/C%20Sharp%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/">C#脚本基础</a>
+            
+        </span>
+    </div>
+    
+</article>
 
-  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">MJ</span>
-  </span>
-</div>
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 MJ&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
 </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
-      <div class="back-to-top" id="back-to-top">
-        <i class="iconfont icon-up"></i>
-      </div>
-    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Sans Titre)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
 </body>
 </html>
