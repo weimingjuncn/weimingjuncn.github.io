@@ -16,12 +16,12 @@
 
 
 
-    <meta name="description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2018.4.13c1 &amp;#x4E00;&amp;#x3001;&amp;#x51C6;&amp;#x5907;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5728;&amp;#x4E00;&amp;#x4E2A;&amp;#x65B0;&amp;#x5EFA;&amp;#x7684;&amp;#x573A;&amp;#x666F;&amp;#x4E0B;&amp;#x65B0;&amp;#x5EFA;&amp;#x4E00;&amp;#x4E2A;C">
+    <meta name="description" content="&amp;#x7F16;&amp;#x5199;&amp;#x9F20;&amp;#x6807;&amp;#x4EA4;&amp;#x4E92;&amp;#x811A;&amp;#x672C; &amp;#x4F7F;&amp;#x7528;NavMesh&amp;#x7EC4;&amp;#x4EF6;&amp;#x5B9E;&amp;#x73B0;&amp;#x89D2;&amp;#x8272;&amp;#x79FB;&amp;#x52A8;  &amp;#x2026;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity简易关卡原型开发">
 <meta property="og:url" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2018.4.13c1 &amp;#x4E00;&amp;#x3001;&amp;#x51C6;&amp;#x5907;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5728;&amp;#x4E00;&amp;#x4E2A;&amp;#x65B0;&amp;#x5EFA;&amp;#x7684;&amp;#x573A;&amp;#x666F;&amp;#x4E0B;&amp;#x65B0;&amp;#x5EFA;&amp;#x4E00;&amp;#x4E2A;C">
+<meta property="og:description" content="&amp;#x7F16;&amp;#x5199;&amp;#x9F20;&amp;#x6807;&amp;#x4EA4;&amp;#x4E92;&amp;#x811A;&amp;#x672C; &amp;#x4F7F;&amp;#x7528;NavMesh&amp;#x7EC4;&amp;#x4EF6;&amp;#x5B9E;&amp;#x73B0;&amp;#x89D2;&amp;#x8272;&amp;#x79FB;&amp;#x52A8;  &amp;#x2026;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207172113295.png">
 <meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200207172929532.png">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213130047903.png">
 <meta property="og:image" content="https://weimingjuncn.github.io/2020/02/07/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/image-20200213130137382.png">
 <meta property="article:published_time" content="2020-02-07T09:03:06.000Z">
-<meta property="article:modified_time" content="2020-02-17T08:17:13.051Z">
+<meta property="article:modified_time" content="2020-04-06T12:18:27.565Z">
 <meta property="article:author" content="MJ">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
@@ -115,13 +115,13 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="Suche" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
             
             <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Inhaltsverzeichnis">
+                <a class="navbar-item" title="Table of Contents">
                     <i class="fa fa-list"></i>
                 </a>
                 <div class="navbar-dropdown is-right">
@@ -193,7 +193,14 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><p>Unity&#x7248;&#x672C;&#xFF1A;Unity 2018.4.13c1</p>
+        <html><head></head><body><ul>
+<li>&#x7F16;&#x5199;&#x9F20;&#x6807;&#x4EA4;&#x4E92;&#x811A;&#x672C;</li>
+<li>&#x4F7F;&#x7528;NavMesh&#x7EC4;&#x4EF6;&#x5B9E;&#x73B0;&#x89D2;&#x8272;&#x79FB;&#x52A8;</li>
+</ul>
+<p>&#x2026;</p>
+<a id="more"></a>
+
+<p>Unity&#x7248;&#x672C;&#xFF1A;Unity 2018.4.13c1</p>
 <h1 id="&#x4E00;&#x3001;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><a href="#&#x4E00;&#x3001;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x4E00;&#x3001;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"></a>&#x4E00;&#x3001;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h1><p>&#x5728;&#x4E00;&#x4E2A;&#x65B0;&#x5EFA;&#x7684;&#x573A;&#x666F;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Cube&#xFF0C;&#x8C03;&#x6210;Cube&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x4F7F;&#x4E4B;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x6241;&#x5E73;&#x9762;&#xFF08;Scale&#x53C2;&#x8003;&#x503C;&#xFF1A;x=50&#xFF0C;y=0.36&#xFF0C;z=50&#xFF09;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;&#x201C;Floor&#x201D;&#xFF0C;&#x91CD;&#x7F6E;Floor&#x7684;&#x4F4D;&#x7F6E;&#x5230;&#xFF08;0&#xFF0C;0&#xFF0C;0&#xFF09;&#x3002;</p>
 <p>&#x5728;Floor&#x4E0A;&#x65B9;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Capsule,&#x8C03;&#x6574;&#x5927;&#x5C0F;&#x81F4;&#x5408;&#x9002;&#x3002;</p>
 <p>&#x5728;Floor&#x4E0A;&#x65B9;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Cube,&#x8C03;&#x6574;&#x5927;&#x5C0F;&#x81F4;&#x95E8;&#x677F;&#x7684;&#x6837;&#x5B50;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;&#x201C;Door&#x201D;</p>
@@ -478,7 +485,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -491,8 +498,8 @@
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Seiten',
-                CATEGORIES: 'Kategorien',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
