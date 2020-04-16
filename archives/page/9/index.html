@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>Archives - MJ&#39;s Blog</title>
+<title>목록 - MJ&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -97,7 +97,7 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="Search" href="javascript:;">
+            <a class="navbar-item search" title="검색" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
@@ -123,6 +123,18 @@
             <div class="articles">
             
                 <div class="article content>">
+                    <time class="is-text-small" datetime="2019-03-19T18:47:36.000Z" itemprop="datePublished">
+                        3月 20</time>
+                    <h6 class="title is-6"><a href="/2019/03/20/%E6%A8%A1%E5%9D%97%E8%B0%83%E7%94%A8/">模块调用</a></h6>
+                </div>
+            
+                <div class="article content>">
+                    <time class="is-text-small" datetime="2019-03-19T18:34:27.000Z" itemprop="datePublished">
+                        3月 20</time>
+                    <h6 class="title is-6"><a href="/2019/03/20/%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97-%E6%93%8D%E4%BD%9C/">需要注意的基本运算&amp;操作</a></h6>
+                </div>
+            
+                <div class="article content>">
                     <time class="is-text-small" datetime="2019-03-19T18:25:50.000Z" itemprop="datePublished">
                         3月 20</time>
                     <h6 class="title is-6"><a href="/2019/03/20/Python-3%E7%9A%84byte%E5%92%8Cstring/">Python 3的byte和string</a></h6>
@@ -140,18 +152,6 @@
                     <h6 class="title is-6"><a href="/2019/03/19/%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A-%E7%BB%88%E7%AB%AF%E8%BE%93%E5%85%A5/">代码注释 &amp; 终端输入 &amp; if_else</a></h6>
                 </div>
             
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-03-19T09:13:17.000Z" itemprop="datePublished">
-                        3月 19</time>
-                    <h6 class="title is-6"><a href="/2019/03/19/Python3%E7%9B%B8%E6%AF%94Python2%E7%9A%84%E5%8F%98%E5%8C%96/">Python 3相比Python 2的变化</a></h6>
-                </div>
-            
-                <div class="article content>">
-                    <time class="is-text-small" datetime="2019-03-19T08:48:24.000Z" itemprop="datePublished">
-                        3月 19</time>
-                    <h6 class="title is-6"><a href="/2019/03/19/Python%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83/">Python编写规范</a></h6>
-                </div>
-            
             </div>
         </div>
     
@@ -159,10 +159,10 @@
     
 <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
     <div class="pagination-previous">
-        <a href="/archives/page/8/">Prev</a>
+        <a href="/archives/page/8/">이전</a>
     </div>
     <div class="pagination-next">
-        <a href="/archives/page/10/">Next</a>
+        <a href="/archives/page/10/">다음</a>
     </div>
     <ul class="pagination-list is-hidden-mobile">
         
@@ -175,6 +175,8 @@
         <li><a class="pagination-link is-current" href="/archives/page/9/">9</a></li>
         
         <li><a class="pagination-link" href="/archives/page/10/">10</a></li>
+        
+        <li><a class="pagination-link" href="/archives/page/11/">11</a></li>
         
     </ul>
 </nav>
@@ -360,7 +362,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="아무거나 입력하세요" />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -372,11 +374,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '글',
+                PAGES: '페이지',
+                CATEGORIES: '카테고리 목록',
+                TAGS: '태그 목록',
+                UNTITLED: '(제목없음)',
             },
             CONTENT_URL: '/content.json',
         };

@@ -97,7 +97,7 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="Search" href="javascript:;">
+            <a class="navbar-item search" title="검색" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
@@ -116,6 +116,248 @@
 
     <section class="section">
     <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2020/01/08/%E3%80%90GDC%E3%80%91Level%20Design%20Workshop%EF%BC%9ABlockmesh%20and%20Lighting%20Tips/" itemprop="url">【GDC】Level Design Workshop：Blockmesh and Lighting Tips</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-01-08T06:58:13.000Z" itemprop="datePublished">1月 8 2020</time>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h1 id="Invisible-Intuition&#xFF1A;Blockmesh-and-Lighting-Tips-to-Guide-Players-and-Set-the-Mood"><a href="#Invisible-Intuition&#xFF1A;Blockmesh-and-Lighting-Tips-to-Guide-Players-and-Set-the-Mood" class="headerlink" title="Invisible Intuition&#xFF1A;Blockmesh and Lighting Tips to Guide Players and Set the Mood"></a>Invisible Intuition&#xFF1A;Blockmesh and Lighting Tips to Guide Players and Set the Mood</h1><h2 id="What-is-&#x201C;Blockmesh&#x201D;"><a href="#What-is-&#x201C;Blockmesh&#x201D;" class="headerlink" title="What is &#x201C;Blockmesh&#x201D; ?"></a>What is &#x201C;Blockmesh&#x201D; ?</h2><ul>
+<li>Blockmesh = Greybox = Whitebox, etc.</li>
+<li>Greybox and Whitebox implt a single color - not ideal! &#x7070;&#x76D2;&#x548C;&#x767D;&#x76D2;&#x4E00;&#x822C;&#x53EA;&#x6709;&#x4E00;&#x79CD;&#x989C;&#x8272;&#xFF0C;&#x4E0D;&#x591F;&#x7406;&#x60F3;</li>
+</ul>
+<h2 id="Level-Design-Pipeline"><a href="#Level-Design-Pipeline" class="headerlink" title="Level Design Pipeline"></a>Level Design Pipeline</h2><pre class="mermaid">    graph LR
+    A(Level Requirements) --&gt; B(Build Blockmesh Layout &#x642D;&#x5EFA;Blockmesh&#x5E03;&#x5C40;)
+    B --&gt; C(Playtest Layout &#x6D4B;&#x8BD5;&#x5E03;&#x5C40;)
+    C --&gt; D(Process Feedback &#x5904;&#x7406;&#x53CD;&#x9988;)
+    D --&gt; B</pre>
+
+<ul>
+<li>Environment Type &#x73AF;&#x5883;&#x9700;&#x6C42;</li>
+<li>Time of Day &#x5F53;&#x65E5;&#x65F6;&#x95F4;</li>
+<li>Location in Story &#x6545;&#x4E8B;&#x5730;&#x70B9;</li>
+<li>Available Character Abilities &#x5141;&#x8BB8;&#x73A9;&#x5BB6;&#x4F7F;&#x7528;&#x7684;&#x80FD;&#x529B;</li>
+<li>Enemy Type &#x654C;&#x4EBA;&#x79CD;&#x7C7B;</li>
+<li>etc.</li>
+<li>Gameplay and Narrative Beats &#x6E38;&#x620F;&#x6027;&#x4EE5;&#x53CA;&#x53D9;&#x4E8B;&#x6027;&#x7684;&#x8282;&#x62CD;</li>
+</ul>
+<h2 id="Affordance-&#x53EF;&#x89C1;&#x6027;"><a href="#Affordance-&#x53EF;&#x89C1;&#x6027;" class="headerlink" title="Affordance &#x53EF;&#x89C1;&#x6027;"></a>Affordance &#x53EF;&#x89C1;&#x6027;</h2><ul>
+<li>Form implies function &#x5F62;&#x5F0F;&#x6697;&#x793A;&#x7740;&#x529F;&#x80FD;</li>
+</ul>
+<h3 id="Affordance-&#x2026;-in-Games"><a href="#Affordance-&#x2026;-in-Games" class="headerlink" title="Affordance &#x2026; in Games"></a>Affordance &#x2026; in Games</h3><ul>
+<li>A way to communicate to the player what to play with or where to go. &#x4E00;&#x79CD;&#x544A;&#x8BC9;&#x73A9;&#x5BB6;&#x73A9;&#x4EC0;&#x4E48;&#x6216;&#x5230;&#x54EA;&#x53BB;&#x7684;&#x65B9;&#x6CD5;</li>
+<li>Players learn the affordance rules via consistent color and shape and a trust contract is formed. &#x73A9;&#x5BB6;&#x901A;&#x8FC7;&#x76F8;&#x540C;&#x7684;&#x989C;&#x8272;&#x548C;&#x5F62;&#x72B6;&#x6765;&#x5B66;&#x4E60;&#x53EF;&#x89C1;&#x6027;&#x89C4;&#x5219;&#xFF0C;&#x540C;&#x65F6;&#x4FE1;&#x4EFB;&#x8BE5;&#x89C4;&#x5219;</li>
+<li>Ensure affordances work consistently game-wide. &#x786E;&#x4FDD;&#x53EF;&#x89C1;&#x6027;&#x89C4;&#x5219;&#x5728;&#x6E38;&#x620F;&#x5185;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</li>
+<li>Add to your blockmesh for playtests! &#x5728;&#x6E38;&#x620F;&#x6D4B;&#x8BD5;&#x4E2D;&#x6DFB;&#x52A0;&#x5230;&#x4F60;&#x7684;blockmesh&#x4E2D;</li>
+</ul>
+<h2 id="Denying-Affordance-&#x62D2;&#x7EDD;&#x5F0F;&#x53EF;&#x89C1;&#x6027;"><a href="#Denying-Affordance-&#x62D2;&#x7EDD;&#x5F0F;&#x53EF;&#x89C1;&#x6027;" class="headerlink" title="Denying Affordance &#x62D2;&#x7EDD;&#x5F0F;&#x53EF;&#x89C1;&#x6027;"></a>Denying Affordance &#x62D2;&#x7EDD;&#x5F0F;&#x53EF;&#x89C1;&#x6027;</h2><ul>
+<li>Communicates to the player where NOT to go. &#x544A;&#x8BC9;&#x73A9;&#x5BB6;&#x4E0D;&#x80FD;&#x53BB;&#x7684;&#x5730;&#x65B9;</li>
+<li>&#x201C;Uninvites&#x201D; the player from going there. &#x4E0D;&#x5141;&#x8BB8;&#x73A9;&#x5BB6;&#x53BB;&#x54EA;</li>
+<li>Contextualize why the player can&#x2019;t use it/go there! &#x6839;&#x636E;&#x60C5;&#x5883;&#x544A;&#x8BC9;&#x73A9;&#x5BB6;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x67D0;&#x7269;&#x6216;&#x53BB;&#x67D0;&#x5730;</li>
+<li>Add to your blockmesh for playtests! &#x5728;&#x6E38;&#x620F;&#x6D4B;&#x8BD5;&#x4E2D;&#x6DFB;&#x52A0;&#x5230;&#x4F60;&#x7684;blockmesh&#x4E2D;</li>
+</ul>
+<h2 id="Visual-Language-Shape"><a href="#Visual-Language-Shape" class="headerlink" title="Visual Language - Shape"></a>Visual Language - Shape</h2><ul>
+<li>&#x7EFF;&#x8272;&#x5706;&#x5F62;&#x4EE3;&#x8868;&#x5B89;&#x5168;</li>
+<li>&#x9EC4;&#x8272;&#x77E9;&#x5F62;&#x4EE3;&#x8868;&#x7A33;&#x5B9A;&#x3001;&#x5B9E;&#x7528;</li>
+<li>&#x7EA2;&#x8272;&#x4E09;&#x89D2;&#x5F62;&#x4EE3;&#x8868;&#x5371;&#x9669;</li>
+</ul>
+<h2 id="Landmarks-aka-weenies-&#x5730;&#x6807;"><a href="#Landmarks-aka-weenies-&#x5730;&#x6807;" class="headerlink" title="Landmarks (aka weenies) &#x5730;&#x6807;"></a>Landmarks (aka weenies) &#x5730;&#x6807;</h2><ul>
+<li>Orients Players. &#x5F15;&#x5BFC;&#x73A9;&#x5BB6;</li>
+<li>Distant object seen from many vantage points in the level. &#x4ECE;&#x5173;&#x5361;&#x7684;&#x8BB8;&#x591A;&#x89C6;&#x89D2;&#x90FD;&#x80FD;&#x770B;&#x5230;</li>
+<li>A goal to work toward. &#x4E00;&#x4E2A;&#x52AA;&#x529B;&#x524D;&#x5F80;&#x7684;&#x76EE;&#x6807;</li>
+</ul>
+<h2 id="Openings-Attract-&#x5F00;&#x653E;&#x5F0F;&#x5438;&#x5F15;"><a href="#Openings-Attract-&#x5F00;&#x653E;&#x5F0F;&#x5438;&#x5F15;" class="headerlink" title="Openings Attract &#x5F00;&#x653E;&#x5F0F;&#x5438;&#x5F15;"></a>Openings Attract &#x5F00;&#x653E;&#x5F0F;&#x5438;&#x5F15;</h2><ul>
+<li>Caves, doors, archways&#x62F1;&#x95E8;, etc.</li>
+<li>Often leads to a REFUGE SPACE, which psychologically feels safe. &#x901A;&#x5E38;&#x5BFC;&#x5411;&#x4E00;&#x4E2A;&#x5FC3;&#x7406;&#x4E0A;&#x611F;&#x5230;&#x5B89;&#x5168;&#x7684;&#x907F;&#x96BE;&#x6240;</li>
+<li>Mystery&#x795E;&#x79D8;&#x611F; - &#x201C;What could be inside?!&#x201D;</li>
+</ul>
+<h2 id="Gates-amp-Valves"><a href="#Gates-amp-Valves" class="headerlink" title="Gates &amp; Valves"></a>Gates &amp; Valves</h2><ul>
+<li>Gates stop progress until conditions are met. &#x5728;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x4EE5;&#x524D;&#xFF0C;&#x95E8;&#x4E0D;&#x4F1A;&#x6253;&#x5F00;</li>
+<li>Valves prevent backtracking.</li>
+<li>Both reduce the possibility space and prevent aimless wandering&#x778E;&#x901B;.</li>
+<li>Great for linear games, but can be sprinkled&#x8FD0;&#x7528; into open worlds too!</li>
+</ul>
+<h2 id="Leading-Lines-&#x5F15;&#x5BFC;&#x7EBF;"><a href="#Leading-Lines-&#x5F15;&#x5BFC;&#x7EBF;" class="headerlink" title="Leading Lines &#x5F15;&#x5BFC;&#x7EBF;"></a>Leading Lines &#x5F15;&#x5BFC;&#x7EBF;</h2><ul>
+<li>Lines that draw your eye to the intended point of interest.</li>
+<li>Roads, pipes, cables, etc.</li>
+</ul>
+<h2 id="Pinching-&#x6324;&#x538B;&#x89C6;&#x7EBF;"><a href="#Pinching-&#x6324;&#x538B;&#x89C6;&#x7EBF;" class="headerlink" title="Pinching &#x6324;&#x538B;&#x89C6;&#x7EBF;"></a>Pinching &#x6324;&#x538B;&#x89C6;&#x7EBF;</h2><ul>
+<li>Angle shapes to funnel players to a specific spot.&#x5229;&#x7528;&#x89D2;&#x5EA6;&#x5438;&#x5F15;&#x73A9;&#x5BB6;&#x5230;&#x7279;&#x5B9A;&#x5730;&#x70B9;</li>
+<li>Good for redirection. &#x9002;&#x5408;&#x91CD;&#x65B0;&#x5F15;&#x5BFC;</li>
+<li>Great for setting up a reveal. &#x975E;&#x5E38;&#x9002;&#x5408;&#x8BBE;&#x7F6E;&#x5C55;&#x793A;</li>
+<li>Depends on your mobility mechanics! &#x6839;&#x636E;&#x4F60;&#x7684;&#x79FB;&#x52A8;&#x673A;&#x5236;</li>
+</ul>
+<h2 id="Framing-amp-Composition-&#x6846;&#x67B6;&#x4EE5;&#x53CA;&#x6784;&#x6210;"><a href="#Framing-amp-Composition-&#x6846;&#x67B6;&#x4EE5;&#x53CA;&#x6784;&#x6210;" class="headerlink" title="Framing &amp; Composition &#x6846;&#x67B6;&#x4EE5;&#x53CA;&#x6784;&#x6210;"></a>Framing &amp; Composition &#x6846;&#x67B6;&#x4EE5;&#x53CA;&#x6784;&#x6210;</h2><ul>
+<li>Draws attention to point of interest by blocking other parts of the image, making it stand out.</li>
+<li>Google photography composition techniques - lots of good websites!</li>
+<li>Great when combined with Pinching!</li>
+</ul>
+<h2 id="Breadcrumbs-&#x9762;&#x5305;&#x5C51;"><a href="#Breadcrumbs-&#x9762;&#x5305;&#x5C51;" class="headerlink" title="Breadcrumbs &#x9762;&#x5305;&#x5C51;"></a>Breadcrumbs &#x9762;&#x5305;&#x5C51;</h2><ul>
+<li>Attract/lead the player, a piece at a time, to a goal.&#x4E00;&#x70B9;&#x70B9;&#x5F15;&#x5BFC;&#x73A9;&#x5BB6;&#x5230;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x4F55;&#x80FD;&#x535A;&#x773C;&#x7403;&#x7684;&#x4E1C;&#x897F;</li>
+<li>Can be almost anything that draws the eye:<ul>
+<li>Stuff that breaks up the negative space of floor/walls. &#x6253;&#x7834;&#x5730;&#x677F;&#x7684;&#x4E1C;&#x897F;</li>
+<li>Pickups &#x53EF;&#x4EE5;&#x6361;&#x8D77;&#x7684;&#x4E1C;&#x897F;</li>
+<li>Enemies &#x654C;&#x4EBA;</li>
+<li>Lit areas &#x660E;&#x4EAE;&#x7684;&#x533A;&#x57DF;</li>
+</ul>
+</li>
+<li>Usually better to add after early playtests of blockmesh to see if they are even needed. &#x6700;&#x597D;&#x5728;&#x65E9;&#x671F;&#x7684;&#x6E38;&#x620F;&#x6D4B;&#x8BD5;&#x4E4B;&#x540E;&#xFF0C;&#x6839;&#x636E;&#x9700;&#x8981;&#x6DFB;&#x52A0;</li>
+</ul>
+<h2 id="Textures-&#x6750;&#x8D28;"><a href="#Textures-&#x6750;&#x8D28;" class="headerlink" title="Textures &#x6750;&#x8D28;"></a>Textures &#x6750;&#x8D28;</h2><ul>
+<li>just point the way to go!</li>
+<li>Examples:<ul>
+<li>Arrows pointing the way.</li>
+<li>Scrapes on the ground/walls. &#x5730;&#x4E0A;&#x6216;&#x5899;&#x4E0A;&#x7684;&#x6293;&#x75D5;</li>
+<li>Signs &#x6807;&#x8BB0;</li>
+<li>etc.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Movement"><a href="#Movement" class="headerlink" title="Movement"></a>Movement</h2><ul>
+<li>Use movement to grab the eye.</li>
+<li>Examples:<ul>
+<li>Big scripted moments. &#x5927;&#x578B;&#x811A;&#x672C;</li>
+<li>Birds</li>
+<li>Spark FX &#x706B;&#x82B1;&#x7279;&#x6548;</li>
+<li>Enemies</li>
+<li>Something flapping in the breeze &#x5FAE;&#x98CE;&#x4E2D;&#x6F02;&#x6D6E;&#x7684;&#x4E1C;&#x897F;</li>
+</ul>
+</li>
+<li>Directionality guides the eye to where you want players to go or what you want them to see.</li>
+</ul>
+<h2 id="Light-amp-God-Ray-&#x5149;&#x7167;&#x4EE5;&#x53CA;&#x5149;&#x7EBF;"><a href="#Light-amp-God-Ray-&#x5149;&#x7167;&#x4EE5;&#x53CA;&#x5149;&#x7EBF;" class="headerlink" title="Light &amp; God Ray &#x5149;&#x7167;&#x4EE5;&#x53CA;&#x5149;&#x7EBF;"></a>Light &amp; God Ray &#x5149;&#x7167;&#x4EE5;&#x53CA;&#x5149;&#x7EBF;</h2><ul>
+<li>Players are attracted to the light.</li>
+<li>God rays draw attention and a line to the goal.</li>
+<li>Important in blockmesh phase&#x9636;&#x6BB5;!</li>
+</ul>
+<h2 id="Bonus-Tips&#xFF01;&#x2014;&#x2014;The-Squint-Test-&#x772F;&#x773C;&#x6D4B;&#x8BD5;"><a href="#Bonus-Tips&#xFF01;&#x2014;&#x2014;The-Squint-Test-&#x772F;&#x773C;&#x6D4B;&#x8BD5;" class="headerlink" title="Bonus Tips&#xFF01;&#x2014;&#x2014;The Squint Test &#x772F;&#x773C;&#x6D4B;&#x8BD5;"></a>Bonus Tips&#xFF01;&#x2014;&#x2014;The Squint Test &#x772F;&#x773C;&#x6D4B;&#x8BD5;</h2><ul>
+<li>Step 1: Squint&#x772F; your eyes and look at the game.</li>
+<li>Step 2: Everything wil be blurry&#x6A21;&#x7CCA;, but what stands out?</li>
+<li>Step 3: Adjust your layout&#x5E03;&#x5C40; and lighting&#x5149;&#x6E90; to highlight&#x5F3A;&#x8C03; what you want players to focus on.</li>
+</ul>
+</body></html>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/" itemprop="url">UE4蓝图 第2课</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-01-08T02:27:44.000Z" itemprop="datePublished">1月 8 2020</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Game-Develop/">Game Develop</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>&#x4E3B;&#x8BB2;&#x4EBA;&#xFF1A;&#x795E;&#x7ECF;&#x5200;&#x6E38;&#x620F;&#x5DE5;&#x4F5C;&#x5BA4;<br><a href="https://www.bilibili.com/video/av33992806" target="_blank" rel="noopener">https://www.bilibili.com/video/av33992806</a></p>
+<p>&#x63A5;&#x4E0A;&#x4E00;&#x5802;&#x8BFE;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x7ED9;&#x89D2;&#x8272;&#x8D4B;&#x4E88;&#x5176;&#x4ED6;&#x884C;&#x52A8;&#x529F;&#x80FD;</p>
+<ol>
+<li><p>&#x8FDB;&#x5165;&#x3010;&#x9879;&#x76EE;&#x8BBE;&#x7F6E;&#x3011;&#x7684;&#x3010;&#x5F15;&#x64CE;&#x3011;&#x3010;&#x8F93;&#x5165;&#x3011;&#xFF0C;&#x5728;Axis Mappings&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x201C;MoveRight&#x201D;</p>
+<ul>
+<li>&#x6DFB;&#x52A0;&#x6309;&#x952E;&#x3010;&#x952E;&#x76D8;A&#x3011;,Scale&#x8BBE;&#x7F6E;&#x4E3A;-1.0</li>
+<li>&#x6DFB;&#x52A0;&#x6309;&#x952E;&#x3010;&#x952E;&#x76D8;D&#x3011;,Scale&#x8BBE;&#x7F6E;&#x4E3A;1.0</li>
+</ul>
+</li>
+<li><p>&#x5728;Axis Mappings&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x201C;Turn&#x201D;</p>
+<ul>
+<li>&#x6DFB;&#x52A0;&#x3010;&#x9F20;&#x6807;X&#x3011;,Scale&#x8BBE;&#x7F6E;&#x4E3A;1.0</li>
+</ul>
+</li>
+<li><p>&#x5728;Axis Mappings&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x201C;LookUp&#x201D;</p>
+<ul>
+<li>&#x6DFB;&#x52A0;&#x3010;&#x9F20;&#x6807;Y&#x3011;,Scale&#x8BBE;&#x7F6E;&#x4E3A;-1.0</li>
+</ul>
+</li>
+<li><p>&#x8FDB;&#x5165;&#x201C;APlayerController&#x201D;&#xFF0C;&#x5728;&#x4E8B;&#x4EF6;&#x56FE;&#x8868;&#x4E0B;&#xFF0C;&#x6DFB;&#x52A0;&#x5750;&#x6807;&#x8F74;&#x4E8B;&#x4EF6;&#x201C;MoveRight&#x201D;</p>
+</li>
+<li><p>&#x590D;&#x5236;&#x7C98;&#x8D34;&#x4E00;&#x4E2A;&#x201C;Add Movement Input&#x201C;</p>
+</li>
+<li><p>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;Pawn&#x64CD;&#x4F5C;&#x201C;Get Control Rotation&#x201D;&#x3001;&#x4E00;&#x4E2A;&#x201D;Get Right Vectot&#x201D;</p>
+</li>
+<li><p>&#x6DFB;&#x52A0;&#x5750;&#x6807;&#x8F74;&#x4E8B;&#x4EF6;&#x201D;Turn&#x201C;&#x548C;&#x201D;LookUp&#x201C;</p>
+</li>
+<li><p>&#x6DFB;&#x52A0;&#x201D;Add Yaw Input&#x201D;&#x3001;&#x201D;Add Pitch Input&#x201D;&#x3001;&#x201D;Add Roll Input&#x201D;</p>
+<ul>
+<li>Pawn&#x63A7;&#x5236;&#x89D2;&#x8272;&#x7684;&#x884C;&#x52A8;&#xFF0C;PlayerController&#x63A7;&#x5236;&#x63A7;&#x5236;&#x5668;&#x7684;&#x65CB;&#x8F6C;&#x529F;&#x80FD;</li>
+</ul>
+</li>
+<li><p>&#x8FDE;&#x7EBF;&#x5982;&#x56FE;<br> <img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/APlayerControllerBP.png" alt="APlayerControllerBP"></p>
+</li>
+<li><p>&#x8FDB;&#x5165;APlayer&#xFF0C;&#x9009;&#x4E2D;&#x3010;SwingArm&#x3011;&#xFF0C;&#x5728;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x3010;Camera Settings&#x3011;&#x628A;&#x3010;Use Pawn Control Rotation&#x3011;&#x6253;&#x52FE;&#xFF0C;&#x7F16;&#x8BD1;&#xFF0C;&#x4FDD;&#x5B58;</p>
+</li>
+<li><p>&#x6B64;&#x65F6;&#x70B9;&#x3010;&#x64AD;&#x653E;&#x3011;&#xFF0C;&#x89D2;&#x8272;&#x53EF;&#x4EE5;&#x5DE6;&#x53F3;&#x5E73;&#x79FB;&#xFF0C;&#x89D2;&#x8272;&#x6B63;&#x9762;&#x7D27;&#x968F;&#x6444;&#x50CF;&#x673A;&#x89C6;&#x89D2;&#x6539;&#x53D8;&#x671D;&#x5411;</p>
+</li>
+<li><p>&#x8FDB;&#x5165;APlayer&#xFF0C;&#x9009;&#x4E2D;&#x3010;&#x7EC4;&#x4EF6;&#x3011;&#x4E0B;&#x7684;&#x3010;CharacterMovement&#x3011;,&#x5728;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x3010;Character Movement(Rotation Settings)&#x3011;</p>
+<ul>
+<li>&#x3010;Rotation Rate&#x3011;&#x3010;Z&#x3011;&#x6539;&#x6210;1000&#x3002;(&#x4FEE;&#x6539;&#x89D2;&#x8272;&#x8F6C;&#x8EAB;&#x901F;&#x7387;)</li>
+<li>&#x3010;Orient Rotation to Movement&#x3011;&#x6253;&#x52FE;</li>
+</ul>
+</li>
+<li><p>&#x9009;&#x4E2D;&#x3010;&#x7EC4;&#x4EF6;&#x3011;&#x4E0B;&#x7684;&#x3010;APlayer(&#x81EA;&#x8EAB;)&#x3011;&#xFF0C;&#x5728;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x3010;Pawn&#x3011;&#x4E0B;&#x628A;&#x3010;Use Controller Rotation Yaw&#x3011;&#x53D6;&#x6D88;&#x6253;&#x52FE;&#xFF0C;&#x7F16;&#x8BD1;&#xFF0C;&#x4FDD;&#x5B58;&#x3002;</p>
+</li>
+<li><p>&#x6B64;&#x65F6;&#x70B9;&#x3010;&#x64AD;&#x653E;&#x3011;&#xFF0C;&#x89D2;&#x8272;&#x6B63;&#x9762;&#x4E0D;&#x7D27;&#x968F;&#x6444;&#x50CF;&#x673A;&#x89C6;&#x89D2;&#x6539;&#x53D8;&#x671D;&#x5411;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x884C;&#x52A8;&#x65F6;&#x8F6C;&#x8EAB;&#x6539;&#x53D8;&#x671D;&#x5411;</p>
+</li>
+<li><p>&#x600E;&#x4E48;&#x7ED9;&#x84DD;&#x56FE;&#x5199;&#x6CE8;&#x91CA;&#xFF1F;</p>
+<ul>
+<li>&#x9009;&#x4E2D;/&#x6846;&#x9009;&#x8981;&#x6CE8;&#x91CA;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6309;&#x3010;C&#x3011;&#x4EA7;&#x751F;&#x6CE8;&#x91CA;&#x6846;&#xFF0C;&#x6CE8;&#x91CA;&#x6846;&#x53EF;&#x4EE5;&#x5D4C;&#x5957;</li>
+<li>&#x9009;&#x4E2D;&#x6CE8;&#x91CA;&#x6846;&#xFF0C;&#x5728;&#x53F3;&#x8FB9;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x3010;Comment Color&#x3011;&#x6539;&#x6CE8;&#x91CA;&#x533A;&#x57DF;&#x7684;&#x989C;&#x8272;&#x3001;&#x900F;&#x660E;&#x5EA6;</li>
+</ul>
+</li>
+<li><p>&#x5728;APlayer&#x91CC;&#x9009;&#x4E2D;&#x3010;&#x7EC4;&#x4EF6;&#x3011;&#x3010;Mesh&#x3011;&#xFF0C;&#x5728;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x3010;Mesh&#x3011;&#x91CC;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x653E;&#x5927;&#x955C;&#x6309;&#x94AE;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9A;&#x4F4D;&#x5E76;&#x9009;&#x4E2D;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684;&#x6A21;&#x578B;</p>
+</li>
+</ol>
+<p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/LocateMeshButton.png" alt="LocateMeshButton"></p>
+<p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/LocatedMesh.png" alt="LocatedMesh"></p>
+<ol start="17">
+<li><p>&#x53CC;&#x51FB;&#x201D;SK_Mannequin&#x201C;&#x6253;&#x5F00;&#x6A21;&#x578B;</p>
+</li>
+<li><p>&#x6A21;&#x578B;&#x4E94;&#x5927;&#x90E8;&#x5206;&#xFF1A;&#x9AA8;&#x67B6;&#x3001;&#x7F51;&#x683C;&#x4F53;&#x3001;&#x52A8;&#x753B;&#x3001;&#x84DD;&#x56FE;&#x3001;&#x7269;&#x7406;</p>
+<p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/photo_1.png" alt="photo_1"></p>
+</li>
+<li><p>&#x9AA8;&#x67B6;&#x4E0A;&#x586B;&#x6EE1;&#x4E86;&#x201D;&#x8089;&#x201C;&#x5C31;&#x6210;&#x4E86;&#x7F51;&#x683C;&#x4F53;&#xFF0C;&#x9AA8;&#x9ABC;&#x662F;&#x6839;&#x672C;&#xFF0C;&#x4E00;&#x4E2A;&#x9AA8;&#x9ABC;&#x5BF9;&#x5E94;&#x591A;&#x4E2A;&#x7F51;&#x683C;&#x4F53;&#x591A;&#x4E2A;&#x52A8;&#x753B;&#x591A;&#x4E2A;&#x7269;&#x7406;&#x591A;&#x4E2A;&#x84DD;&#x56FE;&#xFF08;&#x52A8;&#x753B;&#x84DD;&#x56FE;&#xFF09;&#xFF0C;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x4EC5;&#x5BF9;&#x5E94;&#x552F;&#x4E00;&#x4E00;&#x4E2A;&#x9AA8;&#x9ABC;&#xFF0C;&#x52A8;&#x753B;&#x8DDF;&#x7740;&#x9AA8;&#x9ABC;&#x8D70;&#x3002;</p>
+</li>
+<li><p>&#x70B9;&#x51FB;&#x3010;&#x6D4F;&#x89C8;&#x3011;&#x6309;&#x94AE;&#x53EF;&#x4EE5;&#x5B9A;&#x4F4D;&#x9009;&#x4E2D;&#x5177;&#x4F53;&#x7684;&#x6587;&#x4EF6;</p>
+<p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/photo_2.png" alt="photo_2"></p>
+</li>
+</ol>
+</body></html>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
     
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
@@ -725,82 +967,14 @@
 
 
     
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/03/20/%E6%A8%A1%E5%9D%97%E8%B0%83%E7%94%A8/" itemprop="url">模块调用</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-03-19T18:47:36.000Z" itemprop="datePublished">3月 20 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>&#x6A21;&#x5757;&#x8C03;&#x7528;&#x4F8B;&#x5B50;</p></body></html>
-        <p class="article-more-link">
-            <a href="/2019/03/20/%E6%A8%A1%E5%9D%97%E8%B0%83%E7%94%A8/#more">Read More</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/03/20/%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97-%E6%93%8D%E4%BD%9C/" itemprop="url">需要注意的基本运算&amp;操作</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-03-19T18:34:27.000Z" itemprop="datePublished">3月 20 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>&#x8FD8;&#x8BB0;&#x5F97;&#x5E42;&#x8FD0;&#x7B97;&#x600E;&#x4E48;&#x5199;&#x5417;&#xFF1F;&#x4EC0;&#x4E48;&#x662F;&#x4E09;&#x5143;&#x8FD0;&#x7B97;&#x7B26;&#xFF1F;</p></body></html>
-        <p class="article-more-link">
-            <a href="/2019/03/20/%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97-%E6%93%8D%E4%BD%9C/#more">Read More</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
     
         
 <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
     <div class="pagination-previous">
-        <a href="/page/3/">Prev</a>
+        <a href="/page/3/">이전</a>
     </div>
     <div class="pagination-next">
-        <a href="/page/5/">Next</a>
+        <a href="/page/5/">다음</a>
     </div>
     <ul class="pagination-list is-hidden-mobile">
         
@@ -813,6 +987,8 @@
         <li><a class="pagination-link is-current" href="/page/4/">4</a></li>
         
         <li><a class="pagination-link" href="/page/5/">5</a></li>
+        
+        <li><a class="pagination-link" href="/page/6/">6</a></li>
         
     </ul>
 </nav>
@@ -998,7 +1174,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="아무거나 입력하세요" />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1010,11 +1186,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '글',
+                PAGES: '페이지',
+                CATEGORIES: '카테고리 목록',
+                TAGS: '태그 목록',
+                UNTITLED: '(제목없음)',
             },
             CONTENT_URL: '/content.json',
         };
