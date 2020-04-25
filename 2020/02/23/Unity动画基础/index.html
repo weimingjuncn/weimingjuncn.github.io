@@ -36,8 +36,15 @@
 <meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321083855523.png">
 <meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321092216642.png">
 <meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321094443227.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425205759946.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425213738029.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425210555148.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425211003751.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425211915696.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425213244652.png">
+<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425223028862.png">
 <meta property="article:published_time" content="2020-02-23T14:36:46.000Z">
-<meta property="article:modified_time" content="2020-04-22T13:21:54.020Z">
+<meta property="article:modified_time" content="2020-04-25T14:52:55.909Z">
 <meta property="article:author" content="MJ">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
@@ -114,13 +121,13 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="Suche" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
             
             <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Inhaltsverzeichnis">
+                <a class="navbar-item" title="Table of Contents">
                     <i class="fa fa-list"></i>
                 </a>
                 <div class="navbar-dropdown is-right">
@@ -128,37 +135,51 @@
                     
                     
                     
-                    <a class="navbar-item" href="#一、创建动画片段">1&nbsp;&nbsp;<b>一、创建动画片段</b></a>
+                    <a class="navbar-item" href="#一、Animator（动画控制器）">1&nbsp;&nbsp;<b>一、Animator（动画控制器）</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#创建动画片段">1.1&nbsp;&nbsp;创建动画片段</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#使用动画曲线">1.2&nbsp;&nbsp;使用动画曲线</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#重新定时动画">1.3&nbsp;&nbsp;重新定时动画</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#使用动画事件">1.4&nbsp;&nbsp;使用动画事件</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#创建多个剪辑">1.5&nbsp;&nbsp;创建多个剪辑</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Animator视窗里的基本操作">1.6&nbsp;&nbsp;Animator视窗里的基本操作</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#参数和条件">1.7&nbsp;&nbsp;参数和条件</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#脚本控制条件参数">1.8&nbsp;&nbsp;脚本控制条件参数</a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#二、使用动画曲线">2&nbsp;&nbsp;<b>二、使用动画曲线</b></a>
+                    <a class="navbar-item" href="#二、Maya导出动画">2&nbsp;&nbsp;<b>二、Maya导出动画</b></a>
                     
                     
                     <hr class="navbar-divider">
                     
                     
-                    <a class="navbar-item" href="#三、重新定时动画">3&nbsp;&nbsp;<b>三、重新定时动画</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#四、使用动画事件">4&nbsp;&nbsp;<b>四、使用动画事件</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#五、创建多个剪辑">5&nbsp;&nbsp;<b>五、创建多个剪辑</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#六、动画控制器基础知识">6&nbsp;&nbsp;<b>六、动画控制器基础知识</b></a>
+                    <a class="navbar-item" href="#三、导入动画">3&nbsp;&nbsp;<b>三、导入动画</b></a>
                     
                 </div>
             </div>
@@ -196,7 +217,7 @@
 <p>&#x5BFC;&#x5165;&#x8D44;&#x6E90;&#x5305;unity_animation_fundamentals_module_2_begin.unitypackage</p>
 <a id="more"></a>
 
-<h1 id="&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;"><a href="#&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;" class="headerlink" title="&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;"></a>&#x4E00;&#x3001;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;</h1><p>&#x5728;Assets/Animations&#x4E0B;&#x65B0;&#x5EFA;Animation&#xFF0C;&#x547D;&#x540D;&#x4E3A;Chest_Open&#x3002;</p>
+<h1 id="&#x4E00;&#x3001;Animator&#xFF08;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF09;"><a href="#&#x4E00;&#x3001;Animator&#xFF08;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF09;" class="headerlink" title="&#x4E00;&#x3001;Animator&#xFF08;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF09;"></a>&#x4E00;&#x3001;Animator&#xFF08;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF09;</h1><h2 id="&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;"><a href="#&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;" class="headerlink" title="&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;"></a>&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;</h2><p>&#x5728;Assets/Animations&#x4E0B;&#x65B0;&#x5EFA;Animation&#xFF0C;&#x547D;&#x540D;&#x4E3A;Chest_Open&#x3002;</p>
 <p>&#x5728;&#x83DC;&#x5355;&#x680F; &gt; Window &gt; Animation&#x6253;&#x5F00;&#x52A8;&#x753B;&#x7A97;&#x53E3;&#x3002;</p>
 <p>&#x627E;&#x5230;&#x9009;&#x4E2D;&#x573A;&#x666F;&#x4E2D;&#x7684;Chest&#xFF0C;&#x5728;Animation&#x7A97;&#x53E3;&#x70B9;&#x51FB;Create&#x6309;&#x94AE;&#x5728;&#x5F39;&#x51FA;&#x7684;&#x7A97;&#x53E3;&#x4E2D;&#x9009;&#x4E2D;Open_Chest.anim&#x70B9;&#x51FB;&#x4FDD;&#x5B58;&#x3002;</p>
 <p>&#x5728;&#x7A97;&#x53E3;&#x4E2D;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;60&#x5E27;&#xFF0C;&#x6211;&#x4EEC;&#x4FEE;&#x6539;&#x6210;30&#x5E27;</p>
@@ -210,20 +231,20 @@
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200306135038980.png" alt="image-20200306135038980"></p>
 <p>&#x70B9;&#x51FB;Clips&#x5217;&#x8868;&#xFF0C;&#x53EF;&#x6539;&#x53D8;&#x5F53;&#x524D;&#x8981;&#x7F16;&#x8F91;&#x7684;Clip.</p>
 <p>&#x70B9;&#x51FB;Add Property&#xFF0C;&#x9009;&#x4E2D;chest_top &gt; Transform &gt; Rotation&#x3002;</p>
-<h1 id="&#x4E8C;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;"><a href="#&#x4E8C;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;" class="headerlink" title="&#x4E8C;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;"></a>&#x4E8C;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;</h1><p>&#x4FDD;&#x6301;Chest&#x88AB;&#x9009;&#x4E2D;&#xFF0C;&#x70B9;&#x51FB;Animation&#x7A97;&#x53E3;&#x4E0B;&#x7684;Curves&#x6309;&#x94AE;&#xFF0C;&#x6253;&#x5F00;&#x52A8;&#x753B;&#x66F2;&#x7EBF;&#x754C;&#x9762;&#xFF0C;</p>
+<h2 id="&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;"><a href="#&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;" class="headerlink" title="&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;"></a>&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;</h2><p>&#x4FDD;&#x6301;Chest&#x88AB;&#x9009;&#x4E2D;&#xFF0C;&#x70B9;&#x51FB;Animation&#x7A97;&#x53E3;&#x4E0B;&#x7684;Curves&#x6309;&#x94AE;&#xFF0C;&#x6253;&#x5F00;&#x52A8;&#x753B;&#x66F2;&#x7EBF;&#x754C;&#x9762;&#xFF0C;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320181825478.png" alt="image-20200320181825478"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320182359505.png" alt="image-20200320182359505"></p>
-<h1 id="&#x4E09;&#x3001;&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;"><a href="#&#x4E09;&#x3001;&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;" class="headerlink" title="&#x4E09;&#x3001;&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;"></a>&#x4E09;&#x3001;&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;</h1><h1 id="&#x56DB;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;"><a href="#&#x56DB;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x56DB;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;"></a>&#x56DB;&#x3001;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;</h1><p>&#x5C06;&#x52A8;&#x753B;&#x5149;&#x6807;&#x79FB;&#x52A8;&#x5230;&#x7BB1;&#x5B50;&#x5B8C;&#x5168;&#x6253;&#x5F00;&#x7684;&#x5173;&#x952E;&#x5E27;&#x4F4D;&#x7F6E;&#xFF0C;&#x70B9;&#x51FB;&#x6DFB;&#x52A0;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x6309;&#x94AE;&#x3002;</p>
+<h2 id="&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;"><a href="#&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;" class="headerlink" title="&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;"></a>&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;</h2><h2 id="&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;"><a href="#&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;"></a>&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;</h2><p>&#x5C06;&#x52A8;&#x753B;&#x5149;&#x6807;&#x79FB;&#x52A8;&#x5230;&#x7BB1;&#x5B50;&#x5B8C;&#x5168;&#x6253;&#x5F00;&#x7684;&#x5173;&#x952E;&#x5E27;&#x4F4D;&#x7F6E;&#xFF0C;&#x70B9;&#x51FB;&#x6DFB;&#x52A0;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x6309;&#x94AE;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320215514821.png" alt="image-20200320215514821"></p>
 <p>&#x6B64;&#x65F6;Inpsector&#x9762;&#x677F;&#x51FA;&#x73B0;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#x3002;&#x6211;&#x4EEC;&#x5728;Hierarchy&#x9009;&#x4E2D;Chest&#xFF0C;&#x4E3A;&#x5176;&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;Treasure Chest(Script)&#x3002;</p>
 <p>&#x4E3A;Chest&#x6DFB;&#x52A0;&#x7A7A;&#x7684;&#x5B50;GameObject&#x5E76;&#x91CD;&#x547D;&#x540D;&#x4E3A;Spawner&#x3002;&#x5C06;&#x5176;&#x62D6;&#x62FD;&#x6DFB;&#x52A0;&#x5230;Chest&#x7684;Treasure Chest(Script)&#x7EC4;&#x4EF6;&#x4E0B;Spawner&#x5C5E;&#x6027;&#x3002;&#x4ECE;Assets/Prefabs&#x4E0B;&#x62D6;&#x62FD;Coin&#x5230;Chest&#x7684;Treasure Chest(Script)&#x7EC4;&#x4EF6;&#x4E0B;Coin Prefab&#x5C5E;&#x6027;&#x3002;&#x6211;&#x4EEC;&#x53CC;&#x51FB;&#x8BE5;&#x7EC4;&#x4EF6;&#x4E0B;&#x7684;Script&#x5C5E;&#x6027;&#x6253;&#x5F00;&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x6709;&#x4E00;&#x4E2A;OpenChest&#x65B9;&#x6CD5;&#x3002;</p>
 <p>&#x56DE;&#x5230;Unity&#xFF0C;&#x5728;Animation&#x7A97;&#x53E3;&#x70B9;&#x51FB;&#x521A;&#x624D;&#x6DFB;&#x52A0;&#x7684;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x6807;&#x8BB0;&#xFF0C;&#x5728;Inspector&#x7A97;&#x53E3;&#x7684;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;&#x9009;&#x9879;&#x91CC;&#x6211;&#x4EEC;&#x6709;3&#x79CD;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x3002;&#x9009;&#x62E9;OpenChest&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5C31;&#x4E0E;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x5173;&#x8054;&#x4E0A;&#x4E86;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x64AD;&#x653E;&#x6E38;&#x620F;&#x65F6;&#xFF0C;&#x5F00;&#x7BB1;&#x52A8;&#x753B;&#x64AD;&#x653E;&#x5230;&#x5B8C;&#x5168;&#x6253;&#x5F00;&#x5173;&#x952E;&#x5E27;&#x65F6;&#x5C06;&#x81EA;&#x52A8;&#x89E6;&#x53D1;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#xFF0C;&#x8C03;&#x7528;OpenChest&#x51FD;&#x6570;&#xFF0C;&#x5F39;&#x51FA;&#x786C;&#x5E01;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320220902629.png" alt="image-20200320220902629"></p>
-<h1 id="&#x4E94;&#x3001;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;"><a href="#&#x4E94;&#x3001;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;" class="headerlink" title="&#x4E94;&#x3001;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;"></a>&#x4E94;&#x3001;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;</h1><p>&#x9996;&#x5148;&#x4E3A;Chest_Close&#x6DFB;&#x52A0;&#x5C5E;&#x6027;Rotation&#xFF0C;&#x901A;&#x8FC7;Ctrl+C/V&#x5C06;Chest_Open&#x7684;&#x5173;&#x952E;&#x5E27;&#x590D;&#x5236;&#x7C98;&#x8D34;&#x5230;Chest_Close&#x91CC;&#x3002;</p>
+<h2 id="&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;"><a href="#&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;" class="headerlink" title="&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;"></a>&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;</h2><p>&#x9996;&#x5148;&#x4E3A;Chest_Close&#x6DFB;&#x52A0;&#x5C5E;&#x6027;Rotation&#xFF0C;&#x901A;&#x8FC7;Ctrl+C/V&#x5C06;Chest_Open&#x7684;&#x5173;&#x952E;&#x5E27;&#x590D;&#x5236;&#x7C98;&#x8D34;&#x5230;Chest_Close&#x91CC;&#x3002;</p>
 <p>&#x5728;Chest_Close&#x91CC;&#xFF0C;&#x5C06;&#x9996;&#x5C3E;&#x4E24;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#x4EA4;&#x6362;&#x4F4D;&#x7F6E;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x6574;&#x5176;&#x52A8;&#x753B;&#x66F2;&#x7EBF;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321082658400.png" alt="image-20200321082658400"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321083142461.png" alt="image-20200321083142461"></p>
-<h1 id="&#x516D;&#x3001;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x57FA;&#x7840;&#x77E5;&#x8BC6;"><a href="#&#x516D;&#x3001;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x57FA;&#x7840;&#x77E5;&#x8BC6;" class="headerlink" title="&#x516D;&#x3001;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x57FA;&#x7840;&#x77E5;&#x8BC6;"></a>&#x516D;&#x3001;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h1><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6709;&#x591A;&#x4E2A;&#x52A8;&#x753B;&#x7247;&#x6BB5;&#xFF0C;&#x9700;&#x8981;&#x7BA1;&#x7406;&#x5B83;&#x4EEC;&#xFF0C;&#x751A;&#x81F3;&#x5728;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x4E4B;&#x95F4;&#x8F6C;&#x6362;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x4E0E;&#x52A8;&#x753B;&#x7EC4;&#x4EF6;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x7684;&#x6E38;&#x620F;Assets&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;&#x65F6;&#xFF0C;Unity&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x8BE5;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x52A8;&#x753B;&#x7684;&#x63A7;&#x5236;&#x53C2;&#x6570;&#x3002;</p>
+<h2 id="Animator&#x89C6;&#x7A97;&#x91CC;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;"><a href="#Animator&#x89C6;&#x7A97;&#x91CC;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;" class="headerlink" title="Animator&#x89C6;&#x7A97;&#x91CC;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;"></a>Animator&#x89C6;&#x7A97;&#x91CC;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h2><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6709;&#x591A;&#x4E2A;&#x52A8;&#x753B;&#x7247;&#x6BB5;&#xFF0C;&#x9700;&#x8981;&#x7BA1;&#x7406;&#x5B83;&#x4EEC;&#xFF0C;&#x751A;&#x81F3;&#x5728;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x4E4B;&#x95F4;&#x8F6C;&#x6362;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x4E0E;&#x52A8;&#x753B;&#x7EC4;&#x4EF6;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x7684;&#x6E38;&#x620F;Assets&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;&#x65F6;&#xFF0C;Unity&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x8BE5;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x52A8;&#x753B;&#x7684;&#x63A7;&#x5236;&#x53C2;&#x6570;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321083855523.png" alt="image-20200321083855523"></p>
 <p>&#x53CC;&#x51FB;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x6253;&#x5F00;Animation&#x7A97;&#x53E3;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321092216642.png" alt="image-20200321092216642"></p>
@@ -232,8 +253,26 @@
 <p>Entry&#xFF1A;&#x4EFB;&#x4F55;&#x6E38;&#x620F;&#x5F00;&#x59CB;&#x6216;&#x57FA;&#x7840;&#x5C42;&#x4E0A;&#x7684;&#x7279;&#x6B8A;&#x72B6;&#x6001;&#x673A;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x5C06;&#x8FDB;&#x5165;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;/&#x9ED8;&#x8BA4;&#x52A8;&#x753B;&#x3002;</p>
 <p>Exit&#xFF1A;&#x7279;&#x6B8A;&#x8282;&#x70B9;&#xFF0C;&#x8868;&#x660E;&#x72B6;&#x6001;&#x673A;&#x5E94;&#x8BE5;&#x9000;&#x51FA;&#x3002;</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321094443227.png" alt="image-20200321094443227"></p>
-<p>Chest_Open&#x72B6;&#x6001;&#x662F;&#x6A59;&#x8272;&#x7684;&#xFF0C;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x5C06;&#x5728;&#x6E38;&#x620F;&#x5F00;&#x59CB;&#x540E;&#x7ACB;&#x5373;&#x64AD;&#x653E;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x72B6;&#x6001;</p>
-</body></html>
+<p>Chest_Open&#x72B6;&#x6001;&#x662F;&#x6A59;&#x8272;&#x7684;&#xFF0C;&#x4EE3;&#x8868;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;&#xFF0C;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x5C06;&#x5728;&#x6E38;&#x620F;&#x5F00;&#x59CB;&#x540E;&#x7ACB;&#x5373;&#x64AD;&#x653E;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x7BB1;&#x5B50;&#x5728;&#x6E38;&#x620F;&#x5F00;&#x59CB;&#x65F6;&#x65F6;&#x4FDD;&#x6301;&#x5173;&#x95ED;&#x72B6;&#x6001;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x72B6;&#x6001;&#x3002;&#x5728;Animator&#x89C6;&#x7A97;&#x7A7A;&#x767D;&#x5904;&#x53F3;&#x952E;&#x9009;&#x62E9;Create State|Empty&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;Chest_Idle&#xFF0C;&#x4E14;&#x5B83;&#x7684;Motion&#x8BBE;&#x4E3A;None&#x3002;</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425205759946.png" alt="image-20200425205759946"></p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425213738029.png" alt="image-20200425213738029"></p>
+<p>&#x7136;&#x540E;&#x9009;&#x4E2D;Chest_Idle&#x53F3;&#x952E;&#x9009;&#x62E9;Set as Layer Default State&#x3002;&#x6B64;&#x65F6;&#x64AD;&#x653E;&#x52A8;&#x753B;&#xFF0C;Chest&#x4FDD;&#x6301;&#x5173;&#x95ED;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x8981;&#x7BB1;&#x5B50;&#x4ECE;Chest_Idle&#x8F6C;&#x53D8;&#x5230;Chest_Open&#x72B6;&#x6001;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x53F3;&#x952E;Chest_Idle&#xFF0C;&#x9009;&#x62E9;Make Transition&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;Chest_Open&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x8FC7;&#x6E21;&#x7BAD;&#x5934;&#x5C06;&#x4E24;&#x4E2A;&#x72B6;&#x6001;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x3002;</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425210555148.png" alt="image-20200425210555148"></p>
+<p>&#x9009;&#x4E2D;&#x8FD9;&#x4E2A;&#x8FC7;&#x6E21;&#x7BAD;&#x5934;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;Inspector&#x91CC;&#x8BBE;&#x7F6E;&#x8FC7;&#x6E21;&#x6761;&#x4EF6;&#x3002;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x4F1A;&#x53D6;&#x6D88;&#x52FE;&#x9009;Has Exit Time&#xFF0C;&#x5E76;&#x786E;&#x4FDD;&#x4E0B;&#x65B9;&#x7684;Condition&#x91CC;&#x8BBE;&#x7F6E;&#x4E86;&#x6761;&#x4EF6;&#x3002;</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425211003751.png" alt="image-20200425211003751"></p>
+<h2 id="&#x53C2;&#x6570;&#x548C;&#x6761;&#x4EF6;"><a href="#&#x53C2;&#x6570;&#x548C;&#x6761;&#x4EF6;" class="headerlink" title="&#x53C2;&#x6570;&#x548C;&#x6761;&#x4EF6;"></a>&#x53C2;&#x6570;&#x548C;&#x6761;&#x4EF6;</h2><p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;Condition&#xFF08;&#x6761;&#x4EF6;&#xFF09;&#xFF0C;&#x6761;&#x4EF6;&#x5728;Animator&#x89C6;&#x7A97;&#x5DE6;&#x8FB9;&#x7684;Parameter&#xFF08;&#x53C2;&#x6570;&#xFF09;&#x89C6;&#x7A97;&#x91CC;&#x521B;&#x5EFA;&#x3002;&#x70B9;&#x51FB;&#x52A0;&#x53F7;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6709;&#x56DB;&#x79CD;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x4F9B;&#x9009;&#x62E9;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x6B21;&#x9009;&#x62E9;&#x521B;&#x5EFA;Bool&#xFF08;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#xFF09;&#x53C2;&#x6570;&#xFF0C;&#x5E76;&#x91CD;&#x547D;&#x540D;&#x4E3A;isOpen&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x6765;&#x63A7;&#x5236;&#x7BB1;&#x5B50;&#x7684;&#x5F00;&#x5173;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x8BBE;&#x4E3A;false&#x3002;</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425211915696.png" alt="image-20200425211915696"></p>
+<p>&#x7136;&#x540E;&#x9009;&#x4E2D;Chest_Idle&#x5230;Chest_Open&#x7684;&#x8FC7;&#x6E21;&#x7BAD;&#x5934;&#xFF0C;&#x5728;Conditions&#x70B9;&#x51FB;&#x52A0;&#x53F7;&#xFF0C;&#x8BBE;&#x7F6E;isOpen&#x4E3A;true&#x3002;</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425213244652.png" alt="image-20200425213244652"></p>
+<p>&#x540C;&#x7406;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;Chest_Open&#x5230;Chest_Close&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4E92;&#x8FC7;&#x6E21;&#x4E5F;&#x505A;&#x6761;&#x4EF6;&#x8BBE;&#x7F6E;&#xFF0C;&#x5F00;&#x7BB1;&#x5230;&#x5173;&#x7BB1;&#x7684;&#x6761;&#x4EF6;&#x662F;isOpen&#x4E3A;false&#xFF0C;&#x5173;&#x7BB1;&#x5230;&#x5F00;&#x7BB1;&#x7684;&#x6761;&#x4EF6;&#x4E3A;true&#xFF0C;&#x8BB0;&#x5F97;&#x90FD;&#x53D6;&#x6D88;&#x52FE;&#x9009;Has Exit Time&#x3002;</p>
+<h2 id="&#x811A;&#x672C;&#x63A7;&#x5236;&#x6761;&#x4EF6;&#x53C2;&#x6570;"><a href="#&#x811A;&#x672C;&#x63A7;&#x5236;&#x6761;&#x4EF6;&#x53C2;&#x6570;" class="headerlink" title="&#x811A;&#x672C;&#x63A7;&#x5236;&#x6761;&#x4EF6;&#x53C2;&#x6570;"></a>&#x811A;&#x672C;&#x63A7;&#x5236;&#x6761;&#x4EF6;&#x53C2;&#x6570;</h2><p>&#x6253;&#x5F00;Assets/Scripts&#x4E0B;&#x7684;TreasureChest.cs&#xFF0C;&#x4EE5;&#x4E0B;&#x53EA;&#x5C55;&#x793A;&#x90E8;&#x5206;&#x5173;&#x952E;&#x4EE3;&#x7801;&#xFF08;&#x91CD;&#x70B9;&#x770B;Update&#x65B9;&#x6CD5;&#xFF09;&#xFF1A;</p>
+<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TreasureChest</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> interactable = <span class="hljs-literal">false</span>;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> isOpen = <span class="hljs-literal">false</span>;</span><br><span class="line">    <span class="hljs-keyword">private</span> Animator anim;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> Rigidbody coinPrefab;</span><br><span class="line">    <span class="hljs-keyword">public</span> Transform spawner;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">	}	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">		<span class="hljs-keyword">if</span>(Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">        {</span><br><span class="line">          isOpen = !isOpen;</span><br><span class="line">          anim.SetBool(<span class="hljs-string">&quot;isOpen&quot;</span>, isOpen);</span><br><span class="line">        }</span><br><span class="line">	}</span><br><span class="line">...</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x7136;&#x540E;&#x56DE;&#x5230;Unity&#xFF0C;&#x5C06;Animations&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;Chest_Close&#x3001;Chest_Open&#x7684;Loop Time&#x53D6;&#x6D88;&#x52FE;&#x9009;&#xFF0C;&#x4E0D;&#x8BA9;&#x5176;&#x5FAA;&#x73AF;&#x64AD;&#x653E;&#x52A8;&#x753B;&#x526A;&#x8F91;&#x3002;</p>
+<p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425223028862.png" alt="image-20200425223028862"></p>
+<p>&#x7136;&#x540E;&#x4FDD;&#x5B58;&#xFF0C;&#x64AD;&#x653E;&#x573A;&#x666F;&#xFF0C;&#x7BB1;&#x5B50;&#x4E00;&#x5F00;&#x59CB;&#x662F;&#x5173;&#x95ED;&#x7684;&#xFF0C;&#x6309;&#x7A7A;&#x683C;&#x952E;&#x7BB1;&#x5B50;&#x6253;&#x5F00;&#xFF0C;&#x518D;&#x6309;&#x4E00;&#x6B21;&#x7A7A;&#x683C;&#x952E;&#x7BB1;&#x5B50;&#x5173;&#x95ED;&#x3002;</p>
+<h1 id="&#x4E8C;&#x3001;Maya&#x5BFC;&#x51FA;&#x52A8;&#x753B;"><a href="#&#x4E8C;&#x3001;Maya&#x5BFC;&#x51FA;&#x52A8;&#x753B;" class="headerlink" title="&#x4E8C;&#x3001;Maya&#x5BFC;&#x51FA;&#x52A8;&#x753B;"></a>&#x4E8C;&#x3001;Maya&#x5BFC;&#x51FA;&#x52A8;&#x753B;</h1><p>&#x7528;Maya 2018&#x6253;&#x5F00;&#x8D44;&#x6599;&#x91CC;Referenced Files&#x91CC;&#x7684;rig_DwarfHero_root_motion.ma&#x3002;</p>
+<h1 id="&#x4E09;&#x3001;&#x5BFC;&#x5165;&#x52A8;&#x753B;"><a href="#&#x4E09;&#x3001;&#x5BFC;&#x5165;&#x52A8;&#x753B;" class="headerlink" title="&#x4E09;&#x3001;&#x5BFC;&#x5165;&#x52A8;&#x753B;"></a>&#x4E09;&#x3001;&#x5BFC;&#x5165;&#x52A8;&#x753B;</h1></body></html>
     
     </div>
     
@@ -443,7 +482,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -456,10 +495,10 @@
         var INSIGHT_CONFIG = {
             TRANSLATION: {
                 POSTS: 'Posts',
-                PAGES: 'Seiten',
-                CATEGORIES: 'Kategorien',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
-                UNTITLED: '(Sin título)',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };
