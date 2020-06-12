@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> Unity简易角色开发 · MJ's Blog</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Unity简易角色开发 - MJ"><meta name="keywords"><meta name="author" content="MJ"><link rel="short icon" href="/images/assassins_creed.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weimingjuncn.github.io/atom.xml" title="MJ's Blog"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script><meta name="generator" content="Hexo 4.2.0"></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/assassins_creed_white.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">Unity简易角色开发</h1><div class="post-info">2020-02-16</div><div class="post-content"><ul>
+<li>建立角色</li>
+<li>动画控制器</li>
+<li>给角色添加组件</li>
+<li>使用Cinemachine</li>
+<li>打包生成游戏</li>
+</ul>
+<a id="more"></a>
+
+<p>Unity版本：Unity 2018.4.13c1 Personal</p>
+<h1 id="一、建立角色"><a href="#一、建立角色" class="headerlink" title="一、建立角色"></a>一、建立角色</h1><p>从Unity Assets\Unity Fundamentals Source Assets\Character导入Characters.unitypackage</p>
+<p>再Assets/Models/Hero/Models/Hero/FBX下将Hero_Low拖拽到场景中，给Hero_Low添加Player Controller(Script)组件，Nav Mesh Agent组件并修改Radius为0.4，Height为1.6。设置Hero_Low的Tag为Player，Layer为Player。</p>
+<p>再Hierarchy窗口添加空Game Object，命名为MouseManager，为其添加Mouse Manager(Script)组件，Clickable Layer设置为Clickable，并添加鼠标材质：</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200226120424579.png" alt="image-20200226120424579"></p>
+<p>添加鼠标点击事件，添加上时间Object拖入Hero_Low，函数选择NavMeshAgent &gt; destination</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200226120725080.png" alt="image-20200226120725080"></p>
+<p>创建一个空物体，命名为NavMeshSurface，并为其添加NavMeshSurface（Script）组件</p>
+<p>Agent Type: Open Agent Settings &gt; Radius: 0.4, Height: 1.6。回到Inspector点击Bake。注意到中间木桥处有断开，我们可以在木桥处放一个Cube,并将其Layer设置为Clickable，角色可以走动的地面均选中并将Layer设置为Clickable，然后重新烘焙NavMeshSurface。</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200227152928129.png" alt="image-20200227152928129"></p>
+<p>NavMeshSurface连成一块后，把Cube Disable掉即可。</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200227153042423.png" alt="image-20200227153042423"></p>
+<p>这时我们可以播放游戏看看角色是否可以走过去了。</p>
+<h1 id="二、动画控制器"><a href="#二、动画控制器" class="headerlink" title="二、动画控制器"></a>二、动画控制器</h1><p>在Assets下新建一个Animations文件夹，在Assets/Animations下新建一个Animation Controller，取名为Hero_Alt，即Hero_Alt.controller文件，双击进入其Animator窗口，界面可以通过按住鼠标中键拖拽，滚动鼠标中键缩放。</p>
+<p>Animator窗口 &gt; Base Layer下有三个状态：Any State, Entry, Exit。</p>
+<p>Entry：初识状态，如角色闲置动画。</p>
+<p>Any State：任何时候都可以转换到的状态，如角色死亡动画。</p>
+<p>Exit：结束状态。</p>
+<p>常用的是Entry和Any State状态。</p>
+<p>在空白处右键Create State &gt; From New Blend Tree，将建好的Blend Tree重命名为Motion Tree，双击进入Motion Tree，将里边的Blend Tree重命名为Speed，Inspector &gt; Parameter重命名为Speed。点击下方的加号 &gt; Add Motion Field，然后给我们的Motion Field选择Motion：anm_dwarfHero_idle。同样的方法，我们再添加一个Motion Field，选择anm_dwarfHero_run</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200227201226207.png" alt="image-20200227201226207"></p>
+<p>添加完两个要混合的动画，点击下方动画播放小窗口的播放按钮，此时播放的是闲置动画，当我们把Speed由0播放到1时，角色动画过渡到奔跑动画。</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200227202413061.png" alt="image-20200227202413061"></p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200227202523565.png" alt="image-20200227202523565"></p>
+<p>打开Assets/Scripts下的PlayerController.cs。保存代码如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.AI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerController</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Animator anim;</span><br><span class="line">    <span class="keyword">private</span> NavMeshAgent agent;</span><br><span class="line">    <span class="comment">// Use this for initializtion</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">        agent = GetComponent&lt;NavMeshAgent&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        anim.SetFloat(<span class="string">"Speed"</span>, agent.velocity.magnitude);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>给角色的Animator组件 &gt; Controller添加RuntimeAnimatorController：Hero_Alt。</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200227203943172.png" alt="image-20200227203943172"></p>
+<p>回到Animator窗口，给Parameter添加Speed参数</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200227215939191.png" alt="image-20200227215939191"></p>
+<p>回到Scene窗口，点击Play，播放游戏。鼠标点击控制角色，我们的角色行动不在像尸体一样平移，而是有闲置动画，奔跑动画的移动。</p>
+<h1 id="三、给角色添加附件"><a href="#三、给角色添加附件" class="headerlink" title="三、给角色添加附件"></a>三、给角色添加附件</h1><p>将Assets/Models/Hero/Models/Weapons/FBX下的LowpolySword添加到场景中，调整到合适的大小。</p>
+<p>LowpolySword的全身是灰色的，我们需要更新材质。再Assets/Models/Hero/Models/Weapons/Materials下选中Sword.mat，锁定Inspector窗口，找到Assets/Models/Hero/Models/Weapons/Textures，将Sword Base Color.png、Sword Metalic.png、Sword Normal.png分别拖拽到Inspector &gt; Main Maps &gt; Albedo、Metalic、Mormal Map。将Main &gt; Smoothness调整到0.4。</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200227221854510.png" alt="image-20200227221854510"></p>
+<p>我们将LowpolySword拖拽到Hero_Low/R_Wrist_Jnt下，然后将LowpolySword的位置旋转角度都归零，调整LowpolySword的角度，使LowpolySword看上去被正确地握在Hero_Low手中。</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200227223059895.png" alt="image-20200227223059895"></p>
+<p>播放游戏，可以看到LowpolySword跟随Hero_Low的右手动画运动。</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200227223343297.png" alt="image-20200227223343297"></p>
+<h1 id="四、使用Cinemachine制作跟随镜头"><a href="#四、使用Cinemachine制作跟随镜头" class="headerlink" title="四、使用Cinemachine制作跟随镜头"></a>四、使用Cinemachine制作跟随镜头</h1><p>打开Unity菜单栏 &gt; Window &gt; Package Manager，安装Cinemachine插件。</p>
+<p>完成安装后通过Unity菜单栏 &gt; Cinemachine &gt; Create Virtual Camera新建一个虚拟摄像机CM vcam1。</p>
+<p>虚拟摄像机可以覆盖主摄像机的设置。</p>
+<p>在Scene窗口下选择合适的观察角色的视角，选中CM vcam1，按快捷键Ctrl+Shift+F。</p>
+<p>将Hero_Low拖拽到CM vcam1的Inspector &gt; Cinemachine Virtual Camera(Script) &gt; Follow和Look At</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200229100523509.png" alt="image-20200229100523509"></p>
+<p>Aim设置为Do nothing，Body选择Framing Transposer。</p>
+<p>转到Game视窗，选中CM vcam1，可以看到画面分为三种区域：</p>
+<p>中间区域（原本的颜色）：叫做死亡区域，LookAt的这个目标在这个区域内，摄像机是不会跟随的。<br>蓝色区域：代表缓冲区域，此时摄像机会开始跟随，使目标在中间的透明区域。<br>红色区域：不可到达区域，跟随过程中目标是不可能到达这些区域的。</p>
+<p>我们可以拖动画面上的直线改变这三种区域的大小。</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200229121358207.png" alt="image-20200229121358207"></p>
+<p>播放游戏，控制角色行走，摄像机跟随角色移动。</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200229121611685.png" alt="image-20200229121611685"></p>
+<p>我们还可以给虚拟摄像机添加其他设置，例如Noice设置为Basic Muti Channel Perlin，Noice Profile设置为Handheld_normal_mild，Amplitude Gain和Frequency Gain均设置为0.5，这样一来游戏中摄像机就有了轻微的晃动。</p>
+<h1 id="五、打包生成游戏"><a href="#五、打包生成游戏" class="headerlink" title="五、打包生成游戏"></a>五、打包生成游戏</h1><p>将场景保存好后，Unity菜单栏File &gt; Build Settings，确认所有场景都在Scene In Build，选择平台，按需要勾选是否创建VS解决方案或开发build。</p>
+<p>点击Player Settings，在其Inspector面板我们可以修改游戏名称，公司名称，版本号，游戏图标，游戏中的鼠标材质等信息。这里我们添加了一个游戏鼠标材质，其他设置均默认，然后点击Build按钮选好路径生成游戏。</p>
+<p><img src="/2020/02/16/Unity%E7%AE%80%E6%98%93%E8%A7%92%E8%89%B2%E5%BC%80%E5%8F%91/image-20200229145944487.png" alt="image-20200229145944487"></p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/02/16/PluralSight%E8%AF%BE%E7%A8%8B%EF%BC%9A%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" title="PluralSight谈游戏设计基础" class="prev">上一篇</a><a href="/2020/02/13/Unity%E7%AE%80%E6%98%93%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/" title="Unity简易关卡设计" class="next">下一篇</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

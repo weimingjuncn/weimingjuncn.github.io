@@ -1,481 +1,52 @@
-<!DOCTYPE html>
-<html class="has-navbar-fixed-top">
-<head>
-    <meta charset="utf-8">
-<title>Unity 2018 UI基础 - MJ&#39;s Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
-
-
-
-
-<meta name="description" content="This is a personal Blog.">
-
-
-
-
-
-    <meta name="description" content="&amp;#x4E09;&amp;#x79CD;&amp;#x753B;&amp;#x5E03;&amp;#x7684;&amp;#x6DFB;&amp;#x52A0; &amp;#x4E0D;&amp;#x540C;&amp;#x5206;&amp;#x8FA8;&amp;#x7387;&amp;#x7684;&amp;#x5C4F;&amp;#x5E55; &amp;#x6587;&amp;#x672C;&amp;#x7EC4;&amp;#x4EF6;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Unity 2018 UI基础">
-<meta property="og:url" content="https://weimingjuncn.github.io/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/index.html">
-<meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="&amp;#x4E09;&amp;#x79CD;&amp;#x753B;&amp;#x5E03;&amp;#x7684;&amp;#x6DFB;&amp;#x52A0; &amp;#x4E0D;&amp;#x540C;&amp;#x5206;&amp;#x8FA8;&amp;#x7387;&amp;#x7684;&amp;#x5C4F;&amp;#x5E55; &amp;#x6587;&amp;#x672C;&amp;#x7EC4;&amp;#x4EF6;">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321191703903.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321202535660.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321203804848.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321203711010.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321204017725.png">
-<meta property="article:published_time" content="2020-02-19T11:17:46.000Z">
-<meta property="article:modified_time" content="2020-04-06T12:09:41.176Z">
-<meta property="article:author" content="MJ">
-<meta property="article:tag" content="Unity">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321191703903.png">
-
-
-
-
-
-<link rel="icon" href="/favicon.png">
-
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-<body>
-    
-<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item navbar-logo" href="/">
-                
-                <img src="/images/logo.png" alt="" height="28">
-                
-            </a>
-            <div class="navbar-burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        
-        <div class="navbar-menu navbar-start">
-            
-            <a class="navbar-item "
-               href="/archives">归档</a>
-            
-            <a class="navbar-item "
-               href="/tags">标签分类</a>
-            
-            <a class="navbar-item "
-               href="/about">关于</a>
-            
-        </div>
-        
-        <div class="navbar-menu navbar-end">
-            
-            <a class="navbar-item search" title="Search" href="javascript:;">
-                <i class="fas fa-search"></i>
-            </a>
-            
-            
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Table of Contents">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#一、三种画布的添加">1&nbsp;&nbsp;<b>一、三种画布的添加</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#1-Overlay">1.1&nbsp;&nbsp;1. Overlay</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#2-Camera">1.2&nbsp;&nbsp;2. Camera</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#3-World-Space">1.3&nbsp;&nbsp;3. World Space</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#二、不同的分辨率的屏幕">2&nbsp;&nbsp;<b>二、不同的分辨率的屏幕</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#1-高分辨率PC游戏">2.1&nbsp;&nbsp;1. 高分辨率PC游戏</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#2-HTML5网页大小">2.2&nbsp;&nbsp;2. HTML5网页大小</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#3-移动设备横屏与竖屏">2.3&nbsp;&nbsp;3. 移动设备横屏与竖屏</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#三、文本组件">3&nbsp;&nbsp;<b>三、文本组件</b></a>
-                    
-                </div>
-            </div>
-            
-            
-            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-               
-            
-        </div>
-    </div>
-</nav>
-
-    <section class="section">
-    <div class="container">
-    <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            Unity 2018 UI基础
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-02-19T11:17:46.000Z" itemprop="datePublished">2月 19 2020</time>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><ul>
-<li>&#x4E09;&#x79CD;&#x753B;&#x5E03;&#x7684;&#x6DFB;&#x52A0;</li>
-<li>&#x4E0D;&#x540C;&#x5206;&#x8FA8;&#x7387;&#x7684;&#x5C4F;&#x5E55;</li>
-<li>&#x6587;&#x672C;&#x7EC4;&#x4EF6;</li>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> Unity 2018 UI基础 · MJ's Blog</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Unity 2018 UI基础 - MJ"><meta name="keywords"><meta name="author" content="MJ"><link rel="short icon" href="/images/assassins_creed.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weimingjuncn.github.io/atom.xml" title="MJ's Blog"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script><meta name="generator" content="Hexo 4.2.0"></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/assassins_creed_white.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">Unity 2018 UI基础</h1><div class="post-info">2020-02-19</div><div class="post-content"><ul>
+<li>三种画布的添加</li>
+<li>不同分辨率的屏幕</li>
+<li>文本组件</li>
 </ul>
 <a id="more"></a>
 
-<p>Unity&#x7248;&#x672C;&#xFF1A;Unity 2018.4.13c1 Personal</p>
-<p>Interface Type &#x4EA4;&#x4E92;&#x754C;&#x9762;&#x7C7B;&#x578B;</p>
+<p>Unity版本：Unity 2018.4.13c1 Personal</p>
+<p>Interface Type 交互界面类型</p>
 <ul>
-<li>Diegetic(&#x5267;&#x60C5;&#x7684;&#xFF0C;&#x6545;&#x4E8B;&#x5185;&#x7684;)&#xFF1A;&#x5B58;&#x6863;&#x70B9;</li>
-<li>Spatial(&#x53D7;&#x7A7A;&#x95F4;&#x6761;&#x4EF6;&#x9650;&#x5236;&#x7684;)&#xFF1A;&#x9AD8;&#x4EAE;&#x4EFB;&#x52A1;NPC&#x6216;&#x5176;&#x4ED6;&#x73A9;&#x5BB6;&#xFF0C;&#x6216;&#x73A9;&#x5BB6;&#x81EA;&#x5DF1;</li>
-<li>Meta&#xFF1A;&#x6709;&#x5199;&#x6444;&#x50CF;&#x673A;&#x73A9;&#x5BB6;&#x5BDF;&#x89C9;&#x4E0D;&#x5230;&#xFF0C;&#x4F46;&#x5F00;&#x53D1;&#x8005;&#x77E5;&#x9053;</li>
-<li>Non-Diegetic &#xFF1A;&#x6253;&#x5206;&#x9762;&#x677F;</li>
+<li>Diegetic(剧情的，故事内的)：存档点</li>
+<li>Spatial(受空间条件限制的)：高亮任务NPC或其他玩家，或玩家自己</li>
+<li>Meta：有写摄像机玩家察觉不到，但开发者知道</li>
+<li>Non-Diegetic ：打分面板</li>
 </ul>
-<p>Canvas Type&#x753B;&#x5E03;&#x7C7B;&#x578B;</p>
+<p>Canvas Type画布类型</p>
 <ul>
-<li>Screen Space Overlay&#xFF1A;&#x5728;&#x573A;&#x666F;&#x9876;&#x5C42;&#xFF0C;HUD&#xFF0C;&#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x89D2;&#x8272;&#x72B6;&#x6001;&#x7B49;&#x4FE1;&#x606F;</li>
-<li>Screen Space Camera&#xFF1A;</li>
-<li>World Space&#xFF1A;</li>
+<li>Screen Space Overlay：在场景顶层，HUD，用于标识角色状态等信息</li>
+<li>Screen Space Camera：</li>
+<li>World Space：</li>
 </ul>
 <p>Interface Type Use Canvas Type</p>
 <ul>
-<li><p>Overlay&#x7528;&#x4E8E;&#x505A;No-diegetic UI</p>
+<li><p>Overlay用于做No-diegetic UI</p>
 </li>
-<li><p>Camera&#x7528;&#x4E8E;&#x505A;No-diegetic &amp; diegetic UI</p>
+<li><p>Camera用于做No-diegetic &amp; diegetic UI</p>
 </li>
-<li><p>World&#x7528;&#x4E8E;&#x505A;diegetic UI</p>
+<li><p>World用于做diegetic UI</p>
 </li>
 </ul>
 <p><strong>What is HUD ?</strong></p>
 <p>HUD - Head-Up Display</p>
-<p>HUD&#x6216;&#x72B6;&#x6001;&#x6761;&#x662F;&#x6E38;&#x620F;UI&#x4E2D;&#x89C6;&#x89C9;&#x4F20;&#x8FBE;&#x73A9;&#x5BB6;&#x4FE1;&#x606F;&#x7684;&#x4E00;&#x79CD;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#x3002;</p>
-<p><strong>&#x5BFC;&#x5165;&#x8D44;&#x6E90;&#x5305;</strong></p>
-<p>&#x65B0;&#x5EFA;&#x597D;&#x9879;&#x76EE;&#x540E;&#xFF0C;&#x5BFC;&#x5165;ui-fundamentals-2018.unitypackage&#xFF0C;&#x8FDB;&#x5165;Scenes&#x6587;&#x4EF6;&#x4EF6;&#xFF0C;&#x53CC;&#x51FB;&#x6253;&#x5F00;UIScene</p>
-<h1 id="&#x4E00;&#x3001;&#x4E09;&#x79CD;&#x753B;&#x5E03;&#x7684;&#x6DFB;&#x52A0;"><a href="#&#x4E00;&#x3001;&#x4E09;&#x79CD;&#x753B;&#x5E03;&#x7684;&#x6DFB;&#x52A0;" class="headerlink" title="&#x4E00;&#x3001;&#x4E09;&#x79CD;&#x753B;&#x5E03;&#x7684;&#x6DFB;&#x52A0;"></a>&#x4E00;&#x3001;&#x4E09;&#x79CD;&#x753B;&#x5E03;&#x7684;&#x6DFB;&#x52A0;</h1><h2 id="1-Overlay"><a href="#1-Overlay" class="headerlink" title="1. Overlay"></a>1. Overlay</h2><p>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x573A;&#x666F;&#xFF0C;&#x83DC;&#x5355;&#x680F;GameObject &gt; UI &gt; Canvas&#xFF0C;&#x5728;&#x5176;&#x7EC4;&#x4EF6;Canvas &gt; Render Mode&#x9009;&#x4E2D;Screen Space - Overlay&#x3002;</p>
-<p>&#x5728;Canvas&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Cube&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x5374;&#x65E0;&#x6CD5;&#x5728;Game&#x89C6;&#x7A97;&#x770B;&#x5230;Cube&#xFF0C;&#x65E0;&#x8BBA;Cube&#x8C03;&#x6574;&#x5230;&#x591A;&#x5927;&#x3002;&#x8FD9;&#x5C31;&#x662F;Overlay&#x578B;&#x753B;&#x5E03;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x89C1;&#x5728;&#x5176;&#x4E0A;&#x8FB9;&#x653E;&#x7F6E;&#x7684;&#x4E8C;&#x7EF4;&#x56FE;&#x7247;&#xFF0C;&#x6587;&#x672C;&#xFF0C;&#x548C;&#x4E00;&#x4E9B;&#x53EF;&#x4EE5;&#x4E92;&#x52A8;&#x7684;&#x4E1C;&#x897F;&#x6BD4;&#x5982;&#x6309;&#x94AE;&#xFF0C;&#x800C;&#x4E09;&#x7EF4;&#x6A21;&#x578B;&#x65E0;&#x6CD5;&#x770B;&#x5230;&#x3002;</p>
-<p>&#x63A5;&#x7740;&#x6211;&#x4EEC;&#x5728;Cube&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;UI &gt; Button&#xFF0C;&#x901A;&#x8FC7;Game&#x89C6;&#x7A97;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5728;&#x753B;&#x5E03;&#x4E0A;&#x7684;&#x6309;&#x94AE;&#x3002;</p>
-<p>&#x60F3;&#x8981;&#x770B;&#x5230;&#x90A3;&#x4E2A;Cube&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x5176;&#x653E;&#x7F6E;&#x5728;&#x6444;&#x50CF;&#x673A;&#x7684;&#x89C6;&#x91CE;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;Cube&#x4F4D;&#x7F6E;&#x91CD;&#x7F6E;&#xFF0C;&#x63A5;&#x7740;&#x5C06;Cube&#x5411;Z&#x8F74;&#x6B63;&#x65B9;&#x5411;&#x79FB;&#x52A8;5&#x4E2A;&#x5355;&#x4F4D;&#x957F;&#x5EA6;&#xFF0C;&#x4F7F;&#x5176;&#x6B63;&#x597D;&#x5728;Main Camera&#x6B63;&#x524D;&#x65B9;&#xFF0C;&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x5F97;&#x4EE5;&#x5728;Game&#x89C6;&#x7A97;&#x4E2D;&#x770B;&#x5230;Cube&#xFF0C;&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;Cube&#x4E0D;&#x5728;&#x753B;&#x5E03;&#x4E0A;&#x3002;</p>
+<p>HUD或状态条是游戏UI中视觉传达玩家信息的一种交互方式。</p>
+<p><strong>导入资源包</strong></p>
+<p>新建好项目后，导入ui-fundamentals-2018.unitypackage，进入Scenes文件件，双击打开UIScene</p>
+<h1 id="一、三种画布的添加"><a href="#一、三种画布的添加" class="headerlink" title="一、三种画布的添加"></a>一、三种画布的添加</h1><h2 id="1-Overlay"><a href="#1-Overlay" class="headerlink" title="1. Overlay"></a>1. Overlay</h2><p>新建一个新场景，菜单栏GameObject &gt; UI &gt; Canvas，在其组件Canvas &gt; Render Mode选中Screen Space - Overlay。</p>
+<p>在Canvas下新建一个Cube，但我们却无法在Game视窗看到Cube，无论Cube调整到多大。这就是Overlay型画布。我们可以看见在其上边放置的二维图片，文本，和一些可以互动的东西比如按钮，而三维模型无法看到。</p>
+<p>接着我们在Cube下新建一个UI &gt; Button，通过Game视窗，我们看到一个显示在画布上的按钮。</p>
+<p>想要看到那个Cube，需要将其放置在摄像机的视野中，我们将Cube位置重置，接着将Cube向Z轴正方向移动5个单位长度，使其正好在Main Camera正前方，此时我们得以在Game视窗中看到Cube，注意这个Cube不在画布上。</p>
 <p><img src="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321191703903.png" alt="image-20200321191703903"></p>
-<h2 id="2-Camera"><a href="#2-Camera" class="headerlink" title="2. Camera"></a>2. Camera</h2><p>&#x6211;&#x4EEC;&#x5C06;Carves&#x7684;Render Mode&#x6539;&#x6210;Screen Space - Camera&#xFF0C;&#x6B64;&#x65F6;Render Camera&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;Main Camera&#x62D6;&#x62FD;&#x8FC7;&#x53BB;&#x6DFB;&#x52A0;&#x4E0A;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53D1;&#x73B0;Game&#x89C6;&#x7A97;&#x4E0B;&#x7684;&#x6309;&#x94AE;&#x6D88;&#x5931;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x9009;&#x4E2D;Main Camera&#xFF0C;&#x5C06;&#x5176;Camera &gt; Clipping Planes Far&#x7531;&#x539F;&#x6765;&#x7684;10&#x6539;&#x6210;100&#x6216;1000&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x53C8;&#x770B;&#x5230;&#x4E86;button&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x6539;&#x53D8;&#x6444;&#x50CF;&#x673A;&#x7684;&#x53EF;&#x89C6;&#x8303;&#x56F4;&#xFF0C;&#x5C06;Canves&#x7684;Plane Distance(&#x5E73;&#x9762;&#x8DDD;&#x79BB;)&#x6539;&#x4E3A;5&#xFF0C;&#x5373;&#x628A;&#x753B;&#x5E03;&#x79FB;&#x5230;&#x6444;&#x50CF;&#x673A;&#x7684;&#x53EF;&#x89C6;&#x8303;&#x56F4;&#x5185;&#xFF0C;&#x4E5F;&#x540C;&#x6837;&#x5728;Game&#x89C6;&#x7A97;&#x4E2D;&#x663E;&#x793A;button&#x3002;</p>
+<h2 id="2-Camera"><a href="#2-Camera" class="headerlink" title="2. Camera"></a>2. Camera</h2><p>我们将Carves的Render Mode改成Screen Space - Camera，此时Render Camera没有指定，我们将Main Camera拖拽过去添加上。这时候我们发现Game视窗下的按钮消失了，我们选中Main Camera，将其Camera &gt; Clipping Planes Far由原来的10改成100或1000此时我们又看到了button，或者不改变摄像机的可视范围，将Canves的Plane Distance(平面距离)改为5，即把画布移到摄像机的可视范围内，也同样在Game视窗中显示button。</p>
 <p><img src="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321202535660.png" alt="image-20200321202535660"></p>
-<h2 id="3-World-Space"><a href="#3-World-Space" class="headerlink" title="3. World Space"></a>3. World Space</h2><p>&#x6211;&#x4EEC;&#x5C06;Canves&#x7684;Render Mode&#x6539;&#x4E3A;World Space&#x3002;&#x5C06;Cube&#x62D6;&#x62FD;&#x5230;Main Camera&#x7684;&#x5B50;&#x7CFB;&#x3002;</p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C06;&#x6309;&#x94AE;Y&#x65B9;&#x5411;&#x65CB;&#x8F6C;&#x4E00;&#x5B9A;&#x89D2;&#x5EA6;&#x3002;</p>
+<h2 id="3-World-Space"><a href="#3-World-Space" class="headerlink" title="3. World Space"></a>3. World Space</h2><p>我们将Canves的Render Mode改为World Space。将Cube拖拽到Main Camera的子系。</p>
+<p>接下来我们将按钮Y方向旋转一定角度。</p>
 <p><img src="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321203804848.png" alt="image-20200321203804848"></p>
 <p><img src="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321203711010.png" alt="image-20200321203711010"></p>
-<p>&#x518D;&#x770B;Game&#x89C6;&#x7A97;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x503E;&#x659C;&#x7684;&#x6309;&#x94AE;</p>
+<p>再看Game视窗，可以看到倾斜的按钮</p>
 <p><img src="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/C:%5CUsers%5CWMJ%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200321204017725.png" alt="image-20200321204017725"></p>
-<h1 id="&#x4E8C;&#x3001;&#x4E0D;&#x540C;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x7684;&#x5C4F;&#x5E55;"><a href="#&#x4E8C;&#x3001;&#x4E0D;&#x540C;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x7684;&#x5C4F;&#x5E55;" class="headerlink" title="&#x4E8C;&#x3001;&#x4E0D;&#x540C;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x7684;&#x5C4F;&#x5E55;"></a>&#x4E8C;&#x3001;&#x4E0D;&#x540C;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x7684;&#x5C4F;&#x5E55;</h1><h2 id="1-&#x9AD8;&#x5206;&#x8FA8;&#x7387;PC&#x6E38;&#x620F;"><a href="#1-&#x9AD8;&#x5206;&#x8FA8;&#x7387;PC&#x6E38;&#x620F;" class="headerlink" title="1. &#x9AD8;&#x5206;&#x8FA8;&#x7387;PC&#x6E38;&#x620F;"></a>1. &#x9AD8;&#x5206;&#x8FA8;&#x7387;PC&#x6E38;&#x620F;</h2><h2 id="2-HTML5&#x7F51;&#x9875;&#x5927;&#x5C0F;"><a href="#2-HTML5&#x7F51;&#x9875;&#x5927;&#x5C0F;" class="headerlink" title="2. HTML5&#x7F51;&#x9875;&#x5927;&#x5C0F;"></a>2. HTML5&#x7F51;&#x9875;&#x5927;&#x5C0F;</h2><h2 id="3-&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x6A2A;&#x5C4F;&#x4E0E;&#x7AD6;&#x5C4F;"><a href="#3-&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x6A2A;&#x5C4F;&#x4E0E;&#x7AD6;&#x5C4F;" class="headerlink" title="3. &#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x6A2A;&#x5C4F;&#x4E0E;&#x7AD6;&#x5C4F;"></a>3. &#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x6A2A;&#x5C4F;&#x4E0E;&#x7AD6;&#x5C4F;</h2><p>File &gt; Build Settings&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x9009;&#x62E9;PC&#x5E73;&#x53F0;</p>
-<h1 id="&#x4E09;&#x3001;&#x6587;&#x672C;&#x7EC4;&#x4EF6;"><a href="#&#x4E09;&#x3001;&#x6587;&#x672C;&#x7EC4;&#x4EF6;" class="headerlink" title="&#x4E09;&#x3001;&#x6587;&#x672C;&#x7EC4;&#x4EF6;"></a>&#x4E09;&#x3001;&#x6587;&#x672C;&#x7EC4;&#x4EF6;</h1><p>&#x6253;&#x5F00;UIStart&#x573A;&#x666F;&#xFF0C;&#x9009;&#x4E2D;03-Responsive&#xFF0C;&#x5728;&#x83DC;&#x5355;&#x680F;GameObject&#x4E0B;&#x9009;&#x62E9;UI &gt; Text</p>
-</body></html>
-    
-    </div>
-    
-    <div class="columns is-variable is-1 is-multiline is-mobile">
-    
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Unity/">#Unity</a></span>
-    
-    </div>
-    
-    
-    <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/">Unity动画基础</a>
-            
-        </span>
-        <span class="column is-12-mobile is-half-desktop  article-nav-next">
-            
-            <a href="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/">Unity载入界面基础</a>
-            
-        </span>
-    </div>
-    
-</article>
-
-
-
-
-    </div>
-</section>
-    <footer class="footer">
-    <div class="container">
-        <div class="columns content">
-            <div class="column is-narrow has-text-centered">
-                &copy; 2020 MJ&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
-            </div>
-            <div class="column is-hidden-mobile"></div>
-
-            
-            <div class="column is-narrow">
-                <div class="columns is-mobile is-multiline is-centered">
-                
-                    
-                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
-                    
-                    GitHub
-                    
-                </a>
-                
-                </div>
-            </div>
-            
-            
-        </div>
-    </div>
-</footer>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
-
-<!-- test if the browser is outdated -->
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // plugin function, place inside DOM ready function
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        })
-    });
-</script>
-
-<script>
-    window.FontAwesomeConfig = {
-        searchPseudoElements: true
-    }
-    moment.locale("zh-CN");
-</script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script>
-    MathJax.Hub.Config({
-        "HTML-CSS": {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-</script>
-
-    
-    
-    
-    
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
-<script>
-    (function ($) {
-        $(document).ready(function () {
-            if (typeof($.fn.lightGallery) === 'function') {
-                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof($.fn.justifiedGallery) === 'function') {
-                $('.justified-gallery').justifiedGallery();
-            }
-        });
-    })(jQuery);
-</script>
-
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-    <style>
-        .hljs {
-            position: relative;
-        }
-
-        .hljs .clipboard-btn {
-            float: right;
-            color: #9a9a9a;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
-        }
-
-        .hljs > .clipboard-btn {
-            display: none;
-            position: absolute;
-            right: 4px;
-            top: 4px;
-        }
-
-        .hljs:hover > .clipboard-btn {
-            display: inline;
-        }
-
-        .hljs > figcaption > .clipboard-btn {
-            margin-right: 4px;
-        }
-    </style>
-    <script>
-      $(document).ready(function () {
-        $('figure.hljs').each(function(i, figure) {
-          var codeId = 'code-' + i;
-          var code = figure.querySelector('.code');
-          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
-          code.id = codeId;
-          copyButton.addClass('clipboard-btn');
-          copyButton.attr('data-clipboard-target-id', codeId);
-
-          var figcaption = figure.querySelector('figcaption');
-
-          if (figcaption) {
-            figcaption.append(copyButton[0]);
-          } else {
-            figure.prepend(copyButton[0]);
-          }
-        })
-
-        var clipboard = new ClipboardJS('.clipboard-btn', {
-          target: function(trigger) {
-            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
-          }
-        });
-        clipboard.on('success', function(e) {
-          e.clearSelection();
-        })
-      })
-    </script>
-
-    
-    
-
-    
-
-
-
-<script src="/js/script.js"></script>
-
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-mask"></div>
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-    
-</body>
-</html>
+<h1 id="二、不同的分辨率的屏幕"><a href="#二、不同的分辨率的屏幕" class="headerlink" title="二、不同的分辨率的屏幕"></a>二、不同的分辨率的屏幕</h1><h2 id="1-高分辨率PC游戏"><a href="#1-高分辨率PC游戏" class="headerlink" title="1. 高分辨率PC游戏"></a>1. 高分辨率PC游戏</h2><h2 id="2-HTML5网页大小"><a href="#2-HTML5网页大小" class="headerlink" title="2. HTML5网页大小"></a>2. HTML5网页大小</h2><h2 id="3-移动设备横屏与竖屏"><a href="#3-移动设备横屏与竖屏" class="headerlink" title="3. 移动设备横屏与竖屏"></a>3. 移动设备横屏与竖屏</h2><p>File &gt; Build Settings，默认是选择PC平台</p>
+<h1 id="三、文本组件"><a href="#三、文本组件" class="headerlink" title="三、文本组件"></a>三、文本组件</h1><p>打开UIStart场景，选中03-Responsive，在菜单栏GameObject下选择UI &gt; Text</p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/" title="Unity动画基础" class="prev">上一篇</a><a href="/2020/02/17/Unity%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/" title="Unity载入界面基础" class="next">下一篇</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

@@ -1,618 +1,117 @@
-<!DOCTYPE html>
-<html class="has-navbar-fixed-top">
-<head>
-    <meta charset="utf-8">
-<title>UGUI图形交互系统 - MJ&#39;s Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
-
-
-
-
-<meta name="description" content="This is a personal Blog.">
-
-
-
-
-
-    <meta name="description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2019.3.4f1">
-<meta property="og:type" content="article">
-<meta property="og:title" content="UGUI图形交互系统">
-<meta property="og:url" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/index.html">
-<meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2019.3.4f1">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200404205327401.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200404211200418.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200404210645047.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200404212143185.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200409220746711.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200409221207909.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200409221505464.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200409222853090.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200409230946776.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410111607619.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410115134419.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410115238890.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410115329852.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410144456902.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410171601814.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410171834994.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410172021614.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410173308051.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410173544673.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410180311571.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410180625592.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410213421959.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410214338872.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410213852276.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410214533455.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410215829723.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410215921935.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410221507116.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410222931803.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200411104056877.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200411105741808.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200411105811893.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200411110920125.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200411111028122.png">
-<meta property="article:published_time" content="2020-04-04T05:47:00.000Z">
-<meta property="article:modified_time" content="2020-04-11T03:45:54.930Z">
-<meta property="article:author" content="MJ">
-<meta property="article:tag" content="Unity">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200404205327401.png">
-
-
-
-
-
-<link rel="icon" href="/favicon.png">
-
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-<body>
-    
-<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item navbar-logo" href="/">
-                
-                <img src="/images/logo.png" alt="" height="28">
-                
-            </a>
-            <div class="navbar-burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        
-        <div class="navbar-menu navbar-start">
-            
-            <a class="navbar-item "
-               href="/archives">归档</a>
-            
-            <a class="navbar-item "
-               href="/tags">标签分类</a>
-            
-            <a class="navbar-item "
-               href="/about">关于</a>
-            
-        </div>
-        
-        <div class="navbar-menu navbar-end">
-            
-            <a class="navbar-item search" title="Search" href="javascript:;">
-                <i class="fas fa-search"></i>
-            </a>
-            
-            
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Table of Contents">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#画布与事件系统">1&nbsp;&nbsp;<b>画布与事件系统</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#画布用于承载所有UI元素">1.1&nbsp;&nbsp;画布用于承载所有UI元素</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#画布有三种模式">1.2&nbsp;&nbsp;画布有三种模式</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#画布的缩放">1.3&nbsp;&nbsp;画布的缩放</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#事件系统">1.4&nbsp;&nbsp;事件系统</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#图像、文本框、按钮、输入框的基本使用">2&nbsp;&nbsp;<b>图像、文本框、按钮、输入框的基本使用</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#例子（山寨英雄联盟登录界面）">2.1&nbsp;&nbsp;例子（山寨英雄联盟登录界面）</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#图像、文本框、按钮、输入框的脚本交互">3&nbsp;&nbsp;<b>图像、文本框、按钮、输入框的脚本交互</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#勾选框">4&nbsp;&nbsp;<b>勾选框</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#单选">4.1&nbsp;&nbsp;单选</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#多选一">4.2&nbsp;&nbsp;多选一</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#滑动条">5&nbsp;&nbsp;<b>滑动条</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#滚动视图、遮罩、布局组件、内容尺寸适配器">6&nbsp;&nbsp;<b>滚动视图、遮罩、布局组件、内容尺寸适配器</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#滚动视图">6.1&nbsp;&nbsp;滚动视图</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#遮罩">6.2&nbsp;&nbsp;遮罩</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#水平-垂直-网格布局组件">6.3&nbsp;&nbsp;水平/垂直/网格布局组件</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#布局元素">6.4&nbsp;&nbsp;布局元素</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#内容尺寸适配器">6.5&nbsp;&nbsp;内容尺寸适配器</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#矩形变换、UI特效、图片填充">7&nbsp;&nbsp;<b>矩形变换、UI特效、图片填充</b></a>
-                    
-                </div>
-            </div>
-            
-            
-            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-               
-            
-        </div>
-    </div>
-</nav>
-
-    <section class="section">
-    <div class="container">
-    <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            UGUI图形交互系统
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-04-04T05:47:00.000Z" itemprop="datePublished">4月 4 2020</time>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>Unity&#x7248;&#x672C;&#xFF1A;Unity 2019.3.4f1</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> UGUI图形交互系统 · MJ's Blog</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="UGUI图形交互系统 - MJ"><meta name="keywords"><meta name="author" content="MJ"><link rel="short icon" href="/images/assassins_creed.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weimingjuncn.github.io/atom.xml" title="MJ's Blog"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script><meta name="generator" content="Hexo 4.2.0"></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/assassins_creed_white.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">UGUI图形交互系统</h1><div class="post-info">2020-04-04</div><div class="post-content"><p>Unity版本：Unity 2019.3.4f1</p>
 <a id="more"></a>
 
-<h1 id="&#x753B;&#x5E03;&#x4E0E;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;"><a href="#&#x753B;&#x5E03;&#x4E0E;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;" class="headerlink" title="&#x753B;&#x5E03;&#x4E0E;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;"></a>&#x753B;&#x5E03;&#x4E0E;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;</h1><h2 id="&#x753B;&#x5E03;&#x7528;&#x4E8E;&#x627F;&#x8F7D;&#x6240;&#x6709;UI&#x5143;&#x7D20;"><a href="#&#x753B;&#x5E03;&#x7528;&#x4E8E;&#x627F;&#x8F7D;&#x6240;&#x6709;UI&#x5143;&#x7D20;" class="headerlink" title="&#x753B;&#x5E03;&#x7528;&#x4E8E;&#x627F;&#x8F7D;&#x6240;&#x6709;UI&#x5143;&#x7D20;"></a>&#x753B;&#x5E03;&#x7528;&#x4E8E;&#x627F;&#x8F7D;&#x6240;&#x6709;UI&#x5143;&#x7D20;</h2><p>&#x5728;Hierarchy(&#x5C42;&#x7EA7;&#x7A97;&#x53E3;)&#x7A7A;&#x767D;&#x5904;&#x53F3;&#x952E;|UI|Canvas(&#x753B;&#x5E03;)&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x753B;&#x5E03;&#xFF0C;&#x6B64;&#x65F6;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF08;EventSystem&#xFF09;&#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x88AB;&#x521B;&#x5EFA;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9009;&#x4E2D;&#x753B;&#x5E03;&#xFF0C;&#x521B;&#x5EFA;&#x5B50;&#x9879;&#x2014;&#x2014;UI&#x5143;&#x7D20;&#x6BD4;&#x5982;&#x56FE;&#x7247;&#xFF08;UI | Image&#xFF09;&#x3001;&#x6309;&#x94AE;(UI | Button)&#x3002;</p>
-<h2 id="&#x753B;&#x5E03;&#x6709;&#x4E09;&#x79CD;&#x6A21;&#x5F0F;"><a href="#&#x753B;&#x5E03;&#x6709;&#x4E09;&#x79CD;&#x6A21;&#x5F0F;" class="headerlink" title="&#x753B;&#x5E03;&#x6709;&#x4E09;&#x79CD;&#x6A21;&#x5F0F;"></a>&#x753B;&#x5E03;&#x6709;&#x4E09;&#x79CD;&#x6A21;&#x5F0F;</h2><p>&#x9009;&#x4E2D;&#x753B;&#x5E03;&#xFF0C;&#x5728;&#x68C0;&#x67E5;&#x5668;&#xFF08;Inspector&#x7A97;&#x53E3;&#xFF09;|&#x753B;&#x5E03;&#xFF08;Canvas&#xFF09;&#x7EC4;&#x4EF6;|&#x6E32;&#x67D3;&#x6A21;&#x5F0F;&#xFF08;Render Mode&#xFF09;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x3002;</p>
+<h1 id="画布与事件系统"><a href="#画布与事件系统" class="headerlink" title="画布与事件系统"></a>画布与事件系统</h1><h2 id="画布用于承载所有UI元素"><a href="#画布用于承载所有UI元素" class="headerlink" title="画布用于承载所有UI元素"></a>画布用于承载所有UI元素</h2><p>在Hierarchy(层级窗口)空白处右键|UI|Canvas(画布)，创建一个画布，此时事件系统（EventSystem）也会自动被创建。</p>
+<p>我们可以选中画布，创建子项——UI元素比如图片（UI | Image）、按钮(UI | Button)。</p>
+<h2 id="画布有三种模式"><a href="#画布有三种模式" class="headerlink" title="画布有三种模式"></a>画布有三种模式</h2><p>选中画布，在检查器（Inspector窗口）|画布（Canvas）组件|渲染模式（Render Mode）进行设置。</p>
 <ol>
-<li>&#x5C4F;&#x5E55;&#x7A7A;&#x95F4; - &#x8986;&#x76D6;&#xFF08;Scream Space - Overlay&#xFF09;</li>
-<li>&#x5C4F;&#x5E55;&#x7A7A;&#x95F4; - &#x6444;&#x50CF;&#x673A;&#xFF08;Scream Space - Camera&#xFF09;</li>
-<li>&#x4E16;&#x754C;&#x7A7A;&#x95F4;&#xFF08;World Space&#xFF09;</li>
+<li>屏幕空间 - 覆盖（Scream Space - Overlay）</li>
+<li>屏幕空间 - 摄像机（Scream Space - Camera）</li>
+<li>世界空间（World Space）</li>
 </ol>
-<p>&#x5728;<strong>Scream Space - Overlay</strong>&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;<strong>&#x6240;&#x6709;UI&#x5143;&#x7D20;&#x90FD;&#x663E;&#x793A;&#x5728;&#x753B;&#x9762;&#x6700;&#x524D;&#x7AEF;</strong>&#x3002;</p>
-<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x753B;&#x5E03;&#x4E0A;&#x653E;&#x4E00;&#x4E2A;Image&#xFF0C;&#x989C;&#x8272;&#x8BBE;&#x7F6E;&#x4E3A;&#x9EC4;&#x989C;&#x8272;&#xFF0C;&#x4E3B;&#x6444;&#x50CF;&#x673A;&#x524D;&#x653E;&#x4E00;&#x4E2A;&#x767D;&#x8272;&#x7684;Cube&#x3002;&#x6211;&#x4EEC;&#x65E0;&#x8BBA;&#x5728;&#x573A;&#x666F;&#x7A97;&#x53E3;&#x91CC;&#x600E;&#x4E48;&#x653E;&#x7F6E;Cube&#xFF0C;&#x90FD;&#x65E0;&#x6CD5;&#x6321;&#x4F4F;&#x753B;&#x5E03;&#x4E0A;&#x7684;&#x9EC4;&#x989C;&#x8272;Image&#x3002;</p>
+<p>在<strong>Scream Space - Overlay</strong>模式下，<strong>所有UI元素都显示在画面最前端</strong>。</p>
+<p>如果我们在画布上放一个Image，颜色设置为黄颜色，主摄像机前放一个白色的Cube。我们无论在场景窗口里怎么放置Cube，都无法挡住画布上的黄颜色Image。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200404205327401.png" alt="image-20200404205327401"></p>
-<p>&#x5F53;&#x6211;&#x4EEC;&#x5C06;&#x6E32;&#x67D3;&#x6A21;&#x5F0F;&#x8BBE;&#x7F6E;&#x4E3A;<strong>Scream Space - Camera</strong>&#x65F6;&#xFF0C;&#x628A;Main Camera&#x62D6;&#x62FD;&#x5230;Render Mode&#x4E0B;&#x65B9;&#x7684;Render Camera&#xFF0C;&#x8BBE;&#x7F6E;Plane Distance&#x4E3A;2&#x3002;&#x8FD9;&#x65F6;&#x6211;&#x4EEC;&#x5C06;Cube&#x79FB;&#x52A8;&#x9760;&#x8FD1;&#x6444;&#x50CF;&#x673A;&#xFF0C;&#x753B;&#x5E03;&#x4E0A;&#x7684;Image&#x53EF;&#x4EE5;&#x88AB;Cube&#x6321;&#x4F4F;&#x3002;</p>
+<p>当我们将渲染模式设置为<strong>Scream Space - Camera</strong>时，把Main Camera拖拽到Render Mode下方的Render Camera，设置Plane Distance为2。这时我们将Cube移动靠近摄像机，画布上的Image可以被Cube挡住。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200404211200418.png" alt="image-20200404211200418"></p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200404210645047.png" alt="image-20200404210645047"></p>
-<p>&#x5C4F;&#x5E55;&#x7A7A;&#x95F4; - &#x6444;&#x50CF;&#x673A;&#x6A21;&#x5F0F;&#x4F7F;&#x7528;&#x8F83;&#x5C11;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x6BD4;&#x5982;&#x8BF4;&#x5728;UI&#x524D;&#x8FB9;&#x64AD;&#x653E;3D&#x7C92;&#x5B50;&#x6548;&#x679C;&#x3002;</p>
-<p>&#x5F53;&#x6211;&#x4EEC;&#x628A;&#x6E32;&#x67D3;&#x6A21;&#x5F0F;&#x8BBE;&#x7F6E;&#x4E3A;World Space&#xFF0C;&#x753B;&#x5E03;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x79FB;&#x52A8;&#x548C;&#x6539;&#x53D8;&#x5927;&#x5C0F;&#xFF08;&#x524D;&#x4E24;&#x4E2A;&#x6A21;&#x5F0F;&#x4E0D;&#x53EF;&#x4EE5;&#xFF09;&#xFF0C;&#x4F46;&#x53EA;&#x6709;&#x51FA;&#x73B0;&#x5728;&#x6444;&#x50CF;&#x673A;&#x89C6;&#x91CE;&#x5185;&#x624D;&#x4F1A;&#x88AB;&#x6E32;&#x67D3;&#x5230;&#x3002;&#x9002;&#x7528;&#x4E8E;&#x5236;&#x4F5C;&#x6E38;&#x620F;&#x4E2D;&#x7684;&#x654C;&#x4EBA;&#x8840;&#x6761;&#x3001;&#x7ACB;&#x4F53;&#x4E92;&#x52A8;&#x5E7F;&#x544A;&#x724C;&#x7B49;&#x3002;</p>
+<p>屏幕空间 - 摄像机模式使用较少，适用于比如说在UI前边播放3D粒子效果。</p>
+<p>当我们把渲染模式设置为World Space，画布可以随意移动和改变大小（前两个模式不可以），但只有出现在摄像机视野内才会被渲染到。适用于制作游戏中的敌人血条、立体互动广告牌等。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200404212143185.png" alt="image-20200404212143185"></p>
-<h2 id="&#x753B;&#x5E03;&#x7684;&#x7F29;&#x653E;"><a href="#&#x753B;&#x5E03;&#x7684;&#x7F29;&#x653E;" class="headerlink" title="&#x753B;&#x5E03;&#x7684;&#x7F29;&#x653E;"></a>&#x753B;&#x5E03;&#x7684;&#x7F29;&#x653E;</h2><p>&#x753B;&#x5E03;&#x53EF;&#x4EE5;&#x5728;Canvas Scaler&#xFF08;&#x753B;&#x5E03;&#x7F29;&#x653E;&#x5668;&#xFF09;&#x7EC4;&#x4EF6;&#x4E0B;&#x8BBE;&#x5B9A;&#x7F29;&#x653E;&#x6A21;&#x5F0F;&#x4EE5;&#x9002;&#x914D;&#x5E02;&#x9762;&#x4E0A;&#x7684;&#x4E0D;&#x540C;&#x5927;&#x5C0F;&#x7684;&#x624B;&#x673A;&#x5C4F;&#x5E55;&#x3002;</p>
-<p>&#x8BBE;&#x7F6E;UI Sale Mode&#xFF08;&#x753B;&#x5E03;&#x7F29;&#x653E;&#x6A21;&#x5F0F;&#xFF09;&#x4E3A;Scale with Screen Size&#xFF08;&#x5C4F;&#x5E55;&#x5927;&#x5C0F;&#x8C03;&#x6574;&#xFF09;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;Reference Resolution&#xFF08;&#x53C2;&#x8003;&#x5206;&#x8FA8;&#x7387;&#xFF09;&#x3002;</p>
-<h2 id="&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;"><a href="#&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;" class="headerlink" title="&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;"></a>&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;</h2><p>&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF08;EventSystem&#xFF09;&#x662F;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x5404;&#x4E2A;UI&#x63A7;&#x4EF6;&#x4EA4;&#x4E92;&#xFF0C;&#x5982;&#x679C;&#x5220;&#x9664;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x6216;&#x8005;&#x628A;&#x753B;&#x5E03;&#x7684;Graphic Raycaster&#x7EC4;&#x4EF6;&#x53D6;&#x6D88;&#x52FE;&#x9009;&#xFF0C;&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x70B9;&#x51FB;&#x753B;&#x9762;&#x4E2D;&#x7684;&#x6309;&#x94AE;&#x5C06;&#x6BEB;&#x65E0;&#x53CD;&#x5E94;&#x3002;</p>
-<h1 id="&#x56FE;&#x50CF;&#x3001;&#x6587;&#x672C;&#x6846;&#x3001;&#x6309;&#x94AE;&#x3001;&#x8F93;&#x5165;&#x6846;&#x7684;&#x57FA;&#x672C;&#x4F7F;&#x7528;"><a href="#&#x56FE;&#x50CF;&#x3001;&#x6587;&#x672C;&#x6846;&#x3001;&#x6309;&#x94AE;&#x3001;&#x8F93;&#x5165;&#x6846;&#x7684;&#x57FA;&#x672C;&#x4F7F;&#x7528;" class="headerlink" title="&#x56FE;&#x50CF;&#x3001;&#x6587;&#x672C;&#x6846;&#x3001;&#x6309;&#x94AE;&#x3001;&#x8F93;&#x5165;&#x6846;&#x7684;&#x57FA;&#x672C;&#x4F7F;&#x7528;"></a>&#x56FE;&#x50CF;&#x3001;&#x6587;&#x672C;&#x6846;&#x3001;&#x6309;&#x94AE;&#x3001;&#x8F93;&#x5165;&#x6846;&#x7684;&#x57FA;&#x672C;&#x4F7F;&#x7528;</h1><p><strong>&#x56FE;&#x50CF;</strong>&#x4E0E;<strong>&#x6587;&#x672C;&#x6846;</strong>&#x7684;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x662F;<strong>&#x5C55;&#x793A;</strong>&#xFF0C;<strong>&#x6309;&#x94AE;</strong>&#x4E0E;<strong>&#x8F93;&#x5165;&#x6846;</strong>&#x7684;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x662F;<strong>&#x4EA4;&#x4E92;</strong>&#x3002;</p>
-<h2 id="&#x4F8B;&#x5B50;&#xFF08;&#x5C71;&#x5BE8;&#x82F1;&#x96C4;&#x8054;&#x76DF;&#x767B;&#x5F55;&#x754C;&#x9762;&#xFF09;"><a href="#&#x4F8B;&#x5B50;&#xFF08;&#x5C71;&#x5BE8;&#x82F1;&#x96C4;&#x8054;&#x76DF;&#x767B;&#x5F55;&#x754C;&#x9762;&#xFF09;" class="headerlink" title="&#x4F8B;&#x5B50;&#xFF08;&#x5C71;&#x5BE8;&#x82F1;&#x96C4;&#x8054;&#x76DF;&#x767B;&#x5F55;&#x754C;&#x9762;&#xFF09;"></a>&#x4F8B;&#x5B50;&#xFF08;&#x5C71;&#x5BE8;&#x82F1;&#x96C4;&#x8054;&#x76DF;&#x767B;&#x5F55;&#x754C;&#x9762;&#xFF09;</h2><p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x5236;&#x4F5C;&#x4E00;&#x4E2A;&#x82F1;&#x96C4;&#x8054;&#x76DF;&#x767B;&#x5F55;&#x754C;&#x9762;&#x3002;</p>
-<p>&#x5C06;&#x7D20;&#x6750;&#x6587;&#x4EF6;&#x5939;&#x91CC;UI&#x6587;&#x4EF6;&#x5939;&#x62D6;&#x62FD;&#x5BFC;&#x5165;&#x5230;Unity&#x7F16;&#x8F91;&#x5668;&#x7684;Assets&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x3002;</p>
-<p>&#x8BBE;&#x7F6E;Scene&#x89C6;&#x7A97;&#x4E3A;2D&#x6A21;&#x5F0F;&#xFF0C;&#x5220;&#x9664;Canvas&#x4E0B;&#x7684;&#x6240;&#x6709;&#x7269;&#x4F53;&#x3002;</p>
-<p>&#x5728;Canvas&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;UI|Image&#xFF0C;&#x5728;&#x5176;Rect Transform&#x7EC4;&#x4EF6;&#x4E0B;&#x8BBE;&#x7F6E;Anchor Presets&#x4E3A;strech-strech&#xFF08;&#x6309;&#x4F4F;Shift+Alt&#xFF09;&#x3002;</p>
-<p>&#x9009;&#x4E2D;UI/&#x516C;&#x7528;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x7D20;&#x6750;&#xFF0C;&#x5728;Inspector&#x91CC;&#x8BBE;&#x7F6E;Texture Type&#x4E3A;Sprite(2D and UI)&#xFF0C;&#x70B9;&#x51FB;Apply&#x3002;</p>
+<h2 id="画布的缩放"><a href="#画布的缩放" class="headerlink" title="画布的缩放"></a>画布的缩放</h2><p>画布可以在Canvas Scaler（画布缩放器）组件下设定缩放模式以适配市面上的不同大小的手机屏幕。</p>
+<p>设置UI Sale Mode（画布缩放模式）为Scale with Screen Size（屏幕大小调整）可以设置Reference Resolution（参考分辨率）。</p>
+<h2 id="事件系统"><a href="#事件系统" class="headerlink" title="事件系统"></a>事件系统</h2><p>事件系统（EventSystem）是用于处理各个UI控件交互，如果删除事件系统，或者把画布的Graphic Raycaster组件取消勾选，播放游戏，点击画面中的按钮将毫无反应。</p>
+<h1 id="图像、文本框、按钮、输入框的基本使用"><a href="#图像、文本框、按钮、输入框的基本使用" class="headerlink" title="图像、文本框、按钮、输入框的基本使用"></a>图像、文本框、按钮、输入框的基本使用</h1><p><strong>图像</strong>与<strong>文本框</strong>的主要作用是<strong>展示</strong>，<strong>按钮</strong>与<strong>输入框</strong>的主要作用是<strong>交互</strong>。</p>
+<h2 id="例子（山寨英雄联盟登录界面）"><a href="#例子（山寨英雄联盟登录界面）" class="headerlink" title="例子（山寨英雄联盟登录界面）"></a>例子（山寨英雄联盟登录界面）</h2><p>接下来我们来制作一个英雄联盟登录界面。</p>
+<p>将素材文件夹里UI文件夹拖拽导入到Unity编辑器的Assets文件夹下。</p>
+<p>设置Scene视窗为2D模式，删除Canvas下的所有物体。</p>
+<p>在Canvas下新建一个UI|Image，在其Rect Transform组件下设置Anchor Presets为strech-strech（按住Shift+Alt）。</p>
+<p>选中UI/公用下的所有素材，在Inspector里设置Texture Type为Sprite(2D and UI)，点击Apply。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200409220746711.png" alt="image-20200409220746711"></p>
-<p>&#x5C06;BG01&#x7684;Sprite&#x62D6;&#x62FD;&#x5230;Image&#x7684;Image&#x7EC4;&#x4EF6;|Source Image&#x3002;</p>
+<p>将BG01的Sprite拖拽到Image的Image组件|Source Image。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200409221207909.png" alt="image-20200409221207909"></p>
-<p>&#x7136;&#x540E;&#x7528;&#x7ED9;&#x753B;&#x5E03;&#x65B0;&#x6DFB;&#x4E00;&#x4E2A;Image&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;BG&#xFF0C;Source Image&#x62D6;&#x5165;&#x201C;&#x516C;&#x7528;&#x201D;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;Logo&#xFF0C;&#x70B9;&#x51FB;Set Native Size(&#x8BBE;&#x7F6E;&#x539F;&#x751F;&#x5927;&#x5C0F;)</p>
+<p>然后用给画布新添一个Image，重命名为BG，Source Image拖入“公用”文件夹下的Logo，点击Set Native Size(设置原生大小)</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200409221505464.png" alt="image-20200409221505464"></p>
-<p>&#x91CD;&#x547D;&#x540D;&#x4E3A;Logo&#xFF0C;&#x7136;&#x540E;&#x79FB;&#x52A8;&#x5230;&#x80CC;&#x666F;&#x5DE6;&#x4E0A;&#x89D2;</p>
+<p>重命名为Logo，然后移动到背景左上角</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200409222853090.png" alt="image-20200409222853090"></p>
-<p>&#x5728;&#x753B;&#x5E03;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;UI|Panel&#xFF08;&#x9762;&#x677F;&#xFF09;&#xFF0C;&#x9ED8;&#x8BA4;&#x548C;&#x753B;&#x5E03;&#x5927;&#x5C0F;&#x4E00;&#x81F4;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;UserPanel&#xFF0C;&#x5C06;BG&#x548C;Logo&#x62D6;&#x62FD;&#x5230;UserPanel&#x5B50;&#x9879;&#x3002;</p>
-<p>&#x5C06;&#x201C;UI/&#x7528;&#x6237;&#x6A21;&#x5757;&#x201D;&#x8DEF;&#x5F84;&#x4E0B;&#x6240;&#x6709;&#x7D20;&#x6750;&#x8BBE;&#x7F6E;Texture Type&#x4E3A;Sprite(2D and UI)&#x3002;</p>
-<p>&#x5728;UserPanel&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Image&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;LoginBG&#xFF0C;Source Image&#x62D6;&#x5165;&#x201C;UI/&#x7528;&#x6237;&#x6A21;&#x5757;&#x201C;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;UserBack&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x4E3A;&#x539F;&#x751F;&#x5927;&#x5C0F;&#x3002;</p>
-<p>&#x5728;UserPanel&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Image&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;Account&#xFF0C;Source Image&#x62D6;&#x5165;&#x201C;UI/&#x7528;&#x6237;&#x6A21;&#x5757;&#x201C;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;Account&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x4E3A;&#x539F;&#x751F;&#x5927;&#x5C0F;&#x3002;</p>
-<p>&#x901A;&#x8FC7;&#x5FEB;&#x6377;&#x952E;Ctrl+D&#x590D;&#x5236;&#x4E00;&#x4E2A;Account&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;PWD&#xFF0C;Source Image&#x62D6;&#x5165;&#x201C;UI/&#x7528;&#x6237;&#x6A21;&#x5757;&#x201C;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;PWD&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x4E3A;&#x539F;&#x751F;&#x5927;&#x5C0F;&#x3002;</p>
-<p>&#x5728;UserPanel&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Image&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;Line&#xFF0C;Source Image&#x62D6;&#x5165;&#x201C;UI/&#x7528;&#x6237;&#x6A21;&#x5757;&#x201C;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;Line&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x4E3A;&#x539F;&#x751F;&#x5927;&#x5C0F;&#x3002;</p>
-<p>&#x901A;&#x8FC7;&#x5FEB;&#x6377;&#x952E;Ctrl+D&#x590D;&#x5236;&#x4E00;&#x4E2A;Line&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x4E24;&#x4E2A;Line&#x5206;&#x522B;&#x62D6;&#x5165;Account&#x3001;PWD&#x7684;&#x5B50;&#x9879;&#x3002;</p>
-<p>&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x7C7B;&#x4F3C;&#x65B9;&#x6CD5;&#xFF0C;&#x7ED9;UserPanel&#x6DFB;&#x52A0;&#x6309;&#x94AE;&#xFF1A;WebsiteBtn&#x3001;ContactsBtn&#x3001;RetrievePWDBtn&#x3001;LoginBtn&#x3001;RegisterBtn</p>
+<p>在画布下新建一个UI|Panel（面板），默认和画布大小一致，重命名为UserPanel，将BG和Logo拖拽到UserPanel子项。</p>
+<p>将“UI/用户模块”路径下所有素材设置Texture Type为Sprite(2D and UI)。</p>
+<p>在UserPanel下新建一个Image，重命名为LoginBG，Source Image拖入“UI/用户模块“文件夹下的UserBack，并设置为原生大小。</p>
+<p>在UserPanel下新建一个Image，重命名为Account，Source Image拖入“UI/用户模块“文件夹下的Account，并设置为原生大小。</p>
+<p>通过快捷键Ctrl+D复制一个Account，重命名为PWD，Source Image拖入“UI/用户模块“文件夹下的PWD，并设置为原生大小。</p>
+<p>在UserPanel下新建一个Image，重命名为Line，Source Image拖入“UI/用户模块“文件夹下的Line，并设置为原生大小。</p>
+<p>通过快捷键Ctrl+D复制一个Line，然后将两个Line分别拖入Account、PWD的子项。</p>
+<p>通过上述类似方法，给UserPanel添加按钮：WebsiteBtn、ContactsBtn、RetrievePWDBtn、LoginBtn、RegisterBtn</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200409230946776.png" alt="image-20200409230946776"></p>
-<p>&#x7ED9;UserPanel&#x6DFB;&#x52A0;UI|Text&#xFF0C;&#x8BBE;&#x7F6E;&#x6587;&#x672C;&#x7EC4;&#x4EF6;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>给UserPanel添加UI|Text，设置文本组件如下：</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410111607619.png" alt="image-20200410111607619"></p>
-<p>&#x7ED9;UserPanel&#x6DFB;&#x52A0;UI|InputField&#xFF08;&#x6587;&#x672C;&#x8F93;&#x5165;&#x6846;&#xFF09;&#xFF0C;&#x6446;&#x653E;&#x5230;&#x5408;&#x9002;&#x4F4D;&#x7F6E;&#xFF0C;&#x8C03;&#x6574;&#x5927;&#x5C0F;&#x5408;&#x9002;&#xFF0C;&#x9009;&#x4E2D;&#x5176;&#x5B50;&#x9879;Placeholder&#x548C;Text&#xFF0C;&#x5728;Inspector&#x91CC;&#x4FEE;&#x6539;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#xFF08;Font Size&#xFF09;&#x4E3A;20&#x3002;</p>
-<p>&#x590D;&#x5236;&#x4E00;&#x4E2A;InputField&#xFF0C;&#x5C06;&#x4E24;&#x4E2A;InputField&#x7684;Image&#x7EC4;&#x4EF6;|Color&#x8BBE;&#x4E3A;&#x900F;&#x660E;&#x3002;&#x4FEE;&#x6539;&#x4E24;&#x4E2A;&#x6587;&#x672C;&#x8F93;&#x5165;&#x6846;&#x7684;Placeholder&#x3001;Text&#x7684;Text&#x7EC4;&#x4EF6;&#x8BBE;&#x7F6E;&#x3002;&#x9009;&#x4E2D;&#x5BC6;&#x7801;&#x8F93;&#x5165;&#x7684;InputField&#xFF0C;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x5176;Input Field&#x7EC4;&#x4EF6;&#x7684;Content Type&#xFF08;&#x5185;&#x5BB9;&#x7C7B;&#x578B;&#xFF09;&#x4E3A;Password&#x3002;&#x5B8C;&#x6210;&#x8BBE;&#x7F6E;&#x540E;&#xFF0C;&#x5C06;&#x8D26;&#x53F7;&#x8F93;&#x5165;&#x6846;&#x91CD;&#x547D;&#x540D;&#x4E3A;UserInputField&#xFF0C;&#x5C06;&#x5BC6;&#x7801;&#x8F93;&#x5165;&#x6846;&#x91CD;&#x547D;&#x540D;&#x4E3A;PWDInputField&#x3002;</p>
+<p>给UserPanel添加UI|InputField（文本输入框），摆放到合适位置，调整大小合适，选中其子项Placeholder和Text，在Inspector里修改字体大小（Font Size）为20。</p>
+<p>复制一个InputField，将两个InputField的Image组件|Color设为透明。修改两个文本输入框的Placeholder、Text的Text组件设置。选中密码输入的InputField，可以修改其Input Field组件的Content Type（内容类型）为Password。完成设置后，将账号输入框重命名为UserInputField，将密码输入框重命名为PWDInputField。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410115134419.png" alt="image-20200410115134419"></p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410115238890.png" alt="image-20200410115238890"></p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410115329852.png" alt="image-20200410115329852"></p>
-<p>&#x4E3A;&#x4E86;&#x8BA9;UI&#x5143;&#x7D20;&#x7684;&#x6446;&#x653E;&#x548C;&#x7F8E;&#x672F;&#x4EBA;&#x5458;&#x7ED9;&#x7684;&#x6548;&#x679C;&#x56FE;&#x4E00;&#x81F4;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x5982;&#x4E0B;&#x65B9;&#x6CD5;&#x6539;&#x8FDB;&#xFF1A;</p>
-<p>&#x7ED9;UserPanel&#x7684;Image&#x7EC4;&#x4EF6;|Source Image&#x62D6;&#x5165;&#x201C;&#x7528;&#x6237;&#x6A21;&#x5757;&#x201D;&#x56FE;&#x7247;&#xFF0C;&#x70B9;&#x51FB;Color&#xFF0C;&#x8BBE;&#x7F6E;alpha&#x503C;&#x4E3A;&#x6700;&#x5927;&#xFF08;&#x8BBE;&#x7F6E;&#x4E0D;&#x900F;&#x660E;&#x5EA6;&#x4E3A;&#x6700;&#x5927;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x5C06;BG&#x53D6;&#x6D88;&#x52FE;&#x9009;&#x3002;&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x539F;&#x6765;&#x7684;UI&#x5143;&#x7D20;&#x6446;&#x653E;&#x4F4D;&#x7F6E;&#x548C;&#x6548;&#x679C;&#x56FE;&#x6709;&#x660E;&#x663E;&#x5DEE;&#x8DDD;&#xFF0C;&#x5C06;UI&#x5143;&#x7D20;&#x5BF9;&#x5E94;&#x6446;&#x653E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x4F4D;&#x7F6E;&#x5C06;&#x5176;&#x8986;&#x76D6;&#x5373;&#x53EF;&#x3002;</p>
-<p>&#x5B8C;&#x6210;&#x540E;&#x5C06;UserPanel&#x7684;&#x56FE;&#x7247;&#x8BBE;&#x7F6E;&#x4E3A;&#x900F;&#x660E;&#xFF0C;&#x52FE;&#x9009;BG&#x3002;</p>
-<h1 id="&#x56FE;&#x50CF;&#x3001;&#x6587;&#x672C;&#x6846;&#x3001;&#x6309;&#x94AE;&#x3001;&#x8F93;&#x5165;&#x6846;&#x7684;&#x811A;&#x672C;&#x4EA4;&#x4E92;"><a href="#&#x56FE;&#x50CF;&#x3001;&#x6587;&#x672C;&#x6846;&#x3001;&#x6309;&#x94AE;&#x3001;&#x8F93;&#x5165;&#x6846;&#x7684;&#x811A;&#x672C;&#x4EA4;&#x4E92;" class="headerlink" title="&#x56FE;&#x50CF;&#x3001;&#x6587;&#x672C;&#x6846;&#x3001;&#x6309;&#x94AE;&#x3001;&#x8F93;&#x5165;&#x6846;&#x7684;&#x811A;&#x672C;&#x4EA4;&#x4E92;"></a>&#x56FE;&#x50CF;&#x3001;&#x6587;&#x672C;&#x6846;&#x3001;&#x6309;&#x94AE;&#x3001;&#x8F93;&#x5165;&#x6846;&#x7684;&#x811A;&#x672C;&#x4EA4;&#x4E92;</h1><p>&#x5728;Assets&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x5939;Scripts&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
-<p>&#x521B;&#x5EFA;C#&#x811A;&#x672C;UserPanel.cs&#xFF0C;&#x5C06;UserPanel.cs&#x4F5C;&#x4E3A;&#x7EC4;&#x4EF6;&#x6DFB;&#x52A0;&#x5230;UserPanel&#x3002;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">UserPanel</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">public</span> Sprite bg;</span><br><span class="line">    InputField userInput;</span><br><span class="line">    InputField pwdInput;</span><br><span class="line">    Button logonBtn;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Start is called before the first frame update</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-comment">//&#x4FEE;&#x6539;&#x56FE;&#x7247;&#x7684;&#x7CBE;&#x7075;</span></span><br><span class="line">        transform.Find(<span class="hljs-string">&quot;BG&quot;</span>).GetComponent&lt;Image&gt;().sprite = bg;</span><br><span class="line">        <span class="hljs-comment">//&#x521D;&#x59CB;&#x5316;</span></span><br><span class="line">        userInput = transform.Find(<span class="hljs-string">&quot;UserInputField&quot;</span>).GetComponent&lt;InputField&gt;();</span><br><span class="line">        pwdInput = transform.Find(<span class="hljs-string">&quot;PWDInputField&quot;</span>).GetComponent&lt;InputField&gt;();</span><br><span class="line">        logonBtn = transform.Find(<span class="hljs-string">&quot;LogonBtn&quot;</span>).GetComponent&lt;Button&gt;();</span><br><span class="line">        <span class="hljs-comment">//&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x7684;&#x65B9;&#x6CD5;</span></span><br><span class="line">        <span class="hljs-comment">//&#x7ED1;&#x5B9A;&#x4E8B;&#x4EF6;</span></span><br><span class="line">        logonBtn.onClick.AddListener(loginBtnOnClick);</span><br><span class="line">        transform.Find(<span class="hljs-string">&quot;WebsiteBtn&quot;</span>).GetComponent&lt;Button&gt;()</span><br><span class="line">            .onClick.AddListener(WebsiteBtnOnClick);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">WebsiteBtnOnClick</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        Application.OpenURL(<span class="hljs-string">&quot;https://lol.qq.com/main.shtml&quot;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">loginBtnOnClick</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">string</span> account = userInput.text;</span><br><span class="line">        <span class="hljs-keyword">string</span> pwd = pwdInput.text;</span><br><span class="line">        Debug.Log(<span class="hljs-string">&quot;&#x8D26;&#x53F7;&#x662F;&#xFF1A;&quot;</span> + account);</span><br><span class="line">        Debug.Log(<span class="hljs-string">&quot;&#x5BC6;&#x7801;&#x662F;&#xFF1A;&quot;</span> + pwd);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x5C06;&#x201C;UI/&#x516C;&#x5171;&#x201D;&#x8DEF;&#x5F84;&#x4E0B;&#x7684;BG02&#x653E;&#x5165;UserPanel&#x7684;UserPanel&#x811A;&#x672C;&#x7EC4;&#x4EF6;|bg&#x4E2D;&#xFF0C;&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6E38;&#x620F;&#x4E00;&#x542F;&#x52A8;&#x6211;&#x4EEC;&#x7684;&#x80CC;&#x666F;&#x56FE;&#x6362;&#x6210;&#x4E86;BG02&#xFF0C;&#x5728;&#x8D26;&#x53F7;&#x8F93;&#x5165;&#x6846;&#x548C;&#x5BC6;&#x7801;&#x8F93;&#x5165;&#x6846;&#x8F93;&#x5165;&#x6587;&#x672C;&#xFF0C;&#x70B9;&#x51FB;&#x767B;&#x5F55;&#x6309;&#x94AE;&#xFF0C;Unity&#x63A7;&#x5236;&#x53F0;&#x7A97;&#x53E3;&#x6253;&#x5370;&#x8D26;&#x53F7;&#x548C;&#x5BC6;&#x7801;&#x5185;&#x5BB9;&#xFF0C;&#x70B9;&#x51FB;&#x5B98;&#x7F51;&#x6309;&#x94AE;&#xFF0C;&#x6253;&#x5F00;&#x82F1;&#x96C4;&#x8054;&#x76DF;&#x5B98;&#x7F51;&#x3002;</p>
+<p>为了让UI元素的摆放和美术人员给的效果图一致，我们可以采用如下方法改进：</p>
+<p>给UserPanel的Image组件|Source Image拖入“用户模块”图片，点击Color，设置alpha值为最大（设置不透明度为最大），然后将BG取消勾选。此时我们发现原来的UI元素摆放位置和效果图有明显差距，将UI元素对应摆放到对应的位置将其覆盖即可。</p>
+<p>完成后将UserPanel的图片设置为透明，勾选BG。</p>
+<h1 id="图像、文本框、按钮、输入框的脚本交互"><a href="#图像、文本框、按钮、输入框的脚本交互" class="headerlink" title="图像、文本框、按钮、输入框的脚本交互"></a>图像、文本框、按钮、输入框的脚本交互</h1><p>在Assets文件夹下创建文件夹Scripts用于存放脚本文件。</p>
+<p>创建C#脚本UserPanel.cs，将UserPanel.cs作为组件添加到UserPanel。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserPanel</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> Sprite bg;</span><br><span class="line">    InputField userInput;</span><br><span class="line">    InputField pwdInput;</span><br><span class="line">    Button logonBtn;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Start is called before the first frame update</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">//修改图片的精灵</span></span><br><span class="line">        transform.Find(<span class="string">"BG"</span>).GetComponent&lt;Image&gt;().sprite = bg;</span><br><span class="line">        <span class="comment">//初始化</span></span><br><span class="line">        userInput = transform.Find(<span class="string">"UserInputField"</span>).GetComponent&lt;InputField&gt;();</span><br><span class="line">        pwdInput = transform.Find(<span class="string">"PWDInputField"</span>).GetComponent&lt;InputField&gt;();</span><br><span class="line">        logonBtn = transform.Find(<span class="string">"LogonBtn"</span>).GetComponent&lt;Button&gt;();</span><br><span class="line">        <span class="comment">//没有参数的方法</span></span><br><span class="line">        <span class="comment">//绑定事件</span></span><br><span class="line">        logonBtn.onClick.AddListener(loginBtnOnClick);</span><br><span class="line">        transform.Find(<span class="string">"WebsiteBtn"</span>).GetComponent&lt;Button&gt;()</span><br><span class="line">            .onClick.AddListener(WebsiteBtnOnClick);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">WebsiteBtnOnClick</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Application.OpenURL(<span class="string">"https://lol.qq.com/main.shtml"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loginBtnOnClick</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">string</span> account = userInput.text;</span><br><span class="line">        <span class="keyword">string</span> pwd = pwdInput.text;</span><br><span class="line">        Debug.Log(<span class="string">"账号是："</span> + account);</span><br><span class="line">        Debug.Log(<span class="string">"密码是："</span> + pwd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将“UI/公共”路径下的BG02放入UserPanel的UserPanel脚本组件|bg中，播放游戏，可以看到游戏一启动我们的背景图换成了BG02，在账号输入框和密码输入框输入文本，点击登录按钮，Unity控制台窗口打印账号和密码内容，点击官网按钮，打开英雄联盟官网。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410144456902.png" alt="image-20200410144454523"></p>
-<h1 id="&#x52FE;&#x9009;&#x6846;"><a href="#&#x52FE;&#x9009;&#x6846;" class="headerlink" title="&#x52FE;&#x9009;&#x6846;"></a>&#x52FE;&#x9009;&#x6846;</h1><h2 id="&#x5355;&#x9009;"><a href="#&#x5355;&#x9009;" class="headerlink" title="&#x5355;&#x9009;"></a>&#x5355;&#x9009;</h2><p>&#x7ED9;UserPanel&#x6DFB;&#x52A0;UI|Toggle&#xFF0C;&#x7F16;&#x8F91;Toggle&#x4E0B;&#x7684;Label&#x7684;Text&#x7EC4;&#x4EF6;|Text&#x3002;</p>
+<h1 id="勾选框"><a href="#勾选框" class="headerlink" title="勾选框"></a>勾选框</h1><h2 id="单选"><a href="#单选" class="headerlink" title="单选"></a>单选</h2><p>给UserPanel添加UI|Toggle，编辑Toggle下的Label的Text组件|Text。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410171601814.png" alt="image-20200410171601814"></p>
-<p>&#x9009;&#x4E2D;Toggle&#x4E0B;&#x7684;Background&#xFF0C;&#x8C03;&#x6574;&#x52FE;&#x9009;&#x6846;&#x81F4;&#x5408;&#x9002;&#x5927;&#x5C0F;&#xFF0C;&#x9009;&#x4E2D;Background&#x4E0B;&#x7684;Checkmark&#xFF0C;&#x5C06;&#x5176;&#x951A;&#x70B9;&#x8BBE;&#x7F6E;&#x4E3A;stretch-stretch&#x3002;</p>
+<p>选中Toggle下的Background，调整勾选框致合适大小，选中Background下的Checkmark，将其锚点设置为stretch-stretch。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410171834994.png" alt="image-20200410171834994"></p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;Toggle&#x88AB;&#x52FE;&#x9009;&#x4E0A;&#x65F6;&#xFF0C;Toggle&#x7684;Toggle&#x7EC4;&#x4EF6;&#x4E0B;&#x7684;Is On&#x4F1A;&#x88AB;&#x52FE;&#x9009;</p>
+<p>播放游戏，当Toggle被勾选上时，Toggle的Toggle组件下的Is On会被勾选</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410172021614.png" alt="image-20200410172021614"></p>
-<p>&#x4FEE;&#x6539;&#x6211;&#x4EEC;&#x7684;UserPanel.cs&#xFF0C;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;Toggle&#x7C7B;&#x578B;&#x53D8;&#x91CF;toggle&#xFF0C;Start&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x83B7;&#x53D6;Toggle&#x8BED;&#x53E5;&#x3002;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Toggle toggle;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Start is called before the first frame update</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    toggle = transform.Find(<span class="hljs-string">&quot;Toggle&quot;</span>).GetComponent&lt;Toggle&gt;();</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x4FEE;&#x6539;loginBtnOnClick&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#x3002;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">loginBtnOnClick</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">if</span>(toggle.isOn == <span class="hljs-literal">true</span>)</span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-keyword">string</span> account = userInput.text;</span><br><span class="line">        <span class="hljs-keyword">string</span> pwd = pwdInput.text;</span><br><span class="line">        Debug.Log(<span class="hljs-string">&quot;&#x8D26;&#x53F7;&#x662F;&#xFF1A;&quot;</span> + account);</span><br><span class="line">        Debug.Log(<span class="hljs-string">&quot;&#x5BC6;&#x7801;&#x662F;&#xFF1A;&quot;</span> + pwd);</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">    {</span><br><span class="line">        Debug.Log(<span class="hljs-string">&quot;&#x8BF7;&#x5148;&#x540C;&#x610F;&#x7528;&#x6237;&#x9690;&#x79C1;&#x534F;&#x8BAE;&quot;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;&#x52FE;&#x9009;&#x6846;&#x6CA1;&#x6709;&#x88AB;&#x52FE;&#x9009;&#x65F6;&#xFF0C;&#x70B9;&#x51FB;&#x767B;&#x5F55;&#x6309;&#x94AE;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4E0D;&#x4F1A;&#x6253;&#x5370;&#x6211;&#x4EEC;&#x8F93;&#x5165;&#x7684;&#x8D26;&#x53F7;&#x548C;&#x5BC6;&#x7801;&#x3002;</p>
-<h2 id="&#x591A;&#x9009;&#x4E00;"><a href="#&#x591A;&#x9009;&#x4E00;" class="headerlink" title="&#x591A;&#x9009;&#x4E00;"></a>&#x591A;&#x9009;&#x4E00;</h2><p>&#x6211;&#x4EEC;&#x590D;&#x5236;&#x4E09;&#x4E2A;Toggle&#xFF0C;&#x518D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;GameObject&#xFF0C;&#x7ED9;&#x7A7A;GameObject&#x6DFB;&#x52A0;Toggle Group&#x7EC4;&#x4EF6;&#xFF0C;&#x540C;&#x65F6;&#x9009;&#x4E2D;&#x524D;&#x8FB9;&#x7684;&#x4E09;&#x4E2A;Toggle&#xFF0C;&#x5C06;GameObject&#x62FD;&#x5230;Inspector&#x7684;Toggle&#x7EC4;&#x4EF6;|Group&#x4E0B;&#x3002;</p>
+<p>修改我们的UserPanel.cs，添加一个Toggle类型变量toggle，Start方法添加获取Toggle语句。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Toggle toggle;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Start is called before the first frame update</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    toggle = transform.Find(<span class="string">"Toggle"</span>).GetComponent&lt;Toggle&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>修改loginBtnOnClick方法如下。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loginBtnOnClick</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(toggle.isOn == <span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">string</span> account = userInput.text;</span><br><span class="line">        <span class="keyword">string</span> pwd = pwdInput.text;</span><br><span class="line">        Debug.Log(<span class="string">"账号是："</span> + account);</span><br><span class="line">        Debug.Log(<span class="string">"密码是："</span> + pwd);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">"请先同意用户隐私协议"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>播放游戏，当勾选框没有被勾选时，点击登录按钮，控制台不会打印我们输入的账号和密码。</p>
+<h2 id="多选一"><a href="#多选一" class="headerlink" title="多选一"></a>多选一</h2><p>我们复制三个Toggle，再新建一个空的GameObject，给空GameObject添加Toggle Group组件，同时选中前边的三个Toggle，将GameObject拽到Inspector的Toggle组件|Group下。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410173308051.png" alt="image-20200410173308051"></p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x8FD9;&#x4E09;&#x4E2A;&#x52FE;&#x9009;&#x6846;&#x53EA;&#x5141;&#x8BB8;&#x52FE;&#x9009;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x3002;</p>
+<p>播放游戏，这三个勾选框只允许勾选其中一个。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410173544673.png" alt="image-20200410173544673"></p>
-<h1 id="&#x6ED1;&#x52A8;&#x6761;"><a href="#&#x6ED1;&#x52A8;&#x6761;" class="headerlink" title="&#x6ED1;&#x52A8;&#x6761;"></a>&#x6ED1;&#x52A8;&#x6761;</h1><p>&#x6211;&#x4EEC;&#x5728;Canvas&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Panel&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;SettingPanel&#xFF0C;&#x8BBE;&#x7F6E;&#x5176;Image&#x7EC4;&#x4EF6;|Color&#x4E3A;&#x9ED1;&#x8272;&#xFF0C;&#x4E0D;&#x900F;&#x660E;&#x5EA6;&#x9002;&#x5F53;&#x63D0;&#x9AD8;&#xFF0C;&#x4F7F;SettingPanel&#x663E;&#x793A;&#x5F88;&#x6697;&#x3002;</p>
-<p>&#x5728;SettingPanel&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;UI|Slider&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x5B83;&#x7684;&#x4E09;&#x4E2A;&#x5B50;&#x9879;&#x8FDB;&#x884C;&#x4E2A;&#x6027;&#x5316;&#x8BBE;&#x7F6E;&#xFF0C;&#x6211;&#x5728;&#x6B64;&#x53EA;&#x4FEE;&#x6539;&#x4E86;&#x5927;&#x5C0F;&#x548C;&#x989C;&#x8272;&#x3002;</p>
+<h1 id="滑动条"><a href="#滑动条" class="headerlink" title="滑动条"></a>滑动条</h1><p>我们在Canvas下新建一个Panel，重命名为SettingPanel，设置其Image组件|Color为黑色，不透明度适当提高，使SettingPanel显示很暗。</p>
+<p>在SettingPanel下新建一个UI|Slider，我们可以对它的三个子项进行个性化设置，我在此只修改了大小和颜色。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410180311571.png" alt="image-20200410180311571"></p>
-<p>&#x5F53;&#x6211;&#x4EEC;&#x64AD;&#x653E;&#x6E38;&#x620F;&#x65F6;&#xFF0C;&#x6ED1;&#x52A8;Slider&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x5176;Slider&#x7EC4;&#x4EF6;|Value&#x7684;&#x503C;</p>
+<p>当我们播放游戏时，滑动Slider可以改变其Slider组件|Value的值</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410180625592.png" alt="image-20200410180625592"></p>
-<p>&#x8981;&#x5728;&#x811A;&#x672C;&#x4E2D;&#x83B7;&#x53D6;&#x6ED1;&#x52A8;&#x6761;&#x7684;&#x503C;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;SettingPanel.cs&#xFF0C;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SettingPanel</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    Slider slider;</span><br><span class="line">    <span class="hljs-comment">// Start is called before the first frame update</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        slider = transform.Find(<span class="hljs-string">&quot;Slider&quot;</span>).GetComponent&lt;Slider&gt;();</span><br><span class="line">        slider.onValueChanged.AddListener(OnValueChanged);     </span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnValueChanged</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> <span class="hljs-keyword">value</span></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        Debug.Log(<span class="hljs-string">&quot;&#x5F53;&#x524D;&#x6ED1;&#x52A8;&#x6761;&#x7684;&#x8FDB;&#x5EA6;&#xFF1A;&quot;</span> + slider.<span class="hljs-keyword">value</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x7136;&#x540E;&#x5C06;SettingPanel.cs&#x4F5C;&#x4E3A;&#x7EC4;&#x4EF6;&#x6DFB;&#x52A0;&#x5230;SettingPanel&#x3002;&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x6ED1;&#x52A8;Slider&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x5C06;&#x5B9E;&#x65F6;&#x6253;&#x5370;Value&#x7684;&#x503C;&#x3002;</p>
-<h1 id="&#x6EDA;&#x52A8;&#x89C6;&#x56FE;&#x3001;&#x906E;&#x7F69;&#x3001;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;&#x3001;&#x5185;&#x5BB9;&#x5C3A;&#x5BF8;&#x9002;&#x914D;&#x5668;"><a href="#&#x6EDA;&#x52A8;&#x89C6;&#x56FE;&#x3001;&#x906E;&#x7F69;&#x3001;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;&#x3001;&#x5185;&#x5BB9;&#x5C3A;&#x5BF8;&#x9002;&#x914D;&#x5668;" class="headerlink" title="&#x6EDA;&#x52A8;&#x89C6;&#x56FE;&#x3001;&#x906E;&#x7F69;&#x3001;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;&#x3001;&#x5185;&#x5BB9;&#x5C3A;&#x5BF8;&#x9002;&#x914D;&#x5668;"></a>&#x6EDA;&#x52A8;&#x89C6;&#x56FE;&#x3001;&#x906E;&#x7F69;&#x3001;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;&#x3001;&#x5185;&#x5BB9;&#x5C3A;&#x5BF8;&#x9002;&#x914D;&#x5668;</h1><h2 id="&#x6EDA;&#x52A8;&#x89C6;&#x56FE;"><a href="#&#x6EDA;&#x52A8;&#x89C6;&#x56FE;" class="headerlink" title="&#x6EDA;&#x52A8;&#x89C6;&#x56FE;"></a>&#x6EDA;&#x52A8;&#x89C6;&#x56FE;</h2><p>&#x7ED9;Canvas&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;UI|Scrow View&#xFF08;&#x6EDA;&#x52A8;&#x89C6;&#x56FE;&#xFF09;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;Scrow View|Viewport|Content&#x4E0B;&#x653E;&#x5165;&#x8981;&#x88C5;&#x7684;UI&#x5143;&#x7D20;&#x6BD4;&#x5982;&#x56FE;&#x7247;&#x3002;</p>
+<p>要在脚本中获取滑动条的值，我们先创建一个SettingPanel.cs，编写代码如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SettingPanel</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    Slider slider;</span><br><span class="line">    <span class="comment">// Start is called before the first frame update</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        slider = transform.Find(<span class="string">"Slider"</span>).GetComponent&lt;Slider&gt;();</span><br><span class="line">        slider.onValueChanged.AddListener(OnValueChanged);     </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnValueChanged</span>(<span class="params"><span class="keyword">float</span> <span class="keyword">value</span></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Debug.Log(<span class="string">"当前滑动条的进度："</span> + slider.<span class="keyword">value</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后将SettingPanel.cs作为组件添加到SettingPanel。播放游戏，当我们滑动Slider，控制台将实时打印Value的值。</p>
+<h1 id="滚动视图、遮罩、布局组件、内容尺寸适配器"><a href="#滚动视图、遮罩、布局组件、内容尺寸适配器" class="headerlink" title="滚动视图、遮罩、布局组件、内容尺寸适配器"></a>滚动视图、遮罩、布局组件、内容尺寸适配器</h1><h2 id="滚动视图"><a href="#滚动视图" class="headerlink" title="滚动视图"></a>滚动视图</h2><p>给Canvas新建一个UI|Scrow View（滚动视图）,我们可以在Scrow View|Viewport|Content下放入要装的UI元素比如图片。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410213421959.png" alt="image-20200410213421959"></p>
-<p>Content&#x662F;&#x6211;&#x4EEC;&#x8981;&#x586B;&#x88C5;UI&#x5143;&#x7D20;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x5355;&#x72EC;&#x9009;&#x4E2D;Content&#x6539;&#x53D8;&#x5176;&#x5927;&#x5C0F;&#x53EF;&#x4EE5;&#x5C55;&#x793A;&#x603B;&#x9762;&#x79EF;&#x3002;&#x5982;&#x4E0A;&#x56FE;&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x653E;&#x5165;Image&#x540E;&#x8FD8;&#x9700;&#x8981;&#x9002;&#x5F53;&#x8C03;&#x6574;Image&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>Content是我们要填装UI元素的容器，单独选中Content改变其大小可以展示总面积。如上图，在其中放入Image后还需要适当调整Image的位置。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410214338872.png" alt="image-20200410214338872"></p>
-<p>Handle&#x662F;&#x6ED1;&#x6761;&#xFF0C;&#x8981;&#x6539;&#x53D8;&#x6ED1;&#x6761;&#x80CC;&#x666F;&#x9700;&#x8981;&#x5728;Scrollbar Horizontal/Vertical&#x91CC;&#x8BBE;&#x7F6E;&#x3002;</p>
+<p>Handle是滑条，要改变滑条背景需要在Scrollbar Horizontal/Vertical里设置。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410213852276.png" alt="image-20200410213852276"></p>
-<h2 id="&#x906E;&#x7F69;"><a href="#&#x906E;&#x7F69;" class="headerlink" title="&#x906E;&#x7F69;"></a>&#x906E;&#x7F69;</h2><p>&#x5728;&#x6EDA;&#x52A8;&#x89C6;&#x56FE;&#x7684;Viewport&#x91CC;&#x6709;&#x4E00;&#x4E2A;Mask&#x7EC4;&#x4EF6;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x53D6;&#x6D88;&#x52FE;&#x9009;&#x540E;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x88AB;&#x906E;&#x4F4F;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<h2 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h2><p>在滚动视图的Viewport里有一个Mask组件，当我们取消勾选后，将显示被遮住的内容。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410214533455.png" alt="image-20200410214533455"></p>
-<p>&#x6211;&#x4EEC;&#x7ED9;Panel&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Image&#xFF0C;&#x5C55;&#x793A;&#x989C;&#x8272;&#x4E3A;&#x7EA2;&#x8272;&#xFF0C;&#x9009;&#x4E2D;Image&#x518D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Image&#xFF0C;&#x8BBE;&#x7F6E;&#x989C;&#x8272;&#x4E3A;&#x9EC4;&#x8272;&#x3002;&#x8C03;&#x6574;&#x9EC4;&#x8272;Image&#x7684;&#x5927;&#x5C0F;&#x4F7F;&#x4E4B;&#x76D6;&#x8FC7;&#x7EA2;&#x8272;Image&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x7ED9;&#x7236;&#x7269;&#x4F53;&#x7EA2;&#x8272;Image&#x6DFB;&#x52A0;Mask&#x7EC4;&#x4EF6;&#x540E;&#xFF0C;&#x5B50;&#x7269;&#x4F53;&#x9EC4;&#x8272;Image&#x8D85;&#x51FA;&#x90E8;&#x5206;&#x4F1A;&#x88AB;&#x7236;&#x7269;&#x4F53;&#x7684;&#x906E;&#x7F69;&#x8986;&#x76D6;&#x3002;</p>
+<p>我们给Panel新建一个Image，展示颜色为红色，选中Image再新建一个Image，设置颜色为黄色。调整黄色Image的大小使之盖过红色Image，当我们给父物体红色Image添加Mask组件后，子物体黄色Image超出部分会被父物体的遮罩覆盖。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410215829723.png" alt="image-20200410215829723"></p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410215921935.png" alt="image-20200410215921935"></p>
-<h2 id="&#x6C34;&#x5E73;-&#x5782;&#x76F4;-&#x7F51;&#x683C;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;"><a href="#&#x6C34;&#x5E73;-&#x5782;&#x76F4;-&#x7F51;&#x683C;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;" class="headerlink" title="&#x6C34;&#x5E73;/&#x5782;&#x76F4;/&#x7F51;&#x683C;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;"></a>&#x6C34;&#x5E73;/&#x5782;&#x76F4;/&#x7F51;&#x683C;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;</h2><p>&#x7ED9;Content&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;Horizontal/Vertical/Grid Layout Group&#xFF0C;&#x5C06;&#x4F7F;content&#x5185;&#x7684;UI&#x5143;&#x7D20;&#x5168;&#x90E8;&#x5448;&#x6C34;&#x5E73;/&#x5782;&#x76F4;&#x6392;&#x5217;&#xFF0C;&#x5E76;&#x505A;&#x9488;&#x5BF9;&#x8BBE;&#x7F6E;&#x3002;&#x4E0B;&#x56FE;&#x7ED9;&#x4E86;&#x4E00;&#x4E2A;&#x5782;&#x76F4;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;&#x6548;&#x679C;&#xFF0C;&#x540C;&#x65F6;&#x6211;&#x4E5F;&#x5728;Padding&#x5904;&#x8BBE;&#x7F6E;&#x4E86;&#x8FB9;&#x8DDD;</p>
+<h2 id="水平-垂直-网格布局组件"><a href="#水平-垂直-网格布局组件" class="headerlink" title="水平/垂直/网格布局组件"></a>水平/垂直/网格布局组件</h2><p>给Content添加组件Horizontal/Vertical/Grid Layout Group，将使content内的UI元素全部呈水平/垂直排列，并做针对设置。下图给了一个垂直布局组件效果，同时我也在Padding处设置了边距</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410221507116.png" alt="image-20200410221507116"></p>
-<h2 id="&#x5E03;&#x5C40;&#x5143;&#x7D20;"><a href="#&#x5E03;&#x5C40;&#x5143;&#x7D20;" class="headerlink" title="&#x5E03;&#x5C40;&#x5143;&#x7D20;"></a>&#x5E03;&#x5C40;&#x5143;&#x7D20;</h2><p>&#x7ED9;Content&#x4E0B;&#x7684;UI&#x5143;&#x7D20;&#x6BD4;&#x5982;Image&#x6DFB;&#x52A0;Layout Element&#x7EC4;&#x4EF6;&#x540E;&#xFF0C;&#x52FE;&#x9009;Ignore Layout&#xFF0C;&#x8BE5;Image&#x5C06;&#x4E0D;&#x53D7;&#x5176;&#x4ED6;&#x4E09;&#x79CD;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;&#x5F71;&#x54CD;&#xFF0C;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x653E;&#x7F6E;&#x3002;</p>
+<h2 id="布局元素"><a href="#布局元素" class="headerlink" title="布局元素"></a>布局元素</h2><p>给Content下的UI元素比如Image添加Layout Element组件后，勾选Ignore Layout，该Image将不受其他三种布局组件影响，可以随意放置。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200410222931803.png" alt="image-20200410222931803"></p>
-<h2 id="&#x5185;&#x5BB9;&#x5C3A;&#x5BF8;&#x9002;&#x914D;&#x5668;"><a href="#&#x5185;&#x5BB9;&#x5C3A;&#x5BF8;&#x9002;&#x914D;&#x5668;" class="headerlink" title="&#x5185;&#x5BB9;&#x5C3A;&#x5BF8;&#x9002;&#x914D;&#x5668;"></a>&#x5185;&#x5BB9;&#x5C3A;&#x5BF8;&#x9002;&#x914D;&#x5668;</h2><p>&#x7ED9;Content&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;Content Size Fitter&#xFF0C;&#x5728;Content Size Fitter|Vertical Fit&#x9009;&#x62E9;Preferrd Size&#xFF0C;Content&#x7684;&#x5C3A;&#x5BF8;&#x5927;&#x5C0F;&#x5C06;&#x6839;&#x636E;&#x5185;&#x5BB9;&#x5E03;&#x5C40;&#x81EA;&#x52A8;&#x8C03;&#x6574;&#x3002;</p>
+<h2 id="内容尺寸适配器"><a href="#内容尺寸适配器" class="headerlink" title="内容尺寸适配器"></a>内容尺寸适配器</h2><p>给Content添加组件Content Size Fitter，在Content Size Fitter|Vertical Fit选择Preferrd Size，Content的尺寸大小将根据内容布局自动调整。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200411104056877.png" alt="image-20200411104056877"></p>
-<p>&#x5C06;Panel&#x91CD;&#x547D;&#x540D;&#x4E3A;HeroPanel&#xFF0C;&#x5C06;Content&#x4E0B;&#x7B2C;&#x4E00;&#x4E2A;Image&#x91CD;&#x547D;&#x540D;&#x505A;&#x6210;&#x9884;&#x5236;&#x4F53;Hero&#xFF0C;&#x521B;&#x5EFA;&#x811A;&#x672C;HeroPanel.cs&#xFF0C;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">HeroPanel</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">public</span> GameObject hero;</span><br><span class="line">    <span class="hljs-keyword">public</span> Transform content;</span><br><span class="line">    <span class="hljs-comment">// Start is called before the first frame update</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span> (Input.GetKeyDown(KeyCode.A))</span><br><span class="line">        {</span><br><span class="line">            GameObject _hero = GameObject.Instantiate(hero);</span><br><span class="line">            _hero.transform.parent = content;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x5C06;HeroPanel.cs&#x6DFB;&#x52A0;&#x5230;HeroPanel&#xFF0C;&#x5C06;Hero&#x9884;&#x5236;&#x4F53;&#x62D6;&#x5165;HeroPanel&#x7EC4;&#x4EF6;|hero&#xFF0C;&#x5C06;Content&#x62D6;&#x5165;HeroPanel&#x7EC4;&#x4EF6;|content&#x3002;&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x5220;&#x6389;Content&#x4E0B;&#x5927;&#x90E8;&#x5206;Image&#xFF0C;&#x7136;&#x540E;&#x9F20;&#x6807;&#x5728;Game&#x7A97;&#x53E3;&#x91CC;&#x70B9;&#x51FB;&#x4E00;&#x4E0B;&#xFF0C;&#x6309;A&#x952E;&#x514B;&#x9686;Hero&#xFF0C;&#x9009;&#x4E2D;Content&#x6211;&#x4EEC;&#x53EF;&#x770B;&#x5230;Content&#x968F;&#x7740;Hero&#x7684;&#x589E;&#x52A0;&#x52A8;&#x6001;&#x8C03;&#x8282;&#x5C3A;&#x5BF8;&#x9002;&#x5E94;&#x5185;&#x5BB9;&#x3002;</p>
+<p>将Panel重命名为HeroPanel，将Content下第一个Image重命名做成预制体Hero，创建脚本HeroPanel.cs，编写代码如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HeroPanel</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> GameObject hero;</span><br><span class="line">    <span class="keyword">public</span> Transform content;</span><br><span class="line">    <span class="comment">// Start is called before the first frame update</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.A))</span><br><span class="line">        &#123;</span><br><span class="line">            GameObject _hero = GameObject.Instantiate(hero);</span><br><span class="line">            _hero.transform.parent = content;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将HeroPanel.cs添加到HeroPanel，将Hero预制体拖入HeroPanel组件|hero，将Content拖入HeroPanel组件|content。播放游戏，当我们删掉Content下大部分Image，然后鼠标在Game窗口里点击一下，按A键克隆Hero，选中Content我们可看到Content随着Hero的增加动态调节尺寸适应内容。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200411105741808.png" alt="image-20200411105741808"></p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200411105811893.png" alt="image-20200411105811893"></p>
-<p>&#x5185;&#x5BB9;&#x5C3A;&#x5BF8;&#x9002;&#x914D;&#x5668;&#x7684;&#x53E6;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7528;&#x6CD5;&#xFF1A;</p>
-<p>&#x7ED9;HeroPanel&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;Text&#xFF0C;&#x7ED9;Text&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;Content Size Fitter&#xFF0C;Content Size Fitter&#x4E0B;&#x8FB9;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x5168;&#x90E8;&#x8BBE;&#x7F6E;&#x4E3A;Preferrd Size&#x3002;</p>
+<p>内容尺寸适配器的另一种常见用法：</p>
+<p>给HeroPanel添加一个Text，给Text添加组件Content Size Fitter，Content Size Fitter下边两个属性全部设置为Preferrd Size。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200411110920125.png" alt="image-20200411110920125"></p>
-<p>&#x6211;&#x4EEC;&#x8F93;&#x5165;&#x6210;&#x6BB5;&#x7684;&#x6587;&#x672C;&#xFF0C;Content&#x5BF9;&#x6839;&#x636E;&#x5305;&#x62EC;&#x6362;&#x884C;&#x56DE;&#x8F66;&#x5728;&#x5185;&#x7684;&#x6587;&#x672C;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x81EA;&#x9002;&#x5E94;&#x3002;</p>
+<p>我们输入成段的文本，Content对根据包括换行回车在内的文本内容进行自适应。</p>
 <p><img src="/2020/04/04/UGUI%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F/image-20200411111028122.png" alt="image-20200411111028122"></p>
-<h1 id="&#x77E9;&#x5F62;&#x53D8;&#x6362;&#x3001;UI&#x7279;&#x6548;&#x3001;&#x56FE;&#x7247;&#x586B;&#x5145;"><a href="#&#x77E9;&#x5F62;&#x53D8;&#x6362;&#x3001;UI&#x7279;&#x6548;&#x3001;&#x56FE;&#x7247;&#x586B;&#x5145;" class="headerlink" title="&#x77E9;&#x5F62;&#x53D8;&#x6362;&#x3001;UI&#x7279;&#x6548;&#x3001;&#x56FE;&#x7247;&#x586B;&#x5145;"></a>&#x77E9;&#x5F62;&#x53D8;&#x6362;&#x3001;UI&#x7279;&#x6548;&#x3001;&#x56FE;&#x7247;&#x586B;&#x5145;</h1></body></html>
-    
-    </div>
-    
-    <div class="columns is-variable is-1 is-multiline is-mobile">
-    
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Unity/">#Unity</a></span>
-    
-    </div>
-    
-    
-    <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2020/04/06/C%20Sharp%E4%B8%8EMySql%E4%BA%A4%E4%BA%92/">C#与MySQL交互</a>
-            
-        </span>
-        <span class="column is-12-mobile is-half-desktop  article-nav-next">
-            
-            <a href="/2020/04/04/C%20Sharp%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/">C#委托与事件</a>
-            
-        </span>
-    </div>
-    
-</article>
-
-
-
-
-    </div>
-</section>
-    <footer class="footer">
-    <div class="container">
-        <div class="columns content">
-            <div class="column is-narrow has-text-centered">
-                &copy; 2020 MJ&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
-            </div>
-            <div class="column is-hidden-mobile"></div>
-
-            
-            <div class="column is-narrow">
-                <div class="columns is-mobile is-multiline is-centered">
-                
-                    
-                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
-                    
-                    GitHub
-                    
-                </a>
-                
-                </div>
-            </div>
-            
-            
-        </div>
-    </div>
-</footer>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
-
-<!-- test if the browser is outdated -->
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // plugin function, place inside DOM ready function
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        })
-    });
-</script>
-
-<script>
-    window.FontAwesomeConfig = {
-        searchPseudoElements: true
-    }
-    moment.locale("zh-CN");
-</script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script>
-    MathJax.Hub.Config({
-        "HTML-CSS": {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-</script>
-
-    
-    
-    
-    
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
-<script>
-    (function ($) {
-        $(document).ready(function () {
-            if (typeof($.fn.lightGallery) === 'function') {
-                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof($.fn.justifiedGallery) === 'function') {
-                $('.justified-gallery').justifiedGallery();
-            }
-        });
-    })(jQuery);
-</script>
-
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-    <style>
-        .hljs {
-            position: relative;
-        }
-
-        .hljs .clipboard-btn {
-            float: right;
-            color: #9a9a9a;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
-        }
-
-        .hljs > .clipboard-btn {
-            display: none;
-            position: absolute;
-            right: 4px;
-            top: 4px;
-        }
-
-        .hljs:hover > .clipboard-btn {
-            display: inline;
-        }
-
-        .hljs > figcaption > .clipboard-btn {
-            margin-right: 4px;
-        }
-    </style>
-    <script>
-      $(document).ready(function () {
-        $('figure.hljs').each(function(i, figure) {
-          var codeId = 'code-' + i;
-          var code = figure.querySelector('.code');
-          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
-          code.id = codeId;
-          copyButton.addClass('clipboard-btn');
-          copyButton.attr('data-clipboard-target-id', codeId);
-
-          var figcaption = figure.querySelector('figcaption');
-
-          if (figcaption) {
-            figcaption.append(copyButton[0]);
-          } else {
-            figure.prepend(copyButton[0]);
-          }
-        })
-
-        var clipboard = new ClipboardJS('.clipboard-btn', {
-          target: function(trigger) {
-            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
-          }
-        });
-        clipboard.on('success', function(e) {
-          e.clearSelection();
-        })
-      })
-    </script>
-
-    
-    
-
-    
-
-
-
-<script src="/js/script.js"></script>
-
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-mask"></div>
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-    
-</body>
-</html>
+<h1 id="矩形变换、UI特效、图片填充"><a href="#矩形变换、UI特效、图片填充" class="headerlink" title="矩形变换、UI特效、图片填充"></a>矩形变换、UI特效、图片填充</h1></div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/04/06/C%20Sharp%E4%B8%8EMySql%E4%BA%A4%E4%BA%92/" title="C#与MySQL交互" class="prev">上一篇</a><a href="/2020/04/04/C%20Sharp%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/" title="C#委托与事件" class="next">下一篇</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

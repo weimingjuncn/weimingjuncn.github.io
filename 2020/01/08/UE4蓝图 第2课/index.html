@@ -1,468 +1,74 @@
-<!DOCTYPE html>
-<html class="has-navbar-fixed-top">
-<head>
-    <meta charset="utf-8">
-<title>UE4蓝图 第2课 - MJ&#39;s Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
-
-
-
-
-<meta name="description" content="This is a personal Blog.">
-
-
-
-
-
-    <meta name="description" content="&amp;#x4E3B;&amp;#x8BB2;&amp;#x4EBA;&amp;#xFF1A;&amp;#x795E;&amp;#x7ECF;&amp;#x5200;&amp;#x6E38;&amp;#x620F;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5BA4;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av33992806 &amp;#x63A5;&amp;#x4E0A;&amp;#x4E00;&amp;#x5802;&amp;#x8BFE; &amp;#x63A5;&amp;#x4E0B;&amp;#x67">
-<meta property="og:type" content="article">
-<meta property="og:title" content="UE4蓝图 第2课">
-<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/index.html">
-<meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="&amp;#x4E3B;&amp;#x8BB2;&amp;#x4EBA;&amp;#xFF1A;&amp;#x795E;&amp;#x7ECF;&amp;#x5200;&amp;#x6E38;&amp;#x620F;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5BA4;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av33992806 &amp;#x63A5;&amp;#x4E0A;&amp;#x4E00;&amp;#x5802;&amp;#x8BFE; &amp;#x63A5;&amp;#x4E0B;&amp;#x67">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/APlayerControllerBP.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/LocateMeshButton.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/LocatedMesh.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/photo_1.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/photo_2.png">
-<meta property="article:published_time" content="2020-01-08T02:27:44.000Z">
-<meta property="article:modified_time" content="2020-01-08T02:57:53.081Z">
-<meta property="article:author" content="MJ">
-<meta property="article:tag" content="UE4">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/APlayerControllerBP.png">
-
-
-
-
-
-<link rel="icon" href="/favicon.png">
-
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-<body>
-    
-<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item navbar-logo" href="/">
-                
-                <img src="/images/logo.png" alt="" height="28">
-                
-            </a>
-            <div class="navbar-burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        
-        <div class="navbar-menu navbar-start">
-            
-            <a class="navbar-item "
-               href="/archives">归档</a>
-            
-            <a class="navbar-item "
-               href="/tags">标签分类</a>
-            
-            <a class="navbar-item "
-               href="/about">关于</a>
-            
-        </div>
-        
-        <div class="navbar-menu navbar-end">
-            
-            <a class="navbar-item search" title="Search" href="javascript:;">
-                <i class="fas fa-search"></i>
-            </a>
-            
-            
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Table of Contents">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                </div>
-            </div>
-            
-            
-            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-               
-            
-        </div>
-    </div>
-</nav>
-
-    <section class="section">
-    <div class="container">
-    <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            UE4蓝图 第2课
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-01-08T02:27:44.000Z" itemprop="datePublished">1月 8 2020</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Game-Develop/">Game Develop</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>&#x4E3B;&#x8BB2;&#x4EBA;&#xFF1A;&#x795E;&#x7ECF;&#x5200;&#x6E38;&#x620F;&#x5DE5;&#x4F5C;&#x5BA4;<br><a href="https://www.bilibili.com/video/av33992806" target="_blank" rel="noopener">https://www.bilibili.com/video/av33992806</a></p>
-<p>&#x63A5;&#x4E0A;&#x4E00;&#x5802;&#x8BFE;</p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x7ED9;&#x89D2;&#x8272;&#x8D4B;&#x4E88;&#x5176;&#x4ED6;&#x884C;&#x52A8;&#x529F;&#x80FD;</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> UE4蓝图 第2课 · MJ's Blog</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="UE4蓝图 第2课 - MJ"><meta name="keywords"><meta name="author" content="MJ"><link rel="short icon" href="/images/assassins_creed.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weimingjuncn.github.io/atom.xml" title="MJ's Blog"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script><meta name="generator" content="Hexo 4.2.0"></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/assassins_creed_white.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">UE4蓝图 第2课</h1><div class="post-info">2020-01-08</div><div class="post-content"><p>主讲人：神经刀游戏工作室<br><a href="https://www.bilibili.com/video/av33992806" target="_blank" rel="noopener">https://www.bilibili.com/video/av33992806</a></p>
+<p>接上一堂课</p>
+<p>接下来给角色赋予其他行动功能</p>
 <ol>
-<li><p>&#x8FDB;&#x5165;&#x3010;&#x9879;&#x76EE;&#x8BBE;&#x7F6E;&#x3011;&#x7684;&#x3010;&#x5F15;&#x64CE;&#x3011;&#x3010;&#x8F93;&#x5165;&#x3011;&#xFF0C;&#x5728;Axis Mappings&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x201C;MoveRight&#x201D;</p>
+<li><p>进入【项目设置】的【引擎】【输入】，在Axis Mappings下自定义添加一个“MoveRight”</p>
 <ul>
-<li>&#x6DFB;&#x52A0;&#x6309;&#x952E;&#x3010;&#x952E;&#x76D8;A&#x3011;,Scale&#x8BBE;&#x7F6E;&#x4E3A;-1.0</li>
-<li>&#x6DFB;&#x52A0;&#x6309;&#x952E;&#x3010;&#x952E;&#x76D8;D&#x3011;,Scale&#x8BBE;&#x7F6E;&#x4E3A;1.0</li>
+<li>添加按键【键盘A】,Scale设置为-1.0</li>
+<li>添加按键【键盘D】,Scale设置为1.0</li>
 </ul>
 </li>
-<li><p>&#x5728;Axis Mappings&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x201C;Turn&#x201D;</p>
+<li><p>在Axis Mappings下自定义添加一个“Turn”</p>
 <ul>
-<li>&#x6DFB;&#x52A0;&#x3010;&#x9F20;&#x6807;X&#x3011;,Scale&#x8BBE;&#x7F6E;&#x4E3A;1.0</li>
+<li>添加【鼠标X】,Scale设置为1.0</li>
 </ul>
 </li>
-<li><p>&#x5728;Axis Mappings&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x201C;LookUp&#x201D;</p>
+<li><p>在Axis Mappings下自定义添加一个“LookUp”</p>
 <ul>
-<li>&#x6DFB;&#x52A0;&#x3010;&#x9F20;&#x6807;Y&#x3011;,Scale&#x8BBE;&#x7F6E;&#x4E3A;-1.0</li>
+<li>添加【鼠标Y】,Scale设置为-1.0</li>
 </ul>
 </li>
-<li><p>&#x8FDB;&#x5165;&#x201C;APlayerController&#x201D;&#xFF0C;&#x5728;&#x4E8B;&#x4EF6;&#x56FE;&#x8868;&#x4E0B;&#xFF0C;&#x6DFB;&#x52A0;&#x5750;&#x6807;&#x8F74;&#x4E8B;&#x4EF6;&#x201C;MoveRight&#x201D;</p>
+<li><p>进入“APlayerController”，在事件图表下，添加坐标轴事件“MoveRight”</p>
 </li>
-<li><p>&#x590D;&#x5236;&#x7C98;&#x8D34;&#x4E00;&#x4E2A;&#x201C;Add Movement Input&#x201C;</p>
+<li><p>复制粘贴一个“Add Movement Input“</p>
 </li>
-<li><p>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;Pawn&#x64CD;&#x4F5C;&#x201C;Get Control Rotation&#x201D;&#x3001;&#x4E00;&#x4E2A;&#x201D;Get Right Vectot&#x201D;</p>
+<li><p>添加一个Pawn操作“Get Control Rotation”、一个”Get Right Vectot”</p>
 </li>
-<li><p>&#x6DFB;&#x52A0;&#x5750;&#x6807;&#x8F74;&#x4E8B;&#x4EF6;&#x201D;Turn&#x201C;&#x548C;&#x201D;LookUp&#x201C;</p>
+<li><p>添加坐标轴事件”Turn“和”LookUp“</p>
 </li>
-<li><p>&#x6DFB;&#x52A0;&#x201D;Add Yaw Input&#x201D;&#x3001;&#x201D;Add Pitch Input&#x201D;&#x3001;&#x201D;Add Roll Input&#x201D;</p>
+<li><p>添加”Add Yaw Input”、”Add Pitch Input”、”Add Roll Input”</p>
 <ul>
-<li>Pawn&#x63A7;&#x5236;&#x89D2;&#x8272;&#x7684;&#x884C;&#x52A8;&#xFF0C;PlayerController&#x63A7;&#x5236;&#x63A7;&#x5236;&#x5668;&#x7684;&#x65CB;&#x8F6C;&#x529F;&#x80FD;</li>
+<li>Pawn控制角色的行动，PlayerController控制控制器的旋转功能</li>
 </ul>
 </li>
-<li><p>&#x8FDE;&#x7EBF;&#x5982;&#x56FE;<br> <img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/APlayerControllerBP.png" alt="APlayerControllerBP"></p>
+<li><p>连线如图<br> <img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/APlayerControllerBP.png" alt="APlayerControllerBP"></p>
 </li>
-<li><p>&#x8FDB;&#x5165;APlayer&#xFF0C;&#x9009;&#x4E2D;&#x3010;SwingArm&#x3011;&#xFF0C;&#x5728;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x3010;Camera Settings&#x3011;&#x628A;&#x3010;Use Pawn Control Rotation&#x3011;&#x6253;&#x52FE;&#xFF0C;&#x7F16;&#x8BD1;&#xFF0C;&#x4FDD;&#x5B58;</p>
+<li><p>进入APlayer，选中【SwingArm】，在【细节】【Camera Settings】把【Use Pawn Control Rotation】打勾，编译，保存</p>
 </li>
-<li><p>&#x6B64;&#x65F6;&#x70B9;&#x3010;&#x64AD;&#x653E;&#x3011;&#xFF0C;&#x89D2;&#x8272;&#x53EF;&#x4EE5;&#x5DE6;&#x53F3;&#x5E73;&#x79FB;&#xFF0C;&#x89D2;&#x8272;&#x6B63;&#x9762;&#x7D27;&#x968F;&#x6444;&#x50CF;&#x673A;&#x89C6;&#x89D2;&#x6539;&#x53D8;&#x671D;&#x5411;</p>
+<li><p>此时点【播放】，角色可以左右平移，角色正面紧随摄像机视角改变朝向</p>
 </li>
-<li><p>&#x8FDB;&#x5165;APlayer&#xFF0C;&#x9009;&#x4E2D;&#x3010;&#x7EC4;&#x4EF6;&#x3011;&#x4E0B;&#x7684;&#x3010;CharacterMovement&#x3011;,&#x5728;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x3010;Character Movement(Rotation Settings)&#x3011;</p>
+<li><p>进入APlayer，选中【组件】下的【CharacterMovement】,在【细节】【Character Movement(Rotation Settings)】</p>
 <ul>
-<li>&#x3010;Rotation Rate&#x3011;&#x3010;Z&#x3011;&#x6539;&#x6210;1000&#x3002;(&#x4FEE;&#x6539;&#x89D2;&#x8272;&#x8F6C;&#x8EAB;&#x901F;&#x7387;)</li>
-<li>&#x3010;Orient Rotation to Movement&#x3011;&#x6253;&#x52FE;</li>
+<li>【Rotation Rate】【Z】改成1000。(修改角色转身速率)</li>
+<li>【Orient Rotation to Movement】打勾</li>
 </ul>
 </li>
-<li><p>&#x9009;&#x4E2D;&#x3010;&#x7EC4;&#x4EF6;&#x3011;&#x4E0B;&#x7684;&#x3010;APlayer(&#x81EA;&#x8EAB;)&#x3011;&#xFF0C;&#x5728;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x3010;Pawn&#x3011;&#x4E0B;&#x628A;&#x3010;Use Controller Rotation Yaw&#x3011;&#x53D6;&#x6D88;&#x6253;&#x52FE;&#xFF0C;&#x7F16;&#x8BD1;&#xFF0C;&#x4FDD;&#x5B58;&#x3002;</p>
+<li><p>选中【组件】下的【APlayer(自身)】，在【细节】【Pawn】下把【Use Controller Rotation Yaw】取消打勾，编译，保存。</p>
 </li>
-<li><p>&#x6B64;&#x65F6;&#x70B9;&#x3010;&#x64AD;&#x653E;&#x3011;&#xFF0C;&#x89D2;&#x8272;&#x6B63;&#x9762;&#x4E0D;&#x7D27;&#x968F;&#x6444;&#x50CF;&#x673A;&#x89C6;&#x89D2;&#x6539;&#x53D8;&#x671D;&#x5411;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x884C;&#x52A8;&#x65F6;&#x8F6C;&#x8EAB;&#x6539;&#x53D8;&#x671D;&#x5411;</p>
+<li><p>此时点【播放】，角色正面不紧随摄像机视角改变朝向，只有在行动时转身改变朝向</p>
 </li>
-<li><p>&#x600E;&#x4E48;&#x7ED9;&#x84DD;&#x56FE;&#x5199;&#x6CE8;&#x91CA;&#xFF1F;</p>
+<li><p>怎么给蓝图写注释？</p>
 <ul>
-<li>&#x9009;&#x4E2D;/&#x6846;&#x9009;&#x8981;&#x6CE8;&#x91CA;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6309;&#x3010;C&#x3011;&#x4EA7;&#x751F;&#x6CE8;&#x91CA;&#x6846;&#xFF0C;&#x6CE8;&#x91CA;&#x6846;&#x53EF;&#x4EE5;&#x5D4C;&#x5957;</li>
-<li>&#x9009;&#x4E2D;&#x6CE8;&#x91CA;&#x6846;&#xFF0C;&#x5728;&#x53F3;&#x8FB9;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x3010;Comment Color&#x3011;&#x6539;&#x6CE8;&#x91CA;&#x533A;&#x57DF;&#x7684;&#x989C;&#x8272;&#x3001;&#x900F;&#x660E;&#x5EA6;</li>
+<li>选中/框选要注释的操作，按【C】产生注释框，注释框可以嵌套</li>
+<li>选中注释框，在右边【细节】【Comment Color】改注释区域的颜色、透明度</li>
 </ul>
 </li>
-<li><p>&#x5728;APlayer&#x91CC;&#x9009;&#x4E2D;&#x3010;&#x7EC4;&#x4EF6;&#x3011;&#x3010;Mesh&#x3011;&#xFF0C;&#x5728;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x3010;Mesh&#x3011;&#x91CC;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x653E;&#x5927;&#x955C;&#x6309;&#x94AE;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9A;&#x4F4D;&#x5E76;&#x9009;&#x4E2D;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684;&#x6A21;&#x578B;</p>
+<li><p>在APlayer里选中【组件】【Mesh】，在【细节】【Mesh】里可以点击放大镜按钮，可以定位并选中当前使用的模型</p>
 </li>
 </ol>
 <p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/LocateMeshButton.png" alt="LocateMeshButton"></p>
 <p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/LocatedMesh.png" alt="LocatedMesh"></p>
 <ol start="17">
-<li><p>&#x53CC;&#x51FB;&#x201D;SK_Mannequin&#x201C;&#x6253;&#x5F00;&#x6A21;&#x578B;</p>
+<li><p>双击”SK_Mannequin“打开模型</p>
 </li>
-<li><p>&#x6A21;&#x578B;&#x4E94;&#x5927;&#x90E8;&#x5206;&#xFF1A;&#x9AA8;&#x67B6;&#x3001;&#x7F51;&#x683C;&#x4F53;&#x3001;&#x52A8;&#x753B;&#x3001;&#x84DD;&#x56FE;&#x3001;&#x7269;&#x7406;</p>
+<li><p>模型五大部分：骨架、网格体、动画、蓝图、物理</p>
 <p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/photo_1.png" alt="photo_1"></p>
 </li>
-<li><p>&#x9AA8;&#x67B6;&#x4E0A;&#x586B;&#x6EE1;&#x4E86;&#x201D;&#x8089;&#x201C;&#x5C31;&#x6210;&#x4E86;&#x7F51;&#x683C;&#x4F53;&#xFF0C;&#x9AA8;&#x9ABC;&#x662F;&#x6839;&#x672C;&#xFF0C;&#x4E00;&#x4E2A;&#x9AA8;&#x9ABC;&#x5BF9;&#x5E94;&#x591A;&#x4E2A;&#x7F51;&#x683C;&#x4F53;&#x591A;&#x4E2A;&#x52A8;&#x753B;&#x591A;&#x4E2A;&#x7269;&#x7406;&#x591A;&#x4E2A;&#x84DD;&#x56FE;&#xFF08;&#x52A8;&#x753B;&#x84DD;&#x56FE;&#xFF09;&#xFF0C;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x4EC5;&#x5BF9;&#x5E94;&#x552F;&#x4E00;&#x4E00;&#x4E2A;&#x9AA8;&#x9ABC;&#xFF0C;&#x52A8;&#x753B;&#x8DDF;&#x7740;&#x9AA8;&#x9ABC;&#x8D70;&#x3002;</p>
+<li><p>骨架上填满了”肉“就成了网格体，骨骼是根本，一个骨骼对应多个网格体多个动画多个物理多个蓝图（动画蓝图），一个动画仅对应唯一一个骨骼，动画跟着骨骼走。</p>
 </li>
-<li><p>&#x70B9;&#x51FB;&#x3010;&#x6D4F;&#x89C8;&#x3011;&#x6309;&#x94AE;&#x53EF;&#x4EE5;&#x5B9A;&#x4F4D;&#x9009;&#x4E2D;&#x5177;&#x4F53;&#x7684;&#x6587;&#x4EF6;</p>
+<li><p>点击【浏览】按钮可以定位选中具体的文件</p>
 <p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/photo_2.png" alt="photo_2"></p>
 </li>
 </ol>
-</body></html>
-    
-    </div>
-    
-    <div class="columns is-variable is-1 is-multiline is-mobile">
-    
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/UE4/">#UE4</a></span>
-    
-    </div>
-    
-    
-    <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2020/01/08/%E3%80%90GDC%E3%80%91Level%20Design%20Workshop%EF%BC%9ABlockmesh%20and%20Lighting%20Tips/">【GDC】Level Design Workshop：Blockmesh and Lighting Tips</a>
-            
-        </span>
-        <span class="column is-12-mobile is-half-desktop  article-nav-next">
-            
-            <a href="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC1%E8%AF%BE/">UE4蓝图 第1课</a>
-            
-        </span>
-    </div>
-    
-</article>
-
-
-
-
-    </div>
-</section>
-    <footer class="footer">
-    <div class="container">
-        <div class="columns content">
-            <div class="column is-narrow has-text-centered">
-                &copy; 2020 MJ&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
-            </div>
-            <div class="column is-hidden-mobile"></div>
-
-            
-            <div class="column is-narrow">
-                <div class="columns is-mobile is-multiline is-centered">
-                
-                    
-                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
-                    
-                    GitHub
-                    
-                </a>
-                
-                </div>
-            </div>
-            
-            
-        </div>
-    </div>
-</footer>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
-
-<!-- test if the browser is outdated -->
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // plugin function, place inside DOM ready function
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        })
-    });
-</script>
-
-<script>
-    window.FontAwesomeConfig = {
-        searchPseudoElements: true
-    }
-    moment.locale("zh-CN");
-</script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script>
-    MathJax.Hub.Config({
-        "HTML-CSS": {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-</script>
-
-    
-    
-    
-    
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
-<script>
-    (function ($) {
-        $(document).ready(function () {
-            if (typeof($.fn.lightGallery) === 'function') {
-                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof($.fn.justifiedGallery) === 'function') {
-                $('.justified-gallery').justifiedGallery();
-            }
-        });
-    })(jQuery);
-</script>
-
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-    <style>
-        .hljs {
-            position: relative;
-        }
-
-        .hljs .clipboard-btn {
-            float: right;
-            color: #9a9a9a;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
-        }
-
-        .hljs > .clipboard-btn {
-            display: none;
-            position: absolute;
-            right: 4px;
-            top: 4px;
-        }
-
-        .hljs:hover > .clipboard-btn {
-            display: inline;
-        }
-
-        .hljs > figcaption > .clipboard-btn {
-            margin-right: 4px;
-        }
-    </style>
-    <script>
-      $(document).ready(function () {
-        $('figure.hljs').each(function(i, figure) {
-          var codeId = 'code-' + i;
-          var code = figure.querySelector('.code');
-          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
-          code.id = codeId;
-          copyButton.addClass('clipboard-btn');
-          copyButton.attr('data-clipboard-target-id', codeId);
-
-          var figcaption = figure.querySelector('figcaption');
-
-          if (figcaption) {
-            figcaption.append(copyButton[0]);
-          } else {
-            figure.prepend(copyButton[0]);
-          }
-        })
-
-        var clipboard = new ClipboardJS('.clipboard-btn', {
-          target: function(trigger) {
-            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
-          }
-        });
-        clipboard.on('success', function(e) {
-          e.clearSelection();
-        })
-      })
-    </script>
-
-    
-    
-
-    
-
-
-
-<script src="/js/script.js"></script>
-
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-mask"></div>
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-    
-</body>
-</html>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/01/08/%E3%80%90GDC%E3%80%91Level%20Design%20Workshop%EF%BC%9ABlockmesh%20and%20Lighting%20Tips/" title="【GDC】Level Design Workshop：Blockmesh and Lighting Tips" class="prev">上一篇</a><a href="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC1%E8%AF%BE/" title="UE4蓝图 第1课" class="next">下一篇</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

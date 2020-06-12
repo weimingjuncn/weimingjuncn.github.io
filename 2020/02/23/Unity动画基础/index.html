@@ -1,745 +1,200 @@
-<!DOCTYPE html>
-<html class="has-navbar-fixed-top">
-<head>
-    <meta charset="utf-8">
-<title>Unity动画基础 - MJ&#39;s Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
-
-
-
-
-<meta name="description" content="This is a personal Blog.">
-
-
-
-
-
-    <meta name="description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2017.4.35f1 Personal &amp;#x5BFC;&amp;#x5165;&amp;#x8D44;&amp;#x6E90;&amp;#x5305;unity_animation_fundamentals_module_2_begin.unitypackage">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Unity动画基础">
-<meta property="og:url" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/index.html">
-<meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="Unity&amp;#x7248;&amp;#x672C;&amp;#xFF1A;Unity 2017.4.35f1 Personal &amp;#x5BFC;&amp;#x5165;&amp;#x8D44;&amp;#x6E90;&amp;#x5305;unity_animation_fundamentals_module_2_begin.unitypackage">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200306115006356.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200306115504925.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200306115942461.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200306135038980.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320181825478.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320182359505.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320215514821.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320220902629.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321082658400.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321083142461.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321083855523.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321092216642.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321094443227.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425205759946.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425213738029.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425210555148.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425211003751.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425211915696.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425213244652.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425223028862.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200527185740100.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200527190923869.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200527192045065.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528124245040.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528124713954.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528125540720.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528125636700.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528131024583.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528131351914.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528202026194.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200529122623553.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200529124320656.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608123937508.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608124311565.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608125207343.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608223600561.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608224444664.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608230554607.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609201925384.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609202146188.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609202935392.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609204504815.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609204821434.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609205414913.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609205722222.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609210219947.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609211613777.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609212307947.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609212528081.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609212752582.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609214521142.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609215258252.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609215605471.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609220435603.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609220814579.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609221102876.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609221329386.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609221506166.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609221947274.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609222136105.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609222218057.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609223225813.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609225036270.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609225548574.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609230306166.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609231407247.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609232105874.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609234540132.png">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609235030518.png">
-<meta property="article:published_time" content="2020-02-23T14:36:46.000Z">
-<meta property="article:modified_time" content="2020-06-09T16:02:10.828Z">
-<meta property="article:author" content="MJ">
-<meta property="article:tag" content="Unity">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200306115006356.png">
-
-
-
-
-
-<link rel="icon" href="/favicon.png">
-
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-<body>
-    
-<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item navbar-logo" href="/">
-                
-                <img src="/images/logo.png" alt="" height="28">
-                
-            </a>
-            <div class="navbar-burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        
-        <div class="navbar-menu navbar-start">
-            
-            <a class="navbar-item "
-               href="/archives">归档</a>
-            
-            <a class="navbar-item "
-               href="/tags">标签分类</a>
-            
-            <a class="navbar-item "
-               href="/about">关于</a>
-            
-        </div>
-        
-        <div class="navbar-menu navbar-end">
-            
-            <a class="navbar-item search" title="Search" href="javascript:;">
-                <i class="fas fa-search"></i>
-            </a>
-            
-            
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Table of Contents">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#一、Animator（动画控制器）">1&nbsp;&nbsp;<b>一、Animator（动画控制器）</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#创建动画片段">1.1&nbsp;&nbsp;创建动画片段</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#使用动画曲线">1.2&nbsp;&nbsp;使用动画曲线</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#重新定时动画">1.3&nbsp;&nbsp;重新定时动画</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#使用动画事件">1.4&nbsp;&nbsp;使用动画事件</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#创建多个剪辑">1.5&nbsp;&nbsp;创建多个剪辑</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Animator视窗里的基本操作">1.6&nbsp;&nbsp;Animator视窗里的基本操作</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#参数和条件">1.7&nbsp;&nbsp;参数和条件</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#脚本控制条件参数">1.8&nbsp;&nbsp;脚本控制条件参数</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#二、Maya导出动画">2&nbsp;&nbsp;<b>二、Maya导出动画</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#三、导入设置">3&nbsp;&nbsp;<b>三、导入设置</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#四、导入动画剪辑">4&nbsp;&nbsp;<b>四、导入动画剪辑</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#五、根动作（Root-motion">5&nbsp;&nbsp;<b>五、根动作（Root motion)</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#六、调整非人型rig的骨骼">6&nbsp;&nbsp;<b>六、调整非人型rig的骨骼</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#七、角色动画准备工作">7&nbsp;&nbsp;<b>七、角色动画准备工作</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#八、设计动画逻辑">8&nbsp;&nbsp;<b>八、设计动画逻辑</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#九、混合树（Blend-Tree）">9&nbsp;&nbsp;<b>九、混合树（Blend Tree）</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#十、动画层">10&nbsp;&nbsp;<b>十、动画层</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#十一、动画遮罩（Avatar-Mask）">11&nbsp;&nbsp;<b>十一、动画遮罩（Avatar Mask）</b></a>
-                    
-                </div>
-            </div>
-            
-            
-            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-               
-            
-        </div>
-    </div>
-</nav>
-
-    <section class="section">
-    <div class="container">
-    <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            Unity动画基础
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-02-23T14:36:46.000Z" itemprop="datePublished">2月 23 2020</time>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>Unity&#x7248;&#x672C;&#xFF1A;Unity 2017.4.35f1 Personal</p>
-<p>&#x5BFC;&#x5165;&#x8D44;&#x6E90;&#x5305;unity_animation_fundamentals_module_2_begin.unitypackage</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> Unity动画基础 · MJ's Blog</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Unity动画基础 - MJ"><meta name="keywords"><meta name="author" content="MJ"><link rel="short icon" href="/images/assassins_creed.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weimingjuncn.github.io/atom.xml" title="MJ's Blog"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script><meta name="generator" content="Hexo 4.2.0"></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/assassins_creed_white.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">Unity动画基础</h1><div class="post-info">2020-02-23</div><div class="post-content"><p>Unity版本：Unity 2017.4.35f1 Personal</p>
+<p>导入资源包unity_animation_fundamentals_module_2_begin.unitypackage</p>
 <a id="more"></a>
 
-<h1 id="&#x4E00;&#x3001;Animator&#xFF08;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF09;"><a href="#&#x4E00;&#x3001;Animator&#xFF08;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF09;" class="headerlink" title="&#x4E00;&#x3001;Animator&#xFF08;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF09;"></a>&#x4E00;&#x3001;Animator&#xFF08;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF09;</h1><h2 id="&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;"><a href="#&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;" class="headerlink" title="&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;"></a>&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;</h2><p>&#x5728;Assets/Animations&#x4E0B;&#x65B0;&#x5EFA;Animation&#xFF0C;&#x547D;&#x540D;&#x4E3A;Chest_Open&#x3002;</p>
-<p>&#x5728;&#x83DC;&#x5355;&#x680F; &gt; Window &gt; Animation&#x6253;&#x5F00;&#x52A8;&#x753B;&#x7A97;&#x53E3;&#x3002;</p>
-<p>&#x627E;&#x5230;&#x9009;&#x4E2D;&#x573A;&#x666F;&#x4E2D;&#x7684;Chest&#xFF0C;&#x5728;Animation&#x7A97;&#x53E3;&#x70B9;&#x51FB;Create&#x6309;&#x94AE;&#x5728;&#x5F39;&#x51FA;&#x7684;&#x7A97;&#x53E3;&#x4E2D;&#x9009;&#x4E2D;Open_Chest.anim&#x70B9;&#x51FB;&#x4FDD;&#x5B58;&#x3002;</p>
-<p>&#x5728;&#x7A97;&#x53E3;&#x4E2D;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;60&#x5E27;&#xFF0C;&#x6211;&#x4EEC;&#x4FEE;&#x6539;&#x6210;30&#x5E27;</p>
+<h1 id="一、Animator（动画控制器）"><a href="#一、Animator（动画控制器）" class="headerlink" title="一、Animator（动画控制器）"></a>一、Animator（动画控制器）</h1><h2 id="创建动画片段"><a href="#创建动画片段" class="headerlink" title="创建动画片段"></a>创建动画片段</h2><p>在Assets/Animations下新建Animation，命名为Chest_Open。</p>
+<p>在菜单栏 &gt; Window &gt; Animation打开动画窗口。</p>
+<p>找到选中场景中的Chest，在Animation窗口点击Create按钮在弹出的窗口中选中Open_Chest.anim点击保存。</p>
+<p>在窗口中默认提供60帧，我们修改成30帧</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200306115006356.png" alt="image-20200306115006356"></p>
-<p>&#x5C55;&#x5F00;Chest&#x9009;&#x4E2D;chest_top&#xFF0C;&#x5728;Animation&#x7A97;&#x53E3;&#x70B9;&#x51FB;Add Property&#xFF0C;&#x5C55;&#x5F00;chest_top &gt; Transform&#xFF0C;&#x70B9;&#x51FB;Rotation&#x53F3;&#x8FB9;&#x7684;&#x52A0;&#x53F7;&#x3002;</p>
+<p>展开Chest选中chest_top，在Animation窗口点击Add Property，展开chest_top &gt; Transform，点击Rotation右边的加号。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200306115504925.png" alt="image-20200306115504925"></p>
-<p>&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x5728;&#x52A8;&#x753B;&#x8D77;&#x59CB;&#x548C;&#x672B;&#x5C3E;&#x5404;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x767D;&#x7EBF;&#x62D6;&#x52A8;&#x5230;&#x6700;&#x540E;&#x4E00;&#x5E27;&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x8BB0;&#x5F55;&#x6309;&#x94AE;&#x3002;</p>
+<p>此时我们在动画起始和末尾各创建了一个关键帧，我们将白线拖动到最后一帧，然后点击记录按钮。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200306115942461.png" alt="image-20200306115942461"></p>
-<p>&#x4FEE;&#x6539;chest_top&#x7684;Rotation&#x7684;x&#x4E3A;-130&#xFF0C;&#x518D;&#x70B9;&#x51FB;&#x8BB0;&#x5F55;&#x6309;&#x94AE;&#x5173;&#x95ED;&#x8BB0;&#x5F55;&#xFF0C;&#x8FD9;&#x65F6;&#x6211;&#x4EEC;&#x70B9;&#x51FB;Animation&#x7A97;&#x53E3;&#x7684;&#x64AD;&#x653E;&#x6309;&#x94AE;&#xFF0C;Scene&#x7A97;&#x53E3;&#x5C06;&#x5FAA;&#x73AF;&#x64AD;&#x653E;Chest&#x6253;&#x5F00;&#x7684;&#x52A8;&#x753B;&#x3002;</p>
-<p>&#x5982;&#x56FE;&#x64CD;&#x4F5C;&#xFF0C;&#x70B9;&#x51FB;Clips&#x5217;&#x8868;&#xFF0C;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x52A8;&#x753B;Clip&#xFF0C;&#x547D;&#x540D;&#x4E3A;Chest_Close</p>
+<p>修改chest_top的Rotation的x为-130，再点击记录按钮关闭记录，这时我们点击Animation窗口的播放按钮，Scene窗口将循环播放Chest打开的动画。</p>
+<p>如图操作，点击Clips列表，添加新的动画Clip，命名为Chest_Close</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200306135038980.png" alt="image-20200306135038980"></p>
-<p>&#x70B9;&#x51FB;Clips&#x5217;&#x8868;&#xFF0C;&#x53EF;&#x6539;&#x53D8;&#x5F53;&#x524D;&#x8981;&#x7F16;&#x8F91;&#x7684;Clip.</p>
-<p>&#x70B9;&#x51FB;Add Property&#xFF0C;&#x9009;&#x4E2D;chest_top &gt; Transform &gt; Rotation&#x3002;</p>
-<h2 id="&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;"><a href="#&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;" class="headerlink" title="&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;"></a>&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x66F2;&#x7EBF;</h2><p>&#x4FDD;&#x6301;Chest&#x88AB;&#x9009;&#x4E2D;&#xFF0C;&#x70B9;&#x51FB;Animation&#x7A97;&#x53E3;&#x4E0B;&#x7684;Curves&#x6309;&#x94AE;&#xFF0C;&#x6253;&#x5F00;&#x52A8;&#x753B;&#x66F2;&#x7EBF;&#x754C;&#x9762;&#xFF0C;</p>
+<p>点击Clips列表，可改变当前要编辑的Clip.</p>
+<p>点击Add Property，选中chest_top &gt; Transform &gt; Rotation。</p>
+<h2 id="使用动画曲线"><a href="#使用动画曲线" class="headerlink" title="使用动画曲线"></a>使用动画曲线</h2><p>保持Chest被选中，点击Animation窗口下的Curves按钮，打开动画曲线界面，</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320181825478.png" alt="image-20200320181825478"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320182359505.png" alt="image-20200320182359505"></p>
-<h2 id="&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;"><a href="#&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;" class="headerlink" title="&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;"></a>&#x91CD;&#x65B0;&#x5B9A;&#x65F6;&#x52A8;&#x753B;</h2><h2 id="&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;"><a href="#&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;"></a>&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;</h2><p>&#x5C06;&#x52A8;&#x753B;&#x5149;&#x6807;&#x79FB;&#x52A8;&#x5230;&#x7BB1;&#x5B50;&#x5B8C;&#x5168;&#x6253;&#x5F00;&#x7684;&#x5173;&#x952E;&#x5E27;&#x4F4D;&#x7F6E;&#xFF0C;&#x70B9;&#x51FB;&#x6DFB;&#x52A0;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x6309;&#x94AE;&#x3002;</p>
+<h2 id="重新定时动画"><a href="#重新定时动画" class="headerlink" title="重新定时动画"></a>重新定时动画</h2><h2 id="使用动画事件"><a href="#使用动画事件" class="headerlink" title="使用动画事件"></a>使用动画事件</h2><p>将动画光标移动到箱子完全打开的关键帧位置，点击添加动画事件按钮。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320215514821.png" alt="image-20200320215514821"></p>
-<p>&#x6B64;&#x65F6;Inpsector&#x9762;&#x677F;&#x51FA;&#x73B0;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#x3002;&#x6211;&#x4EEC;&#x5728;Hierarchy&#x9009;&#x4E2D;Chest&#xFF0C;&#x4E3A;&#x5176;&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;Treasure Chest(Script)&#x3002;</p>
-<p>&#x4E3A;Chest&#x6DFB;&#x52A0;&#x7A7A;&#x7684;&#x5B50;GameObject&#x5E76;&#x91CD;&#x547D;&#x540D;&#x4E3A;Spawner&#x3002;&#x5C06;&#x5176;&#x62D6;&#x62FD;&#x6DFB;&#x52A0;&#x5230;Chest&#x7684;Treasure Chest(Script)&#x7EC4;&#x4EF6;&#x4E0B;Spawner&#x5C5E;&#x6027;&#x3002;&#x4ECE;Assets/Prefabs&#x4E0B;&#x62D6;&#x62FD;Coin&#x5230;Chest&#x7684;Treasure Chest(Script)&#x7EC4;&#x4EF6;&#x4E0B;Coin Prefab&#x5C5E;&#x6027;&#x3002;&#x6211;&#x4EEC;&#x53CC;&#x51FB;&#x8BE5;&#x7EC4;&#x4EF6;&#x4E0B;&#x7684;Script&#x5C5E;&#x6027;&#x6253;&#x5F00;&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x6709;&#x4E00;&#x4E2A;OpenChest&#x65B9;&#x6CD5;&#x3002;</p>
-<p>&#x56DE;&#x5230;Unity&#xFF0C;&#x5728;Animation&#x7A97;&#x53E3;&#x70B9;&#x51FB;&#x521A;&#x624D;&#x6DFB;&#x52A0;&#x7684;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x6807;&#x8BB0;&#xFF0C;&#x5728;Inspector&#x7A97;&#x53E3;&#x7684;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;&#x9009;&#x9879;&#x91CC;&#x6211;&#x4EEC;&#x6709;3&#x79CD;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x3002;&#x9009;&#x62E9;OpenChest&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5C31;&#x4E0E;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#x5173;&#x8054;&#x4E0A;&#x4E86;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x64AD;&#x653E;&#x6E38;&#x620F;&#x65F6;&#xFF0C;&#x5F00;&#x7BB1;&#x52A8;&#x753B;&#x64AD;&#x653E;&#x5230;&#x5B8C;&#x5168;&#x6253;&#x5F00;&#x5173;&#x952E;&#x5E27;&#x65F6;&#x5C06;&#x81EA;&#x52A8;&#x89E6;&#x53D1;&#x52A8;&#x753B;&#x4E8B;&#x4EF6;&#xFF0C;&#x8C03;&#x7528;OpenChest&#x51FD;&#x6570;&#xFF0C;&#x5F39;&#x51FA;&#x786C;&#x5E01;&#x3002;</p>
+<p>此时Inpsector面板出现动画事件函数设置。我们在Hierarchy选中Chest，为其添加组件Treasure Chest(Script)。</p>
+<p>为Chest添加空的子GameObject并重命名为Spawner。将其拖拽添加到Chest的Treasure Chest(Script)组件下Spawner属性。从Assets/Prefabs下拖拽Coin到Chest的Treasure Chest(Script)组件下Coin Prefab属性。我们双击该组件下的Script属性打开脚本文件，在其中我们发现有一个OpenChest方法。</p>
+<p>回到Unity，在Animation窗口点击刚才添加的动画事件标记，在Inspector窗口的动画事件函数选项里我们有3种函数可以选择。选择OpenChest，这个函数就与动画事件关联上了。当我们播放游戏时，开箱动画播放到完全打开关键帧时将自动触发动画事件，调用OpenChest函数，弹出硬币。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200320220902629.png" alt="image-20200320220902629"></p>
-<h2 id="&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;"><a href="#&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;" class="headerlink" title="&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;"></a>&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x526A;&#x8F91;</h2><p>&#x9996;&#x5148;&#x4E3A;Chest_Close&#x6DFB;&#x52A0;&#x5C5E;&#x6027;Rotation&#xFF0C;&#x901A;&#x8FC7;Ctrl+C/V&#x5C06;Chest_Open&#x7684;&#x5173;&#x952E;&#x5E27;&#x590D;&#x5236;&#x7C98;&#x8D34;&#x5230;Chest_Close&#x91CC;&#x3002;</p>
-<p>&#x5728;Chest_Close&#x91CC;&#xFF0C;&#x5C06;&#x9996;&#x5C3E;&#x4E24;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#x4EA4;&#x6362;&#x4F4D;&#x7F6E;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x6574;&#x5176;&#x52A8;&#x753B;&#x66F2;&#x7EBF;&#x3002;</p>
+<h2 id="创建多个剪辑"><a href="#创建多个剪辑" class="headerlink" title="创建多个剪辑"></a>创建多个剪辑</h2><p>首先为Chest_Close添加属性Rotation，通过Ctrl+C/V将Chest_Open的关键帧复制粘贴到Chest_Close里。</p>
+<p>在Chest_Close里，将首尾两个关键帧交换位置，然后调整其动画曲线。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321082658400.png" alt="image-20200321082658400"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321083142461.png" alt="image-20200321083142461"></p>
-<h2 id="Animator&#x89C6;&#x7A97;&#x91CC;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;"><a href="#Animator&#x89C6;&#x7A97;&#x91CC;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;" class="headerlink" title="Animator&#x89C6;&#x7A97;&#x91CC;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;"></a>Animator&#x89C6;&#x7A97;&#x91CC;&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h2><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6709;&#x591A;&#x4E2A;&#x52A8;&#x753B;&#x7247;&#x6BB5;&#xFF0C;&#x9700;&#x8981;&#x7BA1;&#x7406;&#x5B83;&#x4EEC;&#xFF0C;&#x751A;&#x81F3;&#x5728;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x4E4B;&#x95F4;&#x8F6C;&#x6362;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x4E0E;&#x52A8;&#x753B;&#x7EC4;&#x4EF6;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x7684;&#x6E38;&#x620F;Assets&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7247;&#x6BB5;&#x65F6;&#xFF0C;Unity&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x8BE5;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x52A8;&#x753B;&#x7684;&#x63A7;&#x5236;&#x53C2;&#x6570;&#x3002;</p>
+<h2 id="Animator视窗里的基本操作"><a href="#Animator视窗里的基本操作" class="headerlink" title="Animator视窗里的基本操作"></a>Animator视窗里的基本操作</h2><p>如果我们有多个动画片段，需要管理它们，甚至在一个动画到下一个动画之间转换，需要使用动画控制器。这是一个可以与动画组件一起使用的游戏Assets。当我们创建动画片段时，Unity会自动创建一个动画控制器，该动画控制器需要设置动画的控制参数。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321083855523.png" alt="image-20200321083855523"></p>
-<p>&#x53CC;&#x51FB;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x6253;&#x5F00;Animation&#x7A97;&#x53E3;</p>
+<p>双击动画控制器，打开Animation窗口</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321092216642.png" alt="image-20200321092216642"></p>
-<p>&#x5728;Animation&#x7A97;&#x53E3;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x56DB;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6309;&#x4F4F;&#x9F20;&#x6807;&#x4E2D;&#x952E;&#x53EF;&#x4EE5;&#x79FB;&#x52A8;&#x89C2;&#x56FE;&#x89C6;&#x89D2;</p>
-<p>Any State&#xFF1A;&#x7279;&#x6B8A;&#x8282;&#x70B9;&#xFF0C;&#x5141;&#x8BB8;&#x4E2D;&#x65AD;&#x6B63;&#x5728;&#x64AD;&#x653E;&#x7684;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x6216;&#x6B63;&#x5728;&#x64AD;&#x653E;&#x4EE5;&#x9000;&#x51FA;&#x5E76;&#x8FDB;&#x5165;&#x53E6;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x7684;&#x5F53;&#x524D;&#x52A8;&#x753B;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5F53;&#x73A9;&#x5BB6;&#x7684;&#x751F;&#x547D;&#x503C;&#x964D;&#x4F4E;&#x5230;&#x96F6;&#xFF0C;&#x73A9;&#x5BB6;&#x5904;&#x4E8E;&#x751F;&#x547D;&#x72B6;&#x6001;&#x5E76;&#x4E0D;&#x91CD;&#x8981;&#xFF0C;&#x5B83;&#x5C06;&#x8F6C;&#x5230;&#x6B7B;&#x4EA1;&#x52A8;&#x753B;&#x3002;</p>
-<p>Entry&#xFF1A;&#x4EFB;&#x4F55;&#x6E38;&#x620F;&#x5F00;&#x59CB;&#x6216;&#x57FA;&#x7840;&#x5C42;&#x4E0A;&#x7684;&#x7279;&#x6B8A;&#x72B6;&#x6001;&#x673A;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x5C06;&#x8FDB;&#x5165;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;/&#x9ED8;&#x8BA4;&#x52A8;&#x753B;&#x3002;</p>
-<p>Exit&#xFF1A;&#x7279;&#x6B8A;&#x8282;&#x70B9;&#xFF0C;&#x8868;&#x660E;&#x72B6;&#x6001;&#x673A;&#x5E94;&#x8BE5;&#x9000;&#x51FA;&#x3002;</p>
+<p>在Animation窗口中，我们看到四个节点，按住鼠标中键可以移动观图视角</p>
+<p>Any State：特殊节点，允许中断正在播放的当前状态或正在播放以退出并进入另一个状态的当前动画。例如，当玩家的生命值降低到零，玩家处于生命状态并不重要，它将转到死亡动画。</p>
+<p>Entry：任何游戏开始或基础层上的特殊状态机的开始，将进入的第一个默认状态/默认动画。</p>
+<p>Exit：特殊节点，表明状态机应该退出。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200321094443227.png" alt="image-20200321094443227"></p>
-<p>Chest_Open&#x72B6;&#x6001;&#x662F;&#x6A59;&#x8272;&#x7684;&#xFF0C;&#x4EE3;&#x8868;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;&#xFF0C;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x5C06;&#x5728;&#x6E38;&#x620F;&#x5F00;&#x59CB;&#x540E;&#x7ACB;&#x5373;&#x64AD;&#x653E;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x7BB1;&#x5B50;&#x5728;&#x6E38;&#x620F;&#x5F00;&#x59CB;&#x65F6;&#x65F6;&#x4FDD;&#x6301;&#x5173;&#x95ED;&#x72B6;&#x6001;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x72B6;&#x6001;&#x3002;&#x5728;Animator&#x89C6;&#x7A97;&#x7A7A;&#x767D;&#x5904;&#x53F3;&#x952E;&#x9009;&#x62E9;Create State|Empty&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;Chest_Idle&#xFF0C;&#x4E14;&#x5B83;&#x7684;Motion&#x8BBE;&#x4E3A;None&#x3002;</p>
+<p>Chest_Open状态是橙色的，代表默认状态，表示这个动画将在游戏开始后立即播放。如果我们希望箱子在游戏开始时时保持关闭状态，我们需要先创建一个空状态。在Animator视窗空白处右键选择Create State|Empty，重命名为Chest_Idle，且它的Motion设为None。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425205759946.png" alt="image-20200425205759946"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425213738029.png" alt="image-20200425213738029"></p>
-<p>&#x7136;&#x540E;&#x9009;&#x4E2D;Chest_Idle&#x53F3;&#x952E;&#x9009;&#x62E9;Set as Layer Default State&#x3002;&#x6B64;&#x65F6;&#x64AD;&#x653E;&#x52A8;&#x753B;&#xFF0C;Chest&#x4FDD;&#x6301;&#x5173;&#x95ED;&#x72B6;&#x6001;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x8981;&#x7BB1;&#x5B50;&#x4ECE;Chest_Idle&#x8F6C;&#x53D8;&#x5230;Chest_Open&#x72B6;&#x6001;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x53F3;&#x952E;Chest_Idle&#xFF0C;&#x9009;&#x62E9;Make Transition&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;Chest_Open&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x8FC7;&#x6E21;&#x7BAD;&#x5934;&#x5C06;&#x4E24;&#x4E2A;&#x72B6;&#x6001;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x3002;</p>
+<p>然后选中Chest_Idle右键选择Set as Layer Default State。此时播放动画，Chest保持关闭状态。</p>
+<p>我们要箱子从Chest_Idle转变到Chest_Open状态，可以先右键Chest_Idle，选择Make Transition，然后点击Chest_Open，这样一个过渡箭头将两个状态连接起来。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425210555148.png" alt="image-20200425210555148"></p>
-<p>&#x9009;&#x4E2D;&#x8FD9;&#x4E2A;&#x8FC7;&#x6E21;&#x7BAD;&#x5934;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;Inspector&#x91CC;&#x8BBE;&#x7F6E;&#x8FC7;&#x6E21;&#x6761;&#x4EF6;&#x3002;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x4F1A;&#x53D6;&#x6D88;&#x52FE;&#x9009;Has Exit Time&#xFF0C;&#x5E76;&#x786E;&#x4FDD;&#x4E0B;&#x65B9;&#x7684;Condition&#x91CC;&#x8BBE;&#x7F6E;&#x4E86;&#x6761;&#x4EF6;&#x3002;</p>
+<p>选中这个过渡箭头，我们可以在Inspector里设置过渡条件。通常我们会取消勾选Has Exit Time，并确保下方的Condition里设置了条件。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425211003751.png" alt="image-20200425211003751"></p>
-<h2 id="&#x53C2;&#x6570;&#x548C;&#x6761;&#x4EF6;"><a href="#&#x53C2;&#x6570;&#x548C;&#x6761;&#x4EF6;" class="headerlink" title="&#x53C2;&#x6570;&#x548C;&#x6761;&#x4EF6;"></a>&#x53C2;&#x6570;&#x548C;&#x6761;&#x4EF6;</h2><p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;Condition&#xFF08;&#x6761;&#x4EF6;&#xFF09;&#xFF0C;&#x6761;&#x4EF6;&#x5728;Animator&#x89C6;&#x7A97;&#x5DE6;&#x8FB9;&#x7684;Parameter&#xFF08;&#x53C2;&#x6570;&#xFF09;&#x89C6;&#x7A97;&#x91CC;&#x521B;&#x5EFA;&#x3002;&#x70B9;&#x51FB;&#x52A0;&#x53F7;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6709;&#x56DB;&#x79CD;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x4F9B;&#x9009;&#x62E9;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x6B21;&#x9009;&#x62E9;&#x521B;&#x5EFA;Bool&#xFF08;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#xFF09;&#x53C2;&#x6570;&#xFF0C;&#x5E76;&#x91CD;&#x547D;&#x540D;&#x4E3A;isOpen&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x6765;&#x63A7;&#x5236;&#x7BB1;&#x5B50;&#x7684;&#x5F00;&#x5173;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x8BBE;&#x4E3A;false&#x3002;</p>
+<h2 id="参数和条件"><a href="#参数和条件" class="headerlink" title="参数和条件"></a>参数和条件</h2><p>接下来我们将使用Condition（条件），条件在Animator视窗左边的Parameter（参数）视窗里创建。点击加号，我们可以看到有四种数据类型参数供选择，我们这次选择创建Bool（布尔类型）参数，并重命名为isOpen。我们将利用这个参数来控制箱子的开关，默认值设为false。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425211915696.png" alt="image-20200425211915696"></p>
-<p>&#x7136;&#x540E;&#x9009;&#x4E2D;Chest_Idle&#x5230;Chest_Open&#x7684;&#x8FC7;&#x6E21;&#x7BAD;&#x5934;&#xFF0C;&#x5728;Conditions&#x70B9;&#x51FB;&#x52A0;&#x53F7;&#xFF0C;&#x8BBE;&#x7F6E;isOpen&#x4E3A;true&#x3002;</p>
+<p>然后选中Chest_Idle到Chest_Open的过渡箭头，在Conditions点击加号，设置isOpen为true。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425213244652.png" alt="image-20200425213244652"></p>
-<p>&#x540C;&#x7406;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;Chest_Open&#x5230;Chest_Close&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4E92;&#x8FC7;&#x6E21;&#x4E5F;&#x505A;&#x6761;&#x4EF6;&#x8BBE;&#x7F6E;&#xFF0C;&#x5F00;&#x7BB1;&#x5230;&#x5173;&#x7BB1;&#x7684;&#x6761;&#x4EF6;&#x662F;isOpen&#x4E3A;false&#xFF0C;&#x5173;&#x7BB1;&#x5230;&#x5F00;&#x7BB1;&#x7684;&#x6761;&#x4EF6;&#x4E3A;true&#xFF0C;&#x8BB0;&#x5F97;&#x90FD;&#x53D6;&#x6D88;&#x52FE;&#x9009;Has Exit Time&#x3002;</p>
-<h2 id="&#x811A;&#x672C;&#x63A7;&#x5236;&#x6761;&#x4EF6;&#x53C2;&#x6570;"><a href="#&#x811A;&#x672C;&#x63A7;&#x5236;&#x6761;&#x4EF6;&#x53C2;&#x6570;" class="headerlink" title="&#x811A;&#x672C;&#x63A7;&#x5236;&#x6761;&#x4EF6;&#x53C2;&#x6570;"></a>&#x811A;&#x672C;&#x63A7;&#x5236;&#x6761;&#x4EF6;&#x53C2;&#x6570;</h2><p>&#x6253;&#x5F00;Assets/Scripts&#x4E0B;&#x7684;TreasureChest.cs&#xFF0C;&#x4EE5;&#x4E0B;&#x53EA;&#x5C55;&#x793A;&#x90E8;&#x5206;&#x5173;&#x952E;&#x4EE3;&#x7801;&#xFF08;&#x91CD;&#x70B9;&#x770B;Update&#x65B9;&#x6CD5;&#xFF09;&#xFF1A;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TreasureChest</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> interactable = <span class="hljs-literal">false</span>;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> isOpen = <span class="hljs-literal">false</span>;</span><br><span class="line">    <span class="hljs-keyword">private</span> Animator anim;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> Rigidbody coinPrefab;</span><br><span class="line">    <span class="hljs-keyword">public</span> Transform spawner;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">// Use this for initialization</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">	}	</span><br><span class="line">	<span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">		<span class="hljs-keyword">if</span>(Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">        {</span><br><span class="line">          isOpen = !isOpen;</span><br><span class="line">          anim.SetBool(<span class="hljs-string">&quot;isOpen&quot;</span>, isOpen);</span><br><span class="line">        }</span><br><span class="line">	}</span><br><span class="line">...</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x7136;&#x540E;&#x56DE;&#x5230;Unity&#xFF0C;&#x5C06;Animations&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;Chest_Close&#x3001;Chest_Open&#x7684;Loop Time&#x53D6;&#x6D88;&#x52FE;&#x9009;&#xFF0C;&#x4E0D;&#x8BA9;&#x5176;&#x5FAA;&#x73AF;&#x64AD;&#x653E;&#x52A8;&#x753B;&#x526A;&#x8F91;&#x3002;</p>
+<p>同理，我们将Chest_Open到Chest_Close之间的相互过渡也做条件设置，开箱到关箱的条件是isOpen为false，关箱到开箱的条件为true，记得都取消勾选Has Exit Time。</p>
+<h2 id="脚本控制条件参数"><a href="#脚本控制条件参数" class="headerlink" title="脚本控制条件参数"></a>脚本控制条件参数</h2><p>打开Assets/Scripts下的TreasureChest.cs，以下只展示部分关键代码（重点看Update方法）：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TreasureChest</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> interactable = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> isOpen = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">private</span> Animator anim;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Rigidbody coinPrefab;</span><br><span class="line">    <span class="keyword">public</span> Transform spawner;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Use this for initialization</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="comment">// Update is called once per frame</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">		<span class="keyword">if</span>(Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">        &#123;</span><br><span class="line">          isOpen = !isOpen;</span><br><span class="line">          anim.SetBool(<span class="string">"isOpen"</span>, isOpen);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后回到Unity，将Animations文件夹下的Chest_Close、Chest_Open的Loop Time取消勾选，不让其循环播放动画剪辑。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200425223028862.png" alt="image-20200425223028862"></p>
-<p>&#x7136;&#x540E;&#x4FDD;&#x5B58;&#xFF0C;&#x64AD;&#x653E;&#x573A;&#x666F;&#xFF0C;&#x7BB1;&#x5B50;&#x4E00;&#x5F00;&#x59CB;&#x662F;&#x5173;&#x95ED;&#x7684;&#xFF0C;&#x6309;&#x7A7A;&#x683C;&#x952E;&#x7BB1;&#x5B50;&#x6253;&#x5F00;&#xFF0C;&#x518D;&#x6309;&#x4E00;&#x6B21;&#x7A7A;&#x683C;&#x952E;&#x7BB1;&#x5B50;&#x5173;&#x95ED;&#x3002;</p>
-<h1 id="&#x4E8C;&#x3001;Maya&#x5BFC;&#x51FA;&#x52A8;&#x753B;"><a href="#&#x4E8C;&#x3001;Maya&#x5BFC;&#x51FA;&#x52A8;&#x753B;" class="headerlink" title="&#x4E8C;&#x3001;Maya&#x5BFC;&#x51FA;&#x52A8;&#x753B;"></a>&#x4E8C;&#x3001;Maya&#x5BFC;&#x51FA;&#x52A8;&#x753B;</h1><p>&#x7528;Maya 2018&#x6253;&#x5F00;&#x8D44;&#x6599;&#x91CC;Referenced Files&#x91CC;&#x7684;rig_DwarfHero_root_motion.ma&#x3002;</p>
-<h1 id="&#x4E09;&#x3001;&#x5BFC;&#x5165;&#x8BBE;&#x7F6E;"><a href="#&#x4E09;&#x3001;&#x5BFC;&#x5165;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x4E09;&#x3001;&#x5BFC;&#x5165;&#x8BBE;&#x7F6E;"></a>&#x4E09;&#x3001;&#x5BFC;&#x5165;&#x8BBE;&#x7F6E;</h1><p>&#x56DE;&#x5230;Unity&#xFF0C;&#x9009;&#x4E2D;Assets/Mesh/dwarf_hero&#xFF0C;Inspector&#x89C6;&#x7A97;&#x91CC;&#x9009;&#x4E2D;Model&#xFF0C;&#x53D6;&#x6D88;&#x52FE;&#x9009;Import Visibility&#x3001;Import Cameras&#x3001;Import Lights&#xFF0C;&#x5176;&#x4ED6;&#x4FDD;&#x6301;&#x9ED8;&#x8BA4;&#xFF0C;&#x70B9;&#x51FB;Materials&#xFF0C;&#x52FE;&#x9009;Import Materials&#xFF0C;&#x70B9;&#x51FB;Apply&#x3002;&#x6B64;&#x65F6;&#x53EF;&#x89C1;&#x7D20;&#x6750;&#x7684;&#x6750;&#x8D28;&#x5F97;&#x5230;&#x4E86;&#x5E94;&#x7528;&#x3002;</p>
-<p>&#x70B9;&#x51FB;Rig&#xFF0C;Animation Type&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x4E3A;Generic&#x3002;&#x6B64;&#x9879;&#x53EF;&#x4EE5;&#x53EF;&#x9009;&#x7684;&#x503C;&#x6709;&#xFF1A;</p>
-<p>None&#xFF1A;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x7BB1;&#x5B50;&#x3001;&#x673A;&#x5173;&#x95E8;&#x7B49;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x6CA1;&#x6709;&#x9AA8;&#x9ABC;&#x3002;</p>
-<p>Legacy&#xFF1A;&#x4E13;&#x7528;&#x529F;&#x80FD;&#xFF0C;&#x7528;&#x4E8E;&#x517C;&#x5BB9;&#x8001;&#x7248;&#x672C;Unity 5&#x9879;&#x76EE;&#x3002;</p>
-<p>Generic&#xFF1A;&#x57FA;&#x4E8E;&#x9AA8;&#x9ABC;&#x521B;&#x5EFA;avatar&#xFF0C;&#x6CA1;&#x6709;&#x4EBA;&#x5F62;&#x7684;&#x7279;&#x5F81;&#x3002;</p>
-<p>Humanoid&#xFF1A;&#x7528;&#x4E8E;&#x5C06;&#x5DF2;&#x6709;&#x7684;&#x52A8;&#x753B;&#x91CD;&#x65B0;&#x7528;&#x5728;&#x591A;&#x4E2A;&#x89D2;&#x8272;&#x4EBA;&#x7269;&#x4E0A;&#x3002;</p>
-<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5C06;Animation Type&#x8BBE;&#x4E3A;Humanoid&#xFF0C;Avatar Definition&#x8BBE;&#x7F6E;&#x4E3A;Create From This Mode&#xFF0C;&#x70B9;&#x51FB;Apply&#xFF0C;&#x70B9;&#x51FB;Configure&#xFF0C;&#x9009;&#x62E9;&#x4FDD;&#x5B58;&#x5F53;&#x524D;&#x573A;&#x666F;&#xFF0C;&#x8FDB;&#x5165;&#x5230;&#x89D2;&#x8272;&#x7684;&#x4E34;&#x65F6;&#x573A;&#x666F;&#xFF0C;&#x89D2;&#x8272;&#x5904;&#x4E8E;T&#x5F62;&#x59FF;&#x52BF;&#xFF0C;&#x65B9;&#x4FBF;&#x5728;&#x9AA8;&#x9ABC;&#x4E0A;&#x7ED1;&#x5B9A;&#x5176;&#x4ED6;&#x7269;&#x54C1;&#x3002;</p>
+<p>然后保存，播放场景，箱子一开始是关闭的，按空格键箱子打开，再按一次空格键箱子关闭。</p>
+<h1 id="二、Maya导出动画"><a href="#二、Maya导出动画" class="headerlink" title="二、Maya导出动画"></a>二、Maya导出动画</h1><p>用Maya 2018打开资料里Referenced Files里的rig_DwarfHero_root_motion.ma。</p>
+<h1 id="三、导入设置"><a href="#三、导入设置" class="headerlink" title="三、导入设置"></a>三、导入设置</h1><p>回到Unity，选中Assets/Mesh/dwarf_hero，Inspector视窗里选中Model，取消勾选Import Visibility、Import Cameras、Import Lights，其他保持默认，点击Materials，勾选Import Materials，点击Apply。此时可见素材的材质得到了应用。</p>
+<p>点击Rig，Animation Type默认设置为Generic。此项可以可选的值有：</p>
+<p>None：一般用于箱子、机关门等，因为他们没有骨骼。</p>
+<p>Legacy：专用功能，用于兼容老版本Unity 5项目。</p>
+<p>Generic：基于骨骼创建avatar，没有人形的特征。</p>
+<p>Humanoid：用于将已有的动画重新用在多个角色人物上。</p>
+<p>这里我们将Animation Type设为Humanoid，Avatar Definition设置为Create From This Mode，点击Apply，点击Configure，选择保存当前场景，进入到角色的临时场景，角色处于T形姿势，方便在骨骼上绑定其他物品。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200527185740100.png" alt="image-20200527185740100"></p>
-<p>&#x901A;&#x8FC7;Inspector&#x89C6;&#x7A97;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5B9A;&#x4F4D;&#x9AA8;&#x9ABC;&#x5173;&#x8282;&#x5E76;&#x5728;&#x573A;&#x666F;&#x7A97;&#x53E3;&#x4E2D;&#x6539;&#x53D8;&#x9AA8;&#x9ABC;&#x5E03;&#x5C40;&#x3002;</p>
-<p>Mapping&#x4E2D;&#x7684;&#x70B9;&#xFF0C;&#x5916;&#x5708;&#x662F;&#x5B9E;&#x7EBF;&#x73AF;&#x7684;&#x662F;&#x5FC5;&#x8981;&#x8282;&#x70B9;&#xFF0C;&#x5916;&#x8FB9;&#x662F;&#x865A;&#x7EBF;&#x73AF;&#x7684;&#x662F;&#x53EF;&#x9009;&#x8282;&#x70B9;&#x3002;</p>
+<p>通过Inspector视窗我们可以定位骨骼关节并在场景窗口中改变骨骼布局。</p>
+<p>Mapping中的点，外圈是实线环的是必要节点，外边是虚线环的是可选节点。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200527190923869.png" alt="image-20200527190923869"></p>
-<p>&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x6848;&#x4F8B;&#x4E2D;&#x7684;&#x9AA8;&#x9ABC;&#x5065;&#x58EE;&#x6027;&#x5F88;&#x5F3A;&#xFF0C;&#x6240;&#x4EE5;&#x5728;Unity&#x4E2D;&#x90FD;&#x81EA;&#x52A8;&#x6620;&#x5C04;&#x597D;&#x4E86;&#x3002;&#x8981;&#x4F7F;&#x7528;Unity&#x7684;&#x81EA;&#x52A8;&#x6620;&#x5C04;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;Mapping&#xFF0C;&#x9009;&#x62E9;Automap&#x3002;</p>
+<p>因为这个案例中的骨骼健壮性很强，所以在Unity中都自动映射好了。要使用Unity的自动映射，我们可以点击Mapping，选择Automap。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200527192045065.png" alt="image-20200527192045065"></p>
-<p>&#x6216;&#x8005;&#x53EF;&#x4EE5;&#x9009;&#x62E9;Clear&#xFF0C;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x6620;&#x5C04;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x66F4;&#x6539;&#x89D2;&#x8272;&#x7684;&#x59FF;&#x52BF;&#xFF0C;&#x70B9;&#x51FB;Pose&#x3002;&#x5F53;&#x524D;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x662F;Enforce T-Pose&#xFF0C;&#x5982;&#x679C;&#x9009;&#x62E9;Sample Blind-Pose&#x5219;&#x8F6C;&#x4E3A;&#x89D2;&#x8272;&#x7684;&#x539F;&#x59CB;&#x59FF;&#x52BF;</p>
+<p>或者可以选择Clear，自己手动一个一个映射。</p>
+<p>我们可以更改角色的姿势，点击Pose。当前我们使用的是Enforce T-Pose，如果选择Sample Blind-Pose则转为角色的原始姿势</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528124245040.png" alt="image-20200528124245040"></p>
-<p>&#x4FDD;&#x6301;T-Pose&#xFF0C;&#x70B9;&#x51FB;Apply&#x5E94;&#x7528;&#x8BBE;&#x7F6E;&#x3002;</p>
-<p>&#x9AA8;&#x9ABC;&#x8BBE;&#x7F6E;&#x597D;&#x540E;&#xFF0C;&#x70B9;&#x51FB;Muscles&amp;Settings&#x8FDB;&#x884C;&#x808C;&#x8089;&#x8BBE;&#x7F6E;&#x3002;</p>
+<p>保持T-Pose，点击Apply应用设置。</p>
+<p>骨骼设置好后，点击Muscles&amp;Settings进行肌肉设置。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528124713954.png" alt="image-20200528124713954"></p>
-<p>&#x808C;&#x8089;&#x5E76;&#x975E;&#x5FC5;&#x8981;&#x7684;&#x8BBE;&#x7F6E;&#x9879;&#xFF0C;&#x5B83;&#x53EA;&#x662F;&#x4E3A;&#x9AA8;&#x9ABC;&#x8BBE;&#x7F6E;&#x8FD0;&#x52A8;&#x8303;&#x56F4;&#x3002;&#x901A;&#x8FC7;Musles Group Preview&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x5730;&#x4E86;&#x89E3;&#x89D2;&#x8272;&#x7684;&#x8FD0;&#x52A8;&#x65B9;&#x5F0F;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x91CD;&#x5B9A;&#x4F4D;&#x89D2;&#x8272;&#x7684;&#x5176;&#x4ED6;&#x52A8;&#x753B;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8C03;&#x8282;Open Close&#x6765;&#x8C03;&#x6574;&#x9AA8;&#x9ABC;&#x7684;&#x6253;&#x5F00;&#x548C;&#x5173;&#x95ED;&#x72B6;&#x6001;&#x3002;</p>
+<p>肌肉并非必要的设置项，它只是为骨骼设置运动范围。通过Musles Group Preview可以很好地了解角色的运动方式以及如何重定位角色的其他动画。例如，我们可以调节Open Close来调整骨骼的打开和关闭状态。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528125540720.png" alt="image-20200528125540720"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528125636700.png" alt="image-20200528125636700"></p>
-<p>&#x901A;&#x8FC7;Per-Muscle Settings&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x5177;&#x4F53;&#x7684;&#x9AA8;&#x9ABC;&#x672C;&#x8EAB;&#x8FDB;&#x884C;&#x8FD0;&#x52A8;&#x8303;&#x56F4;&#x7684;&#x4FEE;&#x6539;&#x3002;&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x8981;&#x5C06;body&#x4F38;&#x5C55;&#x5F00;&#xFF0C;&#x8C03;&#x8282;&#x65F6;&#x4F1A;&#x6709;&#x7279;&#x5B9A;&#x7684;&#x8303;&#x56F4;&#x3002;&#x6211;&#x4EEC;&#x653E;&#x5927;&#x4F1A;&#x770B;&#x5230;&#x6247;&#x5F62;&#x7684;&#x8303;&#x56F4;&#x533A;&#x3002;</p>
+<p>通过Per-Muscle Settings，我们可以对具体的骨骼本身进行运动范围的修改。例如我们要将body伸展开，调节时会有特定的范围。我们放大会看到扇形的范围区。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528131024583.png" alt="image-20200528131024583"></p>
-<p>&#x6B64;&#x65F6;spine Front-Back&#x5904;&#x4E8E;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x5BF9;&#x5E94;&#x9AA8;&#x9ABC;&#x5904;&#x5728;&#x6247;&#x5F62;&#x7684;&#x8FB9;&#x7F18;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8C03;&#x8282;&#x4E0B;&#x65B9;&#x7684;&#x6ED1;&#x5757;&#x7684;&#x4E24;&#x7AEF;&#x6765;&#x8C03;&#x6574;&#x6D3B;&#x52A8;&#x8303;&#x56F4;&#x6700;&#x5927;&#x503C;&#x6216;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6247;&#x5F62;&#x7684;&#x5927;&#x5C0F;&#x4E5F;&#x987A;&#x4FBF;&#x6539;&#x53D8;&#x4E86;&#x3002;</p>
+<p>此时spine Front-Back处于最大值，对应骨骼处在扇形的边缘，我们可以调节下方的滑块的两端来调整活动范围最大值或最小值，可以看到扇形的大小也顺便改变了。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528131351914.png" alt="image-20200528131351914"></p>
-<p>&#x672C;&#x6848;&#x4F8B;&#x7684;&#x9ED8;&#x8BA4;&#x8BBE;&#x5B9A;&#x5DF2;&#x7ECF;&#x6EE1;&#x8DB3;&#x5B66;&#x4E60;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;Revert&#x91CD;&#x7F6E;&#x4F1A;&#x9ED8;&#x8BA4;&#x8BBE;&#x5B9A;&#xFF0C;&#x63A5;&#x7740;&#x70B9;&#x51FB;Done&#x8FD4;&#x56DE;&#x6E38;&#x620F;&#x573A;&#x666F;&#x3002;</p>
-<p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4F7F;&#x7528;humanoid&#x7C7B;&#x578B;&#x6709;&#x4EC0;&#x4E48;&#x610F;&#x4E49;&#xFF1F;</p>
-<p>&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x52A8;&#x753B;&#x53EF;&#x80FD;&#x6765;&#x6E90;&#x5404;&#x5F02;&#xFF0C;&#x53EF;&#x80FD;&#x6765;&#x81EA;&#x52A8;&#x4F5C;&#x6355;&#x6349;&#xFF0C;&#x53EF;&#x80FD;&#x6765;&#x81EA;Unity&#x8D44;&#x6E90;&#x5546;&#x5E97;&#x3002;humanoid&#x7C7B;&#x578B;&#x63D0;&#x4F9B;&#x5F88;&#x5927;&#x7684;&#x7075;&#x6D3B;&#x6027;&#xFF0C;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x52A8;&#x753B;&#xFF0C;&#x63D0;&#x9AD8;&#x5F00;&#x53D1;&#x6548;&#x7387;&#x3002;</p>
-<h1 id="&#x56DB;&#x3001;&#x5BFC;&#x5165;&#x52A8;&#x753B;&#x526A;&#x8F91;"><a href="#&#x56DB;&#x3001;&#x5BFC;&#x5165;&#x52A8;&#x753B;&#x526A;&#x8F91;" class="headerlink" title="&#x56DB;&#x3001;&#x5BFC;&#x5165;&#x52A8;&#x753B;&#x526A;&#x8F91;"></a>&#x56DB;&#x3001;&#x5BFC;&#x5165;&#x52A8;&#x753B;&#x526A;&#x8F91;</h1><p>&#x52A8;&#x753B;&#x526A;&#x8F91;&#x5DF2;&#x7ECF;&#x5BFC;&#x5165;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x4FEE;&#x6539;&#x8BBE;&#x7F6E;&#x3002;&#x5148;&#x9009;&#x4E2D;Animations&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;anm_dwarfHero_idle&#x3001;anm_dwarfHero_jump&#x3001;anm_dwarfHero_run&#x3001;anm_dwarfHero_walk&#x52A8;&#x753B;&#xFF0C;&#x7136;&#x540E;&#x8F6C;&#x5230;Model&#x8BBE;&#x7F6E;&#x754C;&#x9762;&#x3002;</p>
-<p>&#x53D6;&#x6D88;&#x52FE;&#x9009;Import Visibility&#x3001;Import Cameras&#x3001;Import Lights&#x3001;Import Matrtials&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x4EFB;&#x4F55;&#x989D;&#x5916;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x771F;&#x6B63;&#x9700;&#x8981;&#x52A8;&#x753B;&#x526A;&#x8F91;&#x6750;&#x6599;&#x3002;</p>
+<p>本案例的默认设定已经满足学习，我们可以点击Revert重置会默认设定，接着点击Done返回游戏场景。</p>
+<p>那么我们使用humanoid类型有什么意义？</p>
+<p>因为我们使用的动画可能来源各异，可能来自动作捕捉，可能来自Unity资源商店。humanoid类型提供很大的灵活性，方便我们使用不同的动画，提高开发效率。</p>
+<h1 id="四、导入动画剪辑"><a href="#四、导入动画剪辑" class="headerlink" title="四、导入动画剪辑"></a>四、导入动画剪辑</h1><p>动画剪辑已经导入，我们先修改设置。先选中Animations文件夹下的anm_dwarfHero_idle、anm_dwarfHero_jump、anm_dwarfHero_run、anm_dwarfHero_walk动画，然后转到Model设置界面。</p>
+<p>取消勾选Import Visibility、Import Cameras、Import Lights、Import Matrtials。因为我们不需要任何额外的东西，我们并不真正需要动画剪辑材料。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200528202026194.png" alt="image-20200528202026194"></p>
-<p>&#x70B9;&#x51FB;Rig&#x5C06;Animation Type&#x8BBE;&#x4E3A;Humanoid&#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x4E3A;&#x6BCF;&#x4E2A;&#x52A8;&#x753B;&#x526A;&#x8F91;&#x521B;&#x5EFA;&#x65B0;&#x7684;avatar&#xFF0C;&#x4F46;&#x6CA1;&#x6709;&#x591A;&#x5927;&#x4F5C;&#x7528;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x6211;&#x4EEC;&#x5C06;&#x8981;&#x7528;&#x4E8E;&#x91CD;&#x65B0;&#x5B9A;&#x5411;&#x3002;&#x56E0;&#x6B64;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x7C7B;&#x578B;&#x6A21;&#x578B;&#x540C;&#x4E00;&#x8BBE;&#x7F6E;&#xFF0C;&#x53EA;&#x9700;&#x5C06;Avatar Definition&#x8BBE;&#x7F6E;&#x4E3A;Copy From Other Avatar&#xFF0C;&#x7136;&#x540E;&#x5728;&#x4E0B;&#x65B9;Source&#x8BBE;&#x7F6E;&#x51C6;&#x5907;&#x597D;&#x7684;Avatar&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x4E0A;dwarf_heroAvatar&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;Apply&#x3002;</p>
+<p>点击Rig将Animation Type设为Humanoid。现在我们可以继续为每个动画剪辑创建新的avatar，但没有多大作用，特别是我们将要用于重新定向。因此如果我们使用同一类型模型同一设置，只需将Avatar Definition设置为Copy From Other Avatar，然后在下方Source设置准备好的Avatar。这里我们设置上dwarf_heroAvatar，然后点击Apply。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200529122623553.png" alt="image-20200529122623553"></p>
-<p>&#x5728;Import Messages&#x90A3;&#x4F1A;&#x51FA;&#x73B0;&#x8B66;&#x544A;&#x6D88;&#x606F;&#xFF1A;&#x6211;&#x4EEC;&#x91CD;&#x65B0;&#x5B9A;&#x5411;&#x7684;&#x8D28;&#x91CF;&#x53EF;&#x80FD;&#x8F83;&#x4F4E;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x5728;&#x4EBA;&#x5F62;&#x52A8;&#x753B;&#x7684;Spine_1&#x8282;&#x70B9;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x5C5E;&#x4E8E;&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x3002;</p>
-<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x9009;&#x4E2D;Project&#x89C6;&#x7A97;&#x91CC;&#x7684;anm_dwarfHero_idle&#xFF0C;&#x5728;Inspector&#x91CC;&#x70B9;&#x51FB;Animation&#x8BBE;&#x7F6E;&#x52A8;&#x753B;&#x526A;&#x8F91;&#xFF0C;&#x5C06;Loop Time&#x52FE;&#x9009;&#x4E0A;&#xFF0C;&#x8FD9;&#x5C06;&#x53EF;&#x4EE5;&#x8BA9;&#x95F2;&#x7F6E;&#x52A8;&#x753B;&#x5FAA;&#x73AF;&#x64AD;&#x653E;&#x3002;&#x4E0B;&#x65B9;&#x7684;Loop Pose&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x52A8;&#x753B;&#x4E2D;&#x89D2;&#x8272;&#x7684;&#x9AA8;&#x9ABC;&#x6216;&#x89D2;&#x8272;&#x7684;&#x6839;&#x8282;&#x70B9;&#x5728;&#x52A8;&#x753B;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x7684;&#x4F4D;&#x7F6E;&#x5B58;&#x5728;&#x504F;&#x5DEE;&#xFF0C;Loop Pose&#x5C06;&#x4F7F;&#x8FD9;&#x4E2A;&#x8854;&#x63A5;&#x53D8;&#x5F97;&#x81EA;&#x7136;&#x3002;&#x5728;&#x8FD9;&#x91CC;&#xFF0C;loop match&#x53F3;&#x8FB9;&#x7684;&#x706F;&#x662F;&#x7EFF;&#x8272;&#x7684;&#xFF0C;&#x8868;&#x793A;&#x8854;&#x63A5;&#x826F;&#x597D;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x65E0;&#x9700;&#x52FE;&#x9009;Loop Pose&#x3002;</p>
+<p>在Import Messages那会出现警告消息：我们重新定向的质量可能较低，因为我们没有在人形动画的Spine_1节点，实际上这属于正常情况。</p>
+<p>然后我们选中Project视窗里的anm_dwarfHero_idle，在Inspector里点击Animation设置动画剪辑，将Loop Time勾选上，这将可以让闲置动画循环播放。下方的Loop Pose的作用是，如果动画中角色的骨骼或角色的根节点在动画开始和结束的位置存在偏差，Loop Pose将使这个衔接变得自然。在这里，loop match右边的灯是绿色的，表示衔接良好，所以我们无需勾选Loop Pose。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200529124320656.png" alt="image-20200529124320656"></p>
-<p>&#x4E0B;&#x65B9;&#x7684;Root Transform Rotation&#x63A7;&#x5236;&#x89D2;&#x8272;&#x6574;&#x4F53;&#x7684;&#x6839;&#x8282;&#x70B9;&#x7684;&#x8F6C;&#x5411;&#x3002;</p>
+<p>下方的Root Transform Rotation控制角色整体的根节点的转向。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608123937508.png" alt="image-20200608123937508"></p>
-<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5C06;&#x5176;&#x4E0B;&#x7684;Based Upon&#x8BBE;&#x7F6E;&#x4E3A;Body Orientation&#xFF0C;&#x5219;&#x65B9;&#x5411;&#x7BAD;&#x5934;&#x4F1A;&#x6307;&#x5411;&#x4E86;Z&#x8F74;&#x3002;&#x8BBE;&#x7F6E;&#x56DE;Original&#x3002;</p>
+<p>如果我们将其下的Based Upon设置为Body Orientation，则方向箭头会指向了Z轴。设置回Original。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608124311565.png" alt="image-20200608124311565"></p>
-<p>Root Transform Position(Y)&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x7684;&#x4E0A;&#x4E0B;&#x79FB;&#x52A8;&#xFF0C;&#x5982;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x98DE;&#x884C;&#x3002;</p>
-<p>&#x5728;Additive Reference Pose&#x4E0B;&#x65B9;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x793A;&#x5E73;&#x5747;&#x901F;&#x7387;&#xFF08;Average Velocity&#xFF09;&#x7684;&#x6D88;&#x606F;&#x3002;&#x4E0B;&#x56FE;&#x4E2D;&#xFF0C;XZ&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x901F;&#x5EA6;&#x5747;&#x4E3A;0&#xFF0C;Y&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x901F;&#x5EA6;&#x4E3A;0.001&#x3002;0.001&#x867D;&#x7136;&#x662F;&#x4E2A;&#x5F88;&#x5C0F;&#x7684;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x79FB;&#x52A8;&#x8DB3;&#x591F;&#x8FDC;&#x5219;&#x4F1A;&#x53D1;&#x73B0;&#x89D2;&#x8272;&#x8D70;&#x5230;&#x4E86;&#x534A;&#x7A7A;&#x4E2D;&#x3002;</p>
+<p>Root Transform Position(Y)可以控制角色的上下移动，如控制角色飞行。</p>
+<p>在Additive Reference Pose下方有一个指示平均速率（Average Velocity）的消息。下图中，XZ方向上的速度均为0，Y方向上的速度为0.001。0.001虽然是个很小的数，但是如果控制角色移动足够远则会发现角色走到了半空中。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608125207343.png" alt="image-20200608125207343"></p>
-<p>&#x8981;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x52FE;&#x9009;Root Transform Position(Y)&#x4E0B;&#x7684;Bake Into Pose&#xFF0C;&#x5C06;Based Upon (at Start)&#x8BBE;&#x7F6E;&#x4E3A;Original&#x6216;Feet&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;Apply&#x3002;</p>
-<h1 id="&#x4E94;&#x3001;&#x6839;&#x52A8;&#x4F5C;&#xFF08;Root-motion"><a href="#&#x4E94;&#x3001;&#x6839;&#x52A8;&#x4F5C;&#xFF08;Root-motion" class="headerlink" title="&#x4E94;&#x3001;&#x6839;&#x52A8;&#x4F5C;&#xFF08;Root motion)"></a>&#x4E94;&#x3001;&#x6839;&#x52A8;&#x4F5C;&#xFF08;Root motion)</h1><p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x6839;&#x52A8;&#x4F5C;&#x8BA9;&#x6211;&#x4EEC;&#x7684;&#x89D2;&#x8272;&#x5411;&#x524D;&#x884C;&#x8D70;&#x3002;&#x6211;&#x4EEC;&#x9009;&#x4E2D;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x5E94;&#x7528;&#x4E86;&#x6839;&#x52A8;&#x4F5C;&#x7684;&#x52A8;&#x753B;&#x526A;&#x8F91;anm_dwarfHero_walk&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x64AD;&#x653E;&#x8BE5;&#x52A8;&#x753B;&#x65F6;&#xFF0C;&#x89D2;&#x8272;&#x7684;&#x6839;&#x8282;&#x70B9;&#x5C06;&#x81EA;&#x52A8;&#x88AB;&#x68C0;&#x6D4B;&#x5E76;&#x968F;&#x7740;&#x884C;&#x8D70;&#x52A8;&#x753B;&#xFF0C;&#x6539;&#x53D8;&#x6839;&#x8282;&#x70B9;&#x7684;&#x5750;&#x6807;&#xFF0C;&#x4ECE;&#x800C;&#x9A71;&#x4F7F;&#x89D2;&#x8272;&#x5411;&#x524D;&#x79FB;&#x52A8;&#x3002;&#x89D2;&#x8272;&#x79FB;&#x52A8;&#x7684;&#x901F;&#x5EA6;&#x53D7;&#x52A8;&#x753B;&#x63A7;&#x5236;&#xFF0C;&#x4ECE;&#x800C;&#x907F;&#x514D;&#x4E86;&#x6ED1;&#x884C;&#xFF08;&#x5373;&#x89D2;&#x8272;&#x7684;&#x811A;&#x6B65;&#x4E0E;&#x89D2;&#x8272;&#x7684;&#x901F;&#x5EA6;&#x4E0D;&#x540C;&#x6B65;&#xFF09;&#x3002;</p>
-<p>&#x8BA9;&#x6211;&#x4EEC;&#x6682;&#x505C;&#x52A8;&#x753B;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#xFF0C;&#x9996;&#x5148;&#x52FE;&#x9009;&#x4E0A;Loop Time&#x3002;&#x6CE8;&#x610F;&#x5230;Root Transform Position(XZ)&#x7684;loop match&#x4E3A;&#x7EA2;&#x706F;&#xFF0C;&#x8868;&#x793A;&#x52A8;&#x753B;&#x5FAA;&#x73AF;&#x6CA1;&#x6709;&#x5339;&#x914D;&#x826F;&#x597D;&#x3002;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x7684;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x89D2;&#x8272;&#x79FB;&#x52A8;&#x5728;XZ&#x65B9;&#x5411;&#x4E0A;&#x6709;&#x504F;&#x5DEE;&#x3002;&#x9020;&#x6210;&#x504F;&#x5DEE;&#x7684;&#x539F;&#x56E0;&#x662F;&#x5728;&#x7528;Maya&#x5236;&#x4F5C;&#x6B64;&#x52A8;&#x753B;&#x526A;&#x8F91;&#x65F6;&#xFF0C;&#x89D2;&#x8272;&#x5411;&#x524D;&#x8FC8;&#x6B65;&#xFF0C;XZ&#x65B9;&#x5411;&#x4E0A;&#x4E00;&#x5B9A;&#x4F1A;&#x6709;&#x4F4D;&#x79FB;&#xFF0C;&#x52A8;&#x753B;&#x9996;&#x5C3E;&#x5750;&#x6807;&#x4E0D;&#x4E00;&#x81F4;&#x3002;&#x8FD9;&#x5C5E;&#x4E8E;&#x6B63;&#x5E38;&#x73B0;&#x8C61;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x7684;&#x662F;&#x4E0D;&#x8BA9;&#x89D2;&#x8272;&#x901F;&#x5EA6;&#x65B9;&#x5411;&#x6709;&#x504F;&#x5DEE;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x5148;&#x52FE;&#x9009;&#x4E0A;Root Transform Rotation&#x7684;Bake Into Pose&#xFF0C;&#x6B64;&#x4E3E;&#x53EF;&#x4EE5;&#x5C06;&#x89D2;&#x8272;&#x5728;Y&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x5E73;&#x5747;&#x89D2;&#x901F;&#x5EA6;&#x53D8;&#x4E3A;0&#xFF0C;&#x4ECE;&#x8F6C;&#x5411;&#x4E0A;&#x6D88;&#x9664;&#x504F;&#x5DEE;&#x3002;</p>
+<p>要解决这个问题，我们勾选Root Transform Position(Y)下的Bake Into Pose，将Based Upon (at Start)设置为Original或Feet，然后点击Apply。</p>
+<h1 id="五、根动作（Root-motion"><a href="#五、根动作（Root-motion" class="headerlink" title="五、根动作（Root motion)"></a>五、根动作（Root motion)</h1><p>接下来我们使用根动作让我们的角色向前行走。我们选中一个已经应用了根动作的动画剪辑anm_dwarfHero_walk。当我们播放该动画时，角色的根节点将自动被检测并随着行走动画，改变根节点的坐标，从而驱使角色向前移动。角色移动的速度受动画控制，从而避免了滑行（即角色的脚步与角色的速度不同步）。</p>
+<p>让我们暂停动画进行设置，首先勾选上Loop Time。注意到Root Transform Position(XZ)的loop match为红灯，表示动画循环没有匹配良好。可以知道的是我们的角色移动在XZ方向上有偏差。造成偏差的原因是在用Maya制作此动画剪辑时，角色向前迈步，XZ方向上一定会有位移，动画首尾坐标不一致。这属于正常现象，我们需要解决的是不让角色速度方向有偏差。</p>
+<p>我们先勾选上Root Transform Rotation的Bake Into Pose，此举可以将角色在Y方向上的平均角速度变为0，从转向上消除偏差。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608223600561.png" alt="image-20200608223600561"></p>
-<p>&#x63A5;&#x7740;&#x6211;&#x4EEC;&#x52FE;&#x9009;Loop Time&#x4E0B;&#x8FB9;&#x7684;Loop Pose&#x3002;&#x5C06;Root Transform Rotation&#x7684;Based Upon&#x8BBE;&#x4E3A;Body Orientation&#x3002;&#x6539;&#x53D8;Root Transform Rotation&#x7684;Offset&#x503C;&#xFF0C;&#x76F4;&#x5230;&#x5E73;&#x5747;&#x901F;&#x5EA6;&#x7684;X&#x5206;&#x91CF;&#x4E3A;0&#x3002;</p>
+<p>接着我们勾选Loop Time下边的Loop Pose。将Root Transform Rotation的Based Upon设为Body Orientation。改变Root Transform Rotation的Offset值，直到平均速度的X分量为0。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608224444664.png" alt="image-20200608224444664"></p>
-<p>&#x7136;&#x540E;&#x52FE;&#x9009;Root Transform Position(Y)&#x7684;Bake Into Pose&#xFF0C;&#x7136;&#x540E;&#x8BBE;&#x7F6E;Based Upon (at Start)&#x4E3A;Feet&#x3002;</p>
-<p>&#x8BBE;&#x7F6E;Root Transform Position(XZ)&#x7684;Based Upon&#x4E3A;Center of Mass</p>
-<p>&#x7136;&#x540E;&#x70B9;&#x51FB;Apply&#xFF0C;&#x4E00;&#x4E2A;&#x884C;&#x8D70;&#x52A8;&#x753B;&#x5C31;&#x57FA;&#x672C;&#x8C03;&#x6210;&#x5B8C;&#x6210;&#x3002;</p>
-<p>&#x63A5;&#x7740;&#x6211;&#x4EEC;&#x7528;&#x540C;&#x6837;&#x7684;&#x6B65;&#x9AA4;&#x8C03;&#x6574;anm_dwarfHero_run</p>
+<p>然后勾选Root Transform Position(Y)的Bake Into Pose，然后设置Based Upon (at Start)为Feet。</p>
+<p>设置Root Transform Position(XZ)的Based Upon为Center of Mass</p>
+<p>然后点击Apply，一个行走动画就基本调成完成。</p>
+<p>接着我们用同样的步骤调整anm_dwarfHero_run</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200608230554607.png" alt="image-20200608230554607"></p>
-<h1 id="&#x516D;&#x3001;&#x8C03;&#x6574;&#x975E;&#x4EBA;&#x578B;rig&#x7684;&#x9AA8;&#x9ABC;"><a href="#&#x516D;&#x3001;&#x8C03;&#x6574;&#x975E;&#x4EBA;&#x578B;rig&#x7684;&#x9AA8;&#x9ABC;" class="headerlink" title="&#x516D;&#x3001;&#x8C03;&#x6574;&#x975E;&#x4EBA;&#x578B;rig&#x7684;&#x9AA8;&#x9ABC;"></a>&#x516D;&#x3001;&#x8C03;&#x6574;&#x975E;&#x4EBA;&#x578B;rig&#x7684;&#x9AA8;&#x9ABC;</h1><p>&#x89D2;&#x8272;&#x53EF;&#x80FD;&#x5E26;&#x6709;&#x591A;&#x4F59;&#x7684;&#x9AA8;&#x9ABC;&#xFF0C;&#x6BD4;&#x5982;&#x82F1;&#x96C4;&#x80A9;&#x8180;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x62A4;&#x7532;&#x4E5F;&#x7ED1;&#x5B9A;&#x4E0A;&#x4E86;&#x9AA8;&#x9ABC;&#xFF0C;&#x4F46;&#x4EBA;&#x578B;rig&#x5E76;&#x4E0D;&#x4F1A;&#x68C0;&#x6D4B;&#x5230;&#x8FD9;&#x79CD;&#x9AA8;&#x9ABC;&#x7684;&#x5B58;&#x5728;&#x3002;</p>
-<p>&#x8BA9;&#x6211;&#x4EEC;&#x9009;&#x4E2D;&#x9879;&#x76EE;&#x7A97;&#x53E3;Animation&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;anm_DwarfHero_Attack03&#x52A8;&#x753B;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x4E2D;&#xFF0C;&#x89D2;&#x8272;&#x7684;&#x80E1;&#x5B50;&#x548C;&#x80A9;&#x8180;&#x62A4;&#x7532;&#x5E76;&#x6CA1;&#x6709;&#x6309;&#x9884;&#x671F;&#x6D3B;&#x52A8;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;Inspector&#x91CC;&#x8C03;&#x6574;&#x5982;&#x4E0B;&#x53C2;&#x6570;&#x3002;</p>
+<h1 id="六、调整非人型rig的骨骼"><a href="#六、调整非人型rig的骨骼" class="headerlink" title="六、调整非人型rig的骨骼"></a>六、调整非人型rig的骨骼</h1><p>角色可能带有多余的骨骼，比如英雄肩膀上的一个护甲也绑定上了骨骼，但人型rig并不会检测到这种骨骼的存在。</p>
+<p>让我们选中项目窗口Animation文件夹下的anm_DwarfHero_Attack03动画，在这个动画中，角色的胡子和肩膀护甲并没有按预期活动。我们可以在Inspector里调整如下参数。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609201925384.png" alt="image-20200609201925384"></p>
-<p>&#x5C06;Mask&#x4E0B;&#x7684;Definition&#x8BBE;&#x7F6E;&#x4E3A;Create From This Model&#x3002;</p>
+<p>将Mask下的Definition设置为Create From This Model。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609202146188.png" alt="image-20200609202146188"></p>
-<p>&#x7136;&#x540E;&#x70B9;&#x5F00;Transform&#xFF0C;&#x627E;&#x5230;L_Pauldron_Jnt&#x3001;R_Pauldron_Jnt&#x3001;Beard_1_Jnt&#x3001;grp_Beard_1_Con&#x5E76;&#x5C06;&#x5B83;&#x4EEC;&#x52FE;&#x9009;&#x4E0A;&#xFF0C;&#x70B9;&#x51FB;Apply&#x3002;</p>
+<p>然后点开Transform，找到L_Pauldron_Jnt、R_Pauldron_Jnt、Beard_1_Jnt、grp_Beard_1_Con并将它们勾选上，点击Apply。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609202935392.png" alt="image-20200609202935392"></p>
-<p>&#x8FD9;&#x65F6;&#x6211;&#x4EEC;&#x518D;&#x64AD;&#x653E;&#x52A8;&#x753B;&#xFF0C;&#x80E1;&#x5B50;&#x548C;&#x80A9;&#x8180;&#x62A4;&#x7532;&#x90FD;&#x6309;&#x9884;&#x671F;&#x8FDB;&#x884C;&#x4E86;&#x6D3B;&#x52A8;&#xFF0C;&#x800C;&#x4E14;&#x5176;&#x4ED6;anm_DwarfHero&#x52A8;&#x753B;&#x4E5F;&#x540C;&#x65F6;&#x5F97;&#x5230;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x8C03;&#x6574;&#x3002;</p>
-<h1 id="&#x4E03;&#x3001;&#x89D2;&#x8272;&#x52A8;&#x753B;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><a href="#&#x4E03;&#x3001;&#x89D2;&#x8272;&#x52A8;&#x753B;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x4E03;&#x3001;&#x89D2;&#x8272;&#x52A8;&#x753B;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"></a>&#x4E03;&#x3001;&#x89D2;&#x8272;&#x52A8;&#x753B;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h1><p>&#x9996;&#x5148;&#x4ECE;&#x9879;&#x76EE;&#x7A97;&#x53E3;&#x4E2D;&#x5C06;Meshes&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;dwarf_hero&#x62D6;&#x62FD;&#x5230;&#x573A;&#x666F;&#x4E2D;&#x3002;&#x7136;&#x540E;&#x7ED9;&#x573A;&#x666F;&#x4E2D;&#x7684;<strong>dwarf_hero&#x6DFB;&#x52A0;Rigidbody&#x7EC4;&#x4EF6;&#x3001;Capsule Collider&#x7EC4;&#x4EF6;</strong>&#x3002;</p>
+<p>这时我们再播放动画，胡子和肩膀护甲都按预期进行了活动，而且其他anm_DwarfHero动画也同时得到了相同的调整。</p>
+<h1 id="七、角色动画准备工作"><a href="#七、角色动画准备工作" class="headerlink" title="七、角色动画准备工作"></a>七、角色动画准备工作</h1><p>首先从项目窗口中将Meshes文件夹下的dwarf_hero拖拽到场景中。然后给场景中的<strong>dwarf_hero添加Rigidbody组件、Capsule Collider组件</strong>。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609204504815.png" alt="image-20200609204504815"></p>
-<p>&#x7136;&#x540E;<strong>&#x8BBE;&#x7F6E;&#x80F6;&#x56CA;&#x78B0;&#x649E;&#x4F53;&#x53C2;&#x6570;</strong>&#x5982;&#x4E0B;&#xFF0C;&#x4EE5;&#x9002;&#x914D;&#x89D2;&#x8272;&#x7684;&#x8EAB;&#x4F53;&#x3002;</p>
+<p>然后<strong>设置胶囊碰撞体参数</strong>如下，以适配角色的身体。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609204821434.png" alt="image-20200609204821434"></p>
-<p>&#x7136;&#x540E;&#x7ED9;dwarf_hero&#x8BBE;&#x7F6E;&#x52A8;&#x753B;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x9879;&#x76EE;&#x7A97;&#x53E3;Animations&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x53F3;&#x952E;&#x65B0;&#x5EFA;Animator Controller&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;DwarfHero&#xFF0C;&#x7136;&#x540E;&#x62D6;&#x62FD;&#x5230;&#x573A;&#x666F;&#x4E2D;&#x7684;dwarf_hero&#x7684;Animator&#x7EC4;&#x4EF6;|Controller&#x3002;</p>
+<p>然后给dwarf_hero设置动画控制器，我们在项目窗口Animations文件夹下右键新建Animator Controller，重命名为DwarfHero，然后拖拽到场景中的dwarf_hero的Animator组件|Controller。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609205414913.png" alt="image-20200609205414913"></p>
-<p>&#x7136;&#x540E;&#x52FE;&#x9009;Rigidbody&#x7EC4;&#x4EF6;|Is Kinematic</p>
+<p>然后勾选Rigidbody组件|Is Kinematic</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609205722222.png" alt="image-20200609205722222"></p>
-<p>&#x7136;&#x540E;&#x8FDB;&#x5165;Animator&#x7A97;&#x53E3;&#xFF0C;&#x5C06;Animations&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;anm_dwarfHero_idle&#x62D6;&#x62FD;&#x8FDB;&#x6765;&#xFF0C;&#x8BA9;&#x5B83;&#x6210;&#x4E3A;&#x89D2;&#x8272;&#x7684;&#x8D77;&#x59CB;&#x64AD;&#x653E;&#x52A8;&#x753B;&#x3002;</p>
+<p>然后进入Animator窗口，将Animations文件夹下的anm_dwarfHero_idle拖拽进来，让它成为角色的起始播放动画。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609210219947.png" alt="image-20200609210219947"></p>
-<p>&#x4FDD;&#x5B58;&#x573A;&#x666F;&#xFF0C;&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x5982;&#x679C;&#x70B9;&#x51FB;&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5219;&#x573A;&#x666F;&#x4E2D;&#x7684;&#x89D2;&#x8272;&#x5728;&#x8FDB;&#x5165;&#x6E38;&#x620F;&#x65F6;&#x5C06;&#x6210;&#x529F;&#x64AD;&#x653E;&#x95F2;&#x7F6E;&#x52A8;&#x753B;&#x3002;</p>
-<h1 id="&#x516B;&#x3001;&#x8BBE;&#x8BA1;&#x52A8;&#x753B;&#x903B;&#x8F91;"><a href="#&#x516B;&#x3001;&#x8BBE;&#x8BA1;&#x52A8;&#x753B;&#x903B;&#x8F91;" class="headerlink" title="&#x516B;&#x3001;&#x8BBE;&#x8BA1;&#x52A8;&#x753B;&#x903B;&#x8F91;"></a>&#x516B;&#x3001;&#x8BBE;&#x8BA1;&#x52A8;&#x753B;&#x903B;&#x8F91;</h1><p>&#x5728;Assets/Scripts&#x4E0B;&#x6709;&#x4E00;&#x4E2A;CharacterMovement.cs&#x811A;&#x672C;&#x3002;&#x6211;&#x4EEC;&#x7ED9;&#x573A;&#x666F;&#x4E2D;&#x7684;dwarf_hero&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;Character Movement (Script)&#x3002;&#x63A5;&#x7740;&#x8FDB;&#x5165;Animator&#x7A97;&#x53E3;&#xFF0C;&#x5C06;Animations&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;anm_dwarfHero_run&#x62D6;&#x62FD;&#x8FDB;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x9009;&#x4E2D;&#x4E4B;&#x524D;&#x6DFB;&#x52A0;&#x7684;anm_dwarfHero_idle&#xFF0C;&#x53F3;&#x952E;&#x9009;&#x62E9;Make Transition&#xFF0C;&#x518D;&#x70B9;&#x51FB;anm_dwarfHero_run&#x5C06;&#x8FD9;&#x4E24;&#x4E2A;&#x52A8;&#x753B;&#x526A;&#x8F91;&#x7528;&#x7BAD;&#x5934;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x3002;</p>
+<p>保存场景，此时我们如果点击播放游戏，则场景中的角色在进入游戏时将成功播放闲置动画。</p>
+<h1 id="八、设计动画逻辑"><a href="#八、设计动画逻辑" class="headerlink" title="八、设计动画逻辑"></a>八、设计动画逻辑</h1><p>在Assets/Scripts下有一个CharacterMovement.cs脚本。我们给场景中的dwarf_hero添加组件Character Movement (Script)。接着进入Animator窗口，将Animations文件夹下的anm_dwarfHero_run拖拽进来，然后选中之前添加的anm_dwarfHero_idle，右键选择Make Transition，再点击anm_dwarfHero_run将这两个动画剪辑用箭头连接起来。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609211613777.png" alt="image-20200609211613777"></p>
-<p>&#x7136;&#x540E;&#x9009;&#x4E2D;&#x8FDE;&#x63A5;&#x7BAD;&#x5934;&#xFF0C;&#x521B;&#x5EFA;Bool&#x7C7B;&#x578B;&#x6761;&#x4EF6;&#x53C2;&#x6570;&#xFF0C;&#x91CD;&#x540D;&#x547D;&#x540D;&#x4E3A;IsRunning</p>
+<p>然后选中连接箭头，创建Bool类型条件参数，重名命名为IsRunning</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609212307947.png" alt="image-20200609212307947"></p>
-<p>&#x7136;&#x540E;&#x5728;&#x8F6C;&#x6362;&#x5173;&#x7CFB;&#xFF08;&#x7BAD;&#x5934;&#xFF09;&#x4E0A;&#x6DFB;&#x52A0;&#x6761;&#x4EF6;IsRunning&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x6761;&#x4EF6;&#x503C;&#x4E3A;true&#x3002;</p>
+<p>然后在转换关系（箭头）上添加条件IsRunning，并设置条件值为true。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609212528081.png" alt="image-20200609212528081"></p>
-<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5728;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4ECE;run&#x5230;idle&#x7684;&#x8F6C;&#x6362;&#x5173;&#x7CFB;&#xFF08;&#x7BAD;&#x5934;&#xFF09;&#xFF0C;&#x8BBE;&#x7F6E;&#x6761;&#x4EF6;&#x4E3A;IsRunning&#x4E3A;false&#x3002;</p>
+<p>然后我们在创建一个从run到idle的转换关系（箭头），设置条件为IsRunning为false。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609212752582.png" alt="image-20200609212752582"></p>
-<p>&#x53CC;&#x51FB;&#x7528;VS2017&#x6253;&#x5F00;CharacterMovement.cs&#x811A;&#x672C;&#xFF0C;&#x5176;&#x4E2D;Animating&#x51FD;&#x6570;&#x662F;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x8DD1;&#x52A8;&#x7684;&#x5173;&#x952E;&#x3002;float&#x7C7B;&#x578B;&#x53D8;&#x91CF;lh&#x3001;lv&#x5206;&#x522B;&#x8868;&#x793A;&#x624B;&#x67C4;/&#x952E;&#x76D8;&#x8F93;&#x5165;&#x7684;&#x6C34;&#x5E73;&#x65B9;&#x5411;&#x6570;&#x636E;&#x548C;&#x5782;&#x76F4;&#x65B9;&#x5411;&#x6570;&#x636E;&#xFF0C;&#x5F53;&#x4ED6;&#x4EEC;&#x5168;&#x90FD;&#x4E3A;0&#x65F6;&#xFF0C;bool&#x7C7B;&#x578B;&#x53D8;&#x91CF;running&#x4E3A;true&#xFF0C;&#x4F46;&#x5B83;&#x4FE9;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x4E0D;&#x4E3A;0&#x5219;running&#x4E3A;false&#x3002;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">FixedUpdate</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-comment">//Store input axes</span></span><br><span class="line">    <span class="hljs-keyword">float</span> lh = Input.GetAxisRaw(<span class="hljs-string">&quot;Horizontal&quot;</span>);</span><br><span class="line">    <span class="hljs-keyword">float</span> lv = Input.GetAxisRaw (<span class="hljs-string">&quot;Vertical&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Move (lh, lv);</span><br><span class="line"></span><br><span class="line">    Animating(lh, lv);</span><br><span class="line">}</span><br><span class="line">...</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Animating</span>(<span class="hljs-params"><span class="hljs-keyword">float</span> lh, <span class="hljs-keyword">float</span> lv</span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">bool</span> running = lh != <span class="hljs-number">0f</span> || lv != <span class="hljs-number">0f</span>;</span><br><span class="line"></span><br><span class="line">    anim.SetBool (<span class="hljs-string">&quot;IsRunning&quot;</span>, running);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x597D;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5E76;&#x7528;WASD&#x63A7;&#x5236;&#x89D2;&#x8272;&#x8DD1;&#x52A8;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x89D2;&#x8272;&#x5148;&#x6ED1;&#x884C;&#x4E00;&#x6BB5;&#x8DDD;&#x79BB;&#x624D;&#x5F00;&#x59CB;&#x8DD1;&#x52A8;&#x3002;</p>
-<p>&#x8FDB;&#x5165;Animator&#x7A97;&#x53E3;&#xFF0C;&#x9009;&#x4E2D;idle&#x5230;run&#x7684;&#x8F6C;&#x53D8;&#x5173;&#x7CFB;&#x7BAD;&#x5934;&#xFF0C;&#x53D6;&#x6D88;&#x52FE;&#x9009;Has Exit Time&#x3002;&#x540C;&#x6837;&#x5730;&#xFF0C;run&#x5230;idle&#x7684;&#x8F6C;&#x53D8;&#x5173;&#x7CFB;&#x7BAD;&#x5934;&#x4E5F;&#x8FD9;&#x4E48;&#x4FEE;&#x6539;&#x3002;</p>
+<p>双击用VS2017打开CharacterMovement.cs脚本，其中Animating函数是控制角色跑动的关键。float类型变量lh、lv分别表示手柄/键盘输入的水平方向数据和垂直方向数据，当他们全都为0时，bool类型变量running为true，但它俩其中一个不为0则running为false。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FixedUpdate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//Store input axes</span></span><br><span class="line">    <span class="keyword">float</span> lh = Input.GetAxisRaw(<span class="string">"Horizontal"</span>);</span><br><span class="line">    <span class="keyword">float</span> lv = Input.GetAxisRaw (<span class="string">"Vertical"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Move (lh, lv);</span><br><span class="line"></span><br><span class="line">    Animating(lh, lv);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Animating</span>(<span class="params"><span class="keyword">float</span> lh, <span class="keyword">float</span> lv</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> running = lh != <span class="number">0f</span> || lv != <span class="number">0f</span>;</span><br><span class="line"></span><br><span class="line">    anim.SetBool (<span class="string">"IsRunning"</span>, running);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好，如果我们现在播放游戏，并用WASD控制角色跑动，我们会发现角色先滑行一段距离才开始跑动。</p>
+<p>进入Animator窗口，选中idle到run的转变关系箭头，取消勾选Has Exit Time。同样地，run到idle的转变关系箭头也这么修改。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609214521142.png" alt="image-20200609214521142"></p>
-<p>Has Exit Time&#x5982;&#x679C;&#x88AB;&#x52FE;&#x9009;&#xFF0C;&#x5219;&#x89D2;&#x8272;&#x5C06;&#x5728;&#x8F6C;&#x53D8;&#x524D;&#x7684;&#x52A8;&#x753B;&#x64AD;&#x653E;&#x5B8C;&#x6BD5;&#x624D;&#x5F00;&#x59CB;&#x8F6C;&#x53D8;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#xFF0C;&#x53D6;&#x6D88;&#x52FE;&#x9009;&#x53EF;&#x4EE5;&#x6253;&#x65AD;&#x7B49;&#x5F85;&#xFF0C;&#x8BA9;&#x8F6C;&#x53D8;&#x7ACB;&#x523B;&#x53D1;&#x751F;&#x3002;</p>
-<h1 id="&#x4E5D;&#x3001;&#x6DF7;&#x5408;&#x6811;&#xFF08;Blend-Tree&#xFF09;"><a href="#&#x4E5D;&#x3001;&#x6DF7;&#x5408;&#x6811;&#xFF08;Blend-Tree&#xFF09;" class="headerlink" title="&#x4E5D;&#x3001;&#x6DF7;&#x5408;&#x6811;&#xFF08;Blend Tree&#xFF09;"></a>&#x4E5D;&#x3001;&#x6DF7;&#x5408;&#x6811;&#xFF08;Blend Tree&#xFF09;</h1><p>&#x9996;&#x5148;&#x6211;&#x4EEC;&#x7ED9;&#x573A;&#x666F;&#x4E2D;&#x7684;dwarf_hero&#x6DFB;&#x52A0;Nav Mesh Agent&#x7EC4;&#x4EF6;&#xFF0C;&#x5E76;&#x505A;&#x5982;&#x4E0B;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x3002;</p>
+<p>Has Exit Time如果被勾选，则角色将在转变前的动画播放完毕才开始转变到下一个动画，取消勾选可以打断等待，让转变立刻发生。</p>
+<h1 id="九、混合树（Blend-Tree）"><a href="#九、混合树（Blend-Tree）" class="headerlink" title="九、混合树（Blend Tree）"></a>九、混合树（Blend Tree）</h1><p>首先我们给场景中的dwarf_hero添加Nav Mesh Agent组件，并做如下参数设置。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609215258252.png" alt="image-20200609215258252"></p>
-<p>&#x63A5;&#x7740;&#x6DFB;&#x52A0;World Interaction&#x3001;Locomotion Agent&#x4E24;&#x4E2A;&#x811A;&#x672C;&#x7EC4;&#x4EF6;&#x3002;World Interaction&#x811A;&#x672C;&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x573A;&#x666F;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x884C;&#x52A8;Locomotion Agen&#x811A;&#x672C;&#x4E0D;&#x4EC5;&#x7528;&#x4E8E;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x7684;&#x52A8;&#x753B;&#x8FD8;&#x4F1A;&#x66F4;&#x65B0;Nav Mesh Agent&#x4EE5;&#x4FBF;&#x9002;&#x914D;&#x89D2;&#x8272;&#x7684;&#x6839;&#x52A8;&#x4F5C;&#xFF08;Root Motion&#xFF09;</p>
+<p>接着添加World Interaction、Locomotion Agent两个脚本组件。World Interaction脚本让我们可以通过鼠标点击场景控制角色行动Locomotion Agen脚本不仅用于控制角色的动画还会更新Nav Mesh Agent以便适配角色的根动作（Root Motion）</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609215605471.png" alt="image-20200609215605471"></p>
-<p>&#x56DE;&#x5230;Animator&#x7A97;&#x53E3;&#xFF0C;&#x5220;&#x6389;&#x4E4B;&#x524D;&#x6DFB;&#x52A0;&#x8FDB;&#x6765;&#x7684;idle&#x548C;run&#x52A8;&#x753B;&#x526A;&#x8F91;&#xFF0C;&#x53F3;&#x952E;&#x9009;&#x62E9;Create State|From New Blend Tree&#x65B0;&#x5EFA;&#x6DF7;&#x5408;&#x6811;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;Locomotion</p>
+<p>回到Animator窗口，删掉之前添加进来的idle和run动画剪辑，右键选择Create State|From New Blend Tree新建混合树，重命名为Locomotion</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609220435603.png" alt="image-20200609220435603"></p>
-<p>&#x53CC;&#x51FB;&#x5EFA;&#x597D;&#x7684;Locomotion&#x8FDB;&#x5165;&#x5185;&#x90E8;&#xFF0C;&#x5C06;&#x6761;&#x4EF6;Blend&#x91CD;&#x547D;&#x540D;&#x4E3A;PlayerVelocity</p>
+<p>双击建好的Locomotion进入内部，将条件Blend重命名为PlayerVelocity</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609220814579.png" alt="image-20200609220814579"></p>
-<p>&#x9009;&#x4E2D;Blend Tree&#xFF0C;&#x5728;Inspector&#x70B9;&#x51FB;Motion&#x4E0B;&#x7684;&#x52A0;&#x53F7;&#x6DFB;&#x52A0;&#x8981;&#x6DF7;&#x5408;&#x7684;&#x52A8;&#x4F5C;&#x3002;</p>
+<p>选中Blend Tree，在Inspector点击Motion下的加号添加要混合的动作。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609221102876.png" alt="image-20200609221102876"></p>
-<p>&#x4F9D;&#x6B21;&#x6DFB;&#x52A0;&#x52A8;&#x753B;&#x526A;&#x8F91;idle&#x3001;walk&#x3001;run&#x3002;</p>
+<p>依次添加动画剪辑idle、walk、run。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609221329386.png" alt="image-20200609221329386"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609221506166.png" alt="image-20200609221506166"></p>
-<p>&#x64AD;&#x653E;&#x6DF7;&#x5408;&#x52A8;&#x753B;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x62D6;&#x62FD;&#x6539;&#x53D8;PlayerVelocity&#x65F6;&#xFF0C;&#x89D2;&#x8272;&#x52A8;&#x4F5C;&#x5C06;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002;</p>
+<p>播放混合动画，当我们拖拽改变PlayerVelocity时，角色动作将发生变化。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609221947274.png" alt="image-20200609221947274"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609222136105.png" alt="image-20200609222136105"></p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609222218057.png" alt="image-20200609222218057"></p>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x811A;&#x672C;&#x63A7;&#x5236;&#x53C2;&#x6570;PlayerVelocity&#x6765;&#x63A7;&#x5236;&#x8FD9;&#x4E00;&#x52A8;&#x4F5C;&#x53D8;&#x5316;&#x3002;</p>
-<p>&#x7528;VS2017&#x6253;&#x5F00;Locomotion.cs&#xFF0C;&#x5728;Update&#x51FD;&#x6570;&#x4E0B;&#x7684;&#x5173;&#x952E;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">...</span><br><span class="line">    <span class="hljs-comment">// Update animation parameters</span></span><br><span class="line">    anim.SetFloat(<span class="hljs-string">&quot;PlayerVelocity&quot;</span>, agent.velocity.magnitude);</span><br><span class="line">...</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x56DE;&#x5230;Unity&#xFF0C;&#x6CE8;&#x610F;&#x5230;PlayerVelocity&#x7684;&#x53EF;&#x53D8;&#x8303;&#x56F4;&#x662F;0&#x5230;1&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x8FD9;&#x4E2A;&#x8303;&#x56F4;&#x3002;</p>
-<p>&#x9009;&#x4E2D;Blend Tree&#xFF0C;&#x53D6;&#x6D88;&#x52FE;&#x9009;Automate Thresholds&#xFF0C;&#x5E76;&#x4F9D;&#x6B21;&#x6539;&#x53D8;run&#x3001;walk&#x7684;&#x9608;&#x503C;&#x4E3A;8&#x3001;2&#x3002;</p>
+<p>我们可以通过脚本控制参数PlayerVelocity来控制这一动作变化。</p>
+<p>用VS2017打开Locomotion.cs，在Update函数下的关键代码如下。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">...</span><br><span class="line">    <span class="comment">// Update animation parameters</span></span><br><span class="line">    anim.SetFloat(<span class="string">"PlayerVelocity"</span>, agent.velocity.magnitude);</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>回到Unity，注意到PlayerVelocity的可变范围是0到1，我们可以改变这个范围。</p>
+<p>选中Blend Tree，取消勾选Automate Thresholds，并依次改变run、walk的阈值为8、2。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609223225813.png" alt="image-20200609223225813"></p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x89D2;&#x8272;&#x4ECE;&#x95F2;&#x7F6E;&#x5230;&#x5954;&#x8DD1;&#x6709;&#x8FC7;&#x6E21;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6539;&#x53D8;run&#x3001;walk&#x7684;&#x9608;&#x503C;&#xFF08;&#x6BD4;&#x5982;&#x5206;&#x522B;&#x4E3A;6&#x3001;1&#xFF09;&#x4F7F;&#x8FD9;&#x4E2A;&#x8FC7;&#x6E21;&#x66F4;&#x52A0;&#x81EA;&#x7136;&#x3002;</p>
-<h1 id="&#x5341;&#x3001;&#x52A8;&#x753B;&#x5C42;"><a href="#&#x5341;&#x3001;&#x52A8;&#x753B;&#x5C42;" class="headerlink" title="&#x5341;&#x3001;&#x52A8;&#x753B;&#x5C42;"></a>&#x5341;&#x3001;&#x52A8;&#x753B;&#x5C42;</h1><p>&#x5728;&#x8FD9;&#x4E2A;&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x52A8;&#x753B;&#x5C42;&#x914D;&#x7F6E;&#x89D2;&#x8272;&#x653B;&#x51FB;&#x52A8;&#x753B;&#x3002;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x5148;&#x5C06;&#x573A;&#x666F;&#x4E2D;&#x7684;dwarf_hero&#x7684;World Interaction&#x3001;Locomotion Agent&#x4E24;&#x4E2A;&#x7EC4;&#x4EF6;&#x5220;&#x6389;&#xFF0C;&#x7136;&#x540E;&#x6DFB;&#x52A0;&#x811A;&#x672C;&#x7EC4;&#x4EF6;Player Attack&#x3002;</p>
-<p>&#x8FDB;&#x5165;Animator&#x7A97;&#x53E3;&#xFF0C;&#x70B9;&#x51FB;Parameters&#x5DE6;&#x8FB9;&#x7684;Layers&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4E00;&#x4E2A;Base Layer&#x3002;&#x6BCF;&#x4E00;&#x4E2A;Animator&#x90FD;&#x6709;&#x4E00;&#x4E2A;Base Layer&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x52A8;&#x753B;&#x5C42;&#xFF0C;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x5C42;&#x4E0A;&#x505A;&#x653B;&#x51FB;&#x52A8;&#x753B;&#x3002;</p>
+<p>播放游戏，我们在控制角色的时候可以发现角色从闲置到奔跑有过渡，我们可以改变run、walk的阈值（比如分别为6、1）使这个过渡更加自然。</p>
+<h1 id="十、动画层"><a href="#十、动画层" class="headerlink" title="十、动画层"></a>十、动画层</h1><p>在这个小节我们将使用动画层配置角色攻击动画。首先我们先将场景中的dwarf_hero的World Interaction、Locomotion Agent两个组件删掉，然后添加脚本组件Player Attack。</p>
+<p>进入Animator窗口，点击Parameters左边的Layers，我们看到一个Base Layer。每一个Animator都有一个Base Layer，我们可以添加动画层，在另一个动画层上做攻击动画。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609225036270.png" alt="image-20200609225036270"></p>
-<p>&#x70B9;&#x51FB;&#x52A0;&#x53F7;&#xFF0C;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x5C42;&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;Attack Layer&#x3002;&#x5728;Attack Layer&#x91CC;&#x6211;&#x4EEC;&#x62D6;&#x62FD;&#x8FDB;Attack01&#x52A8;&#x753B;&#x526A;&#x8F91;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x4E0D;&#x5E0C;&#x671B;&#x9ED8;&#x8BA4;&#x8D77;&#x59CB;&#x52A8;&#x753B;&#x662F;&#x653B;&#x51FB;&#x52A8;&#x753B;&#xFF0C;&#x4E8E;&#x662F;&#x6211;&#x4EEC;&#x53F3;&#x952E;Create State|Empty&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x72B6;&#x6001;&#xFF08;&#x91CD;&#x547D;&#x540D;&#x4E3A;Empty&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x9009;&#x4E2D;Empty&#x72B6;&#x6001;&#x53F3;&#x952E;|Set as Layer Default State&#x8BBE;&#x7F6E;&#x4E3A;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;&#x3002;</p>
+<p>点击加号，新建一个动画层，重命名为Attack Layer。在Attack Layer里我们拖拽进Attack01动画剪辑，但我们不希望默认起始动画是攻击动画，于是我们右键Create State|Empty创建一个空状态（重命名为Empty），然后选中Empty状态右键|Set as Layer Default State设置为默认状态。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609225548574.png" alt="image-20200609225548574"></p>
-<p>&#x7136;&#x540E;&#x4ECE;&#x7A7A;&#x72B6;&#x6001;&#x5230;Attack01&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x8F6C;&#x53D8;&#x5173;&#x7CFB;&#xFF0C;&#x53D6;&#x6D88;&#x52FE;&#x9009;Has Exit Time&#xFF0C;&#x8BBE;&#x7F6E;Trigger&#x7C7B;&#x578B;&#x6761;&#x4EF6;IsAttacking&#x3002;Trigger&#x7C7B;&#x578B;&#x6761;&#x4EF6;&#x7684;&#x539F;&#x7406;&#x662F;&#x628A;&#x6761;&#x4EF6;&#x53D8;&#x91CF;IsAttacking&#x8D4B;&#x503C;&#x4E3A;true&#x7136;&#x540E;&#x5728;&#x8D4B;&#x503C;&#x4E3A;false&#x3002;</p>
+<p>然后从空状态到Attack01建立一个转变关系，取消勾选Has Exit Time，设置Trigger类型条件IsAttacking。Trigger类型条件的原理是把条件变量IsAttacking赋值为true然后在赋值为false。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609230306166.png" alt="image-20200609230306166"></p>
-<p>&#x7136;&#x540E;&#x4ECE;Attack01&#x5230;Empty&#x4E4B;&#x95F4;&#x5728;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x8F6C;&#x53D8;&#x5173;&#x7CFB;&#xFF0C;&#x52FE;&#x9009;Has Exit Time&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;Attack01&#x52A8;&#x753B;&#x64AD;&#x653E;&#x5B8C;&#x6BD5;&#x5C31;&#x53EF;&#x4EE5;&#x56DE;&#x5230;Empty&#x72B6;&#x6001;&#x7B49;&#x5F85;&#x4E0B;&#x6B21;&#x89E6;&#x53D1;&#x3002;</p>
-<p>&#x5728;Base Layer&#x548C;Attack Layer&#x53F3;&#x8FB9;&#x6709;&#x5C0F;&#x9F7F;&#x8F6E;&#x6309;&#x94AE;&#xFF0C;&#x70B9;&#x51FB;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x66F4;&#x591A;&#x8BBE;&#x7F6E;&#x3002;</p>
+<p>然后从Attack01到Empty之间在建立一个转变关系，勾选Has Exit Time，这样一来，Attack01动画播放完毕就可以回到Empty状态等待下次触发。</p>
+<p>在Base Layer和Attack Layer右边有小齿轮按钮，点击可以看到更多设置。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609231407247.png" alt="image-20200609231407247"></p>
-<p>&#x5176;&#x4E2D;Weight&#xFF08;&#x6743;&#x91CD;&#xFF09;&#x51B3;&#x5B9A;&#x52A8;&#x753B;&#x5C42;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x3002;Base Layer&#x4E00;&#x76F4;&#x5728;&#x64AD;&#x653E;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x7684;Weight&#x4E0D;&#x53EF;&#x6539;&#x53D8;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x628A;Attack Layer&#x7684;Weight&#x6539;&#x4E3A;1&#x65F6;&#xFF0C;Attack Layer&#x5C06;&#x6839;&#x636E;Blending&#x8BBE;&#x7F6E;&#x7684;Override&#xFF0C;&#x5B8C;&#x5168;&#x8986;&#x76D6;Base Layer&#xFF0C;&#x5373;&#x53EA;&#x64AD;&#x653E;Attack Layer&#x3002;&#x5982;&#x679C;&#x628A;Blending&#x8BBE;&#x7F6E;&#x4E3A;Additive&#xFF0C;Attack Layer&#x5C06;&#x5728;Base Layer&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x505A;&#x53D8;&#x5316;&#x3002;</p>
+<p>其中Weight（权重）决定动画层的优先级。Base Layer一直在播放，因此它的Weight不可改变。当我们把Attack Layer的Weight改为1时，Attack Layer将根据Blending设置的Override，完全覆盖Base Layer，即只播放Attack Layer。如果把Blending设置为Additive，Attack Layer将在Base Layer的基础上做变化。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609232105874.png" alt="image-20200609232105874"></p>
-<p>&#x4FDD;&#x6301;Blending&#x4E3A;Override&#xFF0C;&#x6253;&#x5F00;PlayerAttack.cs&#x811A;&#x672C;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span> (<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">if</span>(Input.GetKeyDown(KeyCode.Mouse0))</span><br><span class="line">    {</span><br><span class="line">        anim.SetLayerWeight(<span class="hljs-number">1</span>, <span class="hljs-number">1f</span>);</span><br><span class="line">        anim.SetTrigger(<span class="hljs-string">&quot;IsAttacking&quot;</span>);</span><br><span class="line">        print(<span class="hljs-string">&quot;Attacking!&quot;</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x5176;&#x4E2D;Update&#x65B9;&#x6CD5;&#x4E0B;&#x7684;&#x8BED;&#x53E5;&#x201C;anim.SetLayerWeight(1, 1f);&#x2019;&#x2019;SetLayerWeight&#x4F20;&#x9012;Attack Layer&#x7684;&#x52A8;&#x753B;&#x5C42;&#x7D22;&#x5F15;1&#xFF08;Base Layer&#x7684;&#x7D22;&#x5F15;&#x662F;0&#xFF09;&#x4EE5;&#x53CA;&#x6743;&#x91CD;&#x8303;&#x56F4;1f&#xFF08;&#x8868;&#x793A;&#x8303;&#x56F4;&#x662F;0~1&#xFF09;&#x3002;&#x7136;&#x540E;&#x201D;anim.SetTrigger(&#x201C;IsAttacking&#x201D;);&#x201C;&#x8BBE;&#x7F6E;&#x89E6;&#x53D1;&#x5668;&#x201D;IsAttacking&#x201D;&#x3002;</p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x4E00;&#x8FB9;&#x63A7;&#x5236;&#x89D2;&#x8272;&#x8DD1;&#x52A8;&#xFF0C;&#x4E00;&#x8FB9;&#x6309;&#x9F20;&#x6807;&#x5DE6;&#x952E;&#x653B;&#x51FB;&#xFF0C;&#x89D2;&#x8272;&#x4F1A;&#x5728;&#x653B;&#x51FB;&#x7684;&#x65F6;&#x5019;&#x811A;&#x505C;&#x6B62;&#x4E0D;&#x52A8;&#x3002;</p>
-<h1 id="&#x5341;&#x4E00;&#x3001;&#x52A8;&#x753B;&#x906E;&#x7F69;&#xFF08;Avatar-Mask&#xFF09;"><a href="#&#x5341;&#x4E00;&#x3001;&#x52A8;&#x753B;&#x906E;&#x7F69;&#xFF08;Avatar-Mask&#xFF09;" class="headerlink" title="&#x5341;&#x4E00;&#x3001;&#x52A8;&#x753B;&#x906E;&#x7F69;&#xFF08;Avatar Mask&#xFF09;"></a>&#x5341;&#x4E00;&#x3001;&#x52A8;&#x753B;&#x906E;&#x7F69;&#xFF08;Avatar Mask&#xFF09;</h1><p>&#x52A8;&#x753B;&#x906E;&#x7F69;&#xFF08;Avatar Mask&#xFF09;&#x7528;&#x4E8E;&#x6DF7;&#x5408;&#x52A8;&#x753B;&#x5C42;&#xFF0C;&#x8BA9;&#x4E0A;&#x4E00;&#x5C0F;&#x8282;&#x4E2D;&#x89D2;&#x8272;&#x7684;&#x8FB9;&#x8DD1;&#x8FB9;&#x653B;&#x51FB;&#x52A8;&#x753B;&#x6CA1;&#x90A3;&#x4E48;&#x5947;&#x602A;&#x3002;</p>
-<p>&#x5728;Assets/Animations&#x4E0B;&#x53F3;&#x952E;&#x65B0;&#x5EFA;|Avatar Mask&#xFF0C;&#x91CD;&#x547D;&#x540D;&#x4E3A;DwarfHero_LowerBody&#x3002;&#x9009;&#x4E2D;DwarfHero_LowerBody&#xFF0C;&#x5728;Inspector&#x91CC;&#x70B9;&#x5F00;Humanoid&#xFF0C;&#x5C06;&#x9700;&#x8981;&#x906E;&#x6321;&#x4F4F;&#x7684;&#x90E8;&#x5206;&#x70B9;&#x51FB;&#x53D8;&#x7EA2;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5C06;&#x53CC;&#x817F;&#x548C;&#x6839;&#x52A8;&#x4F5C;&#x5168;&#x90E8;&#x70B9;&#x7EA2;&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8981;&#x5C06;&#x653B;&#x51FB;&#x52A8;&#x753B;&#x5C42;&#x4E2D;&#x89D2;&#x8272;&#x7684;&#x4E0B;&#x534A;&#x8EAB;&#x5168;&#x90E8;&#x88AB;Base Layer&#x906E;&#x4F4F;&#x3002;</p>
+<p>保持Blending为Override，打开PlayerAttack.cs脚本</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Input.GetKeyDown(KeyCode.Mouse0))</span><br><span class="line">    &#123;</span><br><span class="line">        anim.SetLayerWeight(<span class="number">1</span>, <span class="number">1f</span>);</span><br><span class="line">        anim.SetTrigger(<span class="string">"IsAttacking"</span>);</span><br><span class="line">        print(<span class="string">"Attacking!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>其中Update方法下的语句“anim.SetLayerWeight(1, 1f);’’SetLayerWeight传递Attack Layer的动画层索引1（Base Layer的索引是0）以及权重范围1f（表示范围是0~1）。然后”anim.SetTrigger(“IsAttacking”);“设置触发器”IsAttacking”。</p>
+<p>播放游戏，一边控制角色跑动，一边按鼠标左键攻击，角色会在攻击的时候脚停止不动。</p>
+<h1 id="十一、动画遮罩（Avatar-Mask）"><a href="#十一、动画遮罩（Avatar-Mask）" class="headerlink" title="十一、动画遮罩（Avatar Mask）"></a>十一、动画遮罩（Avatar Mask）</h1><p>动画遮罩（Avatar Mask）用于混合动画层，让上一小节中角色的边跑边攻击动画没那么奇怪。</p>
+<p>在Assets/Animations下右键新建|Avatar Mask，重命名为DwarfHero_LowerBody。选中DwarfHero_LowerBody，在Inspector里点开Humanoid，将需要遮挡住的部分点击变红，这里我们将双腿和根动作全部点红。因为我们要将攻击动画层中角色的下半身全部被Base Layer遮住。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609234540132.png" alt="image-20200609234540132"></p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x5C06;&#x8FD9;&#x4E2A;&#x906E;&#x7F69;&#x5E94;&#x7528;&#x5230;Attack Layer&#x4E2D;&#x3002;&#x70B9;&#x51FB;Attack Layer&#x53F3;&#x8FB9;&#x7684;&#x5C0F;&#x9F7F;&#x8F6E;&#xFF0C;&#x70B9;&#x51FB;Mask&#x53F3;&#x8FB9;&#x7684;&#x5C0F;&#x5706;&#xFF0C;&#x5728;&#x5F39;&#x51FA;&#x7684;&#x5BF9;&#x8BDD;&#x6846;&#x4E2D;&#x9009;&#x62E9;DwarfHero_LowerBody&#x3002;</p>
+<p>接下来将这个遮罩应用到Attack Layer中。点击Attack Layer右边的小齿轮，点击Mask右边的小圆，在弹出的对话框中选择DwarfHero_LowerBody。</p>
 <p><img src="/2020/02/23/Unity%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20200609235030518.png" alt="image-20200609235030518"></p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x89D2;&#x8272;&#x53EF;&#x4EE5;&#x4E00;&#x8FB9;&#x8DD1;&#x52A8;&#x4E00;&#x8FB9;&#x653B;&#x51FB;&#xFF0C;&#x811A;&#x6B65;&#x4E0D;&#x505C;&#x4E86;&#x3002;</p>
-</body></html>
-    
-    </div>
-    
-    <div class="columns is-variable is-1 is-multiline is-mobile">
-    
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Unity/">#Unity</a></span>
-    
-    </div>
-    
-    
-    <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2020/02/24/PluralSight%E8%AF%BE%E7%A8%8B%EF%BC%9A%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">PluralSight课程：游戏机制设计基础</a>
-            
-        </span>
-        <span class="column is-12-mobile is-half-desktop  article-nav-next">
-            
-            <a href="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/">Unity 2018 UI基础</a>
-            
-        </span>
-    </div>
-    
-</article>
-
-
-
-
-    </div>
-</section>
-    <footer class="footer">
-    <div class="container">
-        <div class="columns content">
-            <div class="column is-narrow has-text-centered">
-                &copy; 2020 MJ&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
-            </div>
-            <div class="column is-hidden-mobile"></div>
-
-            
-            <div class="column is-narrow">
-                <div class="columns is-mobile is-multiline is-centered">
-                
-                    
-                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
-                    
-                    GitHub
-                    
-                </a>
-                
-                </div>
-            </div>
-            
-            
-        </div>
-    </div>
-</footer>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
-
-<!-- test if the browser is outdated -->
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // plugin function, place inside DOM ready function
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        })
-    });
-</script>
-
-<script>
-    window.FontAwesomeConfig = {
-        searchPseudoElements: true
-    }
-    moment.locale("zh-CN");
-</script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script>
-    MathJax.Hub.Config({
-        "HTML-CSS": {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-</script>
-
-    
-    
-    
-    
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
-<script>
-    (function ($) {
-        $(document).ready(function () {
-            if (typeof($.fn.lightGallery) === 'function') {
-                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof($.fn.justifiedGallery) === 'function') {
-                $('.justified-gallery').justifiedGallery();
-            }
-        });
-    })(jQuery);
-</script>
-
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-    <style>
-        .hljs {
-            position: relative;
-        }
-
-        .hljs .clipboard-btn {
-            float: right;
-            color: #9a9a9a;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
-        }
-
-        .hljs > .clipboard-btn {
-            display: none;
-            position: absolute;
-            right: 4px;
-            top: 4px;
-        }
-
-        .hljs:hover > .clipboard-btn {
-            display: inline;
-        }
-
-        .hljs > figcaption > .clipboard-btn {
-            margin-right: 4px;
-        }
-    </style>
-    <script>
-      $(document).ready(function () {
-        $('figure.hljs').each(function(i, figure) {
-          var codeId = 'code-' + i;
-          var code = figure.querySelector('.code');
-          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
-          code.id = codeId;
-          copyButton.addClass('clipboard-btn');
-          copyButton.attr('data-clipboard-target-id', codeId);
-
-          var figcaption = figure.querySelector('figcaption');
-
-          if (figcaption) {
-            figcaption.append(copyButton[0]);
-          } else {
-            figure.prepend(copyButton[0]);
-          }
-        })
-
-        var clipboard = new ClipboardJS('.clipboard-btn', {
-          target: function(trigger) {
-            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
-          }
-        });
-        clipboard.on('success', function(e) {
-          e.clearSelection();
-        })
-      })
-    </script>
-
-    
-    
-
-    
-
-
-
-<script src="/js/script.js"></script>
-
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-mask"></div>
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-    
-</body>
-</html>
+<p>播放游戏，角色可以一边跑动一边攻击，脚步不停了。</p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/02/24/PluralSight%E8%AF%BE%E7%A8%8B%EF%BC%9A%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" title="PluralSight课程：游戏机制设计基础" class="prev">上一篇</a><a href="/2020/02/19/Unity%202018%20UI%E5%9F%BA%E7%A1%80/" title="Unity 2018 UI基础" class="next">下一篇</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

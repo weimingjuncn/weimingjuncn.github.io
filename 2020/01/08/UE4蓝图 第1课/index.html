@@ -1,481 +1,91 @@
-<!DOCTYPE html>
-<html class="has-navbar-fixed-top">
-<head>
-    <meta charset="utf-8">
-<title>UE4蓝图 第1课 - MJ&#39;s Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
-
-
-
-
-<meta name="description" content="This is a personal Blog.">
-
-
-
-
-
-    <meta name="description" content="&amp;#x4E3B;&amp;#x8BB2;&amp;#x4EBA;&amp;#xFF1A;&amp;#x795E;&amp;#x7ECF;&amp;#x5200;&amp;#x6E38;&amp;#x620F;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5BA4;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av33932971  &amp;#x521B;&amp;#x5EFA;&amp;#x9879;&amp;#x76EE;&amp;#xFF08;&amp;#x84DD;&amp;#x56FE;&amp;#x30">
-<meta property="og:type" content="article">
-<meta property="og:title" content="UE4蓝图 第1课">
-<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC1%E8%AF%BE/index.html">
-<meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="&amp;#x4E3B;&amp;#x8BB2;&amp;#x4EBA;&amp;#xFF1A;&amp;#x795E;&amp;#x7ECF;&amp;#x5200;&amp;#x6E38;&amp;#x620F;&amp;#x5DE5;&amp;#x4F5C;&amp;#x5BA4;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;av33932971  &amp;#x521B;&amp;#x5EFA;&amp;#x9879;&amp;#x76EE;&amp;#xFF08;&amp;#x84DD;&amp;#x56FE;&amp;#x30">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC1%E8%AF%BE/APlayerControllerBP.png">
-<meta property="article:published_time" content="2020-01-08T02:26:44.000Z">
-<meta property="article:modified_time" content="2020-01-08T02:57:10.767Z">
-<meta property="article:author" content="MJ">
-<meta property="article:tag" content="UE4">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC1%E8%AF%BE/APlayerControllerBP.png">
-
-
-
-
-
-<link rel="icon" href="/favicon.png">
-
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-<body>
-    
-<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item navbar-logo" href="/">
-                
-                <img src="/images/logo.png" alt="" height="28">
-                
-            </a>
-            <div class="navbar-burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        
-        <div class="navbar-menu navbar-start">
-            
-            <a class="navbar-item "
-               href="/archives">归档</a>
-            
-            <a class="navbar-item "
-               href="/tags">标签分类</a>
-            
-            <a class="navbar-item "
-               href="/about">关于</a>
-            
-        </div>
-        
-        <div class="navbar-menu navbar-end">
-            
-            <a class="navbar-item search" title="Search" href="javascript:;">
-                <i class="fas fa-search"></i>
-            </a>
-            
-            
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Table of Contents">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                </div>
-            </div>
-            
-            
-            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-               
-            
-        </div>
-    </div>
-</nav>
-
-    <section class="section">
-    <div class="container">
-    <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            UE4蓝图 第1课
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-01-08T02:26:44.000Z" itemprop="datePublished">1月 8 2020</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Game-Develop/">Game Develop</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>&#x4E3B;&#x8BB2;&#x4EBA;&#xFF1A;&#x795E;&#x7ECF;&#x5200;&#x6E38;&#x620F;&#x5DE5;&#x4F5C;&#x5BA4;<br><a href="https://www.bilibili.com/video/av33932971" target="_blank" rel="noopener">https://www.bilibili.com/video/av33932971</a></p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> UE4蓝图 第1课 · MJ's Blog</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="UE4蓝图 第1课 - MJ"><meta name="keywords"><meta name="author" content="MJ"><link rel="short icon" href="/images/assassins_creed.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weimingjuncn.github.io/atom.xml" title="MJ's Blog"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script><meta name="generator" content="Hexo 4.2.0"></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/assassins_creed_white.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">UE4蓝图 第1课</h1><div class="post-info">2020-01-08</div><div class="post-content"><p>主讲人：神经刀游戏工作室<br><a href="https://www.bilibili.com/video/av33932971" target="_blank" rel="noopener">https://www.bilibili.com/video/av33932971</a></p>
 <ol>
-<li><p>&#x521B;&#x5EFA;&#x9879;&#x76EE;&#xFF08;&#x84DD;&#x56FE;&#x3001;&#x7B2C;&#x4E09;&#x4EBA;&#x79F0;&#x6A21;&#x677F;&#xFF09;</p>
+<li><p>创建项目（蓝图、第三人称模板）</p>
 </li>
-<li><p>&#x4E0B;&#x65B9;&#x3010;&#x5185;&#x5BB9;&#x6D4F;&#x89C8;&#x5668;&#x3011;&#x53F3;&#x952E;&#x65B0;&#x5EFA;</p>
+<li><p>下方【内容浏览器】右键新建</p>
 <ul>
-<li>&#x201C;Player&#x201D;&#x6587;&#x4EF6;&#x5939;&#xFF08;&#x5B58;&#x653E;&#x89D2;&#x8272;&#xFF09;</li>
-<li>&#x201C;Map&#x201D;&#x6587;&#x4EF6;&#x5939;&#xFF08;&#x5B58;&#x653E;&#x5173;&#x5361;&#xFF09;</li>
-<li>&#x201C;Gameplay&#x201D;&#x6587;&#x4EF6;&#x5939;&#xFF08;&#x5B58;&#x653E;&#x73A9;&#x6CD5;&#xFF09;</li>
+<li>“Player”文件夹（存放角色）</li>
+<li>“Map”文件夹（存放关卡）</li>
+<li>“Gameplay”文件夹（存放玩法）</li>
 </ul>
 </li>
-<li><p>Map&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x53F3;&#x952E;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x3010;&#x5173;&#x5361;&#x3011;</p>
+<li><p>Map文件夹下右键新建一个【关卡】</p>
 </li>
-<li><p>&#x5DE6;&#x8FB9;&#x3010;&#x6A21;&#x5F0F;&#x3011;&#x4E0B;&#xFF0C;&#x4ECE;&#x3010;&#x5149;&#x7167;&#x3011;&#x62D6;&#x62FD;&#x51FA;&#xFF1A;</p>
+<li><p>左边【模式】下，从【光照】拖拽出：</p>
 <ul>
-<li>&#x4E00;&#x4E2A;&#x3010;&#x5B9A;&#x5411;&#x5149;&#x6E90;&#x3011;</li>
-<li>&#x4E00;&#x4E2A;&#x3010;&#x5929;&#x7A7A;&#x5149;&#x6E90;&#x3011;</li>
+<li>一个【定向光源】</li>
+<li>一个【天空光源】</li>
 </ul>
-<p>&#x4ECE;&#x3010;&#x89C6;&#x89C9;&#x6548;&#x679C;&#x3011;&#x62D6;&#x62FD;&#x51FA;&#x4E00;&#x4E2A;&#x3010;&#x5927;&#x6C14;&#x96FE;&#x3011;</p>
-<p>&#x4ECE;&#x3010;&#x57FA;&#x672C;&#x3011;&#x62D6;&#x62FD;&#x51FA;&#x4E00;&#x4E2A;&#x3010;&#x7ACB;&#x65B9;&#x4F53;&#x3011;</p>
+<p>从【视觉效果】拖拽出一个【大气雾】</p>
+<p>从【基本】拖拽出一个【立方体】</p>
 </li>
-<li><p>&#x53F3;&#x8FB9;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x91CC;&#x628A;&#x7ACB;&#x65B9;&#x4F53;&#x7684;&#x4F4D;&#x7F6E;&#x5F52;&#x96F6;&#xFF08;&#x70B9;&#x51FB;&#x201C;&#x56DE;&#x8F66;&#x7B26;&#x53F7;&#x6309;&#x94AE;&#x201D;&#xFF09;</p>
+<li><p>右边【细节】里把立方体的位置归零（点击“回车符号按钮”）</p>
 <ul>
-<li>&#x952E;&#x76D8;&#x4E0A;&#x6309;&#x3010;W&#x3011;&#x5207;&#x6362;&#x5230;&#x8C03;&#x6574;<strong>&#x4F4D;&#x7F6E;</strong>&#x5750;&#x6807;&#x7CFB;</li>
-<li>&#x6309;&#x3010;E&#x3011;&#x5207;&#x6362;&#x5230;&#x8C03;&#x6574;&#x65CB;&#x8F6C;<strong>&#x89D2;&#x5EA6;</strong>&#x5750;&#x6807;&#x7CFB;</li>
-<li>&#x3010;R&#x3011;&#x5207;&#x6362;&#x5230;&#x8C03;&#x6574;<strong>&#x5927;&#x5C0F;</strong>&#x5750;&#x6807;&#x7CFB;</li>
-</ul>
-</li>
-<li><p>&#x628A;&#x7ACB;&#x65B9;&#x4F53;&#x8C03;&#x6210;&#x4E00;&#x4E2A;&#x4F9B;&#x89D2;&#x8272;&#x843D;&#x811A;&#x7684;&#x5E73;&#x53F0;</p>
-</li>
-<li><p>&#x4ECE;&#x5DE6;&#x8FB9;&#x3010;&#x57FA;&#x672C;&#x3011;&#x91CC;&#x62D6;&#x62FD;&#x51FA;&#x4E00;&#x4E2A;&#x3010;&#x73A9;&#x5BB6;&#x8D77;&#x59CB;&#x3011;</p>
-</li>
-<li><p>&#x201C;GamePlay&#x201D;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x53F3;&#x952E;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x3010;&#x84DD;&#x56FE;&#x7C7B;&#x3011;&#xFF0C;&#x9009;&#x62E9;&#x3010;Game Mode Base&#x3011;</p>
-</li>
-<li><p>Player&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x53F3;&#x952E;&#x65B0;&#x5EFA;&#xFF1A;</p>
-<ul>
-<li>&#x4E00;&#x4E2A;&#x3010;&#x84DD;&#x56FE;&#x7C7B;&#x3011;&#x7684;&#x3010;Character&#x3011;&#xFF0C;&#x53D6;&#x540D;&#x201C;APlayer&#x201D;&#xFF0C;</li>
-<li>&#x4E00;&#x4E2A;&#x3010;&#x84DD;&#x56FE;&#x7C7B;&#x3011;&#x7684;&#x3010;Player Controller&#x3011;&#xFF0C;&#x53D6;&#x540D;&#x201C;APlayerController&#x201D;</li>
+<li>键盘上按【W】切换到调整<strong>位置</strong>坐标系</li>
+<li>按【E】切换到调整旋转<strong>角度</strong>坐标系</li>
+<li>【R】切换到调整<strong>大小</strong>坐标系</li>
 </ul>
 </li>
-<li><p>&#x53CC;&#x51FB;&#x8FDB;&#x5165;&#x201C;APlayer&#x201D;&#xFF0C;</p>
-<ul>
-<li>&#x9009;&#x4E2D;&#x5DE6;&#x8FB9;&#x3010;&#x7EC4;&#x4EF6;&#x3011;&#x91CC;&#x7684;&#x3010;Mesh&#x3011;&#xFF0C;</li>
-<li>&#x53F3;&#x8FB9;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x4E2D;&#x3010;Mesh&#x3011;&#x4E0B;Skeletal Mesh&#x9009;&#x62E9;&#x201D;SK_Mannequin&#x201D;,</li>
-<li>&#x3010;&#x7EC6;&#x8282;&#x3011;&#x4E2D;&#x3010;&#x53D8;&#x6362;&#x3011;&#x4E0B;&#x7684;&#x3010;&#x65CB;&#x8F6C;Z&#x8F74;&#x3011;&#x6539;&#x6210;&#x201C;-90&#xB0;&#x201C;&#xFF0C;&#x3010;&#x4F4D;&#x7F6E;Z&#x8F74;&#x3011;&#x6539;&#x6210;&#x201D;-92&#x201D;</li>
-</ul>
-<p>&#x9009;&#x4E2D;&#x5DE6;&#x8FB9;&#x3010;&#x7EC4;&#x4EF6;&#x3011;&#x91CC;&#x7684;&#x3010;CapsuleCoponent&#x3011;&#xFF0C;&#x70B9;&#x51FB;&#x4E0A;&#x65B9;&#x3010;&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;&#x3011;&#x6309;&#x94AE;&#xFF0C;&#x9009;&#x62E9;&#x3010;SwingArm&#x3011;</p>
-<p>&#x5728;&#x65B0;&#x6DFB;&#x52A0;&#x7684;SwingArm&#x7EC4;&#x4EF6;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x3010;Camera&#x3011;</p>
-<p>&#x628A;SwingArm&#x5782;&#x76F4;&#x8C03;&#x8282;&#x5230;&#x4E0E;&#x89D2;&#x8272;&#x80A9;&#x5DEE;&#x4E0D;&#x591A;&#x540C;&#x9AD8;&#x5EA6;&#x7684;&#x4F4D;&#x7F6E;</p>
-<p>&#x7F16;&#x8BD1;&#xFF0C;&#x4FDD;&#x5B58;</p>
+<li><p>把立方体调成一个供角色落脚的平台</p>
 </li>
-<li><p>&#x70B9;&#x51FB;&#x5DE5;&#x5177;&#x680F;&#x7684;&#x3010;&#x7F16;&#x8F91;&#x3011;&#xFF0C;&#x8FDB;&#x5165;&#x3010;&#x9879;&#x76EE;&#x8BBE;&#x7F6E;&#x3011;&#xFF0C;&#x8FDB;&#x5230;&#x5DE6;&#x8FB9;&#x3010;&#x5F15;&#x64CE;&#x3011;&#x4E0B;&#x7684;&#x3010;&#x8F93;&#x5165;&#x3011;</p>
+<li><p>从左边【基本】里拖拽出一个【玩家起始】</p>
 </li>
-<li><p>&#x5728;&#x201D;Axis Mapping&#x201C;&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x201C;Moveforward&#x201D;,</p>
+<li><p>“GamePlay”文件夹下右键新建一个【蓝图类】，选择【Game Mode Base】</p>
+</li>
+<li><p>Player文件夹下右键新建：</p>
 <ul>
-<li>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x6309;&#x952E;&#xFF0C;&#x9009;&#x62E9;&#x3010;&#x952E;&#x76D8;W&#x3011;&#xFF0C;&#x201D;Scale&#x201C;&#x8BBE;&#x7F6E;&#x4E3A;&#x201C;1.0&#x201D;</li>
-<li>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x6309;&#x952E;&#xFF0C;&#x9009;&#x62E9;&#x3010;&#x952E;&#x76D8;S&#x3011;&#xFF0C;&#x201C;Scale&#x201D;&#x8BBE;&#x7F6E;&#x4E3A;&#x201C;-1.0&#x201D;</li>
+<li>一个【蓝图类】的【Character】，取名“APlayer”，</li>
+<li>一个【蓝图类】的【Player Controller】，取名“APlayerController”</li>
 </ul>
 </li>
-<li><p>&#x8FDB;&#x5165;&#x201C;APlayerController&#x201D;&#xFF0C;&#x5728;&#x3010;&#x4E8B;&#x4EF6;&#x56FE;&#x8868;&#x3011;&#x4E0B;&#xFF0C;&#x53F3;&#x952E;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x3010;&#x5750;&#x6807;&#x8F74;&#x4E8B;&#x4EF6;&#x3011;&#x201C;Moveforward&#x201D;</p>
+<li><p>双击进入“APlayer”，</p>
 <ul>
-<li>&#x3010;&#x5750;&#x6807;&#x8F74;&#x4E8B;&#x4EF6;&#x3011;&#x201C;Moveforward&#x201D;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x662F;&#x73A9;&#x5BB6;&#x7684;&#x4E00;&#x79CD;&#x8F93;&#x5165;</li>
+<li>选中左边【组件】里的【Mesh】，</li>
+<li>右边【细节】中【Mesh】下Skeletal Mesh选择”SK_Mannequin”,</li>
+<li>【细节】中【变换】下的【旋转Z轴】改成“-90°“，【位置Z轴】改成”-92”</li>
 </ul>
-<p>&#x53F3;&#x952E;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x3010;Pawn&#x3011;&#x201C;Get Controlled Pawn&#x201D;</p>
+<p>选中左边【组件】里的【CapsuleCoponent】，点击上方【添加组件】按钮，选择【SwingArm】</p>
+<p>在新添加的SwingArm组件下新建一个【Camera】</p>
+<p>把SwingArm垂直调节到与角色肩差不多同高度的位置</p>
+<p>编译，保存</p>
+</li>
+<li><p>点击工具栏的【编辑】，进入【项目设置】，进到左边【引擎】下的【输入】</p>
+</li>
+<li><p>在”Axis Mapping“下自定义添加一个“Moveforward”,</p>
 <ul>
-<li><p>Charactor&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;Pawn&#xFF0C;&#x6240;&#x4EE5;&#x7528;&#x201C;Get Controlled Pawn&#x201D;&#x5373;&#x53EF;</p>
-<p>APlayerController&#x84DD;&#x56FE;&#xFF1A;</p>
+<li>添加一个按键，选择【键盘W】，”Scale“设置为“1.0”</li>
+<li>添加一个按键，选择【键盘S】，“Scale”设置为“-1.0”</li>
+</ul>
+</li>
+<li><p>进入“APlayerController”，在【事件图表】下，右键添加一个操作【坐标轴事件】“Moveforward”</p>
+<ul>
+<li>【坐标轴事件】“Moveforward”这个操作是玩家的一种输入</li>
+</ul>
+<p>右键添加一个操作【Pawn】“Get Controlled Pawn”</p>
+<ul>
+<li><p>Charactor是一种特殊的Pawn，所以用“Get Controlled Pawn”即可</p>
+<p>APlayerController蓝图：</p>
 </li>
 </ul>
 </li>
 </ol>
 <p><img src="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC1%E8%AF%BE/APlayerControllerBP.png" alt="APlayerControllerBP"></p>
 <ol start="14">
-<li><p>&#x8FDB;&#x5165;APlayerMode&#xFF0C;&#x9009;&#x4E2D;&#x3010;&#x5DE5;&#x5177;&#x680F;&#x3011;&#x9762;&#x677F;&#x4E0B;&#x7684;&#x3010;&#x7C7B;&#x9ED8;&#x8BA4;&#x503C;&#x3011;&#xFF0C;&#x5728;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x91CC;&#x3010;Classes&#x3011;&#x4E0B;</p>
+<li><p>进入APlayerMode，选中【工具栏】面板下的【类默认值】，在【细节】里【Classes】下</p>
 <ul>
-<li>&#x628A;Player Controller Class&#x6539;&#x6210;&#x81EA;&#x5DF1;&#x5EFA;&#x7684;&#x201C;APlayerController&#x201D;</li>
-<li>&#x628A;Default Pawn Class&#x6539;&#x6210;&#x81EA;&#x5DF1;&#x5EFA;&#x7684;&#x201C;APlayer&#x201D;</li>
+<li>把Player Controller Class改成自己建的“APlayerController”</li>
+<li>把Default Pawn Class改成自己建的“APlayer”</li>
 </ul>
-<p>&#x7F16;&#x8BD1;&#xFF0C;&#x4FDD;&#x5B58;</p>
+<p>编译，保存</p>
 </li>
-<li><p>&#x56DE;&#x5230;&#x81EA;&#x5DF1;&#x5EFA;&#x7684;&#x5173;&#x5361;&#xFF0C;&#x628A;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x65C1;&#x8FB9;&#x7684;&#x3010;&#x4E16;&#x754C;&#x8BBE;&#x7F6E;&#x3011;&#x91CC;&#x628A;GameMode Override&#x9ED8;&#x8BA4;&#x7684;&#x201C;None&#x201D;&#x6539;&#x6210;&#x81EA;&#x5DF1;&#x5EFA;&#x7684;&#x201C;APlayerMode&#x201D;</p>
+<li><p>回到自己建的关卡，把【细节】旁边的【世界设置】里把GameMode Override默认的“None”改成自己建的“APlayerMode”</p>
 <ul>
-<li>&#x5982;&#x679C;&#x3010;&#x7EC6;&#x8282;&#x3011;&#x65C1;&#x8FB9;&#x6CA1;&#x6709;&#x3010;&#x4E16;&#x754C;&#x8BBE;&#x7F6E;&#x3011;&#xFF0C;&#x53EF;&#x4EE5;&#x7F16;&#x8F91;&#x5668;&#x6700;&#x4E0A;&#x65B9;&#x7B2C;&#x4E8C;&#x680F;&#x7684;&#x3010;&#x7A97;&#x53E3;&#x3011;&#x91CC;&#x8C03;&#x51FA;</li>
+<li>如果【细节】旁边没有【世界设置】，可以编辑器最上方第二栏的【窗口】里调出</li>
 </ul>
-<p>&#x7F16;&#x8BD1;&#x3001;&#x4FDD;&#x5B58;</p>
+<p>编译、保存</p>
 </li>
-<li><p>&#x6B64;&#x65F6;&#x5728;&#x81EA;&#x5EFA;&#x7684;&#x5173;&#x5361;&#x91CC;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x64AD;&#x653E;&#x540E;&#x7528;W/S&#x64CD;&#x63A7;&#x89D2;&#x8272;&#x524D;&#x540E;&#x5E73;&#x79FB;&#x3002;</p>
+<li><p>此时在自建的关卡里可以点击播放后用W/S操控角色前后平移。</p>
 </li>
 </ol>
-</body></html>
-    
-    </div>
-    
-    <div class="columns is-variable is-1 is-multiline is-mobile">
-    
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/UE4/">#UE4</a></span>
-    
-    </div>
-    
-    
-    <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/">UE4蓝图 第2课</a>
-            
-        </span>
-        <span class="column is-12-mobile is-half-desktop  article-nav-next">
-            
-            <a href="/2020/01/08/%E9%85%8D%E7%BD%AEGit%E7%9A%84SSH%20Key/">配置Git的SSH Key</a>
-            
-        </span>
-    </div>
-    
-</article>
-
-
-
-
-    </div>
-</section>
-    <footer class="footer">
-    <div class="container">
-        <div class="columns content">
-            <div class="column is-narrow has-text-centered">
-                &copy; 2020 MJ&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
-            </div>
-            <div class="column is-hidden-mobile"></div>
-
-            
-            <div class="column is-narrow">
-                <div class="columns is-mobile is-multiline is-centered">
-                
-                    
-                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
-                    
-                    GitHub
-                    
-                </a>
-                
-                </div>
-            </div>
-            
-            
-        </div>
-    </div>
-</footer>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
-
-<!-- test if the browser is outdated -->
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // plugin function, place inside DOM ready function
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        })
-    });
-</script>
-
-<script>
-    window.FontAwesomeConfig = {
-        searchPseudoElements: true
-    }
-    moment.locale("zh-CN");
-</script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script>
-    MathJax.Hub.Config({
-        "HTML-CSS": {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-</script>
-
-    
-    
-    
-    
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
-<script>
-    (function ($) {
-        $(document).ready(function () {
-            if (typeof($.fn.lightGallery) === 'function') {
-                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof($.fn.justifiedGallery) === 'function') {
-                $('.justified-gallery').justifiedGallery();
-            }
-        });
-    })(jQuery);
-</script>
-
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-    <style>
-        .hljs {
-            position: relative;
-        }
-
-        .hljs .clipboard-btn {
-            float: right;
-            color: #9a9a9a;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
-        }
-
-        .hljs > .clipboard-btn {
-            display: none;
-            position: absolute;
-            right: 4px;
-            top: 4px;
-        }
-
-        .hljs:hover > .clipboard-btn {
-            display: inline;
-        }
-
-        .hljs > figcaption > .clipboard-btn {
-            margin-right: 4px;
-        }
-    </style>
-    <script>
-      $(document).ready(function () {
-        $('figure.hljs').each(function(i, figure) {
-          var codeId = 'code-' + i;
-          var code = figure.querySelector('.code');
-          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
-          code.id = codeId;
-          copyButton.addClass('clipboard-btn');
-          copyButton.attr('data-clipboard-target-id', codeId);
-
-          var figcaption = figure.querySelector('figcaption');
-
-          if (figcaption) {
-            figcaption.append(copyButton[0]);
-          } else {
-            figure.prepend(copyButton[0]);
-          }
-        })
-
-        var clipboard = new ClipboardJS('.clipboard-btn', {
-          target: function(trigger) {
-            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
-          }
-        });
-        clipboard.on('success', function(e) {
-          e.clearSelection();
-        })
-      })
-    </script>
-
-    
-    
-
-    
-
-
-
-<script src="/js/script.js"></script>
-
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-mask"></div>
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-    
-</body>
-</html>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/01/08/UE4%E8%93%9D%E5%9B%BE%20%E7%AC%AC2%E8%AF%BE/" title="UE4蓝图 第2课" class="prev">上一篇</a><a href="/2020/01/08/%E9%85%8D%E7%BD%AEGit%E7%9A%84SSH%20Key/" title="配置Git的SSH Key" class="next">下一篇</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

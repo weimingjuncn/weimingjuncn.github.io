@@ -1,196 +1,42 @@
-<!DOCTYPE html>
-<html class="has-navbar-fixed-top">
-<head>
-    <meta charset="utf-8">
-<title>如何用Markdown画流程图 - MJ&#39;s Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
-
-
-
-
-<meta name="description" content="This is a personal Blog.">
-
-
-
-
-
-    <meta name="description" content="&amp;#x7528;Markdown&amp;#x753B;&amp;#x6D41;&amp;#x7A0B;&amp;#x56FE;&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;mermaid&amp;#xFF0C;mermaid&amp;#x652F;&amp;#x6301;&amp;#x4E09;&amp;#x79CD;&amp;#x56FE;&amp;#x5F62;&amp;#x7684;&amp;#x7ED8;&amp;#x5236;, &amp;#x5206;&amp;#x522B;&amp;#x662F;&amp;#x6D41;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="如何用Markdown画流程图">
-<meta property="og:url" content="https://weimingjuncn.github.io/2020/01/08/%E5%A6%82%E4%BD%95%E7%94%A8Markdown%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE/index.html">
-<meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="&amp;#x7528;Markdown&amp;#x753B;&amp;#x6D41;&amp;#x7A0B;&amp;#x56FE;&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;mermaid&amp;#xFF0C;mermaid&amp;#x652F;&amp;#x6301;&amp;#x4E09;&amp;#x79CD;&amp;#x56FE;&amp;#x5F62;&amp;#x7684;&amp;#x7ED8;&amp;#x5236;, &amp;#x5206;&amp;#x522B;&amp;#x662F;&amp;#x6D41;">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-08T07:58:36.000Z">
-<meta property="article:modified_time" content="2020-01-08T08:09:41.056Z">
-<meta property="article:author" content="MJ">
-<meta property="article:tag" content="markdown">
-<meta name="twitter:card" content="summary">
-
-
-
-
-
-<link rel="icon" href="/favicon.png">
-
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-<body>
-    
-<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item navbar-logo" href="/">
-                
-                <img src="/images/logo.png" alt="" height="28">
-                
-            </a>
-            <div class="navbar-burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        
-        <div class="navbar-menu navbar-start">
-            
-            <a class="navbar-item "
-               href="/archives">归档</a>
-            
-            <a class="navbar-item "
-               href="/tags">标签分类</a>
-            
-            <a class="navbar-item "
-               href="/about">关于</a>
-            
-        </div>
-        
-        <div class="navbar-menu navbar-end">
-            
-            <a class="navbar-item search" title="Search" href="javascript:;">
-                <i class="fas fa-search"></i>
-            </a>
-            
-            
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Table of Contents">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#一、如何在markdown中使用mermaid">1&nbsp;&nbsp;<b>一、如何在markdown中使用mermaid</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#例子">1.1&nbsp;&nbsp;例子</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#例子-1">1.2&nbsp;&nbsp;例子</a>
-                    
-                </div>
-            </div>
-            
-            
-            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-               
-            
-        </div>
-    </div>
-</nav>
-
-    <section class="section">
-    <div class="container">
-    <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            如何用Markdown画流程图
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-01-08T07:58:36.000Z" itemprop="datePublished">1月 8 2020</time>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>&#x7528;Markdown&#x753B;&#x6D41;&#x7A0B;&#x56FE;&#x53EF;&#x4EE5;&#x7528;mermaid&#xFF0C;mermaid&#x652F;&#x6301;&#x4E09;&#x79CD;&#x56FE;&#x5F62;&#x7684;&#x7ED8;&#x5236;, &#x5206;&#x522B;&#x662F;&#x6D41;&#x7A0B;&#x56FE;, &#x65F6;&#x5E8F;&#x56FE;&#x548C;&#x7518;&#x7279;&#x56FE;</p>
-<h1 id="&#x4E00;&#x3001;&#x5982;&#x4F55;&#x5728;markdown&#x4E2D;&#x4F7F;&#x7528;mermaid"><a href="#&#x4E00;&#x3001;&#x5982;&#x4F55;&#x5728;markdown&#x4E2D;&#x4F7F;&#x7528;mermaid" class="headerlink" title="&#x4E00;&#x3001;&#x5982;&#x4F55;&#x5728;markdown&#x4E2D;&#x4F7F;&#x7528;mermaid"></a>&#x4E00;&#x3001;&#x5982;&#x4F55;&#x5728;markdown&#x4E2D;&#x4F7F;&#x7528;mermaid</h1><blockquote>
-<p>&#x2018;&#x2019;&#x2019;mermaid<br>        graph &#x6D41;&#x7A0B;&#x56FE;&#x65B9;&#x5411;<br>        &#x6D41;&#x7A0B;&#x56FE;&#x7684;&#x5185;&#x5BB9;<br>&#x2018;&#x2019;&#x2019;</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 如何用Markdown画流程图 · MJ's Blog</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="如何用Markdown画流程图 - MJ"><meta name="keywords"><meta name="author" content="MJ"><link rel="short icon" href="/images/assassins_creed.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weimingjuncn.github.io/atom.xml" title="MJ's Blog"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script><meta name="generator" content="Hexo 4.2.0"></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/assassins_creed_white.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">如何用Markdown画流程图</h1><div class="post-info">2020-01-08</div><div class="post-content"><p>用Markdown画流程图可以用mermaid，mermaid支持三种图形的绘制, 分别是流程图, 时序图和甘特图</p>
+<h1 id="一、如何在markdown中使用mermaid"><a href="#一、如何在markdown中使用mermaid" class="headerlink" title="一、如何在markdown中使用mermaid"></a>一、如何在markdown中使用mermaid</h1><blockquote>
+<p>‘’’mermaid<br>        graph 流程图方向<br>        流程图的内容<br>‘’’</p>
 </blockquote>
-<p>&#x6D41;&#x7A0B;&#x56FE;&#x65B9;&#x5411;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x503C;&#xFF1A;</p>
+<p>流程图方向有以下几个值：</p>
 <ul>
-<li>TB &#x4ECE;&#x4E0A;&#x5230;&#x4E0B;</li>
-<li>BT &#x4ECE;&#x4E0B;&#x5230;&#x4E0A;</li>
-<li>RL &#x4ECE;&#x53F3;&#x5230;&#x5DE6;</li>
-<li>LR &#x4ECE;&#x5DE6;&#x5230;&#x53F3;</li>
-<li>TD &#x540C;TB<h2 id="&#x4F8B;&#x5B50;"><a href="#&#x4F8B;&#x5B50;" class="headerlink" title="&#x4F8B;&#x5B50;"></a>&#x4F8B;&#x5B50;</h2></li>
+<li>TB 从上到下</li>
+<li>BT 从下到上</li>
+<li>RL 从右到左</li>
+<li>LR 从左到右</li>
+<li>TD 同TB<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2></li>
 </ul>
-<p></p><figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mermaid</span><br><span class="line">graph TD</span><br><span class="line">	A --&gt; B</span><br></pre></td></tr></tbody></table></figure><p></p>
-<pre class="mermaid">    graph TD
-    A --&gt; B</pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mermaid</span><br><span class="line">graph TD</span><br><span class="line">	A --&gt; B</span><br></pre></td></tr></table></figure>
 
-<p></p><figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mermaid</span><br><span class="line">graph LR</span><br><span class="line">	A --&gt; B</span><br></pre></td></tr></tbody></table></figure><p></p>
+<pre class="mermaid">    graph TD
+    A --> B</pre>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mermaid</span><br><span class="line">graph LR</span><br><span class="line">	A --&gt; B</span><br></pre></td></tr></table></figure>
+
 <pre class="mermaid">graph LR
-    A --&gt; B</pre>
+    A --> B</pre>
 
-<p>&#x6846;&#x56FE;&#x7684;&#x57FA;&#x672C;&#x8FB9;&#x6846;</p>
+<p>框图的基本边框</p>
 <ul>
-<li>id + [&#x6587;&#x5B57;&#x63CF;&#x8FF0;]&#x77E9;&#x5F62;</li>
-<li>id + (&#x6587;&#x5B57;&#x63CF;&#x8FF0;)&#x5706;&#x89D2;&#x77E9;&#x5F62;</li>
-<li>id + &gt;&#x6587;&#x5B57;&#x63CF;&#x8FF0;]&#x4E0D;&#x5BF9;&#x79F0;&#x77E9;&#x5F62;</li>
-<li>id + {&#x6587;&#x5B57;&#x63CF;&#x8FF0;}&#x83F1;&#x5F62;</li>
-<li>id + ((&#x6587;&#x5B57;&#x63CF;&#x8FF0;))&#x5706;&#x5F62;</li>
+<li>id + [文字描述]矩形</li>
+<li>id + (文字描述)圆角矩形</li>
+<li>id + &gt;文字描述]不对称矩形</li>
+<li>id + {文字描述}菱形</li>
+<li>id + ((文字描述))圆形</li>
 </ul>
-<h2 id="&#x4F8B;&#x5B50;-1"><a href="#&#x4F8B;&#x5B50;-1" class="headerlink" title="&#x4F8B;&#x5B50;"></a>&#x4F8B;&#x5B50;</h2><p></p><figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mermaid</span><br><span class="line">graph TD</span><br><span class="line">    id[&#x77E9;&#x5F62;]</span><br><span class="line">    id4(&#x5706;&#x89D2;&#x77E9;&#x5F62;)</span><br><span class="line">    id3&gt;&#x4E0D;&#x5BF9;&#x79F0;&#x7684;&#x77E9;&#x5F62;]</span><br><span class="line">    id1{&#x83F1;&#x5F62;}</span><br><span class="line">    id2((&#x5706;&#x5F62;))</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mermaid</span><br><span class="line">graph TD</span><br><span class="line">    id[矩形]</span><br><span class="line">    id4(圆角矩形)</span><br><span class="line">    id3&gt;不对称的矩形]</span><br><span class="line">    id1&#123;菱形&#125;</span><br><span class="line">    id2((圆形))</span><br></pre></td></tr></table></figure>
+
 <pre class="mermaid">    graph TD
-        id[&#x77E9;&#x5F62;]
-        id4(&#x5706;&#x89D2;&#x77E9;&#x5F62;)
-        id3&gt;&#x4E0D;&#x5BF9;&#x79F0;&#x7684;&#x77E9;&#x5F62;]
-        id1{&#x83F1;&#x5F62;}
-        id2((&#x5706;&#x5F62;))</pre>
+        id[矩形]
+        id4(圆角矩形)
+        id3>不对称的矩形]
+        id1{菱形}
+        id2((圆形))</pre>
 
 
 
@@ -200,242 +46,4 @@
 
 
 
-</body></html>
-    
-    </div>
-    
-    <div class="columns is-variable is-1 is-multiline is-mobile">
-    
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/markdown/">#markdown</a></span>
-    
-    </div>
-    
-    
-    <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2020/01/08/%E3%80%90GDC%E3%80%91Designing%20Unforgettable%20Titanfall%20Single%20Player%20Levels%20with%20Action%20Blocks/">【GDC】Designing Unforgettable Titanfall Single Player Levels with Action Blocks</a>
-            
-        </span>
-        <span class="column is-12-mobile is-half-desktop  article-nav-next">
-            
-            <a href="/2020/01/08/%E3%80%90GDC%E3%80%91Level%20Design%20Workshop%EF%BC%9ABlockmesh%20and%20Lighting%20Tips/">【GDC】Level Design Workshop：Blockmesh and Lighting Tips</a>
-            
-        </span>
-    </div>
-    
-</article>
-
-
-
-
-    </div>
-</section>
-    <footer class="footer">
-    <div class="container">
-        <div class="columns content">
-            <div class="column is-narrow has-text-centered">
-                &copy; 2020 MJ&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
-            </div>
-            <div class="column is-hidden-mobile"></div>
-
-            
-            <div class="column is-narrow">
-                <div class="columns is-mobile is-multiline is-centered">
-                
-                    
-                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
-                    
-                    GitHub
-                    
-                </a>
-                
-                </div>
-            </div>
-            
-            
-        </div>
-    </div>
-</footer>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
-
-<!-- test if the browser is outdated -->
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // plugin function, place inside DOM ready function
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        })
-    });
-</script>
-
-<script>
-    window.FontAwesomeConfig = {
-        searchPseudoElements: true
-    }
-    moment.locale("zh-CN");
-</script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script>
-    MathJax.Hub.Config({
-        "HTML-CSS": {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-</script>
-
-    
-    
-    
-    
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
-<script>
-    (function ($) {
-        $(document).ready(function () {
-            if (typeof($.fn.lightGallery) === 'function') {
-                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof($.fn.justifiedGallery) === 'function') {
-                $('.justified-gallery').justifiedGallery();
-            }
-        });
-    })(jQuery);
-</script>
-
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-    <style>
-        .hljs {
-            position: relative;
-        }
-
-        .hljs .clipboard-btn {
-            float: right;
-            color: #9a9a9a;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
-        }
-
-        .hljs > .clipboard-btn {
-            display: none;
-            position: absolute;
-            right: 4px;
-            top: 4px;
-        }
-
-        .hljs:hover > .clipboard-btn {
-            display: inline;
-        }
-
-        .hljs > figcaption > .clipboard-btn {
-            margin-right: 4px;
-        }
-    </style>
-    <script>
-      $(document).ready(function () {
-        $('figure.hljs').each(function(i, figure) {
-          var codeId = 'code-' + i;
-          var code = figure.querySelector('.code');
-          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
-          code.id = codeId;
-          copyButton.addClass('clipboard-btn');
-          copyButton.attr('data-clipboard-target-id', codeId);
-
-          var figcaption = figure.querySelector('figcaption');
-
-          if (figcaption) {
-            figcaption.append(copyButton[0]);
-          } else {
-            figure.prepend(copyButton[0]);
-          }
-        })
-
-        var clipboard = new ClipboardJS('.clipboard-btn', {
-          target: function(trigger) {
-            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
-          }
-        });
-        clipboard.on('success', function(e) {
-          e.clearSelection();
-        })
-      })
-    </script>
-
-    
-    
-
-    
-
-
-
-<script src="/js/script.js"></script>
-
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-mask"></div>
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-    
-</body>
-</html>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/01/08/%E3%80%90GDC%E3%80%91Designing%20Unforgettable%20Titanfall%20Single%20Player%20Levels%20with%20Action%20Blocks/" title="【GDC】Designing Unforgettable Titanfall Single Player Levels with Action Blocks" class="prev">上一篇</a><a href="/2020/01/08/%E3%80%90GDC%E3%80%91Level%20Design%20Workshop%EF%BC%9ABlockmesh%20and%20Lighting%20Tips/" title="【GDC】Level Design Workshop：Blockmesh and Lighting Tips" class="next">下一篇</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

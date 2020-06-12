@@ -1,473 +1,56 @@
-<!DOCTYPE html>
-<html class="has-navbar-fixed-top">
-<head>
-    <meta charset="utf-8">
-<title>Unity用户输入管理 - MJ&#39;s Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
-
-
-
-
-<meta name="description" content="This is a personal Blog.">
-
-
-
-
-
-    <meta name="description" content="&amp;#x865A;&amp;#x62DF;&amp;#x8F74;&amp;#x3001;&amp;#x83B7;&amp;#x53D6;&amp;#x952E;&amp;#x76D8;&amp;#x4E8B;&amp;#x4EF6;&amp;#x3001;&amp;#x83B7;&amp;#x53D6;&amp;#x9F20;&amp;#x6807;&amp;#x4E8B;&amp;#x4EF6;&amp;#x3001;&amp;#x79FB;&amp;#x52A8;&amp;#x8BBE;&amp;#x5907;&amp;#x8F93;&amp;#x5165;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Unity用户输入管理">
-<meta property="og:url" content="https://weimingjuncn.github.io/2020/04/22/Unity%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E7%AE%A1%E7%90%86/index.html">
-<meta property="og:site_name" content="MJ&#39;s Blog">
-<meta property="og:description" content="&amp;#x865A;&amp;#x62DF;&amp;#x8F74;&amp;#x3001;&amp;#x83B7;&amp;#x53D6;&amp;#x952E;&amp;#x76D8;&amp;#x4E8B;&amp;#x4EF6;&amp;#x3001;&amp;#x83B7;&amp;#x53D6;&amp;#x9F20;&amp;#x6807;&amp;#x4E8B;&amp;#x4EF6;&amp;#x3001;&amp;#x79FB;&amp;#x52A8;&amp;#x8BBE;&amp;#x5907;&amp;#x8F93;&amp;#x5165;">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://weimingjuncn.github.io/2020/04/22/Unity%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E7%AE%A1%E7%90%86/image-20200423165430439.png">
-<meta property="article:published_time" content="2020-04-22T13:41:00.000Z">
-<meta property="article:modified_time" content="2020-04-24T13:44:38.396Z">
-<meta property="article:author" content="MJ">
-<meta property="article:tag" content="Unity">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://weimingjuncn.github.io/2020/04/22/Unity%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E7%AE%A1%E7%90%86/image-20200423165430439.png">
-
-
-
-
-
-<link rel="icon" href="/favicon.png">
-
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-<body>
-    
-<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item navbar-logo" href="/">
-                
-                <img src="/images/logo.png" alt="" height="28">
-                
-            </a>
-            <div class="navbar-burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        
-        <div class="navbar-menu navbar-start">
-            
-            <a class="navbar-item "
-               href="/archives">归档</a>
-            
-            <a class="navbar-item "
-               href="/tags">标签分类</a>
-            
-            <a class="navbar-item "
-               href="/about">关于</a>
-            
-        </div>
-        
-        <div class="navbar-menu navbar-end">
-            
-            <a class="navbar-item search" title="Search" href="javascript:;">
-                <i class="fas fa-search"></i>
-            </a>
-            
-            
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Table of Contents">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#虚拟轴">1&nbsp;&nbsp;<b>虚拟轴</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#例子">1.1&nbsp;&nbsp;例子</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#获取键盘事件">2&nbsp;&nbsp;<b>获取键盘事件</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#例子-1">2.1&nbsp;&nbsp;例子</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#获取鼠标事件">3&nbsp;&nbsp;<b>获取鼠标事件</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#例子-2">3.1&nbsp;&nbsp;例子</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#移动设备输入">4&nbsp;&nbsp;<b>移动设备输入</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#例子-3">4.1&nbsp;&nbsp;例子</a>
-                    
-                </div>
-            </div>
-            
-            
-            <a class="navbar-item" title="GitHub" href="https://github.com/weimingjuncn" target="_blank" rel="noopener">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-               
-            
-        </div>
-    </div>
-</nav>
-
-    <section class="section">
-    <div class="container">
-    <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            Unity用户输入管理
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-04-22T13:41:00.000Z" itemprop="datePublished">4月 22 2020</time>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>&#x865A;&#x62DF;&#x8F74;&#x3001;&#x83B7;&#x53D6;&#x952E;&#x76D8;&#x4E8B;&#x4EF6;&#x3001;&#x83B7;&#x53D6;&#x9F20;&#x6807;&#x4E8B;&#x4EF6;&#x3001;&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x8F93;&#x5165;</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> Unity用户输入管理 · MJ's Blog</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Unity用户输入管理 - MJ"><meta name="keywords"><meta name="author" content="MJ"><link rel="short icon" href="/images/assassins_creed.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weimingjuncn.github.io/atom.xml" title="MJ's Blog"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script><meta name="generator" content="Hexo 4.2.0"></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/assassins_creed_white.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">Unity用户输入管理</h1><div class="post-info">2020-04-22</div><div class="post-content"><p>虚拟轴、获取键盘事件、获取鼠标事件、移动设备输入</p>
 <a id="more"></a>
 
 
 
-<h1 id="&#x865A;&#x62DF;&#x8F74;"><a href="#&#x865A;&#x62DF;&#x8F74;" class="headerlink" title="&#x865A;&#x62DF;&#x8F74;"></a>&#x865A;&#x62DF;&#x8F74;</h1><p>&#x4F7F;&#x7528;API&#xFF1A;<strong>Input.GetAxis()</strong>&#xFF0C;&#x53C2;&#x6570;&#xFF1A;&#x8F74;&#x7684;&#x540D;&#x79F0;</p>
-<p>&#x6839;&#x636E;&#x5F53;&#x524D;&#x8F93;&#x5165;&#x5B9E;&#x65F6;&#x53D8;&#x66F4;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x5E94;&#x8BE5;&#x53BB;&#x6301;&#x7EED;&#x83B7;&#x5F97;&#x66F4;&#x65B0;&#x7684;&#x503C;&#xFF0C;&#x5426;&#x5219;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4E0D;&#x51C6;&#x786E;&#x7684;</p>
-<p>&#x4F7F;&#x7528;&#x8303;&#x56F4;&#xFF1A;&#x8F83;&#x591A;&#x5E94;&#x7528;&#x5728;&#x5BF9;&#x89D2;&#x8272;&#x7684;&#x63A7;&#x5236;&#x4E0A;</p>
-<h2 id="&#x4F8B;&#x5B50;"><a href="#&#x4F8B;&#x5B50;" class="headerlink" title="&#x4F8B;&#x5B50;"></a>&#x4F8B;&#x5B50;</h2><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x83DC;&#x5355;&#x680F;|Edit|Project Settings&#x2026;|Input Manager&#x91CC;&#x67E5;&#x770B;&#x6709;&#x5173;&#x73A9;&#x5BB6;&#x8F93;&#x5165;&#x7684;&#x8BBE;&#x7F6E;</p>
+<h1 id="虚拟轴"><a href="#虚拟轴" class="headerlink" title="虚拟轴"></a>虚拟轴</h1><p>使用API：<strong>Input.GetAxis()</strong>，参数：轴的名称</p>
+<p>根据当前输入实时变更，所以使用的时候应该去持续获得更新的值，否则得到的结果是不准确的</p>
+<p>使用范围：较多应用在对角色的控制上</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>我们可以在菜单栏|Edit|Project Settings…|Input Manager里查看有关玩家输入的设置</p>
 <p><img src="/2020/04/22/Unity%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E7%AE%A1%E7%90%86/image-20200423165430439.png" alt="image-20200423165430439"></p>
-<p>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Test.cs&#xFF0C;&#x5C06;&#x5176;&#x4F5C;&#x4E3A;&#x7EC4;&#x4EF6;&#x6DFB;&#x52A0;&#x5230;&#x4E00;&#x4E2A;&#x7269;&#x4F53;&#x4E0A;&#x6BD4;&#x5982;&#x4E00;&#x4E2A;Capsule&#x3002;&#xFF0C;&#x7F16;&#x8F91;Test.cs&#x5982;&#x4E0B;&#xFF1A;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">float</span> horizontal = Input.GetAxis(<span class="hljs-string">&quot;Horizontal&quot;</span>);</span><br><span class="line">        <span class="hljs-keyword">float</span> vertical = Input.GetAxis(<span class="hljs-string">&quot;Vertical&quot;</span>);</span><br><span class="line">        <span class="hljs-keyword">if</span>(horizontal != <span class="hljs-number">0</span>)</span><br><span class="line">        {</span><br><span class="line">            transform.position = <span class="hljs-keyword">new</span> Vector3(transform.position.x + (horizontal * <span class="hljs-number">0.1f</span>),</span><br><span class="line">                transform.position.y,</span><br><span class="line">                transform.position.z);</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">if</span> (vertical != <span class="hljs-number">0</span>)</span><br><span class="line">        {</span><br><span class="line">            transform.position = <span class="hljs-keyword">new</span> Vector3(transform.position.x,</span><br><span class="line">                transform.position.y,</span><br><span class="line">                transform.position.z + (vertical * <span class="hljs-number">0.1f</span>));</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6309;&#x952E;&#x76D8;&#x7684;&#x4E0A;&#x4E0B;&#x5DE6;&#x53F3;&#x65B9;&#x5411;&#x952E;&#x6216;WASD&#x63A7;&#x5236;Capsule&#x7684;&#x524D;&#x540E;&#x5DE6;&#x53F3;&#x5E73;&#x79FB;&#x3002;</p>
-<p>&#x8981;&#x63A7;&#x5236;Capsule&#x7684;&#x8F6C;&#x5411;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;Test.cs&#x7684;Update&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">float</span> horizontal = Input.GetAxis(<span class="hljs-string">&quot;Horizontal&quot;</span>);</span><br><span class="line">        <span class="hljs-keyword">float</span> vertical = Input.GetAxis(<span class="hljs-string">&quot;Vertical&quot;</span>);</span><br><span class="line">        <span class="hljs-keyword">if</span>(horizontal != <span class="hljs-number">0</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="hljs-comment">//transform.position = new Vector3(transform.position.x + (horizontal * 0.1f),</span></span><br><span class="line">            <span class="hljs-comment">//    transform.position.y,</span></span><br><span class="line">            <span class="hljs-comment">//    transform.position.z);</span></span><br><span class="line">            transform.eulerAngles = <span class="hljs-keyword">new</span> Vector3(transform.eulerAngles.x,</span><br><span class="line">                transform.eulerAngles.y + horizontal,</span><br><span class="line">                transform.eulerAngles.z);</span><br><span class="line"></span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">if</span> (vertical != <span class="hljs-number">0</span>)</span><br><span class="line">        {</span><br><span class="line">            transform.position = <span class="hljs-keyword">new</span> Vector3(transform.position.x,</span><br><span class="line">                transform.position.y,</span><br><span class="line">                transform.position.z + (vertical * <span class="hljs-number">0.1f</span>));</span><br><span class="line"></span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5DE6;&#x53F3;&#x65B9;&#x5411;&#x952E;&#x6216;AD&#x952E;&#x63A7;&#x5236;Capsule&#x7684;&#x6C34;&#x5E73;&#x8F6C;&#x5411;&#x3002;</p>
-<h1 id="&#x83B7;&#x53D6;&#x952E;&#x76D8;&#x4E8B;&#x4EF6;"><a href="#&#x83B7;&#x53D6;&#x952E;&#x76D8;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x83B7;&#x53D6;&#x952E;&#x76D8;&#x4E8B;&#x4EF6;"></a>&#x83B7;&#x53D6;&#x952E;&#x76D8;&#x4E8B;&#x4EF6;</h1><p>&#x4F7F;&#x7528;API&#xFF1A;</p>
-<p><strong>Input.GetKey</strong>&#xFF0C;&#x67D0;&#x4E2A;&#x952E;&#x662F;&#x5426;&#x88AB;&#x6301;&#x7EED;&#x6309;&#x4E0B;&#xFF1B;</p>
-<p><strong>Input.GetKeyDown</strong>&#xFF0C;&#x67D0;&#x4E2A;&#x952E;&#x662F;&#x5426;&#x88AB;&#x6309;&#x4E0B;&#xFF1B;</p>
-<p><strong>Input.GetKeyUp</strong>&#xFF0C;&#x67D0;&#x4E2A;&#x952E;&#x662F;&#x5426;&#x88AB;&#x5F39;&#x8D77;&#x3002;</p>
-<p>&#x53EF;&#x4EE5;&#x4F20;&#x9012;&#x5C0F;&#x5199;&#x7684;&#x952E;&#x7684;&#x540D;&#x79F0;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F20;&#x9012;&#x4E00;&#x4E2A;<strong>KeyCode</strong>&#x7684;&#x503C;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x5C5E;&#x4E8E;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x3002;</p>
-<p>&#x4F7F;&#x7528;&#x8303;&#x56F4;&#xFF1A;</p>
-<p>&#x9700;&#x8981;&#x6839;&#x636E;&#x73A9;&#x5BB6;&#x6309;&#x4E0B;&#x952E;&#x76D8;&#x4E0A;&#x67D0;&#x4E2A;&#x952E;&#x624D;&#x80FD;&#x89E6;&#x53D1;&#x7684;&#x4E8B;&#x4EF6;&#x4E0A;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x6280;&#x80FD;&#x91CA;&#x653E;&#xFF0C;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x7528;&#x6237;&#x6309;&#x4E0B;&#x6280;&#x80FD;&#x952E;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x91CA;&#x653E;&#xFF0C;&#x7531;&#x6216;&#x8005;&#x8BF4;&#x6309;&#x4E0B;ESC&#x952E;&#x547C;&#x51FA;&#x7CFB;&#x7EDF;&#x83DC;&#x5355;&#x7B49;&#x3002;</p>
-<h2 id="&#x4F8B;&#x5B50;-1"><a href="#&#x4F8B;&#x5B50;-1" class="headerlink" title="&#x4F8B;&#x5B50;"></a>&#x4F8B;&#x5B50;</h2><p>&#x7F16;&#x8F91;Test.cs&#x5982;&#x4E0B;&#xFF1A;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span> (Input.GetKey(KeyCode.A))<span class="hljs-comment">//&#x6216;&#x8005;Input.GetKey(&quot;a&quot;)</span></span><br><span class="line">        {</span><br><span class="line">            Debug.Log(<span class="hljs-string">&quot;A&#x952E;&#x88AB;&#x6309;&#x4E0B;&#x4E86;&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">if</span> (Input.GetKeyDown(KeyCode.Q))<span class="hljs-comment">//&#x6216;&#x8005;Input.GetKeyDown(&quot;q&quot;)</span></span><br><span class="line">        {</span><br><span class="line">            Debug.Log(<span class="hljs-string">&quot;Q&#x952E;&#x88AB;&#x6309;&#x4E0B;&#x4E86;&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">if</span> (Input.GetKeyUp(KeyCode.W))<span class="hljs-comment">//&#x6216;&#x8005;Input.GetKeyUp(&quot;w&quot;)</span></span><br><span class="line">        {</span><br><span class="line">            Debug.Log(<span class="hljs-string">&quot;W&#x952E;&#x88AB;&#x653E;&#x5F00;&#x4E86;&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x6309;A&#x952E;&#x65F6;&#xFF0C;&#x6BCF;&#x4E00;&#x5E27;&#x63A7;&#x5236;&#x53F0;&#x90FD;&#x4F1A;&#x8BC6;&#x522B;A&#x952E;&#x88AB;&#x6309;&#x4E0B;&#x7136;&#x540E;&#x6253;&#x5370;&#x4FE1;&#x606F;&#xFF0C;&#x6309;&#x4F4F;A&#x952E;&#x5219;&#x63A7;&#x5236;&#x53F0;&#x6301;&#x7EED;&#x6253;&#x5370;&#x6D88;&#x606F;&#xFF1B;&#x5F53;&#x6211;&#x4EEC;&#x6309;&#x4E0B;Q&#x952E;&#x65F6;&#xFF0C;&#x53EA;&#x5728;&#x6309;&#x4E0B;&#x7684;&#x90A3;&#x4E00;&#x5E27;&#x8BC6;&#x522B;&#x5E76;&#x53EA;&#x6253;&#x5370;&#x4E00;&#x6B21;&#x6D88;&#x606F;&#xFF0C;&#x5373;&#x6309;&#x4E00;&#x6B21;&#x6253;&#x5370;&#x4E00;&#x6B21;&#x3002;&#x6309;&#x4F4F;W&#x952E;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x677E;&#x5F00;&#x65F6;&#x63A7;&#x5236;&#x53F0;&#x624D;&#x6253;&#x5370;&#x6D88;&#x606F;&#x3002;</p>
-<h1 id="&#x83B7;&#x53D6;&#x9F20;&#x6807;&#x4E8B;&#x4EF6;"><a href="#&#x83B7;&#x53D6;&#x9F20;&#x6807;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x83B7;&#x53D6;&#x9F20;&#x6807;&#x4E8B;&#x4EF6;"></a>&#x83B7;&#x53D6;&#x9F20;&#x6807;&#x4E8B;&#x4EF6;</h1><p>&#x4F7F;&#x7528;&#x7684;API&#xFF1A;</p>
-<p><strong>Input.GetMouseButtonDown</strong>&#xFF0C;&#x5F53;&#x6309;&#x952E;&#x6309;&#x4E0B;&#xFF1B;</p>
-<p><strong>Input.GetMouseButtonUp</strong>&#xFF0C;&#x5F53;&#x6309;&#x952E;&#x62AC;&#x8D77;&#xFF1B;</p>
-<p><strong>Input.GetMouseButton</strong>&#xFF0C;&#x5F53;&#x6309;&#x952E;&#x88AB;&#x6301;&#x7EED;&#x6309;&#x4E0B;&#x3002;</p>
-<p>&#x53C2;&#x6570;&#xFF1A;0&#x4EE3;&#x8868;&#x5DE6;&#x952E;&#xFF0C;1&#x4EE3;&#x8868;&#x53F3;&#x952E;&#xFF0C;2&#x4EE3;&#x8868;&#x4E2D;&#x952E;</p>
-<p>&#x9F20;&#x6807;&#x4F4D;&#x7F6E;&#x83B7;&#x53D6;&#xFF1A;<strong>Input.mousePosition</strong></p>
-<p>&#x9002;&#x7528;&#x8303;&#x56F4;&#xFF1A;&#x9F20;&#x6807;&#x4E8B;&#x4EF6;&#x4F7F;&#x7528;&#x8303;&#x56F4;&#x8F83;&#x5E7F;&#xFF0C;&#x6BD4;&#x5982;&#x5DE6;&#x952E;&#x70B9;&#x51FB;&#x5730;&#x9762;&#xFF0C;&#x8BA9;&#x89D2;&#x8272;&#x79FB;&#x52A8;&#x8FC7;&#x53BB;&#xFF0C;&#x53F3;&#x952E;&#x654C;&#x4EBA;&#x53D1;&#x52A8;&#x653B;&#x51FB;&#x7B49;&#x3002;</p>
-<h2 id="&#x4F8B;&#x5B50;-2"><a href="#&#x4F8B;&#x5B50;-2" class="headerlink" title="&#x4F8B;&#x5B50;"></a>&#x4F8B;&#x5B50;</h2><p>&#x7F16;&#x8F91;Test.cs&#x5982;&#x4E0B;&#xFF1A;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        GameObject Capsule = GameObject.Find(<span class="hljs-string">&quot;Capsule&quot;</span>);</span><br><span class="line">        <span class="hljs-keyword">if</span> (Input.GetMouseButtonDown(<span class="hljs-number">0</span>))</span><br><span class="line">        {</span><br><span class="line">            Capsule.transform.localScale = <span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">if</span> (Input.GetMouseButtonUp(<span class="hljs-number">1</span>))</span><br><span class="line">        {</span><br><span class="line">            Capsule.transform.localScale = <span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">if</span> (Input.GetMouseButton(<span class="hljs-number">2</span>))</span><br><span class="line">        {</span><br><span class="line">            Capsule.transform.localScale += <span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">0.5f</span>, <span class="hljs-number">0.5f</span>, <span class="hljs-number">0.5f</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x6309;&#x4E0B;&#x9F20;&#x6807;&#x5DE6;&#x952E;&#x65F6;&#xFF0C;Capsule&#x4F53;&#x79EF;&#x53D8;&#x4E3A;&#x4E3A;2&#x500D;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x6309;&#x4F4F;&#x9F20;&#x6807;&#x53F3;&#x952E;&#xFF0C;&#x677E;&#x5F00;&#x65F6;Capsule&#x4F53;&#x79EF;&#x53D8;&#x4E3A;&#x7684;1&#x500D;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x6309;&#x4F4F;&#x9F20;&#x6807;&#x4E2D;&#x952E;&#x65F6;&#xFF0C;Capsule&#x7684;&#x4F53;&#x79EF;&#x6301;&#x7EED;&#x653E;&#x5927;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x5C06;Capsule&#x5220;&#x6389;&#xFF0C;&#x5728;&#x5C06;&#x573A;&#x666F;&#x89C6;&#x56FE;&#x53D8;&#x4E3A;2D&#xFF0C;&#x5728;&#x573A;&#x666F;&#x4E2D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Image&#xFF0C;Test.cs&#x6DFB;&#x52A0;&#x5230;Main Camera&#x4E0A;&#xFF0C;&#x7F16;&#x8F91;Test.cs&#x5982;&#x4E0B;&#xFF1A;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">bool</span> isDown = <span class="hljs-literal">false</span>; </span><br><span class="line">    <span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {      </span><br><span class="line">        <span class="hljs-keyword">if</span> (Input.GetMouseButtonDown(<span class="hljs-number">0</span>))</span><br><span class="line">        {</span><br><span class="line">            isDown = <span class="hljs-literal">true</span>;   </span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">if</span> (Input.GetMouseButtonUp(<span class="hljs-number">0</span>))</span><br><span class="line">        {</span><br><span class="line">            isDown = <span class="hljs-literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="hljs-keyword">if</span> (isDown)</span><br><span class="line">        {</span><br><span class="line">            GameObject image = GameObject.Find(<span class="hljs-string">&quot;Image&quot;</span>);</span><br><span class="line">            image.transform.position = Input.mousePosition;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x64AD;&#x653E;&#x6E38;&#x620F;&#xFF0C;&#x5F53;&#x9F20;&#x6807;&#x6309;&#x4F4F;&#x5DE6;&#x952E;&#xFF0C;Image&#x4F1A;&#x8DF3;&#x53D8;&#x5230;&#x9F20;&#x6807;&#x6240;&#x5728;&#x4F4D;&#x7F6E;&#xFF0C;&#x79FB;&#x52A8;&#x9F20;&#x6807;&#xFF0C;Image&#x8DDF;&#x968F;&#x79FB;&#x52A8;&#xFF0C;&#x677E;&#x5F00;&#x9F20;&#x6807;&#x5DE6;&#x952E;&#xFF0C;Image&#x505C;&#x6B62;&#x8DDF;&#x968F;&#x3002;</p>
-<h1 id="&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x8F93;&#x5165;"><a href="#&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x8F93;&#x5165;" class="headerlink" title="&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x8F93;&#x5165;"></a>&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x8F93;&#x5165;</h1><p>&#x4F7F;&#x7528;&#x7684;API&#xFF1A;</p>
-<p>Input.touchCount&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x5E27;&#x6709;&#x591A;&#x5C11;&#x6839;&#x624B;&#x6307;&#x89E6;&#x78B0;&#x5230;&#x4E86;&#xFF0C;&#x4E0D;&#x540C;&#x8BBE;&#x5907;&#x80FD;&#x8FFD;&#x8E2A;&#x5230;&#x7684;&#x6570;&#x91CF;&#x4E0D;&#x540C;&#xFF0C;iPhone&#x4E00;&#x822C;&#x6700;&#x591A;&#x652F;&#x6301;&#x4E94;&#x6839;&#x624B;&#x6307;&#x3002;</p>
-<p>Input.touches&#x5B58;&#x50A8;&#x6BCF;&#x6839;&#x624B;&#x6307;&#x72B6;&#x6001;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#x6765;&#x8BBF;&#x95EE;&#x6BCF;&#x6839;&#x624B;&#x6307;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#x3002;&#x5E38;&#x7528;&#x4FE1;&#x606F;&#x6709;&#xFF1A;</p>
-<p>fingerid&#xFF1A;&#x89E6;&#x78B0;&#x7684;&#x552F;&#x4E00;&#x7D22;&#x5F15;</p>
-<p>position&#xFF1A;&#x8FD9;&#x6839;&#x624B;&#x6307;&#x5F53;&#x524D;&#x6240;&#x5728;&#x7684;&#x5C4F;&#x5E55;&#x4F4D;&#x7F6E;</p>
-<p>deltaPosition&#xFF1A;&#x81EA;&#x4E0A;&#x4E00;&#x5E27;&#x4EE5;&#x6765;&#xFF0C;&#x8FD9;&#x6839;&#x624B;&#x6307;&#x5C4F;&#x5E55;&#x4F4D;&#x7F6E;&#x53D8;&#x5316;</p>
-<h2 id="&#x4F8B;&#x5B50;-3"><a href="#&#x4F8B;&#x5B50;-3" class="headerlink" title="&#x4F8B;&#x5B50;"></a>&#x4F8B;&#x5B50;</h2><p>&#x7F16;&#x8F91;Test.cs&#x5982;&#x4E0B;&#xFF1A;</p>
-<p></p><figure class="highlight c# hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> System.Collections;</span><br><span class="line"><span class="hljs-keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine;</span><br><span class="line"><span class="hljs-keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> : <span class="hljs-title">MonoBehaviour</span></span><br><span class="line">{</span><br><span class="line">    Text text;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        text = GameObject.Find(<span class="hljs-string">&quot;Text&quot;</span>).GetComponent&lt;Text&gt;();</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-comment">// Update is called once per frame</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function"></span>    {</span><br><span class="line">        <span class="hljs-keyword">if</span>(Input.touchCount &gt; <span class="hljs-number">1</span>)</span><br><span class="line">        {</span><br><span class="line">            text.text = <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x6709;&#xFF1A;&quot;</span> + Input.touchCount</span><br><span class="line">            + <span class="hljs-string">&quot;&#x6839;&#x624B;&#x6307;&#x89E6;&#x78B0;&quot;</span> + Input.touches[<span class="hljs-number">0</span>].fingerId</span><br><span class="line">            + <span class="hljs-string">&quot;&#x5F53;&#x524D;&#x624B;&#x6307;&#x6240;&#x5728;&#x7684;&#x4F4D;&#x7F6E;&#x662F;&#xFF1A;&quot;</span> + Input.touches[<span class="hljs-number">0</span>].position</span><br><span class="line">            + <span class="hljs-string">&quot;&#x4E0A;&#x4E00;&#x5E27;&#x5230;&#x5F53;&#x524D;&#x5E27;&#x7684;&#x53D8;&#x5316;&quot;</span> + Input.touches[<span class="hljs-number">0</span>].deltaPosition;</span><br><span class="line">        } </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>&#x6253;&#x5305;&#x6210;apk&#xFF0C;</p>
-</body></html>
-    
-    </div>
-    
-    <div class="columns is-variable is-1 is-multiline is-mobile">
-    
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Unity/">#Unity</a></span>
-    
-    </div>
-    
-    
-    <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/">Unity动画系统</a>
-            
-        </span>
-        <span class="column is-12-mobile is-half-desktop  article-nav-next">
-            
-            <a href="/2020/04/22/%E5%9F%BA%E4%BA%8EMVC%E7%9A%84UI%E6%A1%86%E6%9E%B6/">基于MVC的UI框架</a>
-            
-        </span>
-    </div>
-    
-</article>
+<p>新建一个Test.cs，将其作为组件添加到一个物体上比如一个Capsule。，编辑Test.cs如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">float</span> horizontal = Input.GetAxis(<span class="string">"Horizontal"</span>);</span><br><span class="line">        <span class="keyword">float</span> vertical = Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line">        <span class="keyword">if</span>(horizontal != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = <span class="keyword">new</span> Vector3(transform.position.x + (horizontal * <span class="number">0.1f</span>),</span><br><span class="line">                transform.position.y,</span><br><span class="line">                transform.position.z);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (vertical != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = <span class="keyword">new</span> Vector3(transform.position.x,</span><br><span class="line">                transform.position.y,</span><br><span class="line">                transform.position.z + (vertical * <span class="number">0.1f</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>播放游戏，我们可以通过按键盘的上下左右方向键或WASD控制Capsule的前后左右平移。</p>
+<p>要控制Capsule的转向，我们还可以<strong>修改Test.cs的Update方法</strong>如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">float</span> horizontal = Input.GetAxis(<span class="string">"Horizontal"</span>);</span><br><span class="line">        <span class="keyword">float</span> vertical = Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line">        <span class="keyword">if</span>(horizontal != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//transform.position = new Vector3(transform.position.x + (horizontal * 0.1f),</span></span><br><span class="line">            <span class="comment">//    transform.position.y,</span></span><br><span class="line">            <span class="comment">//    transform.position.z);</span></span><br><span class="line">            transform.eulerAngles = <span class="keyword">new</span> Vector3(transform.eulerAngles.x,</span><br><span class="line">                transform.eulerAngles.y + horizontal,</span><br><span class="line">                transform.eulerAngles.z);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (vertical != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = <span class="keyword">new</span> Vector3(transform.position.x,</span><br><span class="line">                transform.position.y,</span><br><span class="line">                transform.position.z + (vertical * <span class="number">0.1f</span>));</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
+<p>播放游戏，我们可以通过左右方向键或AD键控制Capsule的水平转向。</p>
+<h1 id="获取键盘事件"><a href="#获取键盘事件" class="headerlink" title="获取键盘事件"></a>获取键盘事件</h1><p>使用API：</p>
+<p><strong>Input.GetKey</strong>，某个键是否被持续按下；</p>
+<p><strong>Input.GetKeyDown</strong>，某个键是否被按下；</p>
+<p><strong>Input.GetKeyUp</strong>，某个键是否被弹起。</p>
+<p>可以传递小写的键的名称作为参数，也可以传递一个<strong>KeyCode</strong>的值，返回值属于布尔类型。</p>
+<p>使用范围：</p>
+<p>需要根据玩家按下键盘上某个键才能触发的事件上，比如说技能释放，需要等待用户按下技能键的时候进行释放，由或者说按下ESC键呼出系统菜单等。</p>
+<h2 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h2><p>编辑Test.cs如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetKey(KeyCode.A))<span class="comment">//或者Input.GetKey("a")</span></span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">"A键被按下了"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.Q))<span class="comment">//或者Input.GetKeyDown("q")</span></span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">"Q键被按下了"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetKeyUp(KeyCode.W))<span class="comment">//或者Input.GetKeyUp("w")</span></span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">"W键被放开了"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>播放游戏，当我们按A键时，每一帧控制台都会识别A键被按下然后打印信息，按住A键则控制台持续打印消息；当我们按下Q键时，只在按下的那一帧识别并只打印一次消息，即按一次打印一次。按住W键，只有在松开时控制台才打印消息。</p>
+<h1 id="获取鼠标事件"><a href="#获取鼠标事件" class="headerlink" title="获取鼠标事件"></a>获取鼠标事件</h1><p>使用的API：</p>
+<p><strong>Input.GetMouseButtonDown</strong>，当按键按下；</p>
+<p><strong>Input.GetMouseButtonUp</strong>，当按键抬起；</p>
+<p><strong>Input.GetMouseButton</strong>，当按键被持续按下。</p>
+<p>参数：0代表左键，1代表右键，2代表中键</p>
+<p>鼠标位置获取：<strong>Input.mousePosition</strong></p>
+<p>适用范围：鼠标事件使用范围较广，比如左键点击地面，让角色移动过去，右键敌人发动攻击等。</p>
+<h2 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h2><p>编辑Test.cs如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        GameObject Capsule = GameObject.Find(<span class="string">"Capsule"</span>);</span><br><span class="line">        <span class="keyword">if</span> (Input.GetMouseButtonDown(<span class="number">0</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            Capsule.transform.localScale = <span class="keyword">new</span> Vector3(<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetMouseButtonUp(<span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            Capsule.transform.localScale = <span class="keyword">new</span> Vector3(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetMouseButton(<span class="number">2</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            Capsule.transform.localScale += <span class="keyword">new</span> Vector3(<span class="number">0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.5f</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    </div>
-</section>
-    <footer class="footer">
-    <div class="container">
-        <div class="columns content">
-            <div class="column is-narrow has-text-centered">
-                &copy; 2020 MJ&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
-            </div>
-            <div class="column is-hidden-mobile"></div>
+<p>播放游戏，当我们按下鼠标左键时，Capsule体积变为为2倍，当我们按住鼠标右键，松开时Capsule体积变为的1倍，当我们按住鼠标中键时，Capsule的体积持续放大。</p>
+<p>我们将Capsule删掉，在将场景视图变为2D，在场景中新建一个Image，Test.cs添加到Main Camera上，编辑Test.cs如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">bool</span> isDown = <span class="literal">false</span>; </span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;      </span><br><span class="line">        <span class="keyword">if</span> (Input.GetMouseButtonDown(<span class="number">0</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            isDown = <span class="literal">true</span>;   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetMouseButtonUp(<span class="number">0</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            isDown = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (isDown)</span><br><span class="line">        &#123;</span><br><span class="line">            GameObject image = GameObject.Find(<span class="string">"Image"</span>);</span><br><span class="line">            image.transform.position = Input.mousePosition;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-            
-            <div class="column is-narrow">
-                <div class="columns is-mobile is-multiline is-centered">
-                
-                    
-                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos" target="_blank" rel="noopener">
-                    
-                    GitHub
-                    
-                </a>
-                
-                </div>
-            </div>
-            
-            
-        </div>
-    </div>
-</footer>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+<p>播放游戏，当鼠标按住左键，Image会跳变到鼠标所在位置，移动鼠标，Image跟随移动，松开鼠标左键，Image停止跟随。</p>
+<h1 id="移动设备输入"><a href="#移动设备输入" class="headerlink" title="移动设备输入"></a>移动设备输入</h1><p>使用的API：</p>
+<p>Input.touchCount，最后一帧有多少根手指触碰到了，不同设备能追踪到的数量不同，iPhone一般最多支持五根手指。</p>
+<p>Input.touches存储每根手指状态的数组，可以通过索引来访问每根手指的一些信息。常用信息有：</p>
+<p>fingerid：触碰的唯一索引</p>
+<p>position：这根手指当前所在的屏幕位置</p>
+<p>deltaPosition：自上一帧以来，这根手指屏幕位置变化</p>
+<h2 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h2><p>编辑Test.cs如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    Text text;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        text = GameObject.Find(<span class="string">"Text"</span>).GetComponent&lt;Text&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span>(Input.touchCount &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            text.text = <span class="string">"当前有："</span> + Input.touchCount</span><br><span class="line">            + <span class="string">"根手指触碰"</span> + Input.touches[<span class="number">0</span>].fingerId</span><br><span class="line">            + <span class="string">"当前手指所在的位置是："</span> + Input.touches[<span class="number">0</span>].position</span><br><span class="line">            + <span class="string">"上一帧到当前帧的变化"</span> + Input.touches[<span class="number">0</span>].deltaPosition;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<!-- test if the browser is outdated -->
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // plugin function, place inside DOM ready function
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        })
-    });
-</script>
-
-<script>
-    window.FontAwesomeConfig = {
-        searchPseudoElements: true
-    }
-    moment.locale("zh-CN");
-</script>
-
-
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script>
-    MathJax.Hub.Config({
-        "HTML-CSS": {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-</script>
-
-    
-    
-    
-    
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
-<script>
-    (function ($) {
-        $(document).ready(function () {
-            if (typeof($.fn.lightGallery) === 'function') {
-                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof($.fn.justifiedGallery) === 'function') {
-                $('.justified-gallery').justifiedGallery();
-            }
-        });
-    })(jQuery);
-</script>
-
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-    <style>
-        .hljs {
-            position: relative;
-        }
-
-        .hljs .clipboard-btn {
-            float: right;
-            color: #9a9a9a;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
-        }
-
-        .hljs > .clipboard-btn {
-            display: none;
-            position: absolute;
-            right: 4px;
-            top: 4px;
-        }
-
-        .hljs:hover > .clipboard-btn {
-            display: inline;
-        }
-
-        .hljs > figcaption > .clipboard-btn {
-            margin-right: 4px;
-        }
-    </style>
-    <script>
-      $(document).ready(function () {
-        $('figure.hljs').each(function(i, figure) {
-          var codeId = 'code-' + i;
-          var code = figure.querySelector('.code');
-          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
-          code.id = codeId;
-          copyButton.addClass('clipboard-btn');
-          copyButton.attr('data-clipboard-target-id', codeId);
-
-          var figcaption = figure.querySelector('figcaption');
-
-          if (figcaption) {
-            figcaption.append(copyButton[0]);
-          } else {
-            figure.prepend(copyButton[0]);
-          }
-        })
-
-        var clipboard = new ClipboardJS('.clipboard-btn', {
-          target: function(trigger) {
-            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
-          }
-        });
-        clipboard.on('success', function(e) {
-          e.clearSelection();
-        })
-      })
-    </script>
-
-    
-    
-
-    
-
-
-
-<script src="/js/script.js"></script>
-
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-mask"></div>
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-    
-</body>
-</html>
+<p>打包成apk，</p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" title="Unity动画系统" class="prev">上一篇</a><a href="/2020/04/22/%E5%9F%BA%E4%BA%8EMVC%E7%9A%84UI%E6%A1%86%E6%9E%B6/" title="基于MVC的UI框架" class="next">下一篇</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
