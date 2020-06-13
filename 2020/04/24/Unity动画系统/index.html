@@ -3,39 +3,39 @@
 <a id="more"></a>
 
 <p>创建一个项目AnimationDemo，导入资源包Assets.unitypackage和Mking.unitypackage，进入Assets/Fantasy Forest Environment Free Sample/Scenes下的demoScene_free场景，将Hierarchy里的LowPoly_Cyc(1)、LowPoly_Cyc(2)、LowPoly_Cyc(3)删掉，保存场景。在LowPoly_Cyc的Inspector视窗里单击Animator|Avatar：modelAvatar，然后选中modelAvatar对应的model。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425084358787.png" alt="image-20200425084358787"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425084358787.png" alt="image-20200425084358787"></p>
 <p>model里还没有添加上动画，我们再看看model下方的Ready。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425084945034.png" alt="image-20200425084945034"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425084945034.png" alt="image-20200425084945034"></p>
 <p>点击Inspector下方的播放小按钮，可以预览动画剪辑Ready，我们也可以添加动画剪辑，点击加号新增一个Take 001，然后设置起始时间和结束时间即可。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425085204228.png" alt="image-20200425085204228"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425085204228.png" alt="image-20200425085204228"></p>
 <p>接下来我们右键Hierarchy下的LowPoly_Cyc，点击Unpack Prefab取消预制体，再将LowPoly_Cyc的Animator组件移除掉。下边将从零讲解Unity动画的添加与设置</p>
 <h1 id="一、动画的播放控制"><a href="#一、动画的播放控制" class="headerlink" title="一、动画的播放控制"></a>一、动画的播放控制</h1><p>我们在Assets文件夹下新建一个Animator文件夹，在其中创建一个Animator Controller(动画控制器)，重命名为enemyAnimator，双击打开。然后将Assets/LowPoly_Cyc/FBX/Ready下的动画剪辑Ready拖拽到Animator视窗。同理，将动画剪辑Run、skill1、skill2、skill3、Stun也拖拽进来。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425105149743.png" alt="image-20200425105149743"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425105149743.png" alt="image-20200425105149743"></p>
 <p>在Animtor窗口里，选中AnyState右键选择Make Transition（创建过渡），再点击添加进来的动画剪辑，进行连接。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425105541802.png" alt="image-20200425105541802"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425105541802.png" alt="image-20200425105541802"></p>
 <p>接着我们在右边的Parameters视窗设置过渡条件。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425105831435.png" alt="image-20200425105831435"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425105831435.png" alt="image-20200425105831435"></p>
 <p>过渡条件有Float、Int、Bool、Trigger。我们先添加一个Int类型过渡条件，命名为id。选中AnyState到Run之间的过渡条件箭头，在其Inspector|Conditions修改条件为“id Equals 1”。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425112011715.png" alt="image-20200425112011715"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425112011715.png" alt="image-20200425112011715"></p>
 <p>同理，将AnyState到skill1、skill2、skill3、Stun的条件分别设置为”id Equals 0、2、3、4、5”。</p>
 <p>将Settings|Can Transition To（可以过渡到自己）取消勾选</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425171712882.png" alt="image-20200425171712882"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425171712882.png" alt="image-20200425171712882"></p>
 <p>给LowPoly_Cyc添加一个Animator（动画器）组件，将Assets/LowPoly_Cyc/FBX/model下的modelAvatar添加到Animator|Avatar</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425114208796.png" alt="image-20200425114208796"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425114208796.png" alt="image-20200425114208796"></p>
 <p>将Assets/Animator/enemyAnimator拖拽到Animator|Controller</p>
 <p>然后创建一个脚本文件AnimatorMgr.cs</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AnimatorMgr</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    Animator anim;</span><br><span class="line">    <span class="comment">// Start is called before the first frame update</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        anim = transform.GetComponent&lt;Animator&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.Alpha0))</span><br><span class="line">        &#123;</span><br><span class="line">            anim.SetInteger(<span class="string">"id"</span>, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.Alpha1))</span><br><span class="line">        &#123;</span><br><span class="line">            anim.SetInteger(<span class="string">"id"</span>, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.Alpha2))</span><br><span class="line">        &#123;</span><br><span class="line">            anim.SetInteger(<span class="string">"id"</span>, <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.Alpha3))</span><br><span class="line">        &#123;</span><br><span class="line">            anim.SetInteger(<span class="string">"id"</span>, <span class="number">3</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.Alpha4))</span><br><span class="line">        &#123;</span><br><span class="line">            anim.SetInteger(<span class="string">"id"</span>, <span class="number">4</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.Alpha5))</span><br><span class="line">        &#123;</span><br><span class="line">            anim.SetInteger(<span class="string">"id"</span>, <span class="number">5</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>将AnimatorMgr.cs作为组件添加到LowPoly_Cyc。</p>
 <p>播放游戏，角色先进入Ready动画状态，然后按1进入Run状态，按2进入skill1状态，按3进入skill2状态，按4进入skill3状态，按5进入Stun状态。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425172341825.png" alt="image-20200425172341825"></p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425172416607.png" alt="image-20200425172416607"></p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425172512305.png" alt="image-20200425172512305"></p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425172605539.png" alt="image-20200425172605539"></p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425172705254.png" alt="image-20200425172705254"></p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425172747299.png" alt="image-20200425172747299"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425172341825.png" alt="image-20200425172341825"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425172416607.png" alt="image-20200425172416607"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425172512305.png" alt="image-20200425172512305"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425172605539.png" alt="image-20200425172605539"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425172705254.png" alt="image-20200425172705254"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425172747299.png" alt="image-20200425172747299"></p>
 <p>要想动画循环播放，双击Animator窗口中要循环的动画状态（例如Ready），在项目窗口对应的文件会被选中，在Inspector视窗勾选Loop Time（循环时间），点击Apply即可。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200425173113155.png" alt="image-20200425173113155"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200425173113155.png" alt="image-20200425173113155"></p>
 <h1 id="二、人形动画"><a href="#二、人形动画" class="headerlink" title="二、人形动画"></a>二、人形动画</h1><ul>
 <li>动画的复用</li>
 </ul>
@@ -43,41 +43,41 @@
 <p>我们将asobi_chan_b拖拽进场景中，在Inspector取消勾选Animator|Apply Root Motion，因为根运动（Root Motion）用于动画控制，它可以使角色在场景中随着动画跑动。</p>
 <p>然后选中Assets/Animator下的enemyAnimator，按Ctrl+D拷贝一份，重命名为PlayerAnimator，拖拽添加到场景中的asobi_chan_b的Animator|Controller。</p>
 <p>双击打开PlayerAnimator，在Animator窗口中选中Ready，将Assets/asobi_chan_b/Assets/Meshs/asobi_chan_b/Take 001拖拽到Motion，将Take 002拖拽到Run的Motion。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610144206662.png" alt="image-20200610144206662"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610144206662.png" alt="image-20200610144206662"></p>
 <p>在Assets/Mking/mAnimation下还有一个人形动画模型@MK_attackWhirl，我们可以将它的攻击动画复用到asobi_chan_b上。于是选中PlayerAnimtor中的skill1状态，将Assets/Mking/mAnimation/@MK_attackWhirl/MK_attackWhirl拖拽到Motion。同样地，将MK_blockAttack拖拽到skill2的Motion，将MK_stabJumpFward拖拽到skill3的Motion，将MK_hitFfront拖拽到Stun的Motion，</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610145112679.png" alt="image-20200610145112679"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610145112679.png" alt="image-20200610145112679"></p>
 <p>复制LowPoly_Cyc的脚本组件，添加到asobi_chan_b中</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610150221322.png" alt="image-20200610150221322"></p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610150422787.png" alt="image-20200610150422787"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610150221322.png" alt="image-20200610150221322"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610150422787.png" alt="image-20200610150422787"></p>
 <p>选中项目窗口里的asobi_chan_b，在Animation选项卡下，选中Take 002，然后勾选下方的Loop Time。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610152226023.png" alt="image-20200610152226023"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610152226023.png" alt="image-20200610152226023"></p>
 <p>保存后播放游戏，角色开始处于闲置状态，当按下1时，开始跑动。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610150926200.png" alt="image-20200610150926200"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610150926200.png" alt="image-20200610150926200"></p>
 <p>当按下2时，开始执行attackWhirl。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610151142829.png" alt="image-20200610151142829"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610151142829.png" alt="image-20200610151142829"></p>
 <p>当按下3时，开始执行blockAttack。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610151403414.png" alt="image-20200610151403414"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610151403414.png" alt="image-20200610151403414"></p>
 <p>当按下4时，开始执行stabJumpFward。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610151553234.png" alt="image-20200610151553234"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610151553234.png" alt="image-20200610151553234"></p>
 <p>当按下5时，开始执行hitFfront。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610151645663.png" alt="image-20200610151645663"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610151645663.png" alt="image-20200610151645663"></p>
 <h1 id="三、动画遮罩"><a href="#三、动画遮罩" class="headerlink" title="三、动画遮罩"></a>三、动画遮罩</h1><ul>
 <li>屏蔽某个部位的运动</li>
 </ul>
 <p>在项目窗口右键新建|Avatar Mask，重名名为EnemyAvatar，拷贝一份后再重命名为PlayerAvatar。</p>
 <p>选中EnemyAvatar，将Assets/LowPoly_Cyc/FBX/model/modelAvatar拖拽到EnemyAvatar的Transform|Use skeleton from，点击Import skeleton。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610211241758.png" alt="image-20200610211241758"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610211241758.png" alt="image-20200610211241758"></p>
 <p>打开EnemyAnimator，点击Base Layer右边的小齿轮，点击Mask，选择EnemyAvatar。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610213548380.png" alt="image-20200610213548380"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610213548380.png" alt="image-20200610213548380"></p>
 <p>回到EnemyAvatar的Inspector窗口，取消勾选角色的下半身节点，播放游戏，角色无论做哪些动画都是下半身僵直的。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610213717945.png" alt="image-20200610213717945"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610213717945.png" alt="image-20200610213717945"></p>
 <p>接下来对人形动画使用遮罩，我们先在PlayerAnimator创建一个Run动画层，然后在其中添加一个Run状态，在其Motion附上动画剪辑Run。从Any State到Run建立一个转变关系，转变条件设为id值等于1，同时将Base Layer里的Any State到Run的条件改为id等于1000。拷贝一个PlayerAvatar，名为PlayerAvatar 1，设置PlayerAvatar如下：</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610225601929.png" alt="image-20200610225601929"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610225601929.png" alt="image-20200610225601929"></p>
 <p>设置PlayerAvatar 1如下：</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610225657825.png" alt="image-20200610225657825"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610225657825.png" alt="image-20200610225657825"></p>
 <p>将PlayerAvatar 1应用到Base Layer，将PlayerAvatar应用到Run，并设置Run的Weight为1。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610225847209.png" alt="image-20200610225847209"></p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610225958876.png" alt="image-20200610225958876"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610225847209.png" alt="image-20200610225847209"></p>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610225958876.png" alt="image-20200610225958876"></p>
 <p>点击播放游戏，角色会立刻开始奔跑，当我们按2时，角色下半身保持奔跑，上半身做攻击动作。</p>
-<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/D:%5Cblog%5Csource_posts%5CUnity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%5Cimage-20200610230324908.png" alt="image-20200610230324908"></p>
-<h1 id="四、分层控制和退出控制"><a href="#四、分层控制和退出控制" class="headerlink" title="四、分层控制和退出控制"></a>四、分层控制和退出控制</h1><h1 id="五、动画事件"><a href="#五、动画事件" class="headerlink" title="五、动画事件"></a>五、动画事件</h1></div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/04/22/Unity%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E7%AE%A1%E7%90%86/" title="Unity用户输入管理" class="next">下一篇</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
+<p><img src="/2020/04/24/Unity%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/image-20200610230324908.png" alt="image-20200610230324908"></p>
+<h1 id="四、分层控制和退出控制"><a href="#四、分层控制和退出控制" class="headerlink" title="四、分层控制和退出控制"></a>四、分层控制和退出控制</h1><h1 id="五、动画事件"><a href="#五、动画事件" class="headerlink" title="五、动画事件"></a>五、动画事件</h1></div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/04/22/Unity%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E7%AE%A1%E7%90%86/" title="Unity用户输入管理" class="next">NEXT</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
