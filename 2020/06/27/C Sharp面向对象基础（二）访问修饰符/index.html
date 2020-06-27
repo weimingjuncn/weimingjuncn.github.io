@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> C#面向对象基础（二）访问修饰符 · MJ's Blog</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="C#面向对象基础（二）访问修饰符 - MJ"><meta name="keywords"><meta name="author" content="MJ"><link rel="short icon" href="/images/QuestIcon.png"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://weimingjuncn.github.io/atom.xml" title="MJ's Blog"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script><meta name="generator" content="Hexo 4.2.0"></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/dragonIcon.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="https://github.com/weimingjuncn" target="_blank" data-hover="GITHUB" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="mailto:@mingjun4503@163.com" target="_self" data-hover="邮箱" class="nav-list-link">邮箱</a></li><li class="nav-list-item"><a href="/about/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">C#面向对象基础（二）访问修饰符</h1><div class="post-info">2020-06-27</div><div class="post-content"><p>关键词：访问修饰符、访问控制</p>
+<a id="more"></a>
+
+<h2 id="一、访问修饰符"><a href="#一、访问修饰符" class="headerlink" title="一、访问修饰符"></a>一、访问修饰符</h2><p><strong>字段、方法</strong>都可以叫作类的<strong>成员</strong>，它们都需要定义<strong>访问级别</strong>。<br>访问级别用于控制成员在哪些地方可以被访问。</p>
+<p>访问修饰符：</p>
+<ul>
+<li><p>public：公共成员，<strong>完全公开，没有访问限制</strong>。</p>
+</li>
+<li><p>private：私有成员，在<strong>类的内部</strong>才可以访问。</p>
+</li>
+<li><p>internal：当前<strong>程序集内（exe, dll）</strong>可以访问。</p>
+</li>
+<li><p>protected：保护成员，该<strong>类内部和继承类中</strong>可以访问</p>
+</li>
+<li><p>internal protected：internal和protected的并集，<strong>同一个程序集中的所有类，以及所有程序集中的子类</strong>。</p>
+</li>
+</ul>
+<p>修饰符可以修饰的内容：</p>
+<ol>
+<li><strong>类（class）</strong>和<strong>结构（struct）</strong>只能用<strong>public</strong>, <strong>internal</strong>来修饰。</li>
+<li>成员（变量、方法）能用以上5种来修饰。</li>
+</ol>
+<p>如果不写访问修饰符，有以下<strong>默认规则</strong>：</p>
+<ol>
+<li>类中<strong>字段</strong>和<strong>方法</strong>默认的访问修饰符是<strong>private</strong>；</li>
+<li><strong>类（class）</strong>和<strong>结构（struct）</strong>默认的访问修饰符是<strong>internal</strong>。</li>
+</ol>
+<p>注意：<strong>程序集</strong>（Assembly）一般指一个<strong>.exe</strong>可执行文件或<strong>.dll</strong>类库文件。</p>
+<p>总结：</p>
+<ol>
+<li>本类中任意访问修饰符修饰的变量和方法均可访问。</li>
+<li>同一项目不同类，无法访问受保护和私有的变量和方法。</li>
+<li>访问不同项目（程序集），只能访问public类，其余全部失效。</li>
+</ol>
+<h2 id="二、访问控制"><a href="#二、访问控制" class="headerlink" title="二、访问控制"></a>二、访问控制</h2></div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/06/27/C%20Sharp%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89%E5%B0%81%E8%A3%85/" title="C#面向对象基础（三）封装" class="prev">PREV</a><a href="/2020/06/26/C%20Sharp%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%E6%8A%BD%E8%B1%A1/" title="C#面向对象基础（一）抽象" class="next">NEXT</a></div><div class="copyright"><p>© 2016 - 2020 <a target="_blank">MJ</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
